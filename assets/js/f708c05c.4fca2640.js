@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkfuchss_org=self.webpackChunkfuchss_org||[]).push([[743],{92:e=>{e.exports=JSON.parse('{"title":"Literature","slug":"/category/literature","permalink":"/docs/category/literature","navigation":{"next":{"title":"2023","permalink":"/docs/category/2023"}}}')}}]);
