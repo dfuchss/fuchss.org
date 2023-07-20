@@ -29,11 +29,11 @@ const config = {
         redirects: [
           {
             from: '/l/deltabot',
-            to: '/docs/projects/deltabot'
+            to: '/projects/deltabot'
           },
           {
             from: '/l/cop',
-            to: '/docs/projects/archive/copbot'
+            to: '/projects/archive/copbot'
           }
         ]
       }
@@ -46,8 +46,10 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
         },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -84,14 +86,14 @@ const config = {
           {
             // type: 'docSidebar',
             // sidebarId: 'projectsSidebar',
-            to: '/docs/category/projects',
+            to: '/category/projects',
             position: 'right',
             label: 'Projects',
           },
           {
             // type: 'docSidebar',
             // sidebarId: 'literatureSidebar',
-            to: '/docs/category/literature',
+            to: '/category/literature',
             position: 'right',
             label: 'Literature',
           }

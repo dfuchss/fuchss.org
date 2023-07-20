@@ -1,33 +1,10 @@
 import React from 'react';
-// import clsx from 'clsx';
-// import Link from '@docusaurus/Link';
-// import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 
-// import styles from './index.module.css';
-
-/*
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
-*/
 
 function LogoWithText() {
+  const myLogo = require('/images/logo.png').default;
   return (
     <div
       style={{
@@ -38,7 +15,9 @@ function LogoWithText() {
         textAlign: 'center',
       }}>
       <div>
-        <p><img src="/images/logo.png" /></p>
+        <p>
+          <img src={myLogo} />
+        </p>
         <h2>Dominik Fuchß</h2>
       </div>
     </div>
@@ -56,12 +35,16 @@ function CardsForTopics() {
         textAlign: 'center',
         marginBottom: '15px',
       }}>
-      <div style={{border: '1px solid #ccc', padding: '1.5rem 1.5rem 1.5rem 1.5rem', marginLeft: '10px', marginRight: '10px'}}>
-        <h2><a href="/docs/category/projects">Projects</a></h2>
+      <div style={{ border: '1px solid #ccc', padding: '1.5rem 1.5rem 1.5rem 1.5rem', marginLeft: '10px', marginRight: '10px' }}>
+        <h2>
+          <Link to="/category/projects">Projects</Link>
+        </h2>
         <p>Here you can find a list of my projects.</p>
       </div>
-      <div style={{border: '1px solid #ccc', padding: '1.5rem 1.5rem 1.5rem 1.5rem',  marginLeft: '10px', marginRight: '10px'}}>
-        <h2><a href="/docs/category/literature">Literature</a></h2>
+      <div style={{ border: '1px solid #ccc', padding: '1.5rem 1.5rem 1.5rem 1.5rem', marginLeft: '10px', marginRight: '10px' }}>
+        <h2>
+          <Link to="/category/literature">Literature</Link>
+        </h2>
         <p>Here you can find a list of my publications.</p>
       </div>
     </div>
@@ -72,7 +55,7 @@ export default function Home() {
   return (
     <Layout
       title={`Home`}
-      description="Home page of Dominik Fuchss">
+      description="Home page of Dominik Fuchß">
       <main>
         <LogoWithText />
         <CardsForTopics />
