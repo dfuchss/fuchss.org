@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
+import Link from '@docusaurus/Link';
 import CodeBlock from '@theme/CodeBlock';
 import GPGKey from '!!raw-loader!/pgp-key/DD7EE78CAC98885B734000ADF07E8A60D810A543.asc';
 
@@ -15,7 +16,7 @@ export default function Home() {
                     textAlign: 'left',
                     marginTop: '15px',
                 }}>
-                    <h1>PGP-Key (0xD810A543)</h1>
+                    <h1>PGP-Key (<Link to="/pgp-key/DD7EE78CAC98885B734000ADF07E8A60D810A543.asc" target='_blank' >0xD810A543</Link>)</h1>
                 </div>
             </header>
             <main>
