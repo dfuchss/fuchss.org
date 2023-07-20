@@ -40,6 +40,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      docs: {
+        sidebar: {
+          autoCollapseCategories: true
+        }
+      },
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: false,
