@@ -115,7 +115,7 @@ const config = {
             ]
           }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Dominik Fuchß`,
+        copyright: `Copyright © ${new Date().getFullYear()} Dominik Fuchß<br/><a href="https://status.fuchss.org/status/main">Status</a> &#x2022; <a href="/impressum">Impressum</a>`,
       },
       prism: {
         theme: lightCodeTheme,
