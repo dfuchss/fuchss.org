@@ -2,7 +2,8 @@
 title: DeltaBot
 description: DeltaBot is my first bot for Discord.
 sidebar_position: 3
-displayed_sidebar: null
+displayed_sidebar: rootSidebar
+# hide_table_of_contents: true
 ---
 
 # DeltaBot

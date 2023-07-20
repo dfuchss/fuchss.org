@@ -1,6 +1,7 @@
 ---
 title: Bachelor's Thesis
-displayed_sidebar: null
+displayed_sidebar: rootSidebar
+# hide_table_of_contents: true
 ---
 
 # Verarbeitung natürlich-sprachlicher Beziehungsbeschreibungen zwischen Objekten

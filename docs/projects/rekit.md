@@ -2,7 +2,8 @@
 title: RεKiT
 description: RεKiT is a platform jumper game created by three KIT students in the summer of 2016 with the aim of explaining different design patterns to students in the second semester on the basis of a practical example.
 sidebar_position: 6
-displayed_sidebar: null
+displayed_sidebar: rootSidebar
+# hide_table_of_contents: true
 ---
 
 # RεKiT

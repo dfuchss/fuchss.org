@@ -1,6 +1,7 @@
 ---
 title: "Context Classification in Dialog-Based Interaction"
-displayed_sidebar: null
+displayed_sidebar: rootSidebar
+# hide_table_of_contents: true
 ---
 # [Context Classification in Dialog-Based Interaction](https://ieeexplore.ieee.org/document/9031522)
 ## Abstract

@@ -1,6 +1,7 @@
 ---
 title: "Evaluation Methods and Replicability of Software Architecture Research Objects"
-displayed_sidebar: null
+displayed_sidebar: rootSidebar
+# hide_table_of_contents: true
 ---
 # [Evaluation Methods and Replicability of Software Architecture Research Objects](https://ieeexplore.ieee.org/document/9779698)
 ## Abstract

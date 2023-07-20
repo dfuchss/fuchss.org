@@ -2,7 +2,8 @@
 title: Object Casket
 description: Object Casket is a simple object mapper that can be used together with the Java Persistence API (JPA).
 sidebar_position: 5
-displayed_sidebar: null
+displayed_sidebar: rootSidebar
+# hide_table_of_contents: true
 ---
 
 # Object Casket

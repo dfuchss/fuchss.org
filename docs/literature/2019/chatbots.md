@@ -1,6 +1,7 @@
 ---
 title: "Approaching Natural Conversation Chatbots by Interactive Dialogue Modelling & Microsoft LUIS"
-displayed_sidebar: null
+displayed_sidebar: rootSidebar
+# hide_table_of_contents: true
 ---
 # [Approaching Natural Conversation Chatbots by Interactive Dialogue Modelling & Microsoft LUIS](https://ieeexplore.ieee.org/document/8949378)
 ## Abstract

@@ -2,7 +2,8 @@
 title: PerOpteryx
 description: PerOpteryx is an optimization framework which improves component-based software architectures. Quality predictions are made on the basis of models.
 sidebar_position: 4
-displayed_sidebar: null
+displayed_sidebar: rootSidebar
+# hide_table_of_contents: true
 ---
 
 # PerOpteryx

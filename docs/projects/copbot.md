@@ -2,7 +2,8 @@
 title: Challenge of Pic
 description: The Challenge of Pic bot is my first bot for Telegram.
 sidebar_position: 2
-displayed_sidebar: null
+displayed_sidebar: rootSidebar
+# hide_table_of_contents: true
 ---
 
 # Challenge of Pic

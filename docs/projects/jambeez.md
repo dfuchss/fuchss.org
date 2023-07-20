@@ -2,7 +2,8 @@
 title: JamBeez
 description: A cross-platform collaborative drum machine 
 sidebar_position: 4
-displayed_sidebar: null
+displayed_sidebar: rootSidebar
+# hide_table_of_contents: true
 ---
 
 # [JamBeez - A cross-platform collaborative drum machine](https://jambeez.github.io/)
