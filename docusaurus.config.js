@@ -1,0 +1,127 @@
+// @ts-check
+// Note: type annotations allow type checking and IDEs autocompletion
+
+const lightCodeTheme = require('prism-react-renderer/themes/github');
+const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+
+/** @type {import('@docusaurus/types').Config} */
+const config = {
+  title: 'fuchss.org',
+  staticDirectories: ['static'],
+  tagline: '',
+  favicon: 'images/favicon.jpg',
+
+  url: 'https://www.fuchss.org',
+  baseUrl: '/',
+
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
+
+  presets: [
+    [
+      'classic',
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      ({
+        docs: {
+          sidebarPath: require.resolve('./sidebars.js'),
+        },
+        theme: {
+          customCss: require.resolve('./src/css/custom.css'),
+        },
+      }),
+    ],
+  ],
+
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      navbar: {
+        title: 'FUCHSS.ORG',
+        logo: {
+          alt: 'fuchss.org Logo',
+          src: 'images/favicon.jpg',
+        },
+        items: [
+          {
+            position: 'right',
+            href: 'https://s.kit.edu/fuchss',
+            label: 'KIT KASTEL'
+          },
+          {
+            // type: 'docSidebar',
+            // sidebarId: 'projectsSidebar',
+            to: '/docs/category/projects',
+            position: 'right',
+            label: 'Projects',
+          },
+          {
+            // type: 'docSidebar',
+            // sidebarId: 'literatureSidebar',
+            to: '/docs/category/literature',
+            position: 'right',
+            label: 'Literature',
+          }
+        ],
+      },
+      footer: {
+        style: 'dark',
+        links: [
+          {
+            title: 'Social',
+            items: [
+              {
+                label: 'Google Scholar',
+                href: 'https://scholar.google.com/citations?user=bVvFp4oAAAAJ',
+              },
+              {
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/in/dfuchss/',
+              },
+            ],
+          },
+          {
+            title: 'Development',
+            items: [
+              {
+                label: 'GitHub',
+                href: 'https://github.com/dfuchss',
+              },
+              {
+                label: 'GitLab',
+                href: 'https://gitlab.com/dfuchss',
+              }
+            ]
+          },
+          {
+            title: 'Contact',
+            items: [
+              {
+                label: 'Mail',
+                href: 'mailto:dominik@fuchss.org'
+              },
+              {
+                label: 'PGP-Key',
+                to: '/contact/pgp-key',
+              },
+              {
+                label: 'Matrix',
+                href: 'https://matrix.to/#/@dominik:fuchss.org',
+              }
+            ]
+          }
+        ],
+        copyright: `Copyright © ${new Date().getFullYear()} Dominik Fuchß`,
+      },
+      prism: {
+        theme: lightCodeTheme,
+        darkTheme: darkCodeTheme,
+      },
+    }),
+};
+
+module.exports = config;
