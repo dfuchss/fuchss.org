@@ -47,5 +47,5 @@ Currently the bot supports the following mensa:
 
 Join our discussion at our matrix channel [#mensa-bot:fuchss.org](https://matrix.to/#/#mensa-bot:fuchss.org)
 
-* The basic functionality (commands) are located in [Main.kt](src/main/kotlin/org/fuchss/matrix/mensa/Main.kt). There you can also find the main method of the program.
+* The basic functionality (commands) are located in [Main.kt](https://github.com/dfuchss/MensaBot/blob/main/src/main/kotlin/org/fuchss/matrix/mensa/Main.kt). There you can also find the main method of the program.
 * Every mensa that shall be considered has to implement the `MensaAPI`. Currently, there is only one implementation for the [sw-ka.de interface](https://sw-ka.de).

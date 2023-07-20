@@ -19,7 +19,7 @@ This bot allows the creation of JoinLinks to rooms.
 
 Join our discussion at our matrix channel [#matrixjoinlink:fuchss.org](https://matrix.to/#/#matrixjoinlink:fuchss.org)
 
-* The basic functionality (commands) are located in [Main.kt](src/main/kotlin/org/fuchss/matrix/joinlink/Main.kt). There you can also find the main method of
+* The basic functionality (commands) are located in [Main.kt](https://github.com/dfuchss/MatrixJoinLink/blob/main/src/main/kotlin/org/fuchss/matrix/joinlink/Main.kt). There you can also find the main method of
   the program.
 
 ### How does the bot work
