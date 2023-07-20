@@ -4,6 +4,7 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'fuchss.org',
@@ -21,6 +22,23 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+
+  plugins: [
+    ['@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            from: '/l/deltabot',
+            to: '/docs/projects/deltabot'
+          },
+          {
+            from: '/l/cop',
+            to: '/docs/projects/archive/copbot'
+          }
+        ]
+      }
+    ]
+  ],
 
   presets: [
     [
