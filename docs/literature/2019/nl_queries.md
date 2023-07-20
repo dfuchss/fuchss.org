@@ -1,5 +1,6 @@
 ---
 title: "Natural Language Data Queries on Multiple Heterogenous Data Sources"
+displayed_sidebar: null
 ---
 # [Natural Language Data Queries on Multiple Heterogenous Data Sources](https://link.springer.com/chapter/10.1007/978-3-030-24781-2_13)
 ## Abstract

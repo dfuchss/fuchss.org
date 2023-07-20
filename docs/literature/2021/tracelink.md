@@ -1,5 +1,6 @@
 ---
 title: "Tracelink Recovery for Software Architecture Documentation"
+displayed_sidebar: null
 ---
 # [Tracelink Recovery for Software Architecture Documentation](http://sdqweb.ipd.kit.edu/publications/pdfs/keim2021ecsa.pdf)
 ## Abstract

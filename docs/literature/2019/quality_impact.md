@@ -1,5 +1,6 @@
 ---
 title: "Assessing the Quality Impact of Features in Component-based Software Architectures"
+displayed_sidebar: null
 ---
 # [Assessing the Quality Impact of Features in Component-based Software Architectures](https://sdqweb.ipd.kit.edu/publications/pdfs/busch2019b.pdf)
 ## Abstract

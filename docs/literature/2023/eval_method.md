@@ -1,5 +1,6 @@
 ---
 title: "Evaluation Methods and Replicability of Software Architecture Research Objects"
+displayed_sidebar: null
 ---
 # [Evaluation Methods and Replicability of Software Architecture Research Objects](https://dl.gi.de/handle/20.500.12116/40089)
 ## Abstract

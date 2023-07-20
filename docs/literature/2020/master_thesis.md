@@ -1,5 +1,6 @@
 ---
 title: "Master's Thesis"
+displayed_sidebar: null
 ---
 # [Assessing Hypotheses in Multi-Agent Systems for Natural Language Processing](https://doi.org/10.5445/IR/1000126806)
 ## Abstract

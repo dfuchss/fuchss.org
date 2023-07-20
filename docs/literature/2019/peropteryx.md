@@ -1,5 +1,6 @@
 ---
 title: "PerOpteryx: Automated Improvement of Software Architectures"
+displayed_sidebar: null
 ---
 # [PerOpteryx: Automated Improvement of Software Architectures](https://sdqweb.ipd.kit.edu/publications/pdfs/busch2019a.pdf)
 ## Abstract

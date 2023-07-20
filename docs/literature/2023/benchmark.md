@@ -1,5 +1,6 @@
 ---
 title: "Establishing a Benchmark Dataset for Traceability Link Recovery Between Software Architecture Documentation and Models"
+displayed_sidebar: null
 ---
 # [Establishing a Benchmark Dataset for Traceability Link Recovery Between Software Architecture Documentation and Models](https://doi.org/10.1007/978-3-031-36889-9_30)
 ## Abstract

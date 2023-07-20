@@ -2,6 +2,7 @@
 title: DeltaBot
 description: DeltaBot is my first bot for Discord.
 sidebar_position: 3
+displayed_sidebar: null
 ---
 
 # DeltaBot

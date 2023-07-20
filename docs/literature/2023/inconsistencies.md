@@ -1,5 +1,6 @@
 ---
 title: "Detecting Inconsistencies in Software Architecture Documentation Using Traceability Link Recovery"
+displayed_sidebar: null
 ---
 # [Detecting Inconsistencies in Software Architecture Documentation Using Traceability Link Recovery](https://publikationen.bibliothek.kit.edu/1000158208/150680132)
 ## Abstract

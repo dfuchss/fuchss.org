@@ -1,5 +1,6 @@
 ---
 title: "Sketches and Natural Language in Agile Modeling"
+displayed_sidebar: null
 ---
 # [Sketches and Natural Language in Agile Modeling](http://sdqweb.ipd.kit.edu/publications/pdfs/fuchss2021a.pdf)
 ## Abstract

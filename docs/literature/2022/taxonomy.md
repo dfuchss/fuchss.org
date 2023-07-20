@@ -1,5 +1,6 @@
 ---
 title: "Introducing an Evaluation Method for Taxonomies"
+displayed_sidebar: null
 ---
 # [Introducing an Evaluation Method for Taxonomies](https://dl.acm.org/doi/abs/10.1145/3530019.3535305)
 ## Abstract

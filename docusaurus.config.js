@@ -47,7 +47,7 @@ const config = {
       },
       navbar: {
         title: 'FUCHSS.ORG',
-  
+
         logo: {
           alt: 'fuchss.org Logo',
           src: 'images/favicon.jpg',
