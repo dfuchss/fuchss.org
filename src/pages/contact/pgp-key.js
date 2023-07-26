@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import CodeBlock from '@theme/CodeBlock';
-import GPGKey from '!!raw-loader!/pgp-key/DD7EE78CAC98885B734000ADF07E8A60D810A543.asc';
+import PGPKey from '!!raw-loader!/pgp-key/DD7EE78CAC98885B734000ADF07E8A60D810A543.asc';
 
 export default function Home() {
     return (
@@ -27,7 +27,7 @@ export default function Home() {
                     marginTop: '15px',
                     marginBottom: '15px',
                 }}>
-                    <CodeBlock language="text">{GPGKey}</CodeBlock>
+                    <CodeBlock language="text">{PGPKey}</CodeBlock>
                 </div>
             </main>
         </Layout>
