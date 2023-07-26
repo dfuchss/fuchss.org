@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkfuchss_org=self.webpackChunkfuchss_org||[]).push([[977],{2399:e=>{e.exports=JSON.parse('{"title":"Archive","slug":"/category/archive","permalink":"/category/archive","navigation":{"previous":{"title":"Object Casket","permalink":"/projects/objectcasket"},"next":{"title":"JamBeez","permalink":"/projects/archive/jambeez"}}}')}}]);
