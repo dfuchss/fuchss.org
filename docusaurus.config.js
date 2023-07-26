@@ -37,6 +37,11 @@ const config = {
           }
         ]
       }
+    ],
+    [
+      require.resolve('docusaurus-lunr-search'), {
+        languages: ['en', 'de']
+      }
     ]
   ],
 
