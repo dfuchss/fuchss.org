@@ -4,7 +4,7 @@ import Layout from '@theme/Layout';
 
 
 function LogoWithText() {
-  const myLogo = require('/images/logo.png').default;
+  const myLogo = require('/images/me.png').default;
   return (
     <div
       style={{
