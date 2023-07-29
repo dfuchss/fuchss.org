@@ -7,7 +7,16 @@ displayed_sidebar: rootSidebar
 ---
 
 # [JoinLink](https://github.com/dfuchss/MatrixJoinLink)
-This bot allows the creation of JoinLinks to rooms.
+This bot allows the creation of join links to non-public rooms in matrix. It uses the [Trixnity](https://trixnity.gitlab.io/trixnity/) framework.
+The bot is currently in early alpha and primarily used as proof-of-concept.
+
+:warning: **No liability of any kind is assumed. This project is in alpha. It is possible that all implemented mechanisms can change.**
+Nevertheless, I am of course interested in feedback. Feel free to use the matrix chat (see below).
+
+## Reason for this Bot
+
+I always struggled with the problem that I have private rooms, I want to share with a group of friends. Before the bot, I had to invite all the people. Now I
+can invite _JoinLink_ and create an invite link. This link can be shared to my friends who want to join my room (including spaces).
 
 ## Usage
 
@@ -24,10 +33,10 @@ Join our discussion at our matrix channel [#matrixjoinlink:fuchss.org](https://m
 
 ### How does the bot work
 
-1. Let's assume you have a private room with id `!private:room.domain`
-2. You invite the bot and enter `!join link SomeFancyNameForTheLink`. This will create a new public room with a random id (not listed in the room directory). We call this
-   room `!public123:room.domain`.
-3. The bot saves two state events: First in `!private:room.domain` a state called `org.fuchss.matrix.joinlink` that contains a pointer to the public room.
-   Second, a state called `org.fuchss.matrix.room_to_join` in the public room that contains pointers to the private room to join.
-4. If someone joins the public room, the bot reads the protected state from the public room and invites the user to all roomIds that are present in the state.
-5. If you want to invalidate the join link, you can simply type `!join unlink`.
+1. Let's assume that you want to share the private room `!private:room.domain`
+2. After you've invited the bot, you can enter `!join link IShareLinksWithYou`
+3. The bot creates a new public room that contains "IShareLinksWithYou" in its name. This room will not be listed in the room directory; for this example its ID
+   is `!public:room.domain`
+4. If somebody joins the public room, the bot verifies based on two encrypted state events in `!private:room.domain` and `!public:room.domain` whether the rooms
+   belong to each other. If so, the bot simply invites the user to the private room.
+5. If you want to disable the share simply type `!join unlink` in the private room. This will invalidate the join link.
