@@ -24,6 +24,18 @@ can invite _JoinLink_ and create an invite link. This link can be shared to my f
 * After the bot has joined use `!join help` to get an overview about the features of the bot (remember: the bot only respond to users in the user list)
 * In order to create a Join Link simply type `!join link SomeFancyNameForTheLink` and the bot will create a join link. Please make sure that the bot has the ability to invite users.
 
+![Help](/projects/joinlink/help.png)
+
+### Creation of Join (Invite) Links
+![Creation](/projects/joinlink/creation.png)
+
+### Entering a Join (Invite) Link Room
+![Enter](/projects/joinlink/joined.png)
+
+### Unlinking a Join (Invite) Link
+![Unlink](/projects/joinlink/unlink.png)
+
+
 ## Development
 
 Join our discussion at our matrix channel [#matrixjoinlink:fuchss.org](https://matrix.to/#/#matrixjoinlink:fuchss.org)
