@@ -1,6 +1,6 @@
 ---
 title: JoinLink
-description: A bot that can create JoinLinks for non-public matrix rooms
+description: A bot that allows the creation of Join Links to non-public Rooms in Matrix
 sidebar_position: 0
 displayed_sidebar: rootSidebar
 # hide_table_of_contents: true
@@ -10,17 +10,31 @@ displayed_sidebar: rootSidebar
 This bot allows the creation of join links to non-public rooms in matrix. It uses the [Trixnity](https://trixnity.gitlab.io/trixnity/) framework.
 The bot is currently in early alpha and primarily used as proof-of-concept.
 
-:warning: **No liability of any kind is assumed. This project is in alpha. It is possible that all implemented mechanisms can change.**
-Nevertheless, I am of course interested in feedback. Feel free to use the matrix chat (see below).
+🔨 This project is in alpha. Feel free to use the matrix chat (see below). 🔨
 
 ## Reason for this Bot
 
 I always struggled with the problem that I have private rooms, I want to share with a group of friends. Before the bot, I had to invite all the people. Now I
 can invite _JoinLink_ and create an invite link. This link can be shared to my friends who want to join my room (including spaces).
 
+## Setup
+
+1. Get a matrix account for the bot (e.g., on your own homeserver or on `matrix.org`)
+2. Prepare configuration:
+    * Copy `config-sample.json` to `config.json`
+    * Enter `baseUrl` to the matrix server and `username` / `password` for the bot user
+    * Set an encryption key. The bot will use this string as key to encrypt the state events.
+    * Add yourself (e.g., `@user:matrix.org`) or your homeserver (e.g., `:matrix.org`) to the `users` (empty == allow all). Users can interact with the bot.
+    * Add yourself to the `admins` (can't be empty)
+3. Either run the bot via jar or run it via the provided docker.
+    * If you run it locally, you can use the environment variable `CONFIG_PATH` to point at your `config.json` (defaults to `./config.json`)
+    * If you run it in docker, you can use a command similar to
+      this `docker run -itd -v $LOCAL_PATH_TO_CONFIG:/usr/src/bot/data/config.json:ro -v $LOCAL_PAT ghcr.io/dfuchss/matrixjoinlink`
+    * If you want to persist sessions, you should persist the data volume `-v $LOCAL_PATH_TO_DATA:/usr/src/bot/data`
+
 ## Usage
 
-* A user (see user list) can invite the bot to a room.
+* A user (see user list in configuration file) can invite the bot to a room.
 * After the bot has joined use `!join help` to get an overview about the features of the bot (remember: the bot only respond to users in the user list)
 * In order to create a Join Link simply type `!join link SomeFancyNameForTheLink` and the bot will create a join link. Please make sure that the bot has the ability to invite users.
 
@@ -35,13 +49,11 @@ can invite _JoinLink_ and create an invite link. This link can be shared to my f
 ### Unlinking a Join (Invite) Link
 ![Unlink](/projects/joinlink/unlink.png)
 
-
 ## Development
 
 Join our discussion at our matrix channel [#matrixjoinlink:fuchss.org](https://matrix.to/#/#matrixjoinlink:fuchss.org)
 
-* The basic functionality (commands) are located in [Main.kt](https://github.com/dfuchss/MatrixJoinLink/blob/main/src/main/kotlin/org/fuchss/matrix/joinlink/Main.kt). There you can also find the main method of
-  the program.
+* The basic functionality is located in [Main.kt](https://github.com/dfuchss/MatrixJoinLink/blob/main/src/main/kotlin/org/fuchss/matrix/joinlink/Main.kt). There you can also find the main method of the bot.
 
 ### How does the bot work
 
