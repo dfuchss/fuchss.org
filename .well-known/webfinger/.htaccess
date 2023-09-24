@@ -1,3 +1,4 @@
+Header set Access-Control-Allow-Origin "*"
 RewriteEngine On
 RewriteBase /.well-known/webfinger
 RewriteRule (.*) https://mastodon.fuchss.org/.well-known/webfinger/$1 [R=301,L]
