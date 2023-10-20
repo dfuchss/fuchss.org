@@ -113,6 +113,11 @@ const config = {
                 label: 'LinkedIn',
                 href: 'https://www.linkedin.com/in/dfuchss/',
               },
+              {
+                href: 'https://mastodon.fuchss.org/@dominik',
+                label: 'Mastodon',
+                rel: 'me'
+              }
             ],
           },
           {
@@ -121,6 +126,10 @@ const config = {
               {
                 label: 'GitHub',
                 href: 'https://github.com/dfuchss',
+              },
+              {
+                label: 'GitLab',
+                href: 'https://gitlab.com/dfuchss',
               },
               {
                 label: 'GitLab',
