@@ -132,8 +132,8 @@ const config = {
                 href: 'https://gitlab.com/dfuchss',
               },
               {
-                label: 'GitLab',
-                href: 'https://gitlab.com/dfuchss',
+                label: 'Gitea',
+                href: 'https://git.fuchss.org',
               }
             ]
           },
