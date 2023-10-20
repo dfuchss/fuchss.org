@@ -1,5 +1,0 @@
-Header set Access-Control-Allow-Origin "*"
-RewriteEngine On
-RewriteCond %{HTTP_HOST} ^fuchss\.org$ [NC]
-RewriteCond %{REQUEST_URI} ^/\.well-known/webfinger [NC]
-RewriteRule (.*) https://mastodon.fuchss.org/.well-known/$1 [R=301,L]
