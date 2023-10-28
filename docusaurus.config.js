@@ -33,7 +33,7 @@ const config = {
           },
           {
             from: '/l/cop',
-            to: '/projects/archive/copbot'
+            to: '/projects/archived-projects/copbot'
           }
         ]
       }
