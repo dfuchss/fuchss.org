@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfuchss_org=self.webpackChunkfuchss_org||[]).push([[871],{9744:e=>{e.exports=JSON.parse('{"title":"Matrix","slug":"/category/matrix","permalink":"/category/matrix","navigation":{"previous":{"title":"R\u03b5KiT","permalink":"/projects/games/rekit"},"next":{"title":"JoinLink","permalink":"/projects/matrix/joinlink"}}}')}}]);

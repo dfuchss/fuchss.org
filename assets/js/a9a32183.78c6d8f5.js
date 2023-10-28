@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfuchss_org=self.webpackChunkfuchss_org||[]).push([[4775],{9417:e=>{e.exports=JSON.parse('{"title":"Games","slug":"/category/games","permalink":"/category/games","navigation":{"previous":{"title":"DeltaBot","permalink":"/projects/deltabot"},"next":{"title":"JamBeez","permalink":"/projects/games/jambeez"}}}')}}]);
