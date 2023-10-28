@@ -15,7 +15,7 @@ Thus, we maintain that digital twin architectures for the automotive industry mu
 
 ## BibTeX
 ```bibtex
-@techreport{FuchssKuehnWortmann2023_1000162389,
+@techreport{fuchss_expert_2023,
     author       = {Fuchß, Dominik and Kühn, Thomas and Wortmann, Andreas and Pfeiffer, Jérôme and Koziolek, Anne},
     year         = {2023},
     title        = {An Expert Survey on the Use of Informal Models in the Automotive Industry},
