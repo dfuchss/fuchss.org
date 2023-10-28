@@ -1,9 +1,9 @@
 {
     "position": 999,
-    "label": "Archive",
+    "label": "Archived",
     "link": {
         "type": "generated-index",
-        "title": "Archive"
+        "title": "Archived Projects"
     }
 }
   
