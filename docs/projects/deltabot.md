@@ -13,7 +13,7 @@ The bot also includes a simple dialog management. The code of the bot is availab
 
 
 ## Functions of DeltaBot
-![DeltaBot-Dialog](/projects/deltabot/DeltaBot-1.PNG)
+![DeltaBot-Help](/projects/deltabot/help.png)
 
-## News Feed
-![DeltaBot-Feed](/projects/deltabot/DeltaBot-2.PNG)
+## User Role Management of DeltaBot
+![DeltaBot-Roles](/projects/deltabot/roles.png)
