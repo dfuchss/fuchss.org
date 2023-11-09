@@ -114,7 +114,7 @@ const config = {
                 href: 'https://www.linkedin.com/in/dfuchss/',
               },
               {
-                href: 'https://mastodon.fuchss.org/@dominik',
+                href: 'https://mastodon.social/@dfuchss',
                 label: 'Mastodon',
                 rel: 'me'
               }
