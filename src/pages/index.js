@@ -25,6 +25,9 @@ function LogoWithText() {
 }
 
 function CardsForTopics() {
+  const year = new Date().getFullYear();
+  const linkToPapersOfCurrentYear = `/category/${year}`;
+
   return (
     <div
       style={{
@@ -43,7 +46,7 @@ function CardsForTopics() {
       </div>
       <div style={{ border: '1px solid #ccc', padding: '1.5rem 1.5rem 1.5rem 1.5rem', marginLeft: '10px', marginRight: '10px' }}>
         <h2>
-          <Link to="/category/literature">Literature</Link>
+          <Link href={linkToPapersOfCurrentYear}>Literature</Link>
         </h2>
         <p>Here you can find a list of my publications.</p>
       </div>
