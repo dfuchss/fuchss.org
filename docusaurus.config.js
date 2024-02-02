@@ -98,7 +98,7 @@ const config = {
           {
             // type: 'docSidebar',
             // sidebarId: 'literatureSidebar',
-            to: '/category/literature',
+            to: `/category/${new Date().getFullYear()}`,
             position: 'right',
             label: 'Literature',
           }
@@ -117,11 +117,6 @@ const config = {
               {
                 label: 'LinkedIn',
                 href: 'https://www.linkedin.com/in/dfuchss/',
-              },
-              {
-                href: 'https://mastodon.social/@dfuchss',
-                label: 'Mastodon',
-                rel: 'me'
               }
             ],
           },
@@ -135,10 +130,6 @@ const config = {
               {
                 label: 'GitLab',
                 href: 'https://gitlab.com/dfuchss',
-              },
-              {
-                label: 'Gitea',
-                href: 'https://git.fuchss.org',
               }
             ]
           },
@@ -152,10 +143,6 @@ const config = {
               {
                 label: 'PGP-Key',
                 to: '/contact/pgp-key',
-              },
-              {
-                label: 'Matrix',
-                href: 'https://matrix.to/#/@dominik:fuchss.org',
               }
             ]
           }
