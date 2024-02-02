@@ -1,3 +1,6 @@
+---
+hide_table_of_contents: true
+---
 # Impressum 
 **Angaben gemäß § 5 TMG**
 
