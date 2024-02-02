@@ -29,7 +29,7 @@ const config = {
         redirects: [
           {
             from: '/l/deltabot',
-            to: '/projects/deltabot'
+            to: '/projects/misc/deltabot'
           },
           {
             from: '/l/cop',
