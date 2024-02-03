@@ -128,8 +128,8 @@ const config = {
                 href: 'https://github.com/dfuchss',
               },
               {
-                label: 'GitLab',
-                href: 'https://gitlab.com/dfuchss',
+                label: 'Hugging Face',
+                href: 'https://huggingface.co/dfuchss',
               }
             ]
           },
