@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
-
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 function LogoWithText() {
   const myLogo = require('/images/me.png').default;
@@ -25,8 +25,9 @@ function LogoWithText() {
 }
 
 function CardsForTopics() {
-  const year = new Date().getFullYear();
-  const linkToPapersOfCurrentYear = `/category/${year}`;
+  const {siteConfig} = useDocusaurusContext();
+  const recent_literature = siteConfig.customFields.recent_literature;
+  const linkToPapersOfCurrentYear = `/category/${recent_literature}`;
 
   return (
     <div

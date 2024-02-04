@@ -4,18 +4,20 @@
 const lightCodeTheme = require('prism-react-renderer').themes.github;
 const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
-function recent_literature() {
-  // Find recent literature folder in ./docs/literature
+function get_recent_literature() {
+  // Find most recent literature folder in ./docs/literature
   const fs = require('fs');
   const path = require('path');
   const dir = './docs/literature';
   const files = fs.readdirSync(dir);
-  const recent = files
+  const publication_years = files
     .filter(file => fs.statSync(path.join(dir, file)).isDirectory())
     .sort()
-    .reverse()[0];
-  return recent;
+    .reverse();
+  return publication_years[0];
 }
+
+const recent_literature = get_recent_literature();
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -110,7 +112,7 @@ const config = {
           {
             // type: 'docSidebar',
             // sidebarId: 'literatureSidebar',
-            to: `/category/${recent_literature()}`,
+            to: `/category/${recent_literature}`,
             position: 'right',
             label: 'Literature',
           }
@@ -166,6 +168,9 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+    customFields: {
+      recent_literature: recent_literature
+    },
 };
 
 module.exports = config;
