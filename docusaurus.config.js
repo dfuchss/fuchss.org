@@ -32,8 +32,8 @@ const config = {
             to: '/projects/misc/deltabot'
           },
           {
-            from: '/l/cop',
-            to: '/projects/archived-projects/copbot'
+            from: '/projects/deltabot',
+            to: '/projects/misc/deltabot'
           }
         ]
       }
