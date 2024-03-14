@@ -140,10 +140,6 @@ const config = {
               {
                 label: 'GitHub',
                 href: 'https://github.com/dfuchss',
-              },
-              {
-                label: 'Hugging Face',
-                href: 'https://huggingface.co/dfuchss',
               }
             ]
           },
