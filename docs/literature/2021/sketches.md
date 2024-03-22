@@ -7,6 +7,10 @@ displayed_sidebar: rootSidebar
 ## Abstract
 Hand-drawn sketches help to quickly grasp structures and facts about software architectures during software development. Therefore, software architects and software developers also use them in their everyday work. A major problem with drawings is the fact that, unlike more formal models, their information must be interpreted rather than read out directly. Thus, they are difficult to process automatically. This paper presents an approach to create links between elements in sketches and elements in more formal models such as architectural models. In order to achieve the element recognition, we consider natural language as further source of information. We show various options how these links can support architects and developers in their design, for example by reporting inconsistencies directly.
 
+<a href="/literature/2021/ecsa-21-docsym.pdf">
+  <FAIcon icon="fa-solid fa-file-pdf" size="1x" /><b> Download Preprint</b>
+</a>
+
 ## BibTeX
 ```bibtex
 @inproceedings{fuchss_sketches_2021,

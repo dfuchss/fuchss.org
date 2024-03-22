@@ -21,6 +21,10 @@ model-element-based definition of consistency and vocabulary for the modeling co
 distinguish consistency relations. Above all, we aim to raise awareness for different consistency
 notions and facilitate a common understanding of consistency in the MBE community.
 
+<a href="/literature/2023/model-consistency.pdf">
+  <FAIcon icon="fa-solid fa-file-pdf" size="1x" /><b> Download PDF</b>
+</a>
+
 ## BibTeX
 ```bibtex
 @techreport{kuehn_formalized_2023,

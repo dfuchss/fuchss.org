@@ -7,6 +7,10 @@ displayed_sidebar: rootSidebar
 ## Abstract
 In research, evaluation plays a key role to assess the performance of an approach. When evaluating approaches, there is a wide range of possible types of studies that can be used, each with different properties. Benchmarks have the benefit that they establish clearly defined standards and baselines. However, when creating new benchmarks, researchers face various problems regarding the identification of potential data, its mining, as well as the creation of baselines. As a result, some research domains do not have any benchmarks at all. This is the case for traceability link recovery between software architecture documentation and software architecture models. In this paper, we create and describe an open-source benchmark dataset for this research domain. With this benchmark, we define a baseline with a simple approach based on information retrieval techniques. This way, we provide other researchers a way to evaluate and compare their approaches.
 
+<a href="/literature/2023/ecsa-22-benchmark.pdf">
+  <FAIcon icon="fa-solid fa-file-pdf" size="1x" /><b> Download Preprint</b>
+</a>
+
 ## BibTeX
 ```bibtex
 @InProceedings{fuchss_establishing_2023,

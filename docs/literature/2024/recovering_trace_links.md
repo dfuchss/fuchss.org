@@ -13,6 +13,10 @@ Results We evaluate our approaches with five open-source projects, comparing our
 
 Conclusion Combining two specialized approaches with an intermediate artifact shows promise for bridging the semantic gap. In future research, we will explore further possibilities for such transitive approaches.
 
+<a href="/literature/2024/icse-24-tlr.pdf">
+  <FAIcon icon="fa-solid fa-file-pdf" size="1x" /><b> Download Preprint</b>
+</a>
+
 ## BibTeX
 ```bibtex
 @inproceedings{keim_recovering_2024,

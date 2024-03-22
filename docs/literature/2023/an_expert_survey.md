@@ -13,6 +13,10 @@ In detail, we set up an online questionnaire asking participants from industry a
 The survey indicates that informal models are widely used during the conception phase and for communication and documentation.
 Thus, we maintain that digital twin architectures for the automotive industry must incorporate informal models, as additional artifacts documenting and communicating design decisions.
 
+<a href="/literature/2023/ecsa-23-survey.pdf">
+  <FAIcon icon="fa-solid fa-file-pdf" size="1x" /><b> Download PDF</b>
+</a>
+
 ## BibTeX
 ```bibtex
 @techreport{fuchss_expert_2023,

@@ -7,6 +7,10 @@ displayed_sidebar: rootSidebar
 ## Abstract
 Background: Taxonomies are crucial for the development of a research field, as they play a major role in structuring a complex body of knowledge and help to classify processes, approaches, and solutions. While there is an increasing interest in taxonomies in the software engineering (SE) research field, we observe that SE taxonomies are rarely evaluated. Aim: To raise awareness and provide operational guidance on how to evaluate a taxonomy, this paper presents a three step evaluation method evaluating its structure, applicability, and purpose. Method: To show the feasibility and applicability of our approach, we provide a running example and additionally illustrate our approach to a practical case study in SE research. Results and Conclusion: Our method with operational guidance enables SE researchers to systematically evaluate and improve the quality of their taxonomies and support reviewers to systematically assess a taxonomy’s quality.
 
+<a href="/literature/2022/ease-22-taxonomies.pdf">
+  <FAIcon icon="fa-solid fa-file-pdf" size="1x" /><b> Download Preprint</b>
+</a>
+
 ## BibTeX
 ```bibtex
 @inproceedings{kaplan_introducing_2022,
