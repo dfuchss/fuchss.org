@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfuchss_org=self.webpackChunkfuchss_org||[]).push([[5769],{3675:e=>{e.exports=JSON.parse('{"title":"Projects","slug":"/category/projects","permalink":"/category/projects","navigation":{"next":{"title":"ArDoCo","permalink":"/projects/ArDoCo"}}}')}}]);
