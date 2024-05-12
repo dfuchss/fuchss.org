@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfuchss_org=self.webpackChunkfuchss_org||[]).push([[7612],{1807:e=>{e.exports=JSON.parse('{"categoryGeneratedIndex":{"title":"Projects","slug":"/category/projects","permalink":"/category/projects","sidebar":"rootSidebar","navigation":{"next":{"title":"ArDoCo","permalink":"/projects/ArDoCo"}}}}')}}]);
