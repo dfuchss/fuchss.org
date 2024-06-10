@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfuchss_org=self.webpackChunkfuchss_org||[]).push([[9278],{9278:(s,u,c)=>{c.r(u)}}]);

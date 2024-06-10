@@ -1,1 +1,0 @@
-(self.webpackChunkfuchss_org=self.webpackChunkfuchss_org||[]).push([[5684],{9039:(s,c,u)=>{"use strict";u.d(c,{Z:()=>h});var e=u(1336);const h=e},5525:()=>{}}]);
