@@ -72,6 +72,25 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        sitemap: {
+          lastmod: 'date',
+          ignorePatterns: [],
+          filename: 'sitemap.xml',
+          createSitemapItems: async (params) => {
+            const { defaultCreateSitemapItems, ...rest } = params;
+            const items = await defaultCreateSitemapItems(rest);
+
+            // Now add the PDF files from ./static/literature (recursive search for .pdf files)
+            const fs = require('fs');
+            const dir = './static/literature';
+            const pdfs = fs.readdirSync(dir, { withFileTypes: true, recursive: true })
+              .filter(dirent => dirent.isFile() && dirent.name.endsWith('.pdf'))
+              .map(dirent => config.url + dirent.parentPath.replace('static/', '/') + '/' + dirent.name);
+            const pdfItems = pdfs.map(pdf => ({ url: pdf }));
+
+            return items.concat(pdfItems);
+          },
+        }
       }),
     ],
   ],
@@ -164,9 +183,9 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
-    customFields: {
-      recent_literature: recent_literature
-    },
+  customFields: {
+    recent_literature: recent_literature
+  },
 };
 
 module.exports = config;
