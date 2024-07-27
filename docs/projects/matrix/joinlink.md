@@ -51,7 +51,7 @@ can invite _JoinLink_ and create an invite link. This link can be shared to my f
 
 ## Development
 
-Join our discussion at our matrix channel [#matrixjoinlink:fuchss.org](https://matrix.to/#/#matrixjoinlink:fuchss.org)
+I'm typically online in the [Trixnity channel](https://matrix.to/#/#trixnity:imbitbu.de). So feel free to tag me there if you have any questions.
 
 * The basic functionality is located in [Main.kt](https://github.com/dfuchss/MatrixJoinLink/blob/main/src/main/kotlin/org/fuchss/matrix/joinlink/Main.kt). There you can also find the main method of the bot.
 
