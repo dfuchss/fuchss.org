@@ -2,24 +2,35 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle:
 
 profile:
   align: right
-  image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
-  more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+  image: me.png
+  image_circular: true # crops the image to make it circular
+  more_info:
 
-news: true # includes a list of news items
+news: false # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+Researcher at [Karlsruhe Institute of Technology (KIT)](https://www.kit.edu/), Germany.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+My overall goal is the utilization of informal sketches and diagrams for automatic traceability link recovery (TLR) and consistency checking during agile software development processes.
+In 2021, I presented the overall idea of my studies on ECSA Doctoral Symposium.
+If you want to contact me securely, please use my [PGP key](/assets/pgp-key/DD7EE78CAC98885B734000ADF07E8A60D810A543.asc).
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+My research area and interests summarized in a short listing:
+
+- Natural Language Processing
+- Traceability Link Recovery
+- Consistency between formal and informal artifacts
+- Retrieval Augmented Generation & Large Language Models for Software Engineering
+
+During my research and teaching I'm involved in several development projects. A small excerpt is shown below.
+
+- Member of the Main Development Team of [ArDoCo](/projects/ArDoCo/)
+- Administrator of our Artemis infrastructure (including GitLab and Jenkins instances) that is used for the Programming Lecture, Software Engineering I, and more lectures
+- Product Owner of our Eclipse Artemis Plugin and other tools within [kit-sdq](https://github.com/kit-sdq)
+- Member of the Maintainer Team of [JPlag](https://github.com/JPlag)
