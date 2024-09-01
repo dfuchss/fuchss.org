@@ -127,21 +127,22 @@
       "name": "Tutorenprogramm \"Start in die Lehre\" - Educational development for student teachers - basic level",
       "date": "2016-05",
       "issuer": "Karlsruhe Institute of Technology",
-      "icon": "fa-solid fa-location-dot"
+      "icon": "fa-solid fa-graduation-cap",
+      "url": "https://www.peba.kit.edu/387.php"
     },
     {
       "name": "Professional Scrum Product Owner I",
       "date": "2021-05",
       "issuer": "Scrum.org",
       "url": "https://www.scrum.org/user/838811",
-      "icon": "fa-solid fa-location-dot"
+      "icon": "fa-solid fa-chalkboard-user"
     },
     {
       "name": "Professional Scrum Master I",
       "date": "2021-05",
       "issuer": "Scrum.org",
       "url": "https://www.scrum.org/user/838811",
-      "icon": "fa-solid fa-location-dot"
+      "icon": "fa-solid fa-chalkboard-user"
     }
   ],
   "languages": [
