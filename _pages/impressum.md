@@ -11,7 +11,7 @@ nav: false
 ## Kontakt
 
 Dominik Fuchß<br />
-E-Mail: webmaster(at)fuchss(dot)org
+E-Mail: <a href="mailto:{{ 'webmaster@fuchss.org' | encode_email }}">webmaster(at)fuchss(dot)org</a>
 
 ## Haftungsausschluss:
 
