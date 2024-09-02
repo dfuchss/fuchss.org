@@ -22,6 +22,6 @@ ArDoCo is actively developed by researchers of the _[Modelling for Continuous So
 
 ## Relevant and Recent Publications
 
-- [Paper at ICSE24](/docs/literature/2024/recovering_trace_links.md)
-- [Paper at ICSA23 & SE24](/docs/literature/2023/detecting_inconsistencies.md)
-- [Paper at ECSA21](/docs/literature/2021/tracelink.md)
+- Paper at ICSE24
+- Paper at ICSA23 & SE24
+- Paper at ECSA21
