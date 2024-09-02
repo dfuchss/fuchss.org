@@ -18,7 +18,7 @@ ArDoCo is actively developed by researchers of the _[Modelling for Continuous So
 - [ArDoCo Website](https://ardoco.de/)
 - [ArDoCo Wiki](https://github.com/ArDoCo/Core/wiki)
 - [Publications at MCSE](https://mcse.kastel.kit.edu/Projects_ArDoCo.php?tab=%5B577%5D#tabpanel-577)
-- [<FAIcon icon="fa-brands fa-github" size="1x" /> GitHub Organization](https://github.com/ArDoCo)
+- [<i class="fa-brands fa-github"></i> GitHub Organization](https://github.com/ArDoCo)
 
 ## Relevant and Recent Publications
 
