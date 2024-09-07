@@ -1,11 +1,5 @@
 {
     "m.homeserver": {
         "base_url": "https://matrix-client.fuchss.org"
-    },
-    "m.identity_server": {
-        "base_url": "https://matrix.org"
-    },
-    "org.matrix.msc3575.proxy": {
-        "url": "https://matrix-client.fuchss.org"
     }
 }
