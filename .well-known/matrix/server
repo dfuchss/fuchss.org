@@ -1,1 +1,3 @@
-{ "m.server": "matrix-server.fuchss.org:443" }
+{
+    "m.server": "matrix-server.fuchss.org:443"
+}

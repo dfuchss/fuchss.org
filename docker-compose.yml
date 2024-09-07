@@ -26,5 +26,6 @@ services:
       - ./purgecss.config.js:/srv/jekyll/purgecss.config.js:ro
       - ./requirements.txt:/srv/jekyll/requirements.txt:ro
       - ./robots.txt:/srv/jekyll/robots.txt:ro
+      - ./.well-known:/srv/jekyll/.well-known:ro
     environment:
       - JEKYLL_ENV=development
