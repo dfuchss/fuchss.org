@@ -5,7 +5,7 @@
     "image": "",
     "email": "dominik@fuchss.org",
     "url": "https://fuchss.org",
-    "summary": "A researcher at the Karlsruhe Institute of Technology since 2020. In his research, he deals with the use of informal models such as sketches, diagrams and natural language in software development. One focus here is the use of Large Language Models for Traceability Link Recovery. He's also one of the maintainers of JPlag, a state-of-the-art software plagiarism & collusion detector. Finally, he's maintaining multiple personal OSS projects on GitHub."
+    "summary": "A researcher at the Karlsruhe Institute of Technology since 2020. In my research, I deal with the use of informal models such as sketches, diagrams and natural language in software development. One focus here is the use of Large Language Models for Traceability Link Recovery. I'm also one of the maintainers of JPlag, a state-of-the-art software plagiarism & collusion detector. Finally, I'm maintaining multiple personal OSS projects on GitHub."
   },
   "work": [
     {
@@ -105,20 +105,20 @@
       "institution": "Karlsruhe Institute of Technology",
       "location": "Karlsruhe, Germany",
       "url": "https://www.kit.edu/",
-      "area": "Informatics",
-      "studyType": "M.Sc.",
+      "studyType": "M.Sc. in Informatics",
       "startDate": "2018",
       "endDate": "2020",
+      "area": "<b>Thesis:</b> 'Assessing Hypotheses in Multi-Agent Systems for Natural Language Processing'",
       "courses": []
     },
     {
       "institution": "Karlsruhe Institute of Technology",
       "location": "Karlsruhe, Germany",
       "url": "https://www.kit.edu/",
-      "area": "Informatics",
-      "studyType": "B.Sc.",
+      "studyType": "B.Sc. in Informatics",
       "startDate": "2014",
       "endDate": "2018",
+      "area": "<b>Thesis:</b> 'Verarbeitung natürlich-sprachlicher Beziehungsbeschreibungen zwischen Objekten'",
       "courses": []
     }
   ],
