@@ -63,4 +63,4 @@ Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Di
 ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails,
 vor.
 
-Website Impressum erstellt durch [impressum-generator.de](http://www.impressum-generator.de) von der [Kanzlei Hasselbach, Köln-Rodenkirchen](http://www.kanzlei-hasselbach.de/standorte/koeln-rodenkirchen)
+Website Impressum erstellt durch [impressum-generator.de](https://www.impressum-generator.de/) von der [Kanzlei Hasselbach, Köln-Rodenkirchen](http://www.kanzlei-hasselbach.de/standorte/koeln-rodenkirchen)
