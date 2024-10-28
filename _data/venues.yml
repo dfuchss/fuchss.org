@@ -1,0 +1,15 @@
+"ICSA":
+  url: https://conf.researchr.org/series/icsa
+  color: "#23a1e0"
+
+"ECSA":
+  url: https://conf.researchr.org/series/ecsa
+  color: "#df9b1b"
+
+"ICSE":
+  url: https://conf.researchr.org/series/icse
+  color: "#a3107c"
+
+"SE":
+  url: https://gi.de/
+  color: "#009682"
