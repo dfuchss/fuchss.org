@@ -207,7 +207,7 @@ kramdown:
       start_line: 1
 
 # Includes & excludes
-include: ["_pages", ".well-known", ".well-known/matrix/.htaccess"]
+include: ["_pages"]
 exclude:
   - bin/
   - CONTRIBUTING.md
@@ -266,7 +266,7 @@ sass:
 # -----------------------------------------------------------------------------
 
 jekyll-minifier:
-  exclude: ["robots.txt", "assets/js/search/*.js", ".well-known/**", "assets/libs/**", "assets/css/**"]
+  exclude: ["robots.txt", "assets/js/search/*.js", "assets/libs/**", "assets/css/**"]
   uglifier_args:
     harmony: true
 
