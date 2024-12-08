@@ -4,7 +4,7 @@ title: MensaBot @ TWIM
 date: 2023-08-04
 description: My first post on MensaBot at TWIM 04.08.2023
 tags: matrix
-categories: matrix
+categories: projects
 featured: false
 ---
 

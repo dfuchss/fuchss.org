@@ -3,7 +3,7 @@ layout: post
 title: ArDoCo Metrics Calculator
 date: 2024-08-30
 description: ArDoCo Metrics Calculator a tool to calculate classification and rank metrics.
-tags: [research, metrics, projects, kotlin, rest]
+tags: [research, metrics, ardoco]
 categories: research
 featured: true
 ---

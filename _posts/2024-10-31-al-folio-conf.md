@@ -3,7 +3,7 @@ layout: post
 title: al-folio-conf
 date: 2024-10-31
 description: "Elevate Your Conference Website with al-folio-conf: A Jekyll Theme 🚀"
-tags: [projects]
+tags: [projects, forks, conference]
 categories: projects
 featured: true
 ---
