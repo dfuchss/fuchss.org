@@ -10,8 +10,7 @@ social: true
 
 {% if site.data.repositories.github_users %}
 
-## GitHub users
-
+<!-- ## GitHub users -->
 <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
   {% for user in site.data.repositories.github_users %}
     {% include repository/repo_user.liquid username=user %}
@@ -45,4 +44,21 @@ social: true
     {% include repository/repo.liquid repository=repo %}
   {% endfor %}
 </div>
+{% endif %}
+
+## {% if site.data.repositories.zenodo_repos %}
+
+## Zenodo Repositories
+
+These repositories are hosted on Zenodo and have a DOI assigned. They include research data, software, and more.
+
+{% for repo in site.data.repositories.zenodo_repos %}
+
+### {{repo.name}}
+
+[![DOI](https://zenodo.org/badge/DOI/{{ repo.doi }}.svg)](https://doi.org/{{ repo.doi }})
+
+{{repo.description}}
+
+{% endfor %}
 {% endif %}

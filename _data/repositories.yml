@@ -10,3 +10,28 @@ github_repos:
   - dfuchss/actions
   - dfuchss/DeltaBot
   - jplag/JPlag
+
+zenodo_repos:
+  - name: ArDoCo/Benchmark
+    doi: 10.5281/zenodo.6966831
+    description: This repository contains a benchmark for traceability link recovery (TLR) between textual Software Architecture Documentation (SAD) and Software Architecture Models (SAM).
+  - name: "ArDoCo/SWATTR: Reproduction Package"
+    doi: 10.5281/zenodo.4730621
+    description: SoftWare Architecture Text Tracelink Recovery
+  - name: "Replication Package for Detecting Inconsistencies in Software Architecture Documentation Using Traceability Link Recovery"
+    doi: 10.5281/zenodo.7555194
+    description: >
+      Replication package for the ICSA 2023 paper "Detecting Inconsistencies in Software Architecture Documentation Using Traceability Link Recovery".
+  - name: Replication Package For Recovering Trace Links Between Software Documentation And Code
+    doi: 10.5281/zenodo.10411853
+    description: >
+      This replication package belongs to Recovering Trace Links Between Software Documentation And Code by Keim et al. (Preprint at DOI <a href="https://doi.org/10.5445/IR/1000165692">10.5445/IR/1000165692</a>).
+  - name: "ArDoCo/Core: v1.0.0"
+    doi: 10.5281/zenodo.10796526
+    description: >
+      🚀 Introducing ArDoCo 1.0.0 - The Dawn of a New Era! 🌟
+      We're thrilled to announce the official release of ArDoCo version 1.0.0, a culmination of tireless effort, innovation, and your invaluable feedback. 🎉 This milestone not only signifies a significant step forward but also marks the beginning of an exciting journey for ArDoCo. 🚀
+      🏆 First Milestone Achieved! With this release, we've reached a pivotal moment in the evolution of ArDoCo. It stands as a testament to our unwavering commitment to excellence and represents the collective efforts of our dedicated team. 🌟
+      Get Started Today! Ready to experience the future of productivity? Download ArDoCo 1.0.0 now and embark on a journey of limitless possibilities! 🚀✨
+      Thank you for being part of this momentous occasion. Here's to many more milestones ahead! 🥂
+      Stay tuned for exciting updates and enhancements. The best is yet to come with ArDoCo! 💫
