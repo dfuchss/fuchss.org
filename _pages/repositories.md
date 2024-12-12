@@ -46,8 +46,10 @@ social: true
 </div>
 {% endif %}
 
-## {% if site.data.repositories.zenodo_repos %}
+{% if site.data.repositories.zenodo_repos %}
 
+
+---
 ## Zenodo Repositories
 
 These repositories are hosted on Zenodo and have a DOI assigned. They include research data, software, and more.
