@@ -1,7 +1,7 @@
 # this file uses prebuilt image in dockerhub
 services:
   jekyll:
-    image: amirpourmand/al-folio:v0.12.1
+    image: amirpourmand/al-folio:v0.13.0
     build: .
     # uncomment these if you are having this issue with the build:
     # /usr/local/bundle/gems/jekyll-4.3.4/lib/jekyll/site.rb:509:in `initialize': Permission denied @ rb_sysopen - /srv/jekyll/.jekyll-cache/.gitignore (Errno::EACCES)
@@ -16,25 +16,6 @@ services:
       - 8080:8080
       - 35729:35729
     volumes:
-      - ./Gemfile:/srv/jekyll/Gemfile:ro
-      - ./_bibliography:/srv/jekyll/_bibliography:ro
-      - ./_config.yml:/srv/jekyll/_config.yml:ro
-      - ./_data:/srv/jekyll/_data:ro
-      - ./_includes:/srv/jekyll/_includes:ro
-      - ./_layouts:/srv/jekyll/_layouts:ro
-      - ./_pages:/srv/jekyll/_pages:ro
-      - ./_plugins:/srv/jekyll/_plugins:ro
-      - ./_posts:/srv/jekyll/_posts:ro
-      - ./_projects:/srv/jekyll/_projects:ro
-      - ./_sass:/srv/jekyll/_sass:ro
-      - ./_site:/srv/jekyll/_site
-      - ./assets:/srv/jekyll/assets:ro
-      - ./bin:/srv/jekyll/bin:ro
-      - ./package-lock.json:/srv/jekyll/package-lock.json:ro
-      - ./package.json:/srv/jekyll/package.json:ro
-      - ./purgecss.config.js:/srv/jekyll/purgecss.config.js:ro
-      - ./requirements.txt:/srv/jekyll/requirements.txt:ro
-      - ./robots.txt:/srv/jekyll/robots.txt:ro
-      - ./.well-known:/srv/jekyll/.well-known:ro
+      - .:/srv/jekyll
     environment:
       - JEKYLL_ENV=development
