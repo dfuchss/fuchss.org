@@ -26,7 +26,7 @@ We're excited to announce the release of the **ArDoCo Metrics Calculator** -- a 
 
 ### 🌐 **Online Deployment**
 
-You can also access the **ArDoCo Metrics Calculator** online via our web-based deployment: [ArDoCo Metrics Calculator Online](https://metrics.vdl.sdq.kastel.kit.edu/). We do not save any of your data—your calculations are processed securely and privately.
+You can also access the **ArDoCo Metrics Calculator** online via our web-based deployment: [ArDoCo Metrics Calculator Online](https://metrics.ardoco.de/). We do not save any of your data—your calculations are processed securely and privately.
 
 ### 📚 **Get Started**
 
