@@ -57,6 +57,11 @@
         {% assign author_array_limit = site.max_author_limit %}
       {% endif %}
 
+      {% assign author_array_limit_with_grace = author_array_limit | plus: 1 %}
+      {% if author_array_size == author_array_limit_with_grace %}
+        {% assign author_array_limit = author_array_size %}
+      {% endif %}
+
       {%- for author in entry.author_array limit: author_array_limit -%}
         {% assign author_is_self = false %}
         {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
