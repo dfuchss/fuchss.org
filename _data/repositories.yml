@@ -15,15 +15,12 @@ zenodo_repos:
   - name: ArDoCo/Benchmark
     doi: 10.5281/zenodo.6966831
     description: This repository contains a benchmark for traceability link recovery (TLR) between textual Software Architecture Documentation (SAD), Software Architecture Models (SAM) and source code.
-  - name: "ArDoCo/SWATTR: Reproduction Package"
-    doi: 10.5281/zenodo.4730621
-    description: This repository contains the reproduction package for the paper <a href="https://ardoco.de/c/ecsa21">Trace Link Recovery for Software Architecture Documentation</a>.
-  - name: "Replication Package for Detecting Inconsistencies in Software Architecture Documentation Using Traceability Link Recovery"
-    doi: 10.5281/zenodo.7555194
-    description: Replication package for the ICSA 2023 paper <a href="https://ardoco.de/c/icsa23">Detecting Inconsistencies in Software Architecture Documentation Using Traceability Link Recovery</a>.
   - name: Replication Package For Recovering Trace Links Between Software Documentation And Code
     doi: 10.5281/zenodo.10411853
-    description: This replication package belongs to <a href="https://ardoco.de/c/icse24">Recovering Trace Links Between Software Documentation And Code</a>.
-  - name: "ArDoCo/Core: v1.0.0"
-    doi: 10.5281/zenodo.10796526
-    description: This milestone release contains the first major version of the <a href="https://ardoco.de">ArDoCo framework</a>.
+    description: 'This replication package belongs to <a href="/c/icse24">Recovering Trace Links Between Software Documentation And Code</a>.'
+  - name: "Replication Package: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction"
+    doi: 10.5281/zenodo.14506935
+    description: 'This replication package belongs to <a href="/c/icsa25">Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction</a>.'
+  - name: "Replication Package: LiSSA: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation"
+    doi: 10.5281/zenodo.14714706
+    description: 'This replication package belongs to <a href="/c/icse25">LiSSA: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation</a>.'
