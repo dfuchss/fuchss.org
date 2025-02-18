@@ -1,6 +1,6 @@
 ---
 layout: publication
-permalink: /c/icse24
+permalink: /c/icse24/
 title: Recovering Trace Links Between Software Documentation And Code
 description:
 publication: keim_recovering_2024

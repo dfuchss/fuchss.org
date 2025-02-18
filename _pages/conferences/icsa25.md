@@ -1,6 +1,6 @@
 ---
 layout: publication
-permalink: /c/icsa25
+permalink: /c/icsa25/
 title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
 description:
 publication: fuchss_enabling_2025

@@ -1,6 +1,6 @@
 ---
 layout: publication
-permalink: /c/refsq25
+permalink: /c/refsq25/
 title: "Requirements Traceability Link Recovery via Retrieval-Augmented Generation"
 description:
 publication: #hey_requirements_2025

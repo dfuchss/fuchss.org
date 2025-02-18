@@ -1,6 +1,6 @@
 ---
 layout: publication
-permalink: /c/ecsa21
+permalink: /c/ecsa21/
 title: Trace Link Recovery for Software Architecture Documentation
 description:
 publication: keim_tracelink_2021

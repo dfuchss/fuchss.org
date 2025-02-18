@@ -1,6 +1,6 @@
 ---
 layout: publication
-permalink: /c/icse25
+permalink: /c/icse25/
 title: "LiSSA: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation"
 description:
 publication: fuchss_lissa_2025

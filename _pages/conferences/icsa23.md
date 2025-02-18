@@ -1,6 +1,6 @@
 ---
 layout: publication
-permalink: /c/icsa23
+permalink: /c/icsa23/
 title: Detecting Inconsistencies in Software Architecture Documentation Using Traceability Link Recovery
 description:
 publication: keim_detecting_2023
