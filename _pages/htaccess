@@ -2,3 +2,19 @@
 permalink: /.htaccess
 ---
 ErrorDocument 404 /404.html
+
+RewriteEngine On
+
+{%- capture bibentries -%}
+{% bibliography --group_by none -T {{key}},{{entry.preprint}},{{entry.redirect_pre}}$ %}
+{% bibliography --group_by none -T {{key}},{{entry.pdf}},{{entry.redirect_pdf}}$ %}
+{%- endcapture -%}
+
+{%- assign bibentries = bibentries | remove: '<ol class="bibliography">' | remove: '</ol>' | remove: '<li>' | remove: '</li>' -%}
+{%- assign bibentries_list = bibentries | split: '$' -%}
+{% for entry in bibentries_list -%}
+  {%- assign elements = entry | replace: "\n", "" | strip | split: "," -%}
+  {%- if elements.size == 3 %}
+RewriteRule ^assets/pdf/{{- elements[1] | replace: ".", "\\." -}}$ {{ elements[2] }} [R=301,L]
+  {%- endif -%}
+{%- endfor %}
