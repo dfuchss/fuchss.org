@@ -222,7 +222,7 @@ sass:
 
 jekyll-minifier:
   compress_javascript: false # set to false since we are using terser as the js minifier
-  # exclude: ["robots.txt", "assets/js/search/*.js"]
+  exclude: ["robots.txt", ".htaccess", "assets/js/search/*.js"]
 
 # -----------------------------------------------------------------------------
 # Terser
@@ -306,6 +306,8 @@ filtered_bibtex_keywords:
     inspirehep_id,
     pdf,
     preprint,
+    redirect_pdf,
+    redirect_pre,
     poster,
     preview,
     selected,
