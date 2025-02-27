@@ -306,8 +306,6 @@ filtered_bibtex_keywords:
     inspirehep_id,
     pdf,
     preprint,
-    redirect_pdf,
-    redirect_pre,
     poster,
     preview,
     selected,
