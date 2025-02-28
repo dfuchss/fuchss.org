@@ -21,49 +21,49 @@ ninja.data = [{
               description: "",
               section: "Dropdown",
               handler: () => {
-                window.location.href = "";
+                window.location.href = "/c/icse25/";
               },
             },{id: "dropdown-refsq-2025",
               title: "refsq 2025",
               description: "",
               section: "Dropdown",
               handler: () => {
-                window.location.href = "";
+                window.location.href = "/c/refsq25/";
               },
             },{id: "dropdown-icsa-2025",
               title: "icsa 2025",
               description: "",
               section: "Dropdown",
               handler: () => {
-                window.location.href = "";
+                window.location.href = "/c/icsa25/";
               },
             },{id: "dropdown-icse-2024",
               title: "icse 2024",
               description: "",
               section: "Dropdown",
               handler: () => {
-                window.location.href = "";
+                window.location.href = "/c/icse24/";
               },
             },{id: "dropdown-icsa-2023",
               title: "icsa 2023",
               description: "",
               section: "Dropdown",
               handler: () => {
-                window.location.href = "";
+                window.location.href = "/c/icsa23/";
               },
             },{id: "dropdown-ecsa-2021",
               title: "ecsa 2021",
               description: "",
               section: "Dropdown",
               handler: () => {
-                window.location.href = "";
+                window.location.href = "/c/ecsa21/";
               },
             },{id: "dropdown-list-of-publications",
               title: "list of publications",
               description: "",
               section: "Dropdown",
               handler: () => {
-                window.location.href = "";
+                window.location.href = "/publications/";
               },
             },{id: "nav-projects",
           title: "projects",
