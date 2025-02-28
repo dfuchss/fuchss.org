@@ -213,18 +213,25 @@
       {% if entry.doi %}
         <a href="https://doi.org/{{ entry.doi }}" class="btn btn-sm z-depth-0" role="button">DOI</a>
       {% endif %}
-      {% if entry.pdf %}
-        {% if entry.pdf contains '://' %}
-          <a href="{{ entry.pdf }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
-        {% else %}
-          <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">PDF</a>
+      {% assign btn_name = 'PDF' %}
+      {% assign btn_title = 'PDF' %}
+      {% assign btn_dst = entry.pdf %}
+      {% unless entry.pdf %}
+        {% assign btn_dst = entry.preprint %}
+      {% endunless %}
+      {% unless entry.redirect %}
+        {% if entry.preprint %}
+          {% assign btn_name = 'PRE' %}
+          {% assign btn_title = 'Preprint' %}
         {% endif %}
-      {% endif %}
-      {% if entry.preprint %}
-        {% if entry.preprint contains '://' %}
-          <a href="{{ entry.preprint }}" class="btn btn-sm z-depth-0" role="button" title="Preprint">PRE</a>
+      {% endunless %}
+      {% if btn_dst %}
+        {% if btn_dst contains '://' %}
+          <a href="{{ btn_dst }}" class="btn btn-sm z-depth-0" role="button" title="{{btn_title}}">{{ btn_name }}</a>
         {% else %}
-          <a href="{{ entry.preprint | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button" title="Preprint">PRE</a>
+          <a href="{{ btn_dst | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button" title="{{btn_title}}">
+            {{- btn_name -}}
+          </a>
         {% endif %}
       {% endif %}
       {% if entry.supp %}
