@@ -21,42 +21,21 @@ ninja.data = [{
               description: "",
               section: "Dropdown",
               handler: () => {
-                window.location.href = "/c/icse25/";
-              },
-            },{id: "dropdown-refsq-2025",
-              title: "refsq 2025",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "/c/refsq25/";
+                window.location.href = "/conferences/icse25/";
               },
             },{id: "dropdown-icsa-2025",
               title: "icsa 2025",
               description: "",
               section: "Dropdown",
               handler: () => {
-                window.location.href = "/c/icsa25/";
+                window.location.href = "/conferences/icsa25/";
               },
-            },{id: "dropdown-icse-2024",
-              title: "icse 2024",
+            },{id: "dropdown-ecsa-2022",
+              title: "ecsa 2022",
               description: "",
               section: "Dropdown",
               handler: () => {
-                window.location.href = "/c/icse24/";
-              },
-            },{id: "dropdown-icsa-2023",
-              title: "icsa 2023",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "/c/icsa23/";
-              },
-            },{id: "dropdown-ecsa-2021",
-              title: "ecsa 2021",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "/c/ecsa21/";
+                window.location.href = "/conferences/ecsa22/";
               },
             },{id: "dropdown-list-of-publications",
               title: "list of publications",
