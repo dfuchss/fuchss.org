@@ -277,7 +277,7 @@
       {% endif %}
 
       {% assign entry_has_dimensions_badge = false %}
-      {% if entry.doi != blank %}
+      {% if entry.doi != blank and entry.dimension != 'hide' %}
         {% assign entry_has_dimensions_badge = true %}
       {% endif %}
 
