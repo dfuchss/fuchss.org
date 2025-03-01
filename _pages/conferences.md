@@ -6,17 +6,11 @@ nav_order: 2
 dropdown: true
 children:
   - title: icse 2025
-    permalink: /c/icse25/
-  - title: refsq 2025
-    permalink: /c/refsq25/
+    permalink: /conferences/icse25/
   - title: icsa 2025
-    permalink: /c/icsa25/
-  - title: icse 2024
-    permalink: /c/icse24/
-  - title: icsa 2023
-    permalink: /c/icsa23/
-  - title: ecsa 2021
-    permalink: /c/ecsa21/
+    permalink: /conferences/icsa25/
+  - title: ecsa 2022
+    permalink: /conferences/ecsa22/
   - title: divider
   - title: list of publications
     permalink: /publications/
