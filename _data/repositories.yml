@@ -17,10 +17,10 @@ zenodo_repos:
     description: This repository contains a benchmark for traceability link recovery (TLR) between textual Software Architecture Documentation (SAD), Software Architecture Models (SAM) and source code.
   - name: Replication Package For Recovering Trace Links Between Software Documentation And Code
     doi: 10.5281/zenodo.10411853
-    description: 'This replication package belongs to <a href="/c/icse24">Recovering Trace Links Between Software Documentation And Code</a>.'
+    description: 'This replication package belongs to <a href="https://ardoco.de/c/icse24">Recovering Trace Links Between Software Documentation And Code</a>.'
   - name: "Replication Package: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction"
     doi: 10.5281/zenodo.14506935
-    description: 'This replication package belongs to <a href="/c/icsa25">Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction</a>.'
+    description: 'This replication package belongs to <a href="/conferences/icsa25">Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction</a>.'
   - name: "Replication Package: LiSSA: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation"
     doi: 10.5281/zenodo.14714706
-    description: 'This replication package belongs to <a href="/c/icse25">LiSSA: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation</a>.'
+    description: 'This replication package belongs to <a href="/conferences/icse25">LiSSA: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation</a>.'
