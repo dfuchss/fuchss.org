@@ -1,5 +1,5 @@
 "koziolek":
-  - firstname: ["Anne", "A"]
+  - firstname: ["Anne", "A."]
     url: https://orcid.org/0000-0002-1593-3394
 "keim":
   - firstname: ["Jan", "J."]
@@ -19,3 +19,6 @@
 "reussner":
   - firstname: ["Ralf", "Ralf H."]
     url: https://orcid.org/0000-0002-9308-6290
+"liu":
+  - firstname: ["Haoyu", "H."]
+    url: https://orcid.org/0009-0002-7676-5010
