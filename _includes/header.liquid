@@ -74,11 +74,11 @@
                   {% endif %}
                 {% endfor %}
                 {% assign valid_permalink = false %}
-                  {% if p.permalink != blank %}
-                    {% if p.permalink == page.permalink %}
-                      {% assign valid_permalink = true %}
-                    {% endif %}
+                {% if p.permalink != blank %}
+                  {% if p.permalink == page.permalink %}
+                    {% assign valid_permalink = true %}
                   {% endif %}
+                {% endif %}
                 <li class="nav-item dropdown {% if page.title == p.title or valid_permalink or has_active_child %}active{% endif %}">
                   <a
                     class="nav-link dropdown-toggle"
