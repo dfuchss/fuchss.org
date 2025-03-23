@@ -66,94 +66,94 @@ ninja.data = [{
             window.location.href = "/cv/";
           },
         },{id: "post-al-folio-conf",
-      
-        title: "al-folio-conf",
-      
-      description: "Elevate Your Conference Website with al-folio-conf: A Jekyll Theme 🚀",
-      section: "Posts",
-      handler: () => {
         
-          window.location.href = "/blog/2024/10/31/al-folio-conf/";
+          title: "al-folio-conf",
         
-      },
-    },{id: "post-ardoco-metrics-calculator",
-      
-        title: "ArDoCo Metrics Calculator",
-      
-      description: "ArDoCo Metrics Calculator a tool to calculate classification and rank metrics.",
-      section: "Posts",
-      handler: () => {
+        description: "Elevate Your Conference Website with al-folio-conf: A Jekyll Theme 🚀",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/10/31/al-folio-conf/";
+          
+        },
+      },{id: "post-ardoco-metrics-calculator",
         
-          window.location.href = "/blog/2024/08/30/ardoco-metrics/";
+          title: "ArDoCo Metrics Calculator",
         
-      },
-    },{id: "post-yarb-twim",
-      
-        title: "YARB @ TWIM",
-      
-      description: "My first post on YARB at 09.08.2024",
-      section: "Posts",
-      handler: () => {
+        description: "ArDoCo Metrics Calculator a tool to calculate classification and rank metrics.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/08/30/ardoco-metrics/";
+          
+        },
+      },{id: "post-yarb-twim",
         
-          window.location.href = "/blog/2024/08/09/twim-yarb/";
+          title: "YARB @ TWIM",
         
-      },
-    },{id: "post-matrixjoinlink-twim",
-      
-        title: "MatrixJoinLink @ TWIM",
-      
-      description: "My post on MatrixJoinLink at TWIM 24.05.2024",
-      section: "Posts",
-      handler: () => {
+        description: "My first post on YARB at 09.08.2024",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/08/09/twim-yarb/";
+          
+        },
+      },{id: "post-matrixjoinlink-twim",
         
-          window.location.href = "/blog/2024/05/24/twim-mjl/";
+          title: "MatrixJoinLink @ TWIM",
         
-      },
-    },{id: "post-matrixjoinlink-twim",
-      
-        title: "MatrixJoinLink @ TWIM",
-      
-      description: "My post on MatrixJoinLink at TWIM 17.11.2023",
-      section: "Posts",
-      handler: () => {
+        description: "My post on MatrixJoinLink at TWIM 24.05.2024",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/05/24/twim-mjl/";
+          
+        },
+      },{id: "post-matrixjoinlink-twim",
         
-          window.location.href = "/blog/2023/11/17/twim-mjl/";
+          title: "MatrixJoinLink @ TWIM",
         
-      },
-    },{id: "post-matrixjoinlink-twim",
-      
-        title: "MatrixJoinLink @ TWIM",
-      
-      description: "My post on MatrixJoinLink at TWIM 25.08.2023",
-      section: "Posts",
-      handler: () => {
+        description: "My post on MatrixJoinLink at TWIM 17.11.2023",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/11/17/twim-mjl/";
+          
+        },
+      },{id: "post-matrixjoinlink-twim",
         
-          window.location.href = "/blog/2023/08/25/twim-mjl/";
+          title: "MatrixJoinLink @ TWIM",
         
-      },
-    },{id: "post-matrixjoinlink-twim",
-      
-        title: "MatrixJoinLink @ TWIM",
-      
-      description: "My first post on MatrixJoinLink at TWIM 04.08.2023",
-      section: "Posts",
-      handler: () => {
+        description: "My post on MatrixJoinLink at TWIM 25.08.2023",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/08/25/twim-mjl/";
+          
+        },
+      },{id: "post-matrixjoinlink-twim",
         
-          window.location.href = "/blog/2023/08/04/twim-mjl/";
+          title: "MatrixJoinLink @ TWIM",
         
-      },
-    },{id: "post-mensabot-twim",
-      
-        title: "MensaBot @ TWIM",
-      
-      description: "My first post on MensaBot at TWIM 04.08.2023",
-      section: "Posts",
-      handler: () => {
+        description: "My first post on MatrixJoinLink at TWIM 04.08.2023",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/08/04/twim-mjl/";
+          
+        },
+      },{id: "post-mensabot-twim",
         
-          window.location.href = "/blog/2023/08/04/twim-mensa/";
+          title: "MensaBot @ TWIM",
         
-      },
-    },{id: "projects-ardoco",
+        description: "My first post on MensaBot at TWIM 04.08.2023",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/08/04/twim-mensa/";
+          
+        },
+      },{id: "projects-ardoco",
           title: 'ArDoCo',
           description: "Architecture Documentation Consistency",
           section: "Projects",handler: () => {
