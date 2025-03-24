@@ -4,12 +4,12 @@
 email: dominik@fuchss.org # your email address
 orcid_id: 0000-0001-6410-6769 # your ORCID ID
 scholar_userid: bVvFp4oAAAAJ # your Google Scholar ID
-research_gate_profile: Dominik-Fuchss # your profile on ResearchGate
+dblp_url: https://dblp.org/pid/243/9362.html # your DBLP profile url
 scopus_id: 57209096250 # your profile on Scopus
+semanticscholar_id: 2276068674 # your Semantic Scholar ID
 github_username: dfuchss # your GitHub user name
 linkedin_username: dfuchss # your LinkedIn user name
 work_url: https://mcse.kastel.kit.edu/staff_dominik_fuchss.php # work page URL
-dblp_url: https://dblp.org/pid/243/9362.html # your DBLP profile url
 # acm_id: # your dl.acm.org/profile/id
 # blogger_url: # your blogger URL
 # bluesky_url: # your bluesky URL
@@ -31,8 +31,8 @@ dblp_url: https://dblp.org/pid/243/9362.html # your DBLP profile url
 # pinterest_id: # your pinterest id
 # publons_id: # your ID on Publons
 # quora_username: # your Quora username
+# research_gate_profile: # your profile on ResearchGate
 # rss_icon: true # set to true to show the RSS icon
-# semanticscholar_id: # your Semantic Scholar ID
 # spotify_id: # your spotify id
 # stackoverflow_id: # your stackoverflow id
 # telegram_username: # your Telegram user name
