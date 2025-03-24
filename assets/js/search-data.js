@@ -215,11 +215,11 @@ ninja.data = [{
           window.open("https://scholar.google.com/citations?user=bVvFp4oAAAAJ", "_blank");
         },
       },{
-        id: 'social-researchgate',
-        title: 'ResearchGate',
+        id: 'social-dblp',
+        title: 'DBLP',
         section: 'Socials',
         handler: () => {
-          window.open("https://www.researchgate.net/profile/Dominik-Fuchss/", "_blank");
+          window.open("https://dblp.org/pid/243/9362.html", "_blank");
         },
       },{
         id: 'social-scopus',
@@ -227,6 +227,13 @@ ninja.data = [{
         section: 'Socials',
         handler: () => {
           window.open("https://www.scopus.com/authid/detail.uri?authorId=57209096250", "_blank");
+        },
+      },{
+        id: 'social-semanticscholar',
+        title: 'Semantic Scholar',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.semanticscholar.org/author/2276068674", "_blank");
         },
       },{
         id: 'social-github',
@@ -248,13 +255,6 @@ ninja.data = [{
         section: 'Socials',
         handler: () => {
           window.open("https://mcse.kastel.kit.edu/staff_dominik_fuchss.php", "_blank");
-        },
-      },{
-        id: 'social-dblp',
-        title: 'DBLP',
-        section: 'Socials',
-        handler: () => {
-          window.open("https://dblp.org/pid/243/9362.html", "_blank");
         },
       },{
       id: 'light-theme',
