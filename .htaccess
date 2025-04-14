@@ -13,3 +13,4 @@ RewriteRule ^assets/pdf/2020/master-thesis\.pdf$ https://publikationen.bibliothe
 RewriteRule ^assets/pdf/2021/ecsa-21-docsym\.pdf$ https://publikationen.bibliothek.kit.edu/1000139435/130713090 [R=301,L]
 RewriteRule ^assets/pdf/2023/ecsa-23-survey\.pdf$ https://publikationen.bibliothek.kit.edu/1000162389/151380782 [R=301,L]
 RewriteRule ^assets/pdf/2023/model-consistency\.pdf$ https://publikationen.bibliothek.kit.edu/1000161127/151097252 [R=301,L]
+RewriteRule ^assets/pdf/2025/icsa-25\.pdf$ https://publikationen.bibliothek.kit.edu/1000179830/157561351 [R=301,L]
