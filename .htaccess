@@ -8,7 +8,7 @@ RewriteRule ^assets/pdf/2023/icsa-23-inconsistencies\.pdf$ https://publikationen
 RewriteRule ^assets/pdf/2024/icse-24-tlr\.pdf$ https://publikationen.bibliothek.kit.edu/1000165692/154029290 [R=301,L]
 RewriteRule ^assets/pdf/2024/models-24\.pdf$ https://publikationen.bibliothek.kit.edu/1000174513/154912983 [R=301,L]
 RewriteRule ^assets/pdf/2025/icse-25\.pdf$ https://publikationen.bibliothek.kit.edu/1000178348/156555617 [R=301,L]
-RewriteRule ^assets/pdf/2025/refsq-25\.pdf$ https://publikationen.bibliothek.kit.edu/1000179817/157463182 [R=301,L]
+RewriteRule ^assets/pdf/2025/refsq-25\.pdf$ https://publikationen.bibliothek.kit.edu/1000178589/156854596 [R=301,L]
 RewriteRule ^assets/pdf/2020/master-thesis\.pdf$ https://publikationen.bibliothek.kit.edu/1000126806/93855024 [R=301,L]
 RewriteRule ^assets/pdf/2021/ecsa-21-docsym\.pdf$ https://publikationen.bibliothek.kit.edu/1000139435/130713090 [R=301,L]
 RewriteRule ^assets/pdf/2023/ecsa-23-survey\.pdf$ https://publikationen.bibliothek.kit.edu/1000162389/151380782 [R=301,L]
