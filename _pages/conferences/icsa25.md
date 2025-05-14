@@ -12,7 +12,7 @@ authors:
   - anne_koziolek
 ---
 
-To be published at the [22nd IEEE International Conference on Software Architecture (ICSA 2025), March 31 - April 04 2025](https://conf.researchr.org/home/icsa-2025/).
+Published at the [22nd IEEE International Conference on Software Architecture (ICSA 2025), March 31 - April 04 2025](https://conf.researchr.org/home/icsa-2025/).
 
 ![Approach Overview](/assets/img/conferences/icsa25-approach.svg){:width="100%" style="background-color: white; border-radius: 8px; padding: 10px; display: block; margin: 0 auto;"}
 
@@ -33,5 +33,5 @@ In summary, our approach shows that LLMs can be used to make TLR between SAD and
 
 ## Links
 
-- Paper on [KITopen](https://publikationen.bibliothek.kit.edu/1000177521)
+- Paper on [KITopen](https://publikationen.bibliothek.kit.edu/1000179830) and [IEEE Xplore](https://ieeexplore.ieee.org/document/10978943)
 - Replication Package on [Zenodo](https://doi.org/10.5281/zenodo.14506935) and the corresponding [GitHub repository](https://github.com/ArDoCo/ReplicationPackage-EnablingArchitectureTraceabilitybyLLM-basedArchitectureComponentNameExtraction)
