@@ -45,10 +45,16 @@ def get_scholar_citations() -> None:
     if os.path.exists(OUTPUT_FILE):
         try:
             with open(OUTPUT_FILE, "r") as f:
-                data = yaml.safe_load(f)
-                if data and "metadata" in data and "last_updated" in data["metadata"]:
-                    print(f"Last updated on: {data['metadata']['last_updated']}")
-                    if data["metadata"]["last_updated"] == today:
+                existing_data = yaml.safe_load(f)
+                if (
+                    existing_data
+                    and "metadata" in existing_data
+                    and "last_updated" in existing_data["metadata"]
+                ):
+                    print(
+                        f"Last updated on: {existing_data['metadata']['last_updated']}"
+                    )
+                    if existing_data["metadata"]["last_updated"] == today:
                         print("Citations data is already up-to-date. Skipping fetch.")
                         return
         except Exception as e:
@@ -103,6 +109,11 @@ def get_scholar_citations() -> None:
             print(
                 f"Error processing publication '{pub.get('bib', {}).get('title', 'Unknown')}': {e}. This publication will be skipped."
             )
+
+    # Compare new data with existing data
+    if existing_data and existing_data.get("papers") == citation_data["papers"]:
+        print("No changes in citation data. Skipping file update.")
+        return
 
     try:
         with open(OUTPUT_FILE, "w") as f:
