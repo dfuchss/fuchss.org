@@ -24,47 +24,47 @@ jobs:
 
       - name: Install dependencies
         run: |
-          echo "🔧 Installing dependencies..." | tee -a update_citations.log
-          python -m pip install --upgrade pip | tee -a update_citations.log
-          pip install -r requirements.txt | tee -a update_citations.log
+          echo "🔧 Installing dependencies..."
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
       - name: Save current citations.yml hash
         id: before
         run: |
-          echo "📦 Checking existing citations.yml hash..." | tee -a update_citations.log
+          echo "📦 Checking existing citations.yml hash..."
           if [ -f _data/citations.yml ]; then
             sha_before=$(sha256sum _data/citations.yml | awk '{print $1}')
             echo "sha_before=$sha_before" >> $GITHUB_OUTPUT
-            echo "📝 SHA before: $sha_before" | tee -a update_citations.log
+            echo "📝 SHA before: $sha_before"
           else
             echo "sha_before=none" >> $GITHUB_OUTPUT
-            echo "📝 No existing citations.yml file found." | tee -a update_citations.log
+            echo "📝 No existing citations.yml file found."
           fi
 
-      - name: Run citation update script with logging
+      - name: Run citation update script
         id: run_citation_update
         shell: bash
         run: |
           set +e
-          echo "🚀 Starting citation update script..." | tee -a update_citations.log
+          echo "🚀 Starting citation update script..."
           success=0
           for i in {1..3}; do
-            echo "🔁 Attempt $i to update citations..." | tee -a update_citations.log
+            echo "🔁 Attempt $i to update citations..."
             start_time=$(date)
-            timeout 90 python bin/update_scholar_citations.py >> update_citations.log 2>&1
+            timeout 90 python bin/update_scholar_citations.py
             status=$?
             end_time=$(date)
             if [ $status -eq 0 ]; then
-              echo "✅ Success on attempt $i (started at $start_time, ended at $end_time)." | tee -a update_citations.log
+              echo "✅ Success on attempt $i (started at $start_time, ended at $end_time)."
               echo "✅ Citation update succeeded on attempt $i." >> $GITHUB_STEP_SUMMARY
               success=1
               break
             else
-              echo "⚠️ Attempt $i failed with exit code $status (started at $start_time, ended at $end_time)." | tee -a update_citations.log
+              echo "⚠️ Attempt $i failed with exit code $status (started at $start_time, ended at $end_time)."
             fi
           done
           if [ $success -ne 1 ]; then
-            echo "❌ All 3 attempts to update citations failed." | tee -a update_citations.log
+            echo "❌ All 3 attempts to update citations failed."
             echo "❌ Citation update script failed after 3 attempts." >> $GITHUB_STEP_SUMMARY
           fi
           set -e
@@ -72,24 +72,24 @@ jobs:
       - name: Save new citations.yml hash
         id: after
         run: |
-          echo "🔍 Checking updated citations.yml hash..." | tee -a update_citations.log
+          echo "🔍 Checking updated citations.yml hash..."
           if [ -f _data/citations.yml ]; then
             sha_after=$(sha256sum _data/citations.yml | awk '{print $1}')
             echo "sha_after=$sha_after" >> $GITHUB_OUTPUT
-            echo "📝 SHA after: $sha_after" | tee -a update_citations.log
+            echo "📝 SHA after: $sha_after"
           else
             echo "sha_after=none" >> $GITHUB_OUTPUT
-            echo "📝 citations.yml was not created or is missing." | tee -a update_citations.log
+            echo "📝 citations.yml was not created or is missing."
           fi
 
       - name: Report citations.yml change in summary
         run: |
-          echo "📋 Comparing citation file hashes..." | tee -a update_citations.log
+          echo "📋 Comparing citation file hashes..."
           if [ "${{ steps.before.outputs.sha_before }}" != "${{ steps.after.outputs.sha_after }}" ]; then
-            echo "✅ _data/citations.yml was updated." | tee -a update_citations.log
+            echo "✅ _data/citations.yml was updated."
             echo "✅ _data/citations.yml was updated." >> $GITHUB_STEP_SUMMARY
           else
-            echo "ℹ️ _data/citations.yml was not changed." | tee -a update_citations.log
+            echo "ℹ️ _data/citations.yml was not changed."
             echo "ℹ️ _data/citations.yml was not changed." >> $GITHUB_STEP_SUMMARY
           fi
 
@@ -97,20 +97,13 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          echo "🔧 Git configured." | tee -a update_citations.log
+          echo "🔧 Git configured."
 
       - name: Commit and push if changed
         run: |
           git add _data/citations.yml
           git diff --staged --quiet || (
-            echo "📤 Committing and pushing changes..." | tee -a update_citations.log
+            echo "📤 Committing and pushing changes..."
             git commit -m "Update Google Scholar citations"
             git push
           )
-
-      - name: Upload log file
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: citation-update-log
-          path: update_citations.log
