@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2025-05-26'
+  last_updated: '2025-06-02'
 papers:
   bVvFp4oAAAAJ:_FxGoFyzp5QC:
     title: Evaluation methods and replicability of software architecture research objects
@@ -16,7 +16,7 @@ papers:
   bVvFp4oAAAAJ:IjCSPb-OGe4C:
     title: Trace link recovery for software architecture documentation
     year: '2021'
-    citations: 17
+    citations: 18
   bVvFp4oAAAAJ:WF5omc3nYNoC:
     title: Detecting inconsistencies in software architecture documentation using traceability link recovery
     year: '2023'
@@ -72,10 +72,6 @@ papers:
   bVvFp4oAAAAJ:kNdYIx-mwKoC:
     title: Structuring Scientific Knowledge in Software Engineering Using the Open Research Knowledge Graph
     year: '2025'
-    citations: 0
-  bVvFp4oAAAAJ:Se3iqnhoufwC:
-    title: A Formalized Classification Schema for Model Consistency
-    year: '2023'
     citations: 0
   bVvFp4oAAAAJ:zYLM7Y9cAGgC:
     title: Sketches and Natural Language in Agile Modeling
