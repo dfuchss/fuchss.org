@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2025-06-02'
+  last_updated: '2025-06-13'
 papers:
   bVvFp4oAAAAJ:_FxGoFyzp5QC:
     title: Evaluation methods and replicability of software architecture research objects
@@ -72,6 +72,10 @@ papers:
   bVvFp4oAAAAJ:kNdYIx-mwKoC:
     title: Structuring Scientific Knowledge in Software Engineering Using the Open Research Knowledge Graph
     year: '2025'
+    citations: 0
+  bVvFp4oAAAAJ:YOwf2qJgpHMC:
+    title: A formalized classification schema for model consistency
+    year: '2023'
     citations: 0
   bVvFp4oAAAAJ:zYLM7Y9cAGgC:
     title: Sketches and Natural Language in Agile Modeling
