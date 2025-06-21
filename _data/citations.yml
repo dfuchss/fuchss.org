@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2025-06-13'
+  last_updated: '2025-06-21'
 papers:
   bVvFp4oAAAAJ:_FxGoFyzp5QC:
     title: Evaluation methods and replicability of software architecture research objects
@@ -16,7 +16,7 @@ papers:
   bVvFp4oAAAAJ:IjCSPb-OGe4C:
     title: Trace link recovery for software architecture documentation
     year: '2021'
-    citations: 18
+    citations: 19
   bVvFp4oAAAAJ:WF5omc3nYNoC:
     title: Detecting inconsistencies in software architecture documentation using traceability link recovery
     year: '2023'
@@ -32,7 +32,7 @@ papers:
   bVvFp4oAAAAJ:UebtZRa9Y70C:
     title: Recovering Trace Links Between Software Documentation And Code
     year: '2024'
-    citations: 6
+    citations: 7
   bVvFp4oAAAAJ:d1gkVwhDpl0C:
     title: Assessing the quality impact of features in component-based software architectures
     year: '2019'
