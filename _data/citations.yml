@@ -1,10 +1,10 @@
 metadata:
-  last_updated: '2025-06-21'
+  last_updated: '2025-06-24'
 papers:
   bVvFp4oAAAAJ:_FxGoFyzp5QC:
     title: Evaluation methods and replicability of software architecture research objects
     year: '2022'
-    citations: 30
+    citations: 31
   bVvFp4oAAAAJ:u5HHmVD_uO8C:
     title: 'Peropteryx: Automated improvement of software architectures'
     year: '2019'
@@ -40,12 +40,12 @@ papers:
   bVvFp4oAAAAJ:YsMSGLbcyi4C:
     title: Replication Package of "Evaluation Methods and Replicability of Software Architecture Research Objects"
     year: '2022'
-    citations: 3
+    citations: 4
   bVvFp4oAAAAJ:u-x6o8ySG0sC:
     title: Natural language data queries on multiple heterogenous data sources
     year: '2019'
     citations: 3
-  bVvFp4oAAAAJ:5nxA0vEk-isC:
+  bVvFp4oAAAAJ:M3ejUd6NZC8C:
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
     year: '2025'
     citations: 2
