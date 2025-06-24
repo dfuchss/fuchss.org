@@ -35,5 +35,5 @@ However, further research is required to improve the performance of RAG-based ap
 
 ## Links
 
-- Paper on [KITopen](https://publikationen.bibliothek.kit.edu/1000178348)
+- Paper on [IEEE Xplore](https://doi.org/10.1109/ICSE55347.2025.00186) or [KITopen](https://publikationen.bibliothek.kit.edu/1000179816)
 - Replication Package on [Zenodo](https://doi.org/10.5281/zenodo.14714706) and the corresponding [GitHub repository](https://github.com/ArDoCo/ReplicationPackage-ICSE25_LiSSA-Toward-Generic-Traceability-Link-Recovery-through-RAG/tree/main)
