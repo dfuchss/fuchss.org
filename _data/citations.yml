@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2025-06-24'
+  last_updated: '2025-06-26'
 papers:
   bVvFp4oAAAAJ:_FxGoFyzp5QC:
     title: Evaluation methods and replicability of software architecture research objects
@@ -45,10 +45,10 @@ papers:
     title: Natural language data queries on multiple heterogenous data sources
     year: '2019'
     citations: 3
-  bVvFp4oAAAAJ:M3ejUd6NZC8C:
+  bVvFp4oAAAAJ:9ZlFYXVOiuMC:
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
-    year: '2025'
-    citations: 2
+    year: Unknown Year
+    citations: 3
   bVvFp4oAAAAJ:8k81kl-MbHgC:
     title: 'LiSSA: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation'
     year: '2025'
