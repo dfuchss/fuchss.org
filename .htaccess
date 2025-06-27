@@ -1,0 +1,18 @@
+ErrorDocument 404 /404.html
+
+RewriteEngine On
+RewriteRule ^assets/pdf/2021/ecsa-21-tlr\.pdf$ https://publikationen.bibliothek.kit.edu/1000138399/145101383 [R=301,L]
+RewriteRule ^assets/pdf/2022/ease-22-taxonomies\.pdf$ https://publikationen.bibliothek.kit.edu/1000145817/149124102 [R=301,L]
+RewriteRule ^assets/pdf/2023/ecsa-22-benchmark\.pdf$ https://publikationen.bibliothek.kit.edu/1000160708/151135839 [R=301,L]
+RewriteRule ^assets/pdf/2023/icsa-23-inconsistencies\.pdf$ https://publikationen.bibliothek.kit.edu/1000158208/150680132 [R=301,L]
+RewriteRule ^assets/pdf/2024/icse-24-tlr\.pdf$ https://publikationen.bibliothek.kit.edu/1000165692/154029290 [R=301,L]
+RewriteRule ^assets/pdf/2024/models-24\.pdf$ https://publikationen.bibliothek.kit.edu/1000174513/154912983 [R=301,L]
+RewriteRule ^assets/pdf/2025/icse-25\.pdf$ https://publikationen.bibliothek.kit.edu/1000179816/157462526 [R=301,L]
+RewriteRule ^assets/pdf/2025/refsq-25\.pdf$ https://publikationen.bibliothek.kit.edu/1000178589/156854596 [R=301,L]
+RewriteRule ^assets/pdf/2025/slr-25\.pdf$ https://arxiv.org/pdf/2505.16697 [R=301,L]
+RewriteRule ^assets/pdf/2020/master-thesis\.pdf$ https://publikationen.bibliothek.kit.edu/1000126806/93855024 [R=301,L]
+RewriteRule ^assets/pdf/2021/ecsa-21-docsym\.pdf$ https://publikationen.bibliothek.kit.edu/1000139435/130713090 [R=301,L]
+RewriteRule ^assets/pdf/2023/ecsa-23-survey\.pdf$ https://publikationen.bibliothek.kit.edu/1000162389/151380782 [R=301,L]
+RewriteRule ^assets/pdf/2023/model-consistency\.pdf$ https://publikationen.bibliothek.kit.edu/1000161127/151097252 [R=301,L]
+RewriteRule ^assets/pdf/2025/icsa-25\.pdf$ https://publikationen.bibliothek.kit.edu/1000179830/157561351 [R=301,L]
+RewriteRule ^assets/pdf/2025/rdm-25\.pdf$ https://publikationen.bibliothek.kit.edu/1000179405/157169799 [R=301,L]
