@@ -3,6 +3,7 @@ permalink: /.htaccess
 ---
 ErrorDocument 404 /404.html
 
+{% if site.enable_redirects %}
 RewriteEngine On
 
 {%- capture bibentries -%}
@@ -18,3 +19,4 @@ RewriteEngine On
 RewriteRule ^assets/pdf/{{- elements[1] | replace: ".", "\\." -}}$ {{ elements[2] }} [R=301,L]
   {%- endif -%}
 {%- endfor %}
+{% endif %}

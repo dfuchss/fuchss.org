@@ -267,6 +267,9 @@ scholar:
   group_by: year
   group_order: descending
 
+# Globally enable or disable redirects for PDFs
+enable_redirects: false
+
 # Display different badges withs stats for your publications
 # Customize badge behavior in _layouts/bib.liquid
 enable_publication_badges:
