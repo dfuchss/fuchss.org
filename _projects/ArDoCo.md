@@ -3,7 +3,6 @@ title: ArDoCo
 description: Architecture Documentation Consistency
 layout: page
 category: research
-img: /assets/projects/ardoco/logo.png
 redirect: https://ardoco.de/
 ---
 
