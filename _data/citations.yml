@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2025-06-26'
+  last_updated: '2025-07-07'
 papers:
   bVvFp4oAAAAJ:_FxGoFyzp5QC:
     title: Evaluation methods and replicability of software architecture research objects
@@ -41,13 +41,13 @@ papers:
     title: Replication Package of "Evaluation Methods and Replicability of Software Architecture Research Objects"
     year: '2022'
     citations: 4
+  bVvFp4oAAAAJ:7PzlFSSx8tAC:
+    title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
+    year: '2025'
+    citations: 3
   bVvFp4oAAAAJ:u-x6o8ySG0sC:
     title: Natural language data queries on multiple heterogenous data sources
     year: '2019'
-    citations: 3
-  bVvFp4oAAAAJ:7PzlFSSx8tAC:
-    title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
-    year: Unknown Year
     citations: 3
   bVvFp4oAAAAJ:8k81kl-MbHgC:
     title: 'LiSSA: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation'
@@ -56,7 +56,7 @@ papers:
   bVvFp4oAAAAJ:hqOjcs7Dif8C:
     title: 'Modeling Languages for Automotive Digital Twins: A Survey Among the German Automotive Industry'
     year: '2024'
-    citations: 1
+    citations: 2
   bVvFp4oAAAAJ:roLk4NBRz8UC:
     title: An Expert Survey on the Use of Informal Models in the Automotive Industry
     year: '2023'
