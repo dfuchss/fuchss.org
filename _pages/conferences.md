@@ -5,6 +5,8 @@ nav: true
 nav_order: 2
 dropdown: true
 children:
+  - title: aire 2025
+    permalink: /conferences/aire25/
   - title: icse 2025
     permalink: /conferences/icse25/
   - title: icsa 2025

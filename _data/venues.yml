@@ -9,3 +9,7 @@
 "ICSE":
   url: https://conf.researchr.org/series/icse
   color: "#a3107c"
+
+"AIRE":
+  url: https://aire-ws.github.io/
+  color: "#00a500"
