@@ -1,6 +1,6 @@
 ---
 layout: publication
-permalink: /conferences/aire25
+permalink: /conferences/aire25/
 title: "Beyond Retrieval: A Study of Using LLM Ensembles for Candidate Filtering in Requirements Traceability"
 description:
 publication: fuchss_beyond_2025
