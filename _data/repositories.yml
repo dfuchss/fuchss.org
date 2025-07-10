@@ -24,3 +24,6 @@ zenodo_repos:
   - name: "Replication Package: LiSSA: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation"
     doi: 10.5281/zenodo.14714706
     description: 'This replication package belongs to <a href="/conferences/icse25">LiSSA: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation</a>.'
+  - name: 'Replication Package for "Beyond Retrieval: A Study of Using LLM Ensembles for Candidate Filtering in Requirements Traceability"'
+    doi: 10.5281/zenodo.15837231
+    description: 'This replication package belongs to <a href="/conferences/aire25">Beyond Retrieval: A Study of Using LLM Ensembles for Candidate Filtering in Requirements Traceability</a>.'
