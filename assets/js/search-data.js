@@ -9,7 +9,14 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "dropdown-icse-2025",
+  },{id: "dropdown-aire-2025",
+              title: "aire 2025",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/conferences/aire25/";
+              },
+            },{id: "dropdown-icse-2025",
               title: "icse 2025",
               description: "",
               section: "Dropdown",
