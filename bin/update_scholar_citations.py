@@ -117,7 +117,7 @@ def get_scholar_citations() -> None:
 
     try:
         with open(OUTPUT_FILE, "w") as f:
-            yaml.dump(citation_data, f, width=1000, sort_keys=False)
+            yaml.dump(citation_data, f, width=1000, sort_keys=True)
         print(f"Citation data saved to {OUTPUT_FILE}")
     except Exception as e:
         print(

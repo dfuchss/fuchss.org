@@ -1,95 +1,99 @@
 metadata:
-  last_updated: '2025-07-07'
+  last_updated: '2025-07-12'
 papers:
-  bVvFp4oAAAAJ:_FxGoFyzp5QC:
-    title: Evaluation methods and replicability of software architecture research objects
-    year: '2022'
-    citations: 31
-  bVvFp4oAAAAJ:u5HHmVD_uO8C:
-    title: 'Peropteryx: Automated improvement of software architectures'
-    year: '2019'
-    citations: 25
-  bVvFp4oAAAAJ:Tyk-4Ss8FVUC:
-    title: Introducing an evaluation method for taxonomies
-    year: '2022'
-    citations: 20
-  bVvFp4oAAAAJ:IjCSPb-OGe4C:
-    title: Trace link recovery for software architecture documentation
-    year: '2021'
-    citations: 19
-  bVvFp4oAAAAJ:WF5omc3nYNoC:
-    title: Detecting inconsistencies in software architecture documentation using traceability link recovery
-    year: '2023'
-    citations: 9
-  bVvFp4oAAAAJ:eQOLeE2rZwMC:
-    title: Establishing a benchmark dataset for traceability link recovery between software architecture documentation and models
-    year: '2022'
-    citations: 9
-  bVvFp4oAAAAJ:9yKSN-GCB0IC:
-    title: Approaching natural conversation chatbots by interactive dialogue modelling & microsoft LUIS
-    year: '2019'
-    citations: 9
-  bVvFp4oAAAAJ:UebtZRa9Y70C:
-    title: Recovering Trace Links Between Software Documentation And Code
-    year: '2024'
-    citations: 7
-  bVvFp4oAAAAJ:d1gkVwhDpl0C:
-    title: Assessing the quality impact of features in component-based software architectures
-    year: '2019'
-    citations: 5
-  bVvFp4oAAAAJ:YsMSGLbcyi4C:
-    title: Replication Package of "Evaluation Methods and Replicability of Software Architecture Research Objects"
-    year: '2022'
-    citations: 4
-  bVvFp4oAAAAJ:7PzlFSSx8tAC:
-    title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
-    year: '2025'
-    citations: 3
-  bVvFp4oAAAAJ:u-x6o8ySG0sC:
-    title: Natural language data queries on multiple heterogenous data sources
-    year: '2019'
-    citations: 3
-  bVvFp4oAAAAJ:8k81kl-MbHgC:
-    title: 'LiSSA: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation'
-    year: '2025'
-    citations: 2
-  bVvFp4oAAAAJ:hqOjcs7Dif8C:
-    title: 'Modeling Languages for Automotive Digital Twins: A Survey Among the German Automotive Industry'
-    year: '2024'
-    citations: 2
-  bVvFp4oAAAAJ:roLk4NBRz8UC:
-    title: An Expert Survey on the Use of Informal Models in the Automotive Industry
-    year: '2023'
-    citations: 1
-  bVvFp4oAAAAJ:ULOm3_A8WrAC:
-    title: 'Software Architecture Meets LLMs: A Systematic Literature Review'
-    year: '2025'
-    citations: 0
-  bVvFp4oAAAAJ:MXK_kJrjxJIC:
-    title: Requirements Traceability Link Recovery via Retrieval-Augmented Generation
-    year: '2025'
-    citations: 0
-  bVvFp4oAAAAJ:kNdYIx-mwKoC:
-    title: Structuring Scientific Knowledge in Software Engineering Using the Open Research Knowledge Graph
-    year: '2025'
-    citations: 0
-  bVvFp4oAAAAJ:YOwf2qJgpHMC:
-    title: A formalized classification schema for model consistency
-    year: '2023'
-    citations: 0
-  bVvFp4oAAAAJ:zYLM7Y9cAGgC:
-    title: Sketches and Natural Language in Agile Modeling
-    year: '2021'
-    citations: 0
-  bVvFp4oAAAAJ:UeHWp8X0CEIC:
-    title: Assessing Hypotheses in Multi-Agent Systems for Natural Language Processing
-    year: '2020'
-    citations: 0
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
+    citations: 0
     title: Context Classification in Dialog-Based Interaction
     year: '2020'
-    citations: 0
   bVvFp4oAAAAJ:3fE2CSJIrl8C:
+    citations: 0
     title: "Verarbeitung nat\xFCrlich-sprachlicher Beziehungsbeschreibungen zwischen Objekten"
     year: '2018'
+  bVvFp4oAAAAJ:7PzlFSSx8tAC:
+    citations: 4
+    title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
+    year: '2025'
+  bVvFp4oAAAAJ:8k81kl-MbHgC:
+    citations: 3
+    title: 'LiSSA: toward generic traceability link recovery through retrieval-augmented generation'
+    year: '2025'
+  bVvFp4oAAAAJ:9yKSN-GCB0IC:
+    citations: 9
+    title: Approaching natural conversation chatbots by interactive dialogue modelling & microsoft LUIS
+    year: '2019'
+  bVvFp4oAAAAJ:IjCSPb-OGe4C:
+    citations: 20
+    title: Trace link recovery for software architecture documentation
+    year: '2021'
+  bVvFp4oAAAAJ:L8Ckcad2t8MC:
     citations: 0
+    title: Establishing a Benchmark Dataset for Traceability Link Recovery Between
+    year: '2023'
+  bVvFp4oAAAAJ:MXK_kJrjxJIC:
+    citations: 1
+    title: Requirements Traceability Link Recovery via Retrieval-Augmented Generation
+    year: '2025'
+  bVvFp4oAAAAJ:Tyk-4Ss8FVUC:
+    citations: 20
+    title: Introducing an evaluation method for taxonomies
+    year: '2022'
+  bVvFp4oAAAAJ:ULOm3_A8WrAC:
+    citations: 1
+    title: 'Software Architecture Meets LLMs: A Systematic Literature Review'
+    year: '2025'
+  bVvFp4oAAAAJ:UeHWp8X0CEIC:
+    citations: 0
+    title: Assessing Hypotheses in Multi-Agent Systems for Natural Language Processing
+    year: '2020'
+  bVvFp4oAAAAJ:UebtZRa9Y70C:
+    citations: 7
+    title: Recovering Trace Links Between Software Documentation And Code
+    year: '2024'
+  bVvFp4oAAAAJ:WF5omc3nYNoC:
+    citations: 9
+    title: Detecting inconsistencies in software architecture documentation using traceability link recovery
+    year: '2023'
+  bVvFp4oAAAAJ:YOwf2qJgpHMC:
+    citations: 1
+    title: A formalized classification schema for model consistency
+    year: '2023'
+  bVvFp4oAAAAJ:YsMSGLbcyi4C:
+    citations: 4
+    title: Replication Package of "Evaluation Methods and Replicability of Software Architecture Research Objects"
+    year: '2022'
+  bVvFp4oAAAAJ:_FxGoFyzp5QC:
+    citations: 32
+    title: Evaluation methods and replicability of software architecture research objects
+    year: '2022'
+  bVvFp4oAAAAJ:d1gkVwhDpl0C:
+    citations: 4
+    title: Assessing the quality impact of features in component-based software architectures
+    year: '2019'
+  bVvFp4oAAAAJ:eQOLeE2rZwMC:
+    citations: 9
+    title: Establishing a benchmark dataset for traceability link recovery between software architecture documentation and models
+    year: '2022'
+  bVvFp4oAAAAJ:hqOjcs7Dif8C:
+    citations: 2
+    title: 'Modeling languages for automotive digital twins: A survey among the german automotive industry'
+    year: '2024'
+  bVvFp4oAAAAJ:kNdYIx-mwKoC:
+    citations: 0
+    title: 'Structuring Scientific Knowledge in Software Engineering Using the Open Research Knowledge Graph: A Use Case and Experience Report'
+    year: '2025'
+  bVvFp4oAAAAJ:roLk4NBRz8UC:
+    citations: 1
+    title: An Expert Survey on the Use of Informal Models in the Automotive Industry
+    year: '2023'
+  bVvFp4oAAAAJ:u-x6o8ySG0sC:
+    citations: 3
+    title: Natural language data queries on multiple heterogenous data sources
+    year: '2019'
+  bVvFp4oAAAAJ:u5HHmVD_uO8C:
+    citations: 25
+    title: 'PerOpteryx: Automated Improvement of Software Architectures.'
+    year: '2019'
+  bVvFp4oAAAAJ:zYLM7Y9cAGgC:
+    citations: 0
+    title: Sketches and Natural Language in Agile Modeling
+    year: '2021'
