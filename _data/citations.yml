@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2025-07-12'
+  last_updated: '2025-07-17'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -22,13 +22,9 @@ papers:
     title: Approaching natural conversation chatbots by interactive dialogue modelling & microsoft LUIS
     year: '2019'
   bVvFp4oAAAAJ:IjCSPb-OGe4C:
-    citations: 20
+    citations: 21
     title: Trace link recovery for software architecture documentation
     year: '2021'
-  bVvFp4oAAAAJ:L8Ckcad2t8MC:
-    citations: 0
-    title: Establishing a Benchmark Dataset for Traceability Link Recovery Between
-    year: '2023'
   bVvFp4oAAAAJ:MXK_kJrjxJIC:
     citations: 1
     title: Requirements Traceability Link Recovery via Retrieval-Augmented Generation
