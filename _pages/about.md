@@ -41,7 +41,7 @@ My research area and interests summarized in a short listing:
 
 During my research and teaching I'm involved in several development projects. A small excerpt is shown below.
 
-- Member of the Main Development Team of [ArDoCo](/projects/ArDoCo/)
+- Member of the Main Development Team of [ARDoCo](/projects/ARDoCo/)
 - Administrator of our [Artemis](https://github.com/ls1intum/Artemis) infrastructure that is used for the Programming Lecture, Software Engineering I, and more lectures
 - Product Owner of multiple projects of [kit-sdq](https://github.com/kit-sdq)
 - Member of the Maintainer Team of [JPlag](https://github.com/JPlag)

@@ -12,7 +12,7 @@ github_repos:
   - jplag/JPlag
 
 zenodo_repos:
-  - name: ArDoCo/Benchmark
+  - name: ARDoCo/Benchmark
     doi: 10.5281/zenodo.6966831
     description: This repository contains a benchmark for traceability link recovery (TLR) between textual Software Architecture Documentation (SAD), Software Architecture Models (SAM) and source code.
   - name: Replication Package For Recovering Trace Links Between Software Documentation And Code

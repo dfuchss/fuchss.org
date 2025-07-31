@@ -1,16 +1,16 @@
 ---
 layout: post
-title: ArDoCo Metrics Calculator
+title: ARDoCo Metrics Calculator
 date: 2024-08-30
-description: ArDoCo Metrics Calculator a tool to calculate classification and rank metrics.
+description: ARDoCo Metrics Calculator a tool to calculate classification and rank metrics.
 tags: [research, metrics, ardoco]
 categories: research
 featured: true
 ---
 
-🚀 **Introducing the ArDoCo Metrics Calculator!** 🚀
+🚀 **Introducing the ARDoCo Metrics Calculator!** 🚀
 
-We're excited to announce the release of the **ArDoCo Metrics Calculator** -- a powerful tool designed to help you calculate and aggregate **classification** and **rank metrics** for various tasks.
+We're excited to announce the release of the **ARDoCo Metrics Calculator** -- a powerful tool designed to help you calculate and aggregate **classification** and **rank metrics** for various tasks.
 
 ### 🎯 **Key Features**
 
@@ -26,12 +26,12 @@ We're excited to announce the release of the **ArDoCo Metrics Calculator** -- a 
 
 ### 🌐 **Online Deployment**
 
-You can also access the **ArDoCo Metrics Calculator** online via our web-based deployment: [ArDoCo Metrics Calculator Online](https://metrics.ardoco.de/). We do not save any of your data—your calculations are processed securely and privately.
+You can also access the **ARDoCo Metrics Calculator** online via our web-based deployment: [ARDoCo Metrics Calculator Online](https://metrics.ardoco.de/). We do not save any of your data—your calculations are processed securely and privately.
 
 ### 📚 **Get Started**
 
-Check out the project on GitHub for detailed instructions and documentation: [ArDoCo Metrics Calculator](https://github.com/ArDoCo/Metrics)
+Check out the project on GitHub for detailed instructions and documentation: [ARDoCo Metrics Calculator](https://github.com/ARDoCo/Metrics)
 
-Explore more on how to use the tool via different interfaces on our [Wiki](https://github.com/ArDoCo/Metrics/wiki).
+Explore more on how to use the tool via different interfaces on our [Wiki](https://github.com/ARDoCo/Metrics/wiki).
 
 Join us in streamlining your metrics calculations! 🚀
