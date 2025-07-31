@@ -66,8 +66,8 @@ ninja.data = [{
             window.location.href = "/cv/";
           },
         },{id: "projects-ardoco",
-          title: 'ArDoCo',
-          description: "Architecture Documentation Consistency",
+          title: 'ARDoCo',
+          description: "Automating Requirements and Documentation Comprehension",
           section: "Projects",handler: () => {
               window.location.href = "/projects/ArDoCo/";
             },},{id: "projects-deltabot",
