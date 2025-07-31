@@ -30,8 +30,8 @@ You can also access the **ARDoCo Metrics Calculator** online via our web-based d
 
 ### 📚 **Get Started**
 
-Check out the project on GitHub for detailed instructions and documentation: [ARDoCo Metrics Calculator](https://github.com/ARDoCo/Metrics)
+Check out the project on GitHub for detailed instructions and documentation: [ARDoCo Metrics Calculator](https://github.com/ardoco/Metrics)
 
-Explore more on how to use the tool via different interfaces on our [Wiki](https://github.com/ARDoCo/Metrics/wiki).
+Explore more on how to use the tool via different interfaces on our [Wiki](https://github.com/ardoco/Metrics/wiki).
 
 Join us in streamlining your metrics calculations! 🚀
