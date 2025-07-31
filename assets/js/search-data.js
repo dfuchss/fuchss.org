@@ -69,7 +69,7 @@ ninja.data = [{
           title: 'ARDoCo',
           description: "Automating Requirements and Documentation Comprehension",
           section: "Projects",handler: () => {
-              window.location.href = "/projects/ArDoCo/";
+              window.location.href = "/projects/ardoco/";
             },},{id: "projects-deltabot",
           title: 'DeltaBot',
           description: "DeltaBot is my first bot for Discord.",
