@@ -1,5 +1,5 @@
 ---
-title: RεKiT
+title: rekit
 description: a platform jumper game
 layout: page
 category: misc

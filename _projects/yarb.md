@@ -1,11 +1,11 @@
 ---
 layout: page
 category: matrix
-title: YARB
+title: yarb
 description: Yet Another Reminder Bot
 ---
 
-[YARB](https://github.com/dfuchss/YARB) can be used to create reminders for a specific time at a day. It uses the [Trixnity](https://trixnity.gitlab.io/trixnity/) framework.
+[yarb](https://github.com/dfuchss/yarb) can be used to create reminders for a specific time at a day. It uses the [trixnity](https://trixnity.gitlab.io/trixnity/) framework.
 
 ## Features
 
@@ -37,7 +37,7 @@ description: Yet Another Reminder Bot
 
 ## Development
 
-I'm typically online in the [Trixnity channel](https://matrix.to/#/#trixnity:imbitbu.de). So feel free to tag me there if you have any questions.
+I'm typically online in the [trixnity channel](https://matrix.to/#/#trixnity:imbitbu.de). So feel free to tag me there if you have any questions.
 
-- The bot is build using the [Trixnity](https://trixnity.gitlab.io/trixnity/) framework.
-- The basic functionality is located in [Main.kt](https://github.com/dfuchss/YARB/blob/main/src/main/kotlin/org/fuchss/matrix/yarb/Main.kt). There you can also find the main method of the program.
+- The bot is build using the [trixnity](https://trixnity.gitlab.io/trixnity/) framework.
+- The basic functionality is located in [Main.kt](https://github.com/dfuchss/yarb/blob/main/src/main/kotlin/org/fuchss/matrix/yarb/Main.kt). There you can also find the main method of the program.

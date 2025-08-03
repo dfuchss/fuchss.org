@@ -4,15 +4,15 @@ github_users:
 repo_description_lines_max: 2
 
 github_repos:
-  - dfuchss/MatrixJoinLink
-  - dfuchss/MensaBot
-  - dfuchss/YARB
+  - dfuchss/matrix-joinlink
+  - dfuchss/mensabot
+  - dfuchss/yarb
   - dfuchss/actions
-  - dfuchss/DeltaBot
+  - dfuchss/deltabot
   - jplag/JPlag
 
 zenodo_repos:
-  - name: ARDoCo/Benchmark
+  - name: ardoco/benchmark
     doi: 10.5281/zenodo.6966831
     description: This repository contains a benchmark for traceability link recovery (TLR) between textual Software Architecture Documentation (SAD), Software Architecture Models (SAM) and source code.
   - name: Replication Package For Recovering Trace Links Between Software Documentation And Code

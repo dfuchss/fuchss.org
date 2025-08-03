@@ -1,11 +1,11 @@
 ---
-title: MensaBot
+title: mensabot
 description: A bot that reminds you of your food in your mensa
 layout: page
 category: matrix
 ---
 
-[MensaBot](https://github.com/dfuchss/MensaBot) sends you a daily reminder of the current food in your canteen (dt. mensa).
+[mensabot](https://github.com/dfuchss/mensabot) sends you a daily reminder of the current food in your canteen (dt. mensa).
 Additionally, you can use commands to request the listing directly.
 
 ## Features
@@ -45,9 +45,9 @@ Currently, the bot supports the following mensa:
 
 ## Development
 
-I'm typically online in the [Trixnity channel](https://matrix.to/#/#trixnity:imbitbu.de). So feel free to tag me there if you have any questions.
+I'm typically online in the [trixnity channel](https://matrix.to/#/#trixnity:imbitbu.de). So feel free to tag me there if you have any questions.
 
-- The bot is build using the [Trixnity](https://trixnity.gitlab.io/trixnity/) framework.
-- The basic functionality is located in [Main.kt](https://github.com/dfuchss/MensaBot/blob/main/src/main/kotlin/org/fuchss/matrix/mensa/Main.kt). There you can also find the main method of the program.
+- The bot is build using the [trixnity](https://trixnity.gitlab.io/trixnity/) framework.
+- The basic functionality is located in [Main.kt](https://github.com/dfuchss/mensabot/blob/main/src/main/kotlin/org/fuchss/matrix/mensa/Main.kt). There you can also find the main method of the program.
 - Every canteen that shall be considered has to implement the `CanteenAPI`. Currently, there is only one implementation for
   the [sw-ka.de interface](https://sw-ka.de).

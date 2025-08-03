@@ -156,7 +156,7 @@
   ],
   "projects": [
     {
-      "name": "ARDoCo",
+      "name": "ardoco",
       "summary": "Automating Requirements and Documentation Comprehension - Aiming to provide consistency analyses between formal models and informal (textual) documentation or requirements",
       "highlights": ["TLR", "Consistency"],
       "startDate": "2020",

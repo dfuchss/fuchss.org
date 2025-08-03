@@ -1,5 +1,5 @@
 ---
-title: Object Casket
+title: object-casket
 description: Object Casket is a simple object mapper that can be used together with the Java Persistence API (JPA).
 layout: page
 category: misc

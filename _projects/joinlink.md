@@ -1,16 +1,16 @@
 ---
-title: JoinLink
+title: matrix-joinlink
 description: A bot that allows the creation of Join Links to non-public Rooms in Matrix
 layout: page
 category: matrix
 ---
 
-[JoinLink](https://github.com/dfuchss/MatrixJoinLink) allows the creation of join links to non-public rooms in matrix. It uses the [Trixnity](https://trixnity.gitlab.io/trixnity/) framework.
+[matrix-joinlink](https://github.com/dfuchss/matrix-joinlink) allows the creation of join links to non-public rooms in matrix. It uses the [trixnity](https://trixnity.gitlab.io/trixnity/) framework.
 
 ## Reason for this Bot
 
 I always struggled with the problem that I have private rooms, I want to share with a group of friends. Before the bot, I had to invite all the people. Now I
-can invite _JoinLink_ and create an invite link. This link can be shared to my friends who want to join my room (including spaces).
+can invite _matrix-joinlink_ and create an invite link. This link can be shared to my friends who want to join my room (including spaces).
 
 ## Setup
 
@@ -49,9 +49,9 @@ can invite _JoinLink_ and create an invite link. This link can be shared to my f
 
 ## Development
 
-I'm typically online in the [Trixnity channel](https://matrix.to/#/#trixnity:imbitbu.de). So feel free to tag me there if you have any questions.
+I'm typically online in the [trixnity channel](https://matrix.to/#/#trixnity:imbitbu.de). So feel free to tag me there if you have any questions.
 
-- The basic functionality is located in [Main.kt](https://github.com/dfuchss/MatrixJoinLink/blob/main/src/main/kotlin/org/fuchss/matrix/joinlink/Main.kt). There you can also find the main method of the bot.
+- The basic functionality is located in [Main.kt](https://github.com/dfuchss/matrix-joinlink/blob/main/src/main/kotlin/org/fuchss/matrix/joinlink/Main.kt). There you can also find the main method of the bot.
 
 ### How does the bot work
 
