@@ -66,42 +66,42 @@ ninja.data = [{
             window.location.href = "/cv/";
           },
         },{id: "projects-ardoco",
-          title: 'ARDoCo',
+          title: 'ardoco',
           description: "Automating Requirements and Documentation Comprehension",
           section: "Projects",handler: () => {
               window.location.href = "/projects/ardoco/";
             },},{id: "projects-deltabot",
-          title: 'DeltaBot',
-          description: "DeltaBot is my first bot for Discord.",
+          title: 'deltabot',
+          description: "deltabot is my first bot for Discord.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/deltabot/";
             },},{id: "projects-jambeez",
-          title: 'JamBeez',
+          title: 'jambeez',
           description: "A cross-platform collaborative drum machine",
           section: "Projects",handler: () => {
               window.location.href = "/projects/jambeez/";
-            },},{id: "projects-joinlink",
-          title: 'JoinLink',
+            },},{id: "projects-matrix-joinlink",
+          title: 'matrix-joinlink',
           description: "A bot that allows the creation of Join Links to non-public Rooms in Matrix",
           section: "Projects",handler: () => {
               window.location.href = "/projects/joinlink/";
             },},{id: "projects-mensabot",
-          title: 'MensaBot',
+          title: 'mensabot',
           description: "A bot that reminds you of your food in your mensa",
           section: "Projects",handler: () => {
               window.location.href = "/projects/mensabot/";
             },},{id: "projects-object-casket",
-          title: 'Object Casket',
+          title: 'object-casket',
           description: "Object Casket is a simple object mapper that can be used together with the Java Persistence API (JPA).",
           section: "Projects",handler: () => {
               window.location.href = "/projects/objectcasket/";
-            },},{id: "projects-rεkit",
-          title: 'RεKiT',
+            },},{id: "projects-rekit",
+          title: 'rekit',
           description: "a platform jumper game",
           section: "Projects",handler: () => {
               window.location.href = "/projects/rekit/";
             },},{id: "projects-yarb",
-          title: 'YARB',
+          title: 'yarb',
           description: "Yet Another Reminder Bot",
           section: "Projects",handler: () => {
               window.location.href = "/projects/yarb/";
