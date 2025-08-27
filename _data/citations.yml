@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2025-08-23'
+  last_updated: '2025-08-27'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -74,7 +74,7 @@ papers:
     title: Establishing a benchmark dataset for traceability link recovery between software architecture documentation and models
     year: '2022'
   bVvFp4oAAAAJ:hqOjcs7Dif8C:
-    citations: 3
+    citations: 4
     title: 'Modeling languages for automotive digital twins: A survey among the german automotive industry'
     year: '2024'
   bVvFp4oAAAAJ:kNdYIx-mwKoC:
@@ -90,7 +90,7 @@ papers:
     title: Natural language data queries on multiple heterogenous data sources
     year: '2019'
   bVvFp4oAAAAJ:u5HHmVD_uO8C:
-    citations: 25
+    citations: 26
     title: 'PerOpteryx: Automated Improvement of Software Architectures.'
     year: '2019'
   bVvFp4oAAAAJ:zYLM7Y9cAGgC:
