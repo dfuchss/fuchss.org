@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2025-08-27'
+  last_updated: '2025-08-30'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -22,7 +22,7 @@ papers:
     title: Approaching natural conversation chatbots by interactive dialogue modelling & microsoft LUIS
     year: '2019'
   bVvFp4oAAAAJ:IjCSPb-OGe4C:
-    citations: 24
+    citations: 25
     title: Trace link recovery for software architecture documentation
     year: '2021'
   bVvFp4oAAAAJ:MXK_kJrjxJIC:
@@ -42,11 +42,11 @@ papers:
     title: Assessing Hypotheses in Multi-Agent Systems for Natural Language Processing
     year: '2020'
   bVvFp4oAAAAJ:UebtZRa9Y70C:
-    citations: 11
+    citations: 12
     title: Recovering Trace Links Between Software Documentation And Code
     year: '2024'
   bVvFp4oAAAAJ:WF5omc3nYNoC:
-    citations: 9
+    citations: 10
     title: Detecting inconsistencies in software architecture documentation using traceability link recovery
     year: '2023'
   bVvFp4oAAAAJ:YOwf2qJgpHMC:
@@ -70,7 +70,7 @@ papers:
     title: Assessing the quality impact of features in component-based software architectures
     year: '2019'
   bVvFp4oAAAAJ:eQOLeE2rZwMC:
-    citations: 9
+    citations: 10
     title: Establishing a benchmark dataset for traceability link recovery between software architecture documentation and models
     year: '2022'
   bVvFp4oAAAAJ:hqOjcs7Dif8C:
@@ -90,7 +90,7 @@ papers:
     title: Natural language data queries on multiple heterogenous data sources
     year: '2019'
   bVvFp4oAAAAJ:u5HHmVD_uO8C:
-    citations: 26
+    citations: 27
     title: 'PerOpteryx: Automated Improvement of Software Architectures.'
     year: '2019'
   bVvFp4oAAAAJ:zYLM7Y9cAGgC:
