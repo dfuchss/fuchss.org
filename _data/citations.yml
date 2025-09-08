@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2025-08-30'
+  last_updated: '2025-09-08'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -34,7 +34,7 @@ papers:
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
-    citations: 2
+    citations: 3
     title: 'Software Architecture Meets LLMs: A Systematic Literature Review'
     year: '2025'
   bVvFp4oAAAAJ:UeHWp8X0CEIC:
@@ -42,7 +42,7 @@ papers:
     title: Assessing Hypotheses in Multi-Agent Systems for Natural Language Processing
     year: '2020'
   bVvFp4oAAAAJ:UebtZRa9Y70C:
-    citations: 12
+    citations: 13
     title: Recovering Trace Links Between Software Documentation And Code
     year: '2024'
   bVvFp4oAAAAJ:WF5omc3nYNoC:
@@ -90,7 +90,7 @@ papers:
     title: Natural language data queries on multiple heterogenous data sources
     year: '2019'
   bVvFp4oAAAAJ:u5HHmVD_uO8C:
-    citations: 27
+    citations: 28
     title: 'PerOpteryx: Automated Improvement of Software Architectures.'
     year: '2019'
   bVvFp4oAAAAJ:zYLM7Y9cAGgC:
