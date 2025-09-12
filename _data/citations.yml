@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2025-09-08'
+  last_updated: '2025-09-12'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -14,7 +14,7 @@ papers:
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
     year: '2025'
   bVvFp4oAAAAJ:8k81kl-MbHgC:
-    citations: 7
+    citations: 9
     title: 'LiSSA: toward generic traceability link recovery through retrieval-augmented generation'
     year: '2025'
   bVvFp4oAAAAJ:9yKSN-GCB0IC:
@@ -26,11 +26,11 @@ papers:
     title: Trace link recovery for software architecture documentation
     year: '2021'
   bVvFp4oAAAAJ:MXK_kJrjxJIC:
-    citations: 3
+    citations: 4
     title: Requirements Traceability Link Recovery via Retrieval-Augmented Generation
     year: '2025'
   bVvFp4oAAAAJ:Tyk-4Ss8FVUC:
-    citations: 21
+    citations: 22
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
@@ -42,11 +42,11 @@ papers:
     title: Assessing Hypotheses in Multi-Agent Systems for Natural Language Processing
     year: '2020'
   bVvFp4oAAAAJ:UebtZRa9Y70C:
-    citations: 13
+    citations: 14
     title: Recovering Trace Links Between Software Documentation And Code
     year: '2024'
   bVvFp4oAAAAJ:WF5omc3nYNoC:
-    citations: 10
+    citations: 11
     title: Detecting inconsistencies in software architecture documentation using traceability link recovery
     year: '2023'
   bVvFp4oAAAAJ:YOwf2qJgpHMC:
@@ -94,6 +94,6 @@ papers:
     title: 'PerOpteryx: Automated Improvement of Software Architectures.'
     year: '2019'
   bVvFp4oAAAAJ:zYLM7Y9cAGgC:
-    citations: 0
+    citations: 2
     title: Sketches and Natural Language in Agile Modeling
     year: '2021'
