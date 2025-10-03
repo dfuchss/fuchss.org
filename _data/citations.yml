@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2025-09-27'
+  last_updated: '2025-10-03'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -26,7 +26,7 @@ papers:
     title: Trace Link Recovery for Software Architecture Documentation
     year: '2021'
   bVvFp4oAAAAJ:MXK_kJrjxJIC:
-    citations: 4
+    citations: 5
     title: Requirements Traceability Link Recovery via Retrieval-Augmented Generation
     year: '2025'
   bVvFp4oAAAAJ:Tyk-4Ss8FVUC:
