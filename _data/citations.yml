@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2025-10-15'
+  last_updated: '2025-10-16'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -14,7 +14,7 @@ papers:
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
     year: '2025'
   bVvFp4oAAAAJ:8k81kl-MbHgC:
-    citations: 13
+    citations: 15
     title: 'LiSSA: toward generic traceability link recovery through retrieval-augmented generation'
     year: '2025'
   bVvFp4oAAAAJ:9yKSN-GCB0IC:
@@ -22,7 +22,7 @@ papers:
     title: Approaching natural conversation chatbots by interactive dialogue modelling & microsoft LUIS
     year: '2019'
   bVvFp4oAAAAJ:IWHjjKOFINEC:
-    citations: 26
+    citations: 27
     title: Trace Link Recovery for Software Architecture Documentation
     year: '2021'
   bVvFp4oAAAAJ:MXK_kJrjxJIC:
