@@ -1,6 +1,10 @@
 metadata:
-  last_updated: '2025-10-16'
+  last_updated: '2025-10-18'
 papers:
+  bVvFp4oAAAAJ:-f6ydRqryjwC:
+    citations: 0
+    title: REW 2025
+    year: Unknown Year
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
     title: Context Classification in Dialog-Based Interaction
@@ -73,6 +77,10 @@ papers:
     citations: 10
     title: Establishing a benchmark dataset for traceability link recovery between software architecture documentation and models
     year: '2022'
+  bVvFp4oAAAAJ:hFOr9nPyWt4C:
+    citations: 0
+    title: "2025 IEEE 33rd International Requirements Engineering Conference Workshops (REW)| 979-8-3315-3834-7/25/$31.00\xA9 2025 IEEE| DOI: 10.1109/REW66121. 2025.00090"
+    year: Unknown Year
   bVvFp4oAAAAJ:hqOjcs7Dif8C:
     citations: 6
     title: 'Modeling languages for automotive digital twins: A survey among the german automotive industry'
