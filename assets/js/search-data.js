@@ -134,6 +134,13 @@ ninja.data = [{
           window.open("https://dblp.org/pid/243/9362.html", "_blank");
         },
       },{
+        id: 'social-researchgate',
+        title: 'ResearchGate',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://www.researchgate.net/profile/Dominik-Fuchss/", "_blank");
+        },
+      },{
         id: 'social-scopus',
         title: 'Scopus',
         section: 'Socials',
