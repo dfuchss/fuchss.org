@@ -46,10 +46,10 @@ jobs:
           set +e
           echo "🚀 Starting citation update script..."
           success=0
-          for i in {1..3}; do
+          for i in {1..1}; do
             echo "🔁 Attempt $i to update citations..."
             start_time=$(date)
-            timeout 90 python bin/update_scholar_citations.py
+            timeout 30 python bin/update_scholar_citations.py
             status=$?
             end_time=$(date)
             if [ $status -eq 0 ]; then
@@ -62,8 +62,8 @@ jobs:
             fi
           done
           if [ $success -ne 1 ]; then
-            echo "❌ All 3 attempts to update citations failed."
-            echo "❌ Citation update script failed after 3 attempts." >> $GITHUB_STEP_SUMMARY
+            echo "❌ All attempt(s) to update citations failed."
+            echo "❌ Citation update script failed after all attempts." >> $GITHUB_STEP_SUMMARY
           fi
           set -e
 
