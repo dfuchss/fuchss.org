@@ -9,6 +9,13 @@ authors:
   - stefan_schwedt
   - jan_keim
   - tobias_hey
+links:
+  paper:
+    kitopen: https://publikationen.bibliothek.kit.edu/1000183058
+    ieee: https://ieeexplore.ieee.org/document/11190238
+  replication:
+    zenodo: https://doi.org/10.5281/zenodo.15837231
+    repo: https://github.com/ardoco/Replication-Package-AIRE25_Beyond-Retrieval-Using-LLM-Ensembles-for-Candidate-Filtering-in-Req-TLR
 ---
 
 Published at the [33rd International Requirements Engineering Conference Workshops (REW)](https://aire-ws.github.io/aire25/).
@@ -35,8 +42,3 @@ While our LLM-based ensemble approach achieves comparable F2-scores to IR method
 **[Conclusion]**
 This work provides insights into the capabilities of small LLMs as a filter in inter-requirements TLR.
 Moreover, it provides insights into the performance of traditional IR techniques for TLR and their dependency on hyperparameters.
-
-## Links
-
-- Paper on [KITopen](https://publikationen.bibliothek.kit.edu/1000183058) and [IEEE Xplore](https://ieeexplore.ieee.org/document/11190238)
-- Replication Package on [Zenodo](https://doi.org/10.5281/zenodo.15837231) and the corresponding [GitHub repository](https://github.com/ardoco/Replication-Package-AIRE25_Beyond-Retrieval-Using-LLM-Ensembles-for-Candidate-Filtering-in-Req-TLR)

@@ -10,6 +10,13 @@ authors:
   - tobias_hey
   - jan_keim
   - anne_koziolek
+links:
+  paper:
+    kitopen: https://publikationen.bibliothek.kit.edu/1000179830
+    ieee: https://ieeexplore.ieee.org/document/10978943
+  replication:
+    zenodo: https://doi.org/10.5281/zenodo.14506935
+    repo: https://github.com/ardoco/ReplicationPackage-EnablingArchitectureTraceabilitybyLLM-basedArchitectureComponentNameExtraction
 ---
 
 Published at the [22nd IEEE International Conference on Software Architecture (ICSA 2025), March 31 - April 04 2025](https://conf.researchr.org/home/icsa-2025/).
@@ -30,8 +37,3 @@ TransArC is the currently best-performing approach for TLR between SAD and sourc
 Our evaluation shows that our approach performs comparable to TransArC (weighted average F1 with GPT-4o: 0.86 vs. TransArC's 0.87), while only needing the SAD and source code.
 Moreover, our approach significantly outperforms the best baseline that does not need SAMs (weighted average F1 with GPT-4o: 0.86 vs. ArDoCode's 0.62).
 In summary, our approach shows that LLMs can be used to make TLR between SAD and source code more applicable by extracting component names and omitting the need for manually created SAMs.
-
-## Links
-
-- Paper on [KITopen](https://publikationen.bibliothek.kit.edu/1000179830) and [IEEE Xplore](https://ieeexplore.ieee.org/document/10978943)
-- Replication Package on [Zenodo](https://doi.org/10.5281/zenodo.14506935) and the corresponding [GitHub repository](https://github.com/ardoco/ReplicationPackage-EnablingArchitectureTraceabilitybyLLM-basedArchitectureComponentNameExtraction)
