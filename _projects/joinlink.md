@@ -5,19 +5,19 @@ layout: page
 category: matrix
 ---
 
-[matrix-joinlink](https://github.com/dfuchss/matrix-joinlink) allows the creation of join links to non-public rooms in matrix. It uses the [trixnity](https://trixnity.gitlab.io/trixnity/) framework.
+[matrix-joinlink](https://github.com/dfuchss/matrix-joinlink) allows the creation of join links to non-public rooms in Matrix. It uses the [trixnity](https://trixnity.gitlab.io/trixnity/) framework.
 
 ## Reason for this Bot
 
-I always struggled with the problem that I have private rooms, I want to share with a group of friends. Before the bot, I had to invite all the people. Now I
-can invite _matrix-joinlink_ and create an invite link. This link can be shared to my friends who want to join my room (including spaces).
+I often struggled with sharing private rooms with a group of friends. Before this bot, I had to invite everyone manually. Now I
+can invite _matrix-joinlink_ and create a join link. This link can be shared with friends who want to join the room (including spaces).
 
 ## Setup
 
 1. Get a matrix account for the bot (e.g., on your own homeserver or on `matrix.org`)
 2. Prepare configuration:
    - Copy `config-sample.json` to `config.json`
-   - Enter `baseUrl` to the matrix server and `username` / `password` for the bot user
+   - Enter the `baseUrl` of the Matrix server and `username` / `password` for the bot user
    - Set an encryption key. The bot will use this string as key to encrypt the state events.
    - Add yourself (e.g., `@user:matrix.org`) or your homeserver (e.g., `:matrix.org`) to the `users` (empty == allow all). Users can interact with the bot.
    - Add yourself to the `admins` (can't be empty)
@@ -30,8 +30,8 @@ can invite _matrix-joinlink_ and create an invite link. This link can be shared 
 ## Usage
 
 - A user (see user list in configuration file) can invite the bot to a room.
-- After the bot has joined use `!join help` to get an overview about the features of the bot (remember: the bot only respond to users in the user list)
-- In order to create a Join Link simply type `!join link SomeFancyNameForTheLink` and the bot will create a join link. Please make sure that the bot has the ability to invite users.
+- After the bot has joined, use `!join help` to get an overview of the features of the bot (remember: the bot only responds to users in the user list)
+- To create a join link, type `!join link SomeFancyNameForTheLink` and the bot will create one. Please make sure that the bot has the ability to invite users.
 
 <img src="/assets/projects/joinlink/help.png" width="100%" alt="Help" />
 
@@ -53,12 +53,11 @@ I'm typically online in the [trixnity channel](https://matrix.to/#/#trixnity:imb
 
 - The basic functionality is located in [Main.kt](https://github.com/dfuchss/matrix-joinlink/blob/main/src/main/kotlin/org/fuchss/matrix/joinlink/Main.kt). There you can also find the main method of the bot.
 
-### How does the bot work
+### How the bot works
 
 1. Let's assume that you want to share the private room `!private:room.domain`
 2. After you've invited the bot, you can enter `!join link IShareLinksWithYou`
-3. The bot creates a new public room that contains "IShareLinksWithYou" in its name. This room will not be listed in the room directory; for this example its ID
-   is `!public:room.domain`
+3. The bot creates a new public room that contains "IShareLinksWithYou" in its name. This room will not be listed in the room directory; for this example its ID is `!public:room.domain`.
 4. If somebody joins the public room, the bot verifies based on two encrypted state events in `!private:room.domain` and `!public:room.domain` whether the rooms
    belong to each other. If so, the bot simply invites the user to the private room.
 5. If you want to disable the share simply type `!join unlink` in the private room. This will invalidate the join link.

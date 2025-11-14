@@ -8,8 +8,8 @@ categories: projects
 featured: true
 ---
 
-For conference organizers seeking a user-friendly website, [al-folio-conf](https://github.com/dfuchss/al-folio-conf) offers an possible solution.
-This Jekyll theme, a fork of the popular [al-folio](https://github.com/alshedivat/al-folio), combines simplicity, elegance, and functionality, making it perfect for showcasing your event. (Of course, I use al-folio for this website here as well 😉)
+For conference organizers seeking a user-friendly website, [al-folio-conf](https://github.com/dfuchss/al-folio-conf) offers a possible solution.
+This Jekyll theme, a fork of the popular [al-folio](https://github.com/alshedivat/al-folio), combines simplicity, elegance, and functionality, making it perfect for showcasing your event. (Of course, I use al-folio for this website as well 😉)
 
 ## Getting Started 🚀
 

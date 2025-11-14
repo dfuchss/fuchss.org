@@ -5,13 +5,13 @@ layout: page
 category: matrix
 ---
 
-[mensabot](https://github.com/dfuchss/mensabot) sends you a daily reminder of the current food in your canteen (dt. mensa).
+[mensabot](https://github.com/dfuchss/mensabot) sends you a daily reminder of the current menu in your canteen (German: mensa).
 Additionally, you can use commands to request the listing directly.
 
 ## Features
 
 - Schedule daily posts about the food in your canteen
-- Request summary of food in your mensa (at the current date)
+- Request a summary of the food in your mensa for the current date
 - Change display name per room
 - Simple rights management (only configured admins can interact with the bot)
 
@@ -39,7 +39,7 @@ Currently, the bot supports the following mensa:
 ## Usage
 
 - An admin can invite the bot to an _unencrypted_ room. If the room has enabled encryption or if the invite was not sent by an admin, the bot ignores it (without logging it)
-- After the bot has joined use `!mensa help` to get an overview about the features of the bot (remember: the bot only respond to admin users)
+- After the bot has joined, use `!mensa help` to get an overview of the features of the bot (remember: the bot only responds to admin users)
 - In order to get daily notifications about the food in your canteen, simply use `!mensa subscribe`. This command will print the room id of the current room into the channel. Add this channel to the
   list in the config and restart the bot.
 
@@ -47,7 +47,7 @@ Currently, the bot supports the following mensa:
 
 I'm typically online in the [trixnity channel](https://matrix.to/#/#trixnity:imbitbu.de). So feel free to tag me there if you have any questions.
 
-- The bot is build using the [trixnity](https://trixnity.gitlab.io/trixnity/) framework.
+- The bot is built using the [trixnity](https://trixnity.gitlab.io/trixnity/) framework.
 - The basic functionality is located in [Main.kt](https://github.com/dfuchss/mensabot/blob/main/src/main/kotlin/org/fuchss/matrix/mensa/Main.kt). There you can also find the main method of the program.
-- Every canteen that shall be considered has to implement the `CanteenAPI`. Currently, there is only one implementation for
-  the [sw-ka.de interface](https://sw-ka.de).
+- Every canteen to be supported has to implement the `CanteenAPI`. Currently, there is only one implementation for the
+  [sw-ka.de interface](https://sw-ka.de).

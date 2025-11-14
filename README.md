@@ -2,16 +2,16 @@
 
 This website is built using [al-folio](https://github.com/alshedivat/al-folio), a beautiful, simple, clean, and responsive Jekyll theme for academics.
 
-### Installation
+## Installation
 
-```
-$ npm install
-```
-
-### Local Development
-
-```
-$ docker compose up
+```bash
+npm install
 ```
 
-This command starts a local development server. Open `http://localhost:8080`. Most changes are reflected live without having to restart the server.
+## Local Development
+
+```bash
+docker compose up
+```
+
+This command starts a local development server. Open `http://localhost:8080`. Most changes are reflected live without needing to restart the server.

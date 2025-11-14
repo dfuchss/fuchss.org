@@ -28,7 +28,7 @@ latest_posts:
 Researcher at [Karlsruhe Institute of Technology (KIT)](https://www.kit.edu/), Germany.
 
 My overall goal is the utilization of informal artifacts for automatic traceability link recovery (TLR) and consistency checking.
-In my recent research I focus on the application of large language models for TLR tasks, such as retrieval augmented generation.
+In my recent research I focus on the application of large language models for TLR tasks, such as retrieval-augmented generation.
 
 If you want to contact me securely, please use my [PGP key](/pgp-key/).
 

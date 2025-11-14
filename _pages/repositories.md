@@ -52,7 +52,7 @@ social: true
 
 ## Zenodo Repositories
 
-These repositories are hosted on Zenodo and have a DOI assigned. They include research data, software, and more.
+These repositories are hosted on Zenodo and have a DOI assigned. They include research data, software, and other archived artifacts.
 
 {% for repo in site.data.repositories.zenodo_repos %}
 

@@ -2,7 +2,7 @@
 layout: post
 title: ArDoCo Metrics Calculator
 date: 2024-08-30
-description: ArDoCo Metrics Calculator a tool to calculate classification and rank metrics.
+description: ArDoCo Metrics Calculator is a tool to calculate classification and rank metrics.
 tags: [research, metrics, ArDoCo]
 categories: research
 featured: true
