@@ -11,13 +11,20 @@ semanticscholar_id: 2276068674 # your Semantic Scholar ID
 github_username: dfuchss # your GitHub user name
 linkedin_username: dfuchss # your LinkedIn user name
 work_url: https://mcse.kastel.kit.edu/staff_dominik_fuchss.php # work page URL
+
+# academia_edu: # your organization and your username Ex. https://organization.academia.edu/UserName
+# organization: # your organization as appears in the subdomain
+# username:  # your username
 # acm_id: # your dl.acm.org/profile/id
+# arxiv_id: # your arXiv author ID
 # blogger_url: # your blogger URL
 # bluesky_url: # your bluesky URL
+# cv_pdf: # path to your CV PDF file
 # discord_id: # your discord id (18-digit unique numerical identifier)
 # facebook_id: # your facebook id
 # flickr_id: # your flickr id
 # gitlab_username: # your GitLab user name
+# hal_id: # your HAL id (https://hal.science/)
 # ieee_id: # your ieeexplore.ieee.org/author/id
 # inspirehep_id: # Inspire HEP author ID
 # instagram_id: # your instagram id
@@ -36,6 +43,7 @@ work_url: https://mcse.kastel.kit.edu/staff_dominik_fuchss.php # work page URL
 # rss_icon: true # set to true to show the RSS icon
 # spotify_id: # your spotify id
 # stackoverflow_id: # your stackoverflow id
+# strava_userid: # your strava user id
 # telegram_username: # your Telegram user name
 # unsplash_id: # your unsplash id
 # wechat_qr: # filename of your wechat qr-code saved as an image (e.g., wechat-qr.png if saved to assets/img/wechat-qr.png)
