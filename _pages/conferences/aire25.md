@@ -11,8 +11,8 @@ authors:
   - tobias_hey
 links:
   paper:
-    kitopen: https://publikationen.bibliothek.kit.edu/1000183058
     ieee: https://ieeexplore.ieee.org/document/11190238
+    kitopen: https://publikationen.bibliothek.kit.edu/1000183058
   replication:
     zenodo: https://doi.org/10.5281/zenodo.15837231
     repo: https://github.com/ardoco/Replication-Package-AIRE25_Beyond-Retrieval-Using-LLM-Ensembles-for-Candidate-Filtering-in-Req-TLR

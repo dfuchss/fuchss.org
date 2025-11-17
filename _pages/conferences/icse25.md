@@ -16,7 +16,6 @@ links:
   paper:
     ieee: https://doi.org/10.1109/ICSE55347.2025.00186
     kitopen: https://publikationen.bibliothek.kit.edu/1000179816
-    conjunction: or
   replication:
     zenodo: https://doi.org/10.5281/zenodo.14714706
     repo: https://github.com/ardoco/ReplicationPackage-ICSE25_LiSSA-Toward-Generic-Traceability-Link-Recovery-through-RAG/tree/main

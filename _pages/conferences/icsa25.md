@@ -12,8 +12,8 @@ authors:
   - anne_koziolek
 links:
   paper:
-    kitopen: https://publikationen.bibliothek.kit.edu/1000179830
     ieee: https://ieeexplore.ieee.org/document/10978943
+    kitopen: https://publikationen.bibliothek.kit.edu/1000179830
   replication:
     zenodo: https://doi.org/10.5281/zenodo.14506935
     repo: https://github.com/ardoco/ReplicationPackage-EnablingArchitectureTraceabilitybyLLM-basedArchitectureComponentNameExtraction

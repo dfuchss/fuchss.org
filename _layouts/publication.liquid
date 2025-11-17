@@ -47,79 +47,48 @@ layout: default
           .links-block h2 {
             margin-bottom: 0.75rem;
           }
-          .links-aligned {
+          .links-list {
             list-style: none;
             padding-left: 0;
             margin: 0;
           }
-          .links-aligned li {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            margin: 0.25rem 0;
+          .links-list li {
+            margin: 0.5rem 0;
+            line-height: 1.6;
           }
-          .links-aligned .label {
-            min-width: 190px;
-            font-weight: 600;
-          }
-          .links-aligned .value a {
-            white-space: nowrap;
+          .links-list li i {
+            margin-right: 8px;
+            width: 20px;
+            text-align: center;
           }
         </style>
         <div class="links-block">
           <h2>Links</h2>
-          <ul class="links-aligned">
-            {% if page.links.paper and (page.links.paper.kitopen or page.links.paper.ieee or page.links.paper.acm or page.links.paper.springer or page.links.paper.xplore or page.links.paper.acmdl) %}
-              <li>
-                <span class="label">Paper</span>
-                <span class="value">
-                  {% assign conj = page.links.paper.conjunction | default: 'and' %}
-                  {% assign printed = false %}
-
-                  {% if page.links.paper.ieee or page.links.paper.xplore -%}
-                    {%- if printed %} {{ conj }} {% endif -%}
-                    <a href="{{ page.links.paper.ieee | default: page.links.paper.xplore }}">IEEE Xplore</a>{% assign printed = true -%}
-                  {%- endif %}
-                  {% if page.links.paper.acm or page.links.paper.acmdl -%}
-                    {%- if printed %} {{ conj }} {% endif -%}
-                    <a href="{{ page.links.paper.acm | default: page.links.paper.acmdl }}">ACM Digital Library</a>{% assign printed = true -%}
-                  {%- endif %}
-                  {% if page.links.paper.springer -%}
-                    {%- if printed %} {{ conj }} {% endif -%}
-                    <a href="{{ page.links.paper.springer }}">SpringerLink</a>{% assign printed = true -%}
-                  {%- endif %}
-                  {% if page.links.paper.kitopen -%}
-                    {%- if printed %} {{ conj }} {% endif -%}
-                    <a href="{{ page.links.paper.kitopen }}">KITopen</a>{% assign printed = true -%}
-                  {%- endif %}
-                </span>
-              </li>
+          <ul class="links-list">
+            {% if page.links.paper and (page.links.paper.kitopen or page.links.paper.ieee or page.links.paper.acm or page.links.paper.springer) %}
+              {% if page.links.paper.ieee %}
+                <li><i class="fa-solid fa-file-lines"></i><a href="{{ page.links.paper.ieee }}">IEEE Xplore</a></li>
+              {% endif %}
+              {% if page.links.paper.acm %}
+                <li><i class="fa-solid fa-file-lines"></i><a href="{{ page.links.paper.acm }}">ACM Digital Library</a></li>
+              {% endif %}
+              {% if page.links.paper.springer %}
+                <li><i class="fa-solid fa-file-lines"></i><a href="{{ page.links.paper.springer }}">SpringerLink</a></li>
+              {% endif %}
+              {% if page.links.paper.kitopen %}
+                <li><i class="fa-solid fa-file-lines"></i><a href="{{ page.links.paper.kitopen }}">KITopen</a></li>
+              {% endif %}
             {% endif %}
-            {% if page.links.replication and (page.links.replication.zenodo or page.links.replication.repo) %}
-              <li>
-                <span class="label">Replication Package</span>
-                <span class="value">
-                  {% if page.links.replication.zenodo -%}
-                    <a href="{{ page.links.replication.zenodo }}">Zenodo</a>
-                  {%- endif %}
-                  {% if page.links.replication.zenodo and page.links.replication.repo %} and the corresponding {% endif %}
-                  {% if page.links.replication.repo -%}
-                    <a href="{{ page.links.replication.repo }}">GitHub repository</a>
-                  {%- endif %}
-                </span>
-              </li>
+            {% if page.links.replication %}
+              {% if page.links.replication.zenodo %}
+                <li><i class="fa-solid fa-box-archive"></i><a href="{{ page.links.replication.zenodo }}">Replication Package (Zenodo)</a></li>
+              {% endif %}
+              {% if page.links.replication.repo %}
+                <li><i class="fa-brands fa-github"></i><a href="{{ page.links.replication.repo }}">GitHub Repository</a></li>
+              {% endif %}
             {% endif %}
           </ul>
         </div>
-      {% elsif page.links.items %}
-        {% capture links_md %}
-      ## Links
-
-{% for item in page.links.items %}
-- {{ item.text }}
-{% endfor %}
-        {% endcapture %}
-        {{ links_md | markdownify }}
       {% endif %}
     {% endif %}
   </article>
@@ -137,6 +106,7 @@ layout: default
         margin-top: 0px !important;
       }
     </style>
+    <br>
     <h2>Cite this paper</h2>
     <div class="publications">
       {% bibliography -q @*[key ^= {{page.publication}}] --group_by none %}
