@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2025-11-12'
+  last_updated: '2025-11-23'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -34,7 +34,7 @@ papers:
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
-    citations: 4
+    citations: 5
     title: 'Software Architecture Meets LLMs: A Systematic Literature Review'
     year: '2025'
   bVvFp4oAAAAJ:UeHWp8X0CEIC:
