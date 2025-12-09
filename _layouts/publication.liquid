@@ -36,6 +36,36 @@ layout: default
         {% endfor %}
       </p>
     {% endif %}
+
+    {% if page.conference_name %}
+      {% assign is_published = page.published | default: true %}
+      <p>
+        {% if is_published == false %}
+          To be published at the
+        {% else %}
+          Published at the
+        {% endif %}
+        {% if page.conference_url %}
+          <a href="{{ page.conference_url }}">{{ page.conference_name }}</a>
+        {% else %}
+          {{ page.conference_name }}
+        {% endif %}
+      </p>
+    {% endif %}
+
+    {% if page.additional_presentations %}
+      <p>
+        Also presented at
+        {% for pres in page.additional_presentations %}
+          {% if pres.url %}
+            <a href="{{ pres.url }}">{{ pres.name }}</a>
+          {% else %}
+            {{ pres.name }}
+          {% endif %}
+          {% unless forloop.last %}; {% endunless %}
+        {% endfor %}
+      </p>
+    {% endif %}
     {{ content }}
 
     {% if page.links %}
@@ -65,26 +95,118 @@ layout: default
         <div class="links-block">
           <h2>Links</h2>
           <ul class="links-list">
-            {% if page.links.paper and (page.links.paper.kitopen or page.links.paper.ieee or page.links.paper.acm or page.links.paper.springer) %}
+            {% if page.links.paper %}
+              {% assign paper_links = '' %}
+              {% assign paper_sep = '' %}
               {% if page.links.paper.ieee %}
-                <li><i class="fa-solid fa-file-lines"></i><a href="{{ page.links.paper.ieee }}">IEEE Xplore</a></li>
+                {% assign paper_links = paper_links
+                  | append: paper_sep
+                  | append: '<a href="'
+                  | append: page.links.paper.ieee
+                  | append: '">IEEE Xplore</a>'
+                %}
+                {% assign paper_sep = ' · ' %}
               {% endif %}
               {% if page.links.paper.acm %}
-                <li><i class="fa-solid fa-file-lines"></i><a href="{{ page.links.paper.acm }}">ACM Digital Library</a></li>
+                {% assign paper_links = paper_links
+                  | append: paper_sep
+                  | append: '<a href="'
+                  | append: page.links.paper.acm
+                  | append: '">ACM Digital Library</a>'
+                %}
+                {% assign paper_sep = ' · ' %}
               {% endif %}
               {% if page.links.paper.springer %}
-                <li><i class="fa-solid fa-file-lines"></i><a href="{{ page.links.paper.springer }}">SpringerLink</a></li>
+                {% assign paper_links = paper_links
+                  | append: paper_sep
+                  | append: '<a href="'
+                  | append: page.links.paper.springer
+                  | append: '">SpringerLink</a>'
+                %}
+                {% assign paper_sep = ' · ' %}
               {% endif %}
               {% if page.links.paper.kitopen %}
-                <li><i class="fa-solid fa-file-lines"></i><a href="{{ page.links.paper.kitopen }}">KITopen</a></li>
+                {% assign paper_links = paper_links
+                  | append: paper_sep
+                  | append: '<a href="'
+                  | append: page.links.paper.kitopen
+                  | append: '">KITopen</a>'
+                %}
+                {% assign paper_sep = ' · ' %}
+              {% endif %}
+              {% if paper_links != '' %}
+                <li>
+                  <i class="fa-solid fa-file-lines"></i>
+                  <strong>Paper:</strong>
+                  {{ paper_links | strip }}
+                </li>
               {% endif %}
             {% endif %}
+
             {% if page.links.replication %}
+              {% assign replication_links = '' %}
+              {% assign replication_sep = '' %}
               {% if page.links.replication.zenodo %}
-                <li><i class="fa-solid fa-box-archive"></i><a href="{{ page.links.replication.zenodo }}">Replication Package (Zenodo)</a></li>
+                {% assign replication_links = replication_links
+                  | append: replication_sep
+                  | append: '<a href="'
+                  | append: page.links.replication.zenodo
+                  | append: '">Zenodo</a>'
+                %}
+                {% assign replication_sep = ' · ' %}
               {% endif %}
               {% if page.links.replication.repo %}
-                <li><i class="fa-brands fa-github"></i><a href="{{ page.links.replication.repo }}">GitHub Repository</a></li>
+                {% assign replication_links = replication_links
+                  | append: replication_sep
+                  | append: '<a href="'
+                  | append: page.links.replication.repo
+                  | append: '">GitHub</a>'
+                %}
+                {% assign replication_sep = ' · ' %}
+              {% endif %}
+              {% if replication_links != '' %}
+                <li>
+                  <i class="fa-solid fa-box-archive"></i>
+                  <strong>Replication Package:</strong>
+                  {{ replication_links | strip }}
+                </li>
+              {% endif %}
+            {% endif %}
+
+            {% if page.links.slides %}
+              {% assign slide_links = '' %}
+              {% assign slide_sep = '' %}
+              {% for slide in page.links.slides %}
+                {% assign key = slide[0] %}
+                {% assign key_down = key | downcase %}
+                {% if key_down contains 'pptx' %}
+                  {% assign label = 'PPTX' %}
+                {% elsif key_down contains 'pdf' %}
+                  {% assign version = key_down | replace: '_pdf', '' | replace: 'pdf', '' | replace: '_', ' ' | strip | upcase %}
+                  {% if version == '' %}
+                    {% assign label = 'PDF' %}
+                  {% else %}
+                    {% assign label = 'PDF (' | append: version | append: ')' %}
+                  {% endif %}
+                {% else %}
+                  {% assign label = key | replace: '_', ' ' | upcase %}
+                {% endif %}
+                {% assign slide_links = slide_links
+                  | append: slide_sep
+                  | append: '<a href="'
+                  | append: slide[1]
+                  | append: '">'
+                  | append: label
+                  | append: '</a>'
+                %}
+                {% assign slide_sep = ' / ' %}
+              {% endfor %}
+              {% if slide_links != '' %}
+                <li>
+                  <i class="fa-solid fa-person-chalkboard"></i>
+                  <strong>Slides:</strong>
+                  {{ slide_links | strip }}
+                </li>
               {% endif %}
             {% endif %}
           </ul>
@@ -106,7 +228,6 @@ layout: default
         margin-top: 0px !important;
       }
     </style>
-    <br>
     <h2>Cite this paper</h2>
     <div class="publications">
       {% bibliography -q @*[key ^= {{page.publication}}] --group_by none %}

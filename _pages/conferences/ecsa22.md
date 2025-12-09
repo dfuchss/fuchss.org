@@ -10,13 +10,14 @@ authors:
   - jan_keim
   - janek_speit
   - anne_koziolek
+conference_name: "16th European Conference on Software Architecture (ECSA 2022)"
+conference_url: https://conf.researchr.org/home/ecsa-2022
+published: true
 links:
   paper:
     acm: https://dl.acm.org/doi/10.1007/978-3-031-36889-9_30
     kitopen: https://publikationen.bibliothek.kit.edu/1000160708
 ---
-
-Published at the [16th European Conference on Software Architecture (ECSA 2022), September 19-23 2022](https://conf.researchr.org/home/ecsa-2022).
 
 ## Abstract
 

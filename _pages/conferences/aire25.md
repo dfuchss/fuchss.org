@@ -9,6 +9,9 @@ authors:
   - stefan_schwedt
   - jan_keim
   - tobias_hey
+conference_name: "33rd International Requirements Engineering Conference Workshops (REW)"
+conference_url: https://aire-ws.github.io/aire25/
+published: true
 links:
   paper:
     ieee: https://ieeexplore.ieee.org/document/11190238
@@ -17,8 +20,6 @@ links:
     zenodo: https://doi.org/10.5281/zenodo.15837231
     repo: https://github.com/ardoco/Replication-Package-AIRE25_Beyond-Retrieval-Using-LLM-Ensembles-for-Candidate-Filtering-in-Req-TLR
 ---
-
-Published at the [33rd International Requirements Engineering Conference Workshops (REW)](https://aire-ws.github.io/aire25/).
 
 ![Approach Overview](/assets/img/conferences/aire25-approach.svg){:width="100%" style="background-color: white; border-radius: 8px; padding: 10px; display: block; margin: 0 auto;"}
 

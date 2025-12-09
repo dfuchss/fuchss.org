@@ -10,6 +10,9 @@ authors:
   - tobias_hey
   - jan_keim
   - anne_koziolek
+conference_name: "22nd IEEE International Conference on Software Architecture (ICSA 2025)"
+conference_url: https://conf.researchr.org/home/icsa-2025/
+published: true
 links:
   paper:
     ieee: https://ieeexplore.ieee.org/document/10978943
@@ -18,8 +21,6 @@ links:
     zenodo: https://doi.org/10.5281/zenodo.14506935
     repo: https://github.com/ardoco/ReplicationPackage-EnablingArchitectureTraceabilitybyLLM-basedArchitectureComponentNameExtraction
 ---
-
-Published at the [22nd IEEE International Conference on Software Architecture (ICSA 2025), March 31 - April 04 2025](https://conf.researchr.org/home/icsa-2025/).
 
 ![Approach Overview](/assets/img/conferences/icsa25-approach.svg){:width="100%" style="background-color: white; border-radius: 8px; padding: 10px; display: block; margin: 0 auto;"}
 
