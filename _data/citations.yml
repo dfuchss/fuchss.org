@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2025-12-09'
+  last_updated: '2025-12-26'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -21,6 +21,10 @@ papers:
     citations: 9
     title: Approaching natural conversation chatbots by interactive dialogue modelling & microsoft LUIS
     year: '2019'
+  bVvFp4oAAAAJ:HDshCWvjkbEC:
+    citations: 0
+    title: An Experience Report on a Pedagogically Controlled, Curriculum-Constrained AI Tutor for SE Education
+    year: '2025'
   bVvFp4oAAAAJ:IWHjjKOFINEC:
     citations: 29
     title: Trace Link Recovery for Software Architecture Documentation
@@ -30,7 +34,7 @@ papers:
     title: Requirements Traceability Link Recovery via Retrieval-Augmented Generation
     year: '2025'
   bVvFp4oAAAAJ:Tyk-4Ss8FVUC:
-    citations: 24
+    citations: 25
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
