@@ -34,6 +34,14 @@ repo_trophies:
   theme_light: flat # https://github.com/ryo-ma/github-profile-trophy
   theme_dark: gitdimmed # https://github.com/ryo-ma/github-profile-trophy
 
+# External service URLs for repository page
+# To use a different instance or service for displaying GitHub stats and trophies,
+# update these URLs. These are used in the repository templates.
+external_services:
+  github_readme_stats_url: https://vps.fuchss.org/readme-stats
+  github_profile_trophy_url: https://vps.fuchss.org/profile-trophy
+  github_profile_streak_url: https://vps.fuchss.org/github-streak
+
 # -----------------------------------------------------------------------------
 # RSS Feed
 # -----------------------------------------------------------------------------
