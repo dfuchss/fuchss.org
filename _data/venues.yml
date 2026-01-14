@@ -10,6 +10,10 @@
   url: https://conf.researchr.org/series/icse
   color: "#a3107c"
 
+"ICSE-SEET":
+  url: https://conf.researchr.org/series/icse
+  color: "#a3107c"
+
 "AIRE":
   url: https://aire-ws.github.io/aire25/
   color: "#00a500"
