@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-01-14'
+  last_updated: '2026-01-18'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -34,7 +34,7 @@ papers:
     title: Requirements Traceability Link Recovery via Retrieval-Augmented Generation
     year: '2025'
   bVvFp4oAAAAJ:Tyk-4Ss8FVUC:
-    citations: 25
+    citations: 26
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
@@ -54,7 +54,7 @@ papers:
     title: Detecting inconsistencies in software architecture documentation using traceability link recovery
     year: '2023'
   bVvFp4oAAAAJ:YOwf2qJgpHMC:
-    citations: 1
+    citations: 2
     title: A formalized classification schema for model consistency
     year: '2023'
   bVvFp4oAAAAJ:YsMSGLbcyi4C:
