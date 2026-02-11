@@ -37,7 +37,7 @@ nav_order: 2
 	<div class="pub-hero">
 		<div class="pub-hero-header">
 			<div>
-				<p class="pub-title">Citation overview</p>
+				<p class="pub-title">Citation overview (Google Scholar)</p>
 				<p class="pub-updated">Last updated: {{ citations_updated | date: '%B %d, %Y' }}</p>
 			</div>
 			<div class="pub-search">
