@@ -16,4 +16,35 @@
 
 "AIRE":
   url: https://aire-ws.github.io/aire25/
-  color: "#00a500"
+  color: "#009682"
+
+"IS-EUD":
+  color: "#90a2cc"
+
+"CDKE":
+  color: "#8cb63c"
+
+"ICSC":
+  url: https://www.semanticcomputing.org/
+  color: "#a7822e"
+
+"EASE":
+  url: https://conf.researchr.org/series/ease
+  color: "#a22223"
+
+"MODELS":
+  url: https://conf.researchr.org/series/models
+  color: "#bf58a3"
+
+"REFSQ":
+  url: https://www.refsq.org
+  color: "#65bde9"
+
+"arXiv":
+  color: "#7e93c4"
+
+"TechReport":
+  color: "#7e93c4"
+
+"Thesis":
+  color: "#4db6a7"
