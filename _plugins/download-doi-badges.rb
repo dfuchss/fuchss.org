@@ -51,7 +51,7 @@ module Jekyll
       badge_url = "https://zenodo.org/badge/DOI/#{doi}.svg"
       
       # Create safe filename
-      filename = "doi_#{sanitize_filename(doi)}.svg"
+      filename = "doi-#{sanitize_filename(doi)}.svg"
       output_path = File.join(output_dir, filename)
 
       Jekyll.logger.debug "DOI Badges:", "Processing DOI: #{doi}"
