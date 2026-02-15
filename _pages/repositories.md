@@ -58,7 +58,8 @@ These repositories are hosted on Zenodo and have a DOI assigned. They include re
 
 ### {{repo.name}}
 
-[![DOI](https://zenodo.org/badge/DOI/{{ repo.doi }}.svg)](https://doi.org/{{ repo.doi }})
+{% assign doi_filename = repo.doi | replace: "/", "_" | replace: ".", "_" %}
+[![DOI](/assets/img/badges/doi\_{{ doi_filename }}.svg)](https://doi.org/{{ repo.doi }})
 
 {{repo.description}}
 
