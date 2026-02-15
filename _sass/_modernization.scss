@@ -37,6 +37,7 @@ a {
   &.certificate-item,
   // Disable underline for card wrappers
   &:has(.card),
+  &.metric-link,
   // Disable underline for links inside cards
   .card &,
   .navbar & {
@@ -151,6 +152,8 @@ input[type="search"]::-webkit-search-decoration {
 
 input[type="search"],
 input.search {
+  color: var(--global-text-color);
+  background: var(--global-bg-color);
   border-radius: 0.375rem;
   border: 1px solid var(--global-divider-color);
   padding: 0.5rem 0.75rem;

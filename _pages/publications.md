@@ -50,16 +50,16 @@ nav_order: 2
 				<p class="metric-value">{{ total_citations | number_with_delimiter }}</p>
 				<p class="metric-sub">View on Scholar</p>
 			</a>
-			<div class="metric-card">
+			<a class="metric-card metric-link" href="https://scholar.google.com/citations?user={{ scholar_id }}" aria-label="Google Scholar h-index" rel="noopener" target="_blank">
 				<p class="metric-title">h-index</p>
 				<p class="metric-value">{{ h_index }}</p>
 				<p class="metric-sub">Papers with ≥ h citations</p>
-			</div>
-			<div class="metric-card">
+			</a>
+			<a class="metric-card metric-link" href="https://scholar.google.com/citations?user={{ scholar_id }}" aria-label="Google Scholar i10-index" rel="noopener" target="_blank">
 				<p class="metric-title">i10-index</p>
 				<p class="metric-value">{{ i10_index }}</p>
 				<p class="metric-sub">Papers with ≥ 10 citations</p>
-			</div>
+			</a>
 		</div>
 	</div>
 </div>
