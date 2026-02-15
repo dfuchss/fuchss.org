@@ -33,19 +33,19 @@ can invite _matrix-joinlink_ and create a join link. This link can be shared wit
 - After the bot has joined, use `!join help` to get an overview of the features of the bot (remember: the bot only responds to users in the user list)
 - To create a join link, type `!join link SomeFancyNameForTheLink` and the bot will create one. Please make sure that the bot has the ability to invite users.
 
-<img src="/assets/projects/joinlink/help.png" width="100%" alt="Help" />
+<img src="/assets/projects/joinlink/help.png" width="100%" alt="Help" style="border-radius: 8px;" />
 
 ### Creation of Join (Invite) Links
 
-<img src="/assets/projects/joinlink/creation.png" width="100%" alt="Creation" />
+<img src="/assets/projects/joinlink/creation.png" width="100%" alt="Creation" style="border-radius: 8px;" />
 
 ### Entering a Join (Invite) Link Room
 
-<img src="/assets/projects/joinlink/joined.png" width="100%" alt="Enter" />
+<img src="/assets/projects/joinlink/joined.png" width="100%" alt="Enter" style="border-radius: 8px;" />
 
 ### Unlinking a Join (Invite) Link
 
-<img src="/assets/projects/joinlink/unlink.png" width="100%" alt="Unlink" />
+<img src="/assets/projects/joinlink/unlink.png" width="100%" alt="Unlink" style="border-radius: 8px;" />
 
 ## Development
 

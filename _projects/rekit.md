@@ -11,8 +11,8 @@ The game is available under GPLv3 via [GitHub](https://github.com/rekit-group/re
 
 ## Infinite Mode
 
-<img src="/assets/projects/rekit/rekitScreenshotInfinite.png" alt="Rekit-Infinite" width="100%"/>
+<img src="/assets/projects/rekit/rekitScreenshotInfinite.png" alt="Rekit-Infinite" width="100%" style="border-radius: 8px;"/>
 
 ## Boss Rush Mode
 
-<img src="/assets/projects/rekit/rekitScreenshotBossRush.png" alt="Rekit-Boss" width="100%"/>
+<img src="/assets/projects/rekit/rekitScreenshotBossRush.png" alt="Rekit-Boss" width="100%" style="border-radius: 8px;"/>

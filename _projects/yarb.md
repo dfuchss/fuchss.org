@@ -14,7 +14,7 @@ description: Yet Another Reminder Bot
 - Configure an offset for the reminder time.
 - Simple rights management (same as my other bots).
 
-<img src="/assets/projects/yarb/functions.png" width="100%" alt="Functions" />
+<img src="/assets/projects/yarb/functions.png" width="100%" alt="Functions" style="border-radius: 8px;" />
 
 ## Setup
 

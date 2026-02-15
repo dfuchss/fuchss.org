@@ -11,8 +11,8 @@ The bot includes simple dialog management. The code of the bot is available unde
 
 ## Functions of deltabot
 
-<img src="/assets/projects/deltabot/help.png" width="50%" alt="Functions" />
+<img src="/assets/projects/deltabot/help.png" width="50%" alt="Functions" style="border-radius: 8px;" />
 
 ## User Role Management of deltabot
 
-<img src="/assets/projects/deltabot/roles.png" width="50%" alt="Roles" />
+<img src="/assets/projects/deltabot/roles.png" width="50%" alt="Roles" style="border-radius: 8px;" />

@@ -12,4 +12,4 @@ Server and client code is available at [GitHub](https://github.com/jambeez).
 
 ## jambeez User Interface
 
-<img src="/assets/projects/jambeez/jambeez-ui.png" alt="jambeez-UI" width="100%"/>
+<img src="/assets/projects/jambeez/jambeez-ui.png" alt="jambeez-UI" width="100%" style="border-radius: 8px;"/>

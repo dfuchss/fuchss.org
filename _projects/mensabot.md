@@ -15,7 +15,7 @@ Additionally, you can use commands to request the listing directly.
 - Change display name per room
 - Simple rights management (only configured admins can interact with the bot)
 
-<img src="/assets/projects/mensabot/functions.png" width="100%" alt="Functions" />
+<img src="/assets/projects/mensabot/functions.png" width="100%" alt="Functions" style="border-radius: 8px;" />
 
 ### Supported APIs
 
