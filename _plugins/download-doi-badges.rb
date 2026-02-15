@@ -1,52 +1,88 @@
 require 'net/http'
 require 'uri'
 require 'fileutils'
+require 'cgi'
+require 'set'
 
 module Jekyll
-  module DoiBadges
+  module Badges
     class Generator < Jekyll::Generator
       safe true
       priority :lowest
 
       def generate(site)
         # Store the site object for later use
-        site.config['doi_badges_site'] = site
+        site.config['badges_site'] = site
       end
     end
 
     Jekyll::Hooks.register :site, :post_write do |site|
-      # Get the zenodo_repos from the data file
+      badges_dir = File.join(site.dest, 'assets', 'img', 'badges')
+      FileUtils.mkdir_p(badges_dir)
+      
+      Jekyll.logger.info "Badges:", "Post-write hook triggered"
+      Jekyll.logger.info "Badges:", "Site destination: #{site.dest}"
+      Jekyll.logger.info "Badges:", "Creating badges directory: #{badges_dir}"
+      
+      # Download Zenodo DOI badges
+      download_zenodo_badges(site, badges_dir)
+      
+      # Download Google Scholar citation badges
+      download_scholar_badges(site, badges_dir)
+      
+      Jekyll.logger.info "Badges:", "All badges download complete!"
+    end
+
+    def self.download_zenodo_badges(site, badges_dir)
       zenodo_repos = site.data['repositories']['zenodo_repos'] rescue nil
       
-      Jekyll.logger.info "DOI Badges:", "Post-write hook triggered"
-      Jekyll.logger.info "DOI Badges:", "Site destination: #{site.dest}"
-      
       unless zenodo_repos && !zenodo_repos.empty?
-        Jekyll.logger.warn "DOI Badges:", "No zenodo_repos found in data"
-        next
+        Jekyll.logger.warn "Zenodo Badges:", "No zenodo_repos found in data"
+        return
       end
 
-      # Create the output directory in the build destination
-      badges_dir = File.join(site.dest, 'assets', 'img', 'badges')
-      Jekyll.logger.info "DOI Badges:", "Creating badges directory: #{badges_dir}"
-      FileUtils.mkdir_p(badges_dir)
-
-      Jekyll.logger.info "DOI Badges:", "Downloading badges for #{zenodo_repos.length} repositories..."
+      Jekyll.logger.info "Zenodo Badges:", "Downloading badges for #{zenodo_repos.length} repositories..."
 
       zenodo_repos.each do |repo|
         doi = repo['doi']
         if doi
-          download_badge(doi, badges_dir)
+          download_zenodo_badge(doi, badges_dir)
         else
-          Jekyll.logger.warn "DOI Badges:", "Repository '#{repo['name']}' has no DOI"
+          Jekyll.logger.warn "Zenodo Badges:", "Repository '#{repo['name']}' has no DOI"
         end
       end
 
-      Jekyll.logger.info "DOI Badges:", "Download complete!"
-      Jekyll.logger.info "DOI Badges:", "Badges saved to: #{badges_dir}"
+      Jekyll.logger.info "Zenodo Badges:", "Zenodo badges saved to: #{badges_dir}"
     end
 
-    def self.download_badge(doi, output_dir)
+    def self.download_scholar_badges(site, badges_dir)
+      citations = site.data['citations']['papers'] rescue nil
+      
+      unless citations && !citations.empty?
+        Jekyll.logger.warn "Scholar Badges:", "No citations found in data"
+        return
+      end
+
+      # Collect unique citation counts
+      citation_counts = Set.new
+      citations.each do |paper_key, paper_data|
+        citation_count = paper_data['citations'] || 0
+        citation_counts.add(citation_count)
+      end
+
+      Jekyll.logger.info "Scholar Badges:", "Downloading badges for #{citation_counts.length} unique citation counts..."
+      
+      count = 0
+      citation_counts.each do |citation_count|
+        if download_scholar_badge(citation_count, badges_dir)
+          count += 1
+        end
+      end
+
+      Jekyll.logger.info "Scholar Badges:", "#{count} scholar badges saved to: #{badges_dir}"
+    end
+
+    def self.download_zenodo_badge(doi, output_dir)
       # Create the Zenodo badge URL
       badge_url = "https://zenodo.org/badge/DOI/#{doi}.svg"
       
@@ -54,33 +90,48 @@ module Jekyll
       filename = "doi-#{sanitize_filename(doi)}.svg"
       output_path = File.join(output_dir, filename)
 
-      Jekyll.logger.debug "DOI Badges:", "Processing DOI: #{doi}"
-      Jekyll.logger.debug "DOI Badges:", "Badge URL: #{badge_url}"
-      Jekyll.logger.debug "DOI Badges:", "Output path: #{output_path}"
+      download_file(badge_url, output_path, "Zenodo DOI: #{doi}")
+    end
 
+    def self.download_scholar_badge(citation_count, output_dir)
+      # Create the shields.io URL for scholar badge
+      encoded_count = CGI.escape(citation_count.to_s)
+      badge_url = "https://img.shields.io/badge/scholar-#{encoded_count}-4285F4?logo=googlescholar&labelColor=beige"
+      
+      # Create safe filename using citation count
+      filename = "scholar-#{citation_count}.svg"
+      output_path = File.join(output_dir, filename)
+
+      download_file(badge_url, output_path, "Scholar: #{citation_count} citations")
+    end
+
+    def self.download_file(url, output_path, description)
       # Skip if already exists
       if File.exist?(output_path)
-        Jekyll.logger.debug "DOI Badges:", "Skipping #{doi} (already exists)"
-        return
+        Jekyll.logger.debug "Badges:", "Skipping #{description} (already exists)"
+        return false
       end
 
       begin
-        uri = URI.parse(badge_url)
+        uri = URI.parse(url)
         response = Net::HTTP.get_response(uri)
 
         if response.is_a?(Net::HTTPSuccess)
           File.write(output_path, response.body)
-          Jekyll.logger.info "DOI Badges:", "✓ Downloaded badge for #{doi} -> #{filename}"
+          Jekyll.logger.info "Badges:", "✓ Downloaded #{description}"
+          return true
         else
-          Jekyll.logger.warn "DOI Badges:", "Failed to download badge for #{doi}: HTTP #{response.code}"
+          Jekyll.logger.warn "Badges:", "Failed to download #{description}: HTTP #{response.code}"
+          return false
         end
       rescue => e
-        Jekyll.logger.error "DOI Badges:", "Error downloading badge for #{doi}: #{e.message}"
+        Jekyll.logger.error "Badges:", "Error downloading #{description}: #{e.message}"
+        return false
       end
     end
 
-    def self.sanitize_filename(doi)
-      doi.gsub(/[\/\.]/, '_')
+    def self.sanitize_filename(str)
+      str.gsub(/[\/\.\:]/, '_')
     end
   end
 end
