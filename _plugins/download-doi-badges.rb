@@ -83,8 +83,9 @@ module Jekyll
     end
 
     def self.download_zenodo_badge(doi, output_dir)
-      # Create the Zenodo badge URL
-      badge_url = "https://zenodo.org/badge/DOI/#{doi}.svg"
+      # Create the shields.io badge URL for DOI
+      encoded_doi = CGI.escape(doi)
+      badge_url = "https://img.shields.io/badge/DOI-#{encoded_doi}-blue.svg"
       
       # Create safe filename
       filename = "doi-#{sanitize_filename(doi)}.svg"
