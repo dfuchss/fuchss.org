@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-02-10'
+  last_updated: '2026-02-16'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -14,8 +14,8 @@ papers:
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
     year: '2025'
   bVvFp4oAAAAJ:8k81kl-MbHgC:
-    citations: 25
-    title: 'LiSSA: toward generic traceability link recovery through retrieval-augmented generation'
+    citations: 26
+    title: 'Lissa: Toward generic traceability link recovery through retrieval-augmented generation'
     year: '2025'
   bVvFp4oAAAAJ:9yKSN-GCB0IC:
     citations: 9
@@ -30,16 +30,16 @@ papers:
     title: Trace Link Recovery for Software Architecture Documentation
     year: '2021'
   bVvFp4oAAAAJ:MXK_kJrjxJIC:
-    citations: 17
-    title: Requirements Traceability Link Recovery via Retrieval-Augmented Generation
+    citations: 18
+    title: Requirements traceability link recovery via retrieval-augmented generation
     year: '2025'
   bVvFp4oAAAAJ:Tyk-4Ss8FVUC:
     citations: 26
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
-    citations: 9
-    title: 'Software Architecture Meets LLMs: A Systematic Literature Review'
+    citations: 10
+    title: 'Software architecture meets llms: A systematic literature review'
     year: '2025'
   bVvFp4oAAAAJ:UeHWp8X0CEIC:
     citations: 0
@@ -47,7 +47,7 @@ papers:
     year: '2020'
   bVvFp4oAAAAJ:UebtZRa9Y70C:
     citations: 21
-    title: Recovering Trace Links Between Software Documentation And Code
+    title: Recovering trace links between software documentation and code
     year: '2024'
   bVvFp4oAAAAJ:WF5omc3nYNoC:
     citations: 16
@@ -62,7 +62,7 @@ papers:
     title: Replication Package of "Evaluation Methods and Replicability of Software Architecture Research Objects"
     year: '2022'
   bVvFp4oAAAAJ:ZeXyd9-uunAC:
-    citations: 2
+    citations: 3
     title: 'Beyond Retrieval: A Study of Using LLM Ensembles for Candidate Filtering in Requirements Traceability'
     year: '2025'
   bVvFp4oAAAAJ:_FxGoFyzp5QC:
@@ -70,7 +70,7 @@ papers:
     title: Evaluation methods and replicability of software architecture research objects
     year: '2022'
   bVvFp4oAAAAJ:d1gkVwhDpl0C:
-    citations: 4
+    citations: 3
     title: Assessing the quality impact of features in component-based software architectures
     year: '2019'
   bVvFp4oAAAAJ:eQOLeE2rZwMC:
