@@ -57,4 +57,23 @@ $(document).ready(function () {
   $('[data-toggle="popover"]').popover({
     trigger: "hover",
   });
+
+  // Apply CSS masks for custom social SVG icons.
+  $(".contact-icons a svg image, .navbar-brand.social a svg image").each(function () {
+    const image = this;
+    const href = image.getAttribute("href") || image.getAttribute("xlink:href");
+    if (!href) {
+      return;
+    }
+    const svg = image.closest("svg");
+    if (!svg) {
+      return;
+    }
+    const anchor = svg.closest("a");
+    if (!anchor) {
+      return;
+    }
+    svg.style.setProperty("--social-icon-mask", `url("${href}")`);
+    anchor.classList.add("custom-social-icon");
+  });
 });

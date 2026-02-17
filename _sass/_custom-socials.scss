@@ -1,18 +1,18 @@
 // Custom social icon overrides to avoid merge conflicts
 
-.social .contact-icons a[title="Codeberg"] svg,
-.navbar-brand.social a[title="Codeberg"] svg {
+.social .contact-icons a.custom-social-icon svg,
+.navbar-brand.social a.custom-social-icon svg {
   background-color: var(--global-text-color);
-  -webkit-mask: url("/assets/img/social/codeberg.svg") no-repeat center / contain;
-  mask: url("/assets/img/social/codeberg.svg") no-repeat center / contain;
+  -webkit-mask: var(--social-icon-mask) no-repeat center / contain;
+  mask: var(--social-icon-mask) no-repeat center / contain;
 }
 
-.social .contact-icons a[title="Codeberg"] svg image,
-.navbar-brand.social a[title="Codeberg"] svg image {
+.social .contact-icons a.custom-social-icon svg image,
+.navbar-brand.social a.custom-social-icon svg image {
   opacity: 0;
 }
 
-.social .contact-icons a[title="Codeberg"]:hover svg,
-.navbar-brand.social a[title="Codeberg"]:hover svg {
+.social .contact-icons a.custom-social-icon:hover svg,
+.navbar-brand.social a.custom-social-icon:hover svg {
   background-color: var(--global-theme-color);
 }
