@@ -1,103 +1,188 @@
-// Publications page hero + metrics
-.pub-shell {
-  margin: 1.5rem 0 1rem;
-}
+/*******************************************************************************
+ * Publication and bibliography styles
+ ******************************************************************************/
 
-.pub-hero {
-  display: grid;
-  gap: 1.25rem;
-  padding: 1.25rem 1.5rem;
-  border-radius: 16px;
-  background: var(--global-card-bg-color);
-  border: 1px solid var(--global-divider-color);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-}
+@use "variables" as v;
 
-.pub-hero-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
+.publications {
+  margin-top: 2rem;
 
-.pub-title {
-  margin: 0;
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--global-text-color);
-  letter-spacing: 0.01em;
-}
-
-.pub-updated {
-  font-size: 0.9rem;
-  color: var(--global-text-color-light);
-}
-
-.pub-search {
-  flex: 1 1 260px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.metrics-grid {
-  display: grid;
-  gap: 0.9rem;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-}
-
-.metric-card {
-  border: 1px solid var(--global-divider-color);
-  border-radius: 14px;
-  padding: 0.9rem 1rem;
-  background: var(--global-card-bg-color);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
-  transition:
-    transform 120ms ease,
-    box-shadow 120ms ease,
-    border-color 120ms ease;
-}
-
-.metric-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
-  border-color: var(--global-theme-color);
-}
-
-.metric-title {
-  font-size: 0.9rem;
-  color: var(--global-text-color-light);
-  margin: 0 0 0.15rem;
-  letter-spacing: 0.01em;
-}
-
-.metric-value {
-  font-size: 1.9rem;
-  font-weight: 800;
-  color: var(--global-text-color);
-  margin: 0;
-}
-
-.metric-sub {
-  font-size: 0.82rem;
-  color: var(--global-text-color-light);
-  margin: 0.25rem 0 0;
-}
-
-.metric-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-@media (max-width: 720px) {
-  .pub-hero-header {
-    flex-direction: column;
-    align-items: flex-start;
+  h1 {
+    color: var(--global-theme-color);
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
 
-  .pub-search {
-    width: 100%;
-    flex: none;
+  h2 {
+    margin-bottom: 1rem;
+
+    span {
+      font-size: 1.5rem;
+    }
   }
+
+  h2.bibliography {
+    color: var(--global-divider-color);
+    border-top: 1px solid var(--global-divider-color);
+    padding-top: 1rem;
+    margin-top: 2rem;
+    text-align: right;
+  }
+
+  ol.bibliography {
+    list-style: none;
+    padding: 0;
+    margin-top: 0;
+
+    li {
+      margin-bottom: 1rem;
+
+      .preview {
+        display: inline-block;
+      }
+
+      .abbr {
+        margin-bottom: 0.5rem;
+
+        abbr {
+          display: inline-block;
+          background-color: var(--global-theme-color);
+          margin-bottom: 0.5rem;
+          color: var(--global-card-bg-color) !important;
+
+          a {
+            color: white;
+
+            &:hover {
+              text-decoration: none;
+            }
+          }
+        }
+
+        .award {
+          color: var(--global-theme-color) !important;
+          border: 1px solid var(--global-theme-color);
+        }
+      }
+
+      .title {
+        font-weight: bolder;
+      }
+
+      .author {
+        a {
+          border-bottom: 1px dashed var(--global-theme-color);
+
+          &:hover {
+            border-bottom-style: solid;
+            text-decoration: none;
+          }
+        }
+
+        > em {
+          border-bottom: 1px solid;
+          font-style: normal;
+        }
+
+        > span.more-authors {
+          color: var(--global-text-color-light);
+          border-bottom: 1px dashed var(--global-text-color-light);
+          cursor: pointer;
+
+          &:hover {
+            color: var(--global-text-color);
+            border-bottom: 1px dashed var(--global-text-color);
+          }
+        }
+      }
+
+      .links {
+        a.btn {
+          color: var(--global-text-color);
+          border: 1px solid var(--global-text-color);
+          padding-left: 1rem;
+          padding-right: 1rem;
+          padding-top: 0.25rem;
+          padding-bottom: 0.25rem;
+          margin-left: 0;
+
+          &:hover {
+            color: var(--global-theme-color);
+            border-color: var(--global-theme-color);
+          }
+        }
+        a.award.btn {
+          border-color: var(--global-highlight-color);
+        }
+      }
+
+      .badges {
+        padding-bottom: 0.5rem;
+        span {
+          display: inline-block;
+          color: v.$black-color;
+          height: 100%;
+          padding-right: 0.5rem;
+          vertical-align: middle;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .hidden {
+        font-size: 0.875rem;
+        max-height: 0px;
+        overflow: hidden;
+        text-align: justify;
+        transition-property: 0.15s ease;
+        -moz-transition: 0.15s ease;
+        -ms-transition: 0.15s ease;
+        -o-transition: 0.15s ease;
+        transition: all 0.15s ease;
+
+        p {
+          line-height: 1.4em;
+          margin: 10px;
+        }
+
+        pre {
+          font-size: 1em;
+          line-height: 1.4em;
+          padding: 10px;
+        }
+      }
+
+      .hidden.open {
+        max-height: 100em;
+        transition-property: 0.15s ease;
+        -moz-transition: 0.15s ease;
+        -ms-transition: 0.15s ease;
+        -o-transition: 0.15s ease;
+        transition: all 0.15s ease;
+      }
+
+      div.abstract.hidden {
+        border: dashed 1px var(--global-bg-color);
+      }
+
+      div.abstract.hidden.open {
+        border-color: var(--global-text-color);
+      }
+    }
+    div.award.hidden {
+      border: dashed 1px var(--global-bg-color);
+    }
+    div.award.hidden.open {
+      border-color: var(--global-highlight-color);
+    }
+  }
+}
+
+.citation,
+.citation-number {
+  color: var(--global-theme-color);
 }
