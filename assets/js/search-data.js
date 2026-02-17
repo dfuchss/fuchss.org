@@ -162,6 +162,13 @@ ninja.data = [{
           window.open("https://github.com/dfuchss", "_blank");
         },
       },{
+        id: 'social-codeberg',
+        title: 'Codeberg',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://codeberg.org/dfuchss", "_blank");
+        },
+      },{
         id: 'social-linkedin',
         title: 'LinkedIn',
         section: 'Socials',
