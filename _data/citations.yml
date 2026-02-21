@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-02-16'
+  last_updated: '2026-02-21'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -10,11 +10,11 @@ papers:
     title: "Verarbeitung nat\xFCrlich-sprachlicher Beziehungsbeschreibungen zwischen Objekten"
     year: '2018'
   bVvFp4oAAAAJ:7PzlFSSx8tAC:
-    citations: 12
+    citations: 13
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
     year: '2025'
   bVvFp4oAAAAJ:8k81kl-MbHgC:
-    citations: 26
+    citations: 28
     title: 'Lissa: Toward generic traceability link recovery through retrieval-augmented generation'
     year: '2025'
   bVvFp4oAAAAJ:9yKSN-GCB0IC:
@@ -33,6 +33,14 @@ papers:
     citations: 18
     title: Requirements traceability link recovery via retrieval-augmented generation
     year: '2025'
+  bVvFp4oAAAAJ:R3hNpaxXUhUC:
+    citations: 0
+    title: 'ExArch: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction'
+    year: '2026'
+  bVvFp4oAAAAJ:TQgYirikUcIC:
+    citations: 0
+    title: 'Linking Software System Artifacts: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation'
+    year: '2026'
   bVvFp4oAAAAJ:Tyk-4Ss8FVUC:
     citations: 26
     title: Introducing an evaluation method for taxonomies
@@ -46,7 +54,7 @@ papers:
     title: Assessing Hypotheses in Multi-Agent Systems for Natural Language Processing
     year: '2020'
   bVvFp4oAAAAJ:UebtZRa9Y70C:
-    citations: 21
+    citations: 22
     title: Recovering trace links between software documentation and code
     year: '2024'
   bVvFp4oAAAAJ:WF5omc3nYNoC:
@@ -66,7 +74,7 @@ papers:
     title: 'Beyond Retrieval: A Study of Using LLM Ensembles for Candidate Filtering in Requirements Traceability'
     year: '2025'
   bVvFp4oAAAAJ:_FxGoFyzp5QC:
-    citations: 35
+    citations: 36
     title: Evaluation methods and replicability of software architecture research objects
     year: '2022'
   bVvFp4oAAAAJ:d1gkVwhDpl0C:
