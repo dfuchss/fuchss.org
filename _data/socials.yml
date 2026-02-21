@@ -10,11 +10,9 @@ scopus_id: 57209096250 # your profile on Scopus
 semanticscholar_id: 2276068674 # your Semantic Scholar ID
 github_username: dfuchss # your GitHub user name
 codeberg:
-  # Downloaded from https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/codeberg.svg
-  # TODO: Remove the hardcoded logo URL and use a local file instead (e.g., assets/img/codeberg.svg) as soon as the next release of jekyll-socials supports custom social media icons from local files.
-  logo: /assets/img/social/codeberg.svg
+  simple_icon: codeberg
   title: Codeberg
-  url: https://codeberg.org/dfuchss # your Codeberg profile URL
+  url: https://codeberg.org/dfuchss
 linkedin_username: dfuchss # your LinkedIn user name
 work_url: https://mcse.kastel.kit.edu/staff_dominik_fuchss.php # work page URL
 
