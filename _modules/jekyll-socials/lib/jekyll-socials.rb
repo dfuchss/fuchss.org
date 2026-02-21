@@ -10,7 +10,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
   next unless enabled
 
   output_dir = (simple_icons_cfg["output_dir"] || "assets/img/social/simple-icons").sub(%r{\A/}, "")
-  cdn_url = (simple_icons_cfg["cdn_url"] || "https://cdn.simpleicons.org/")
+  cdn_url = (simple_icons_cfg["cdn_url"] || "https://simpleicons.org/icons/")
   cdn_url = cdn_url.end_with?("/") ? cdn_url : "#{cdn_url}/"
 
   socials = site.data["socials"] || {}
@@ -31,7 +31,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
     dest_path = File.join(dest_base, "#{normalized}.svg")
     next if File.exist?(dest_path)
     begin
-      uri = URI.parse("#{cdn_url}#{normalized}")
+      uri = URI.parse("#{cdn_url}#{normalized}.svg")
       response = Net::HTTP.get_response(uri)
       if response.is_a?(Net::HTTPSuccess) && !response.body.to_s.empty?
         File.write(dest_path, response.body)
