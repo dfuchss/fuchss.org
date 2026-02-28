@@ -92,6 +92,16 @@ cv:
       - name: English
         summary: Fluent
 
+    Awards:
+      - title: Open Science Challenge Award at REFSQ 2025
+        date: 2025
+        awarder: REFSQ 2025
+        url: "https://2025.refsq.org/track/refsq-2025-open-science#Open-Science-Competition"
+      - title: Formal Recognition for an Outstanding Thesis
+        date: 2021
+        awarder: VKSI e.V.
+        url: https://vksi.de/vksi-preis-2021-verliehen/
+
     Certificates:
       - name: Baden-Württemberg-Zertifikat für Hochschuldidaktik
         date: "2023"
