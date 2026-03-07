@@ -1,0 +1,6 @@
+{
+  "support_page": "https://fuchss.org/impressum/",
+  "contacts": [
+    { "role": "m.role.admin", "email_address": "webmaster@fuchss.org", "matrix_id": "@dominik:fuchss.org" },
+  ]
+}
