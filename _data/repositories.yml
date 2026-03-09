@@ -27,3 +27,6 @@ zenodo_repos:
   - name: 'Replication Package for "Beyond Retrieval: A Study of Using LLM Ensembles for Candidate Filtering in Requirements Traceability"'
     doi: 10.5281/zenodo.15837231
     description: 'This replication package belongs to <a href="/conferences/aire25">Beyond Retrieval: A Study of Using LLM Ensembles for Candidate Filtering in Requirements Traceability</a>.'
+  - name: 'Replication Package for "Architecture in the Cradle: Early Warning of Architectural Decay with ArchGuard"'
+    doi: 10.5281/zenodo.18891082
+    description: 'This replication package belongs to <a href="https://ardoco.de/c/icsa26">Architecture in the Cradle: Early Warning of Architectural Decay with ArchGuard</a>.'
