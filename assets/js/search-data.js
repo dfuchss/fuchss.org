@@ -100,6 +100,11 @@ ninja.data = [{
           description: "a platform jumper game",
           section: "Projects",handler: () => {
               window.location.href = "/projects/rekit/";
+            },},{id: "projects-tacit",
+          title: 'tacit',
+          description: "A modern Matrix messenger focused on a polished desktop and web UX.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/tacit/";
             },},{id: "projects-yarb",
           title: 'yarb',
           description: "Yet Another Reminder Bot",
