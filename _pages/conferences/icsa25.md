@@ -12,7 +12,7 @@ authors:
   - anne_koziolek
 conference_name: "22nd IEEE International Conference on Software Architecture (ICSA 2025)"
 conference_url: https://conf.researchr.org/home/icsa-2025/
-published: true
+already_published: true
 links:
   paper:
     ieee: https://ieeexplore.ieee.org/document/10978943

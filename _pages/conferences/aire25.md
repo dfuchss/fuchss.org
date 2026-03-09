@@ -11,7 +11,7 @@ authors:
   - tobias_hey
 conference_name: "33rd International Requirements Engineering Conference Workshops (REW)"
 conference_url: https://aire-ws.github.io/aire25/
-published: true
+already_published: true
 links:
   paper:
     ieee: https://ieeexplore.ieee.org/document/11190238

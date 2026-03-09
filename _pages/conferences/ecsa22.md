@@ -12,7 +12,7 @@ authors:
   - anne_koziolek
 conference_name: "16th European Conference on Software Architecture (ECSA 2022)"
 conference_url: https://conf.researchr.org/home/ecsa-2022
-published: true
+already_published: true
 links:
   paper:
     acm: https://dl.acm.org/doi/10.1007/978-3-031-36889-9_30

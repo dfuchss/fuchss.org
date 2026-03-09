@@ -14,7 +14,7 @@ authors:
   - anne_koziolek
 conference_name: "47th IEEE/ACM International Conference on Software Engineering (ICSE 2025)"
 conference_url: https://conf.researchr.org/home/icse-2025/
-published: true
+already_published: true
 links:
   paper:
     ieee: https://doi.org/10.1109/ICSE55347.2025.00186

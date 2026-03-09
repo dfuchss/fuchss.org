@@ -38,7 +38,7 @@ layout: default
     {% endif %}
 
     {% if page.conference_name %}
-      {% assign is_published = page.published | default: true %}
+      {% assign is_published = page.already_published | default: true %}
       <p>
         {% if is_published == false %}
           To be published at the
