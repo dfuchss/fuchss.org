@@ -32,4 +32,4 @@ zenodo_repos:
     description: 'This replication package belongs to <a href="https://ardoco.de/c/icsa26">Architecture in the Cradle: Early Warning of Architectural Decay with ArchGuard</a>.'
   - name: 'Replication Package for "Criminal Minds: How First-Year CS Students Plagiarize Code"'
     doi: 10.5281/zenodo.19115558
-    description: 'This replication package belongs to Criminal Minds: How First-Year CS Students Plagiarize Code.'
+    description: "This replication package belongs to Criminal Minds: How First-Year CS Students Plagiarize Code."
