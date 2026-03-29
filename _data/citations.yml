@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-03-20'
+  last_updated: '2026-03-29'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -10,7 +10,7 @@ papers:
     title: "Verarbeitung nat\xFCrlich-sprachlicher Beziehungsbeschreibungen zwischen Objekten"
     year: '2018'
   bVvFp4oAAAAJ:7PzlFSSx8tAC:
-    citations: 16
+    citations: 18
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
     year: '2025'
   bVvFp4oAAAAJ:8k81kl-MbHgC:
@@ -30,7 +30,7 @@ papers:
     title: Trace Link Recovery for Software Architecture Documentation
     year: '2021'
   bVvFp4oAAAAJ:MXK_kJrjxJIC:
-    citations: 22
+    citations: 23
     title: Requirements traceability link recovery via retrieval-augmented generation
     year: '2025'
   bVvFp4oAAAAJ:R3hNpaxXUhUC:
@@ -46,7 +46,7 @@ papers:
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
-    citations: 11
+    citations: 12
     title: 'Software architecture meets llms: A systematic literature review'
     year: '2025'
   bVvFp4oAAAAJ:UeHWp8X0CEIC:
@@ -66,7 +66,7 @@ papers:
     title: A formalized classification schema for model consistency
     year: '2023'
   bVvFp4oAAAAJ:YsMSGLbcyi4C:
-    citations: 4
+    citations: 5
     title: Replication Package of "Evaluation Methods and Replicability of Software Architecture Research Objects"
     year: '2022'
   bVvFp4oAAAAJ:ZeXyd9-uunAC:
@@ -74,7 +74,7 @@ papers:
     title: 'Beyond Retrieval: A Study of Using LLM Ensembles for Candidate Filtering in Requirements Traceability'
     year: '2025'
   bVvFp4oAAAAJ:_FxGoFyzp5QC:
-    citations: 36
+    citations: 37
     title: Evaluation methods and replicability of software architecture research objects
     year: '2022'
   bVvFp4oAAAAJ:d1gkVwhDpl0C:
@@ -84,7 +84,7 @@ papers:
   bVvFp4oAAAAJ:e5wmG9Sq2KIC:
     citations: 0
     title: 'Architecture in the Cradle: Early Warning of Architectural Decay with ArchGuard'
-    year: Unknown Year
+    year: '2026'
   bVvFp4oAAAAJ:eQOLeE2rZwMC:
     citations: 14
     title: Establishing a benchmark dataset for traceability link recovery between software architecture documentation and models

@@ -56,3 +56,7 @@
   url: https://fb-swt.gi.de/aktivitaeten/veranstaltungen
   abbr: "Software Engineering"
   color: "#C24445"
+
+"FSE":
+  url: https://conf.researchr.org/series/fse
+  color: "#E67E22"
