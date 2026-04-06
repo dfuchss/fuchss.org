@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-03-29'
+  last_updated: '2026-04-06'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -10,11 +10,11 @@ papers:
     title: "Verarbeitung nat\xFCrlich-sprachlicher Beziehungsbeschreibungen zwischen Objekten"
     year: '2018'
   bVvFp4oAAAAJ:7PzlFSSx8tAC:
-    citations: 18
+    citations: 19
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
     year: '2025'
   bVvFp4oAAAAJ:8k81kl-MbHgC:
-    citations: 35
+    citations: 36
     title: 'Lissa: Toward generic traceability link recovery through retrieval-augmented generation'
     year: '2025'
   bVvFp4oAAAAJ:9yKSN-GCB0IC:
@@ -46,7 +46,7 @@ papers:
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
-    citations: 12
+    citations: 13
     title: 'Software architecture meets llms: A systematic literature review'
     year: '2025'
   bVvFp4oAAAAJ:UeHWp8X0CEIC:
@@ -77,6 +77,10 @@ papers:
     citations: 37
     title: Evaluation methods and replicability of software architecture research objects
     year: '2022'
+  bVvFp4oAAAAJ:_Qo2XoVZTnwC:
+    citations: 0
+    title: 'Criminal Minds: How First-Year CS Students Plagiarize Code'
+    year: '2026'
   bVvFp4oAAAAJ:d1gkVwhDpl0C:
     citations: 3
     title: Assessing the quality impact of features in component-based software architectures
@@ -90,7 +94,7 @@ papers:
     title: Establishing a benchmark dataset for traceability link recovery between software architecture documentation and models
     year: '2022'
   bVvFp4oAAAAJ:hqOjcs7Dif8C:
-    citations: 7
+    citations: 8
     title: 'Modeling languages for automotive digital twins: A survey among the german automotive industry'
     year: '2024'
   bVvFp4oAAAAJ:kNdYIx-mwKoC:
