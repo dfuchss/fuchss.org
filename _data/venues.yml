@@ -2,6 +2,10 @@
   url: https://conf.researchr.org/series/icsa
   color: "#4664AA"
 
+"TAAS":
+  url: https://dl.acm.org/journal/taas
+  color: "#4664AA"
+
 "SAGAI":
   url: https://www.iese.fraunhofer.de/en/events/sagai.html
   color: "#4664AA"
