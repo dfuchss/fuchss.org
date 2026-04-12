@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-04-10'
+  last_updated: '2026-04-12'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -37,6 +37,10 @@ papers:
     citations: 0
     title: 'ExArch: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction'
     year: '2026'
+  bVvFp4oAAAAJ:RHpTSmoSYBkC:
+    citations: 0
+    title: 'GARMA: Generative Architectural Resource Demand Estimation for Microservice Applications'
+    year: '2026'
   bVvFp4oAAAAJ:TQgYirikUcIC:
     citations: 0
     title: 'Linking Software System Artifacts: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation'
@@ -46,7 +50,7 @@ papers:
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
-    citations: 13
+    citations: 15
     title: 'Software architecture meets llms: A systematic literature review'
     year: '2025'
   bVvFp4oAAAAJ:UeHWp8X0CEIC:
@@ -103,7 +107,7 @@ papers:
     year: '2025'
   bVvFp4oAAAAJ:mB3voiENLucC:
     citations: 1
-    title: Who's Who? LLM-assisted Software Traceability with Architecture Entity Recognition
+    title: "Who\u2019s Who? LLM-assisted Software Traceability with Architecture Entity Recognition"
     year: '2025'
   bVvFp4oAAAAJ:roLk4NBRz8UC:
     citations: 1
