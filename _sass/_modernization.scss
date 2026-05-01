@@ -127,7 +127,7 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(var(--global-theme-color-rgb), 0.1);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--global-theme-color) 10%, transparent);
 }
 
 // Better spacing for content sections
@@ -163,7 +163,7 @@ input.search {
 
   &:focus {
     border-color: var(--global-theme-color);
-    box-shadow: 0 0 0 2px rgba(var(--global-theme-color-rgb), 0.1);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--global-theme-color) 10%, transparent);
   }
 }
 
@@ -188,4 +188,89 @@ input.search {
 
 .shadow-lg {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+// ─── About page hero section ────────────────────────────────────────────────
+
+.page-hero {
+  text-align: center;
+  padding: 2rem 1rem 2.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--global-divider-color);
+
+  .page-hero-logo {
+    height: 150px;
+    width: auto;
+    margin-bottom: 1.25rem;
+    transition: transform 250ms ease;
+
+    &:hover {
+      transform: scale(1.04);
+    }
+  }
+
+  .page-hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 0.4rem;
+    line-height: 1.2;
+
+    a {
+      color: var(--global-text-color);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--global-theme-color);
+        text-decoration: none;
+      }
+    }
+  }
+
+  .page-hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--global-text-color-light);
+    margin: 0 auto 1.75rem;
+    font-weight: 400;
+    max-width: 580px;
+  }
+
+  .page-hero-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+// Primary hero CTA button
+.btn-hero-primary {
+  background-color: var(--global-theme-color) !important;
+  color: #fff !important;
+  border-color: var(--global-theme-color) !important;
+
+  &:hover {
+    opacity: 0.85;
+    color: #fff !important;
+    text-decoration: none !important;
+    box-shadow: 0 3px 10px color-mix(in srgb, var(--global-theme-color) 35%, transparent) !important;
+  }
+}
+
+// ─── About page content improvements ────────────────────────────────────────
+
+// Make h2 section headings on about page more distinctive (content only, not layout h2s)
+.post article .clearfix h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--global-theme-color);
+  display: inline-block;
+  color: var(--global-text-color);
+}
+
+// Navbar brand logo
+.navbar-brand img {
+  border-radius: 4px;
 }

@@ -24,11 +24,14 @@
   }
 
   h2.bibliography {
-    color: var(--global-divider-color);
+    color: var(--global-theme-color);
     border-top: 1px solid var(--global-divider-color);
     padding-top: 1rem;
-    margin-top: 2rem;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
     text-align: right;
+    font-weight: 600;
+    font-size: 1.4rem;
   }
 
   ol.bibliography {
@@ -37,7 +40,11 @@
     margin-top: 0;
 
     li {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--global-divider-color);
+      border-radius: 0.5rem;
+      background: var(--global-card-bg-color);
 
       .preview {
         display: inline-block;
@@ -68,7 +75,9 @@
       }
 
       .title {
-        font-weight: bolder;
+        font-weight: 600;
+        color: var(--global-text-color);
+        font-size: 1rem;
       }
 
       .author {
@@ -122,7 +131,7 @@
         padding-bottom: 0.5rem;
         span {
           display: inline-block;
-          color: v.$black-color;
+          color: var(--global-text-color);
           height: 100%;
           padding-right: 0.5rem;
           vertical-align: middle;
@@ -166,15 +175,18 @@
       }
 
       div.abstract.hidden {
-        border: dashed 1px var(--global-bg-color);
+        border: dashed 1px transparent;
+        border-radius: 0.25rem;
       }
 
       div.abstract.hidden.open {
-        border-color: var(--global-text-color);
+        border-color: var(--global-divider-color);
+        background: var(--global-bg-color);
+        border-radius: 0.25rem;
       }
     }
     div.award.hidden {
-      border: dashed 1px var(--global-bg-color);
+      border: dashed 1px transparent;
     }
     div.award.hidden.open {
       border-color: var(--global-highlight-color);
