@@ -28,7 +28,6 @@ layout: default
   </header>
 
   <article class="cv-modern">
-
     <!-- ===== BIO / PROFILE CARD ===== -->
     <div class="cv-profile-card">
       <div class="cv-profile-body">
@@ -50,9 +49,7 @@ layout: default
         <!-- Contact row -->
         <div class="cv-contact-row">
           {% if cv.email %}
-            <a href="mailto:{{ cv.email }}" class="cv-contact-item">
-              <i class="fa-solid fa-envelope"></i> {{ cv.email }}
-            </a>
+            <a href="mailto:{{ cv.email }}" class="cv-contact-item"> <i class="fa-solid fa-envelope"></i> {{ cv.email }} </a>
           {% endif %}
           {% if cv.matrix %}
             <a href="https://matrix.to/#/{{ cv.matrix }}" target="_blank" rel="noopener" class="cv-contact-item">
@@ -70,8 +67,8 @@ layout: default
         <h2 class="cv-section-title"><i class="fa-solid fa-briefcase"></i> Experience</h2>
 
         {% comment %} Split into main (researcher/industry) and secondary (TA/SA) {% endcomment %}
-        {% assign main_entries = "" | split: "" %}
-        {% assign secondary_entries = "" | split: "" %}
+        {% assign main_entries = '' | split: '' %}
+        {% assign secondary_entries = '' | split: '' %}
         {% for entry in exp_entries %}
           {% if entry.position == 'Teaching Assistant' %}
             {% assign secondary_entries = secondary_entries | push: entry %}
@@ -115,7 +112,9 @@ layout: default
         </div>
 
         {% if secondary_entries.size > 0 %}
-          <h3 class="cv-subsection-title" style="margin-top: 1.25rem;">Teaching Assistantships <span class="cv-courses-past-count">{{ secondary_entries.size }}</span></h3>
+          <h3 class="cv-subsection-title" style="margin-top: 1.25rem;">
+            Teaching Assistantships <span class="cv-courses-past-count">{{ secondary_entries.size }}</span>
+          </h3>
           <div class="cv-courses-past-wrapper" id="cv-exp-secondary">
             <div class="cv-timeline cv-timeline-secondary">
               {% for entry in secondary_entries %}
@@ -143,14 +142,19 @@ layout: default
             </div>
             <div class="cv-courses-fade"></div>
           </div>
-          <button class="cv-courses-toggle" id="cv-exp-toggle" onclick="
-            var w = document.getElementById('cv-exp-secondary');
-            var btn = document.getElementById('cv-exp-toggle');
-            var expanded = w.classList.toggle('is-expanded');
-            btn.textContent = expanded ? 'Show less' : 'Show all {{ secondary_entries.size }} entries';
-          ">Show all {{ secondary_entries.size }} entries</button>
+          <button
+            class="cv-courses-toggle"
+            id="cv-exp-toggle"
+            onclick="
+              var w = document.getElementById('cv-exp-secondary');
+              var btn = document.getElementById('cv-exp-toggle');
+              var expanded = w.classList.toggle('is-expanded');
+              btn.textContent = expanded ? 'Show less' : 'Show all {{ secondary_entries.size }} entries';
+            "
+          >
+            Show all {{ secondary_entries.size }} entries
+          </button>
         {% endif %}
-
       </section>
     {% endif %}
 
@@ -174,9 +178,7 @@ layout: default
                     </span>
                     <span class="cv-timeline-org">{{ entry.institution }}</span>
                   </div>
-                  <div class="cv-timeline-dates">
-                    {{ entry.start_date }}&thinsp;–&thinsp;{{ entry.end_date }}
-                  </div>
+                  <div class="cv-timeline-dates">{{ entry.start_date }}&thinsp;–&thinsp;{{ entry.end_date }}</div>
                 </div>
                 {% if entry.area %}
                   <p class="cv-timeline-desc">{{ entry.area }}</p>
@@ -199,8 +201,8 @@ layout: default
         {% comment %} Derive the most recent semester from the first entry (list is ordered newest-first) {% endcomment %}
         {% assign latest_semester = cv.sections.Teaching[0].semester %}
 
-        {% assign current_courses = cv.sections.Teaching | where: "semester", latest_semester %}
-        {% assign past_courses = "" | split: "" %}
+        {% assign current_courses = cv.sections.Teaching | where: 'semester', latest_semester %}
+        {% assign past_courses = '' | split: '' %}
         {% for course in cv.sections.Teaching %}
           {% unless course.semester == latest_semester %}
             {% assign past_courses = past_courses | push: course %}
@@ -208,7 +210,10 @@ layout: default
         {% endfor %}
 
         {% if current_courses.size > 0 %}
-          <h3 class="cv-subsection-title">{{ latest_semester }} <span class="cv-badge-current">Current</span></h3>
+          <h3 class="cv-subsection-title">
+            {{ latest_semester }}
+            <span class="cv-badge-current">Current</span>
+          </h3>
           <div class="cv-course-grid">
             {% for course in current_courses %}
               <div class="cv-course-card cv-course-current">
@@ -221,7 +226,11 @@ layout: default
                 </div>
                 <div class="cv-course-meta">
                   <span class="cv-course-type">{{ course.type }}</span>
-                  {% if course.url %}<a href="{{ course.url }}" target="_blank" rel="noopener" class="cv-course-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>{% endif %}
+                  {% if course.url -%}
+                    <a href="{{ course.url }}" target="_blank" rel="noopener" class="cv-course-link"
+                      ><i class="fa-solid fa-arrow-up-right-from-square"></i
+                    ></a>
+                  {%- endif %}
                 </div>
               </div>
             {% endfor %}
@@ -229,7 +238,9 @@ layout: default
         {% endif %}
 
         {% if past_courses.size > 0 %}
-          <h3 class="cv-subsection-title" style="margin-top: 1.5rem;">Past Courses <span class="cv-courses-past-count">{{ past_courses.size }}</span></h3>
+          <h3 class="cv-subsection-title" style="margin-top: 1.5rem;">
+            Past Courses <span class="cv-courses-past-count">{{ past_courses.size }}</span>
+          </h3>
           <div class="cv-courses-past-wrapper" id="cv-past-courses">
             <div class="cv-course-grid">
               {% for course in past_courses %}
@@ -244,19 +255,29 @@ layout: default
                   <div class="cv-course-meta">
                     <span class="cv-course-type">{{ course.type }}</span>
                     <span class="cv-course-semester">{{ course.semester }}</span>
-                    {% if course.url %}<a href="{{ course.url }}" target="_blank" rel="noopener" class="cv-course-link"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>{% endif %}
+                    {% if course.url -%}
+                      <a href="{{ course.url }}" target="_blank" rel="noopener" class="cv-course-link"
+                        ><i class="fa-solid fa-arrow-up-right-from-square"></i
+                      ></a>
+                    {%- endif %}
                   </div>
                 </div>
               {% endfor %}
             </div>
             <div class="cv-courses-fade"></div>
           </div>
-          <button class="cv-courses-toggle" id="cv-past-toggle" onclick="
-            var w = document.getElementById('cv-past-courses');
-            var btn = document.getElementById('cv-past-toggle');
-            var expanded = w.classList.toggle('is-expanded');
-            btn.textContent = expanded ? 'Show less' : 'Show all {{ past_courses.size }} past courses';
-          ">Show all {{ past_courses.size }} past courses</button>
+          <button
+            class="cv-courses-toggle"
+            id="cv-past-toggle"
+            onclick="
+              var w = document.getElementById('cv-past-courses');
+              var btn = document.getElementById('cv-past-toggle');
+              var expanded = w.classList.toggle('is-expanded');
+              btn.textContent = expanded ? 'Show less' : 'Show all {{ past_courses.size }} past courses';
+            "
+          >
+            Show all {{ past_courses.size }} past courses
+          </button>
         {% endif %}
       </section>
     {% endif %}
@@ -277,9 +298,7 @@ layout: default
                   {% endif %}
                 </span>
                 {% if project.start_date %}
-                  <span class="cv-project-dates">
-                    since {{ project.start_date | split: '-' | first }}
-                  </span>
+                  <span class="cv-project-dates"> since {{ project.start_date | split: '-' | first }} </span>
                 {% endif %}
               </div>
               {% if project.summary %}
@@ -377,6 +396,5 @@ layout: default
         </div>
       </section>
     {% endif %}
-
   </article>
 </div>

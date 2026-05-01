@@ -127,11 +127,7 @@
     top: 0.5rem;
     bottom: 0.5rem;
     width: 2px;
-    background: linear-gradient(
-      to bottom,
-      var(--global-theme-color),
-      color-mix(in srgb, var(--global-theme-color) 20%, transparent)
-    );
+    background: linear-gradient(to bottom, var(--global-theme-color), color-mix(in srgb, var(--global-theme-color) 20%, transparent));
     border-radius: 1px;
   }
 }
@@ -273,11 +269,7 @@
   left: 0;
   right: 0;
   height: 100px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--global-bg-color)
-  );
+  background: linear-gradient(to bottom, transparent, var(--global-bg-color));
   pointer-events: none;
   transition: opacity 300ms ease;
 }
@@ -292,7 +284,9 @@
   font-size: 0.78rem;
   color: var(--global-text-color-light);
   cursor: pointer;
-  transition: border-color 150ms ease, color 150ms ease;
+  transition:
+    border-color 150ms ease,
+    color 150ms ease;
 
   &:hover {
     border-color: var(--global-theme-color);
@@ -378,7 +372,9 @@
   color: var(--global-text-color-light);
   margin-left: auto;
   opacity: 0.6;
-  transition: opacity 150ms ease, color 150ms ease;
+  transition:
+    opacity 150ms ease,
+    color 150ms ease;
 
   &:hover {
     opacity: 1;

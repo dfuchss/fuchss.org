@@ -23,10 +23,10 @@
           <span class="repo-user-stat-label"><i class="fa-regular fa-star" aria-hidden="true"></i> Stars</span>
         </div>
         {% if user_data.total_commits %}
-        <div class="repo-user-stat">
-          <span class="repo-user-stat-value">{{ user_data.total_commits }}</span>
-          <span class="repo-user-stat-label"><i class="fa-solid fa-code-commit" aria-hidden="true"></i> Commits</span>
-        </div>
+          <div class="repo-user-stat">
+            <span class="repo-user-stat-value">{{ user_data.total_commits }}</span>
+            <span class="repo-user-stat-label"><i class="fa-solid fa-code-commit" aria-hidden="true"></i> Commits</span>
+          </div>
         {% endif %}
         <div class="repo-user-stat">
           <span class="repo-user-stat-value">{{ user_data.total_prs | default: 0 }}</span>

@@ -1,4 +1,4 @@
-{% assign doi_filename = include.repo.doi | replace: "/", "_" | replace: ".", "_" | replace: ":", "_" %}
+{% assign doi_filename = include.repo.doi | replace: '/', '_' | replace: '.', '_' | replace: ':', '_' %}
 
 <div class="repo p-2">
   <a href="https://doi.org/{{ include.repo.doi }}" class="repo-card-link" target="_blank" rel="noopener noreferrer">
