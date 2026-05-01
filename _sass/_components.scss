@@ -151,6 +151,14 @@ ul.task-list input[type="checkbox"] {
     margin-bottom: 10px;
   }
 
+  a:has(h2.category) {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
   h2.category {
     color: var(--global-divider-color);
     border-bottom: 1px solid var(--global-divider-color);
