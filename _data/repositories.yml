@@ -12,7 +12,6 @@ github_repos:
 zenodo_repos:
   - name: ardoco/benchmark
     doi: 10.5281/zenodo.6966831
-    description: Benchmark for traceability link recovery (TLR) between Software Architecture Documentation (SAD), Architecture Models (SAM), and source code.
   - name: "TransArC @ ICSE'24"
     doi: 10.5281/zenodo.10411853
   - name: "ExArch @ ICSA'25"
