@@ -1,7 +1,7 @@
 cv:
   name: Dominik Fuchß
   email: dominik@fuchss.org
-  matrix: "@fuchss:matrix.org"
+  matrix: "@dominik:fuchss.org"
   website: ""
   summary: A researcher at the Karlsruhe Institute of Technology since 2020. In my research, I deal with the use of informal models such as sketches, diagrams and natural language in software development. One focus here is the use of Large Language Models for Traceability Link Recovery. I'm also one of the maintainers of JPlag, a state-of-the-art software plagiarism & collusion detector. Finally, I'm maintaining multiple personal OSS projects on GitHub.
 
@@ -145,3 +145,111 @@ cv:
         summary: I implement personal OSS projects at https://github.com/dfuchss
         start_date: "2014"
         url: https://github.com/dfuchss
+
+    Teaching:
+      - course: "Programming Exercise"
+        type: "Practice"
+        semester: "SS 2026"
+        url: "https://sdq.kastel.kit.edu/wiki/%C3%9Cbung_zu_Programmieren_SS26"
+
+      - course: "Programming"
+        type: "Lecture / Practice"
+        semester: "WS 25/26"
+
+      - course: "Practical Course: Tools for Agile Modelling"
+        type: "Praktikum"
+        semester: "SS 2025"
+
+      - course: "Programming Exercise"
+        type: "Practice"
+        semester: "SS 2025"
+
+      - course: "Continuous Software Engineering"
+        type: "Seminar"
+        semester: "WS 24/25"
+
+      - course: "Programming"
+        type: "Lecture / Practice"
+        semester: "WS 24/25"
+
+      - course: "Proseminar Software-Sustainability"
+        type: "Proseminar"
+        semester: "SS 2024"
+
+      - course: "Programming Exercise"
+        type: "Practice"
+        semester: "SS 2024"
+
+      - course: "Continuous Software Engineering"
+        type: "Seminar"
+        semester: "WS 23/24"
+
+      - course: "Programming"
+        type: "Lecture / Practice"
+        semester: "WS 23/24"
+
+      - course: "Practical Course: Tools for Agile Modelling"
+        type: "Praktikum"
+        semester: "WS 23/24"
+
+      - course: "Practical Course Developing Software as an Engineer"
+        type: "Praktikum"
+        semester: "SS 2023"
+
+      - course: "Programming Exercise"
+        type: "Practice"
+        semester: "SS 2023"
+
+      - course: "Proseminar Software Requirements and Design"
+        type: "Proseminar"
+        semester: "SS 2023"
+
+      - course: "Practical Course: Tools for Agile Modelling"
+        type: "Praktikum"
+        semester: "WS 22/23"
+
+      - course: "Programming"
+        type: "Lecture / Practice"
+        semester: "WS 22/23"
+
+      - course: "Practical Course Developing Software as an Engineer"
+        type: "Praktikum"
+        semester: "SS 2022"
+
+      - course: "Programming Exercise"
+        type: "Practice"
+        semester: "SS 2022"
+
+      - course: "Proseminar Software Requirements and Design"
+        type: "Proseminar"
+        semester: "SS 2022"
+
+      - course: "Practical Course Engineering Approaches to Software Development"
+        type: "Praktikum"
+        semester: "WS 21/22"
+
+      - course: "Programming"
+        type: "Lecture / Practice"
+        semester: "WS 21/22"
+
+      - course: "Programming Exercise"
+        type: "Practice"
+        semester: "SS 2021"
+
+      - course: "Proseminar Software Requirements and Design"
+        type: "Proseminar"
+        semester: "SS 2021"
+
+    Community:
+      - label: "(Sub-)Reviewer"
+        details: "ICSE 2022, ICSE 2023, ECSA 2023, MODELS 2023, ICSA 2024, ICSA 2025, ICSA 2025 AE"
+      - label: "Journal Reviewer"
+        details: "[ACM Transactions on Software Engineering and Methodology](https://publons.com/wos-op/review/author/gpByIpFY/); [Expert Systems with Applications (Elsevier)](https://publons.com/wos-op/review/author/47Ti5WX0/)"
+      - label: "Organizing Team"
+        details: "[SE 2025](https://se2025.sdq.kastel.kit.edu/)"
+
+    Research:
+      - bullet: "Natural Language Processing for Software Engineering"
+      - bullet: "Traceability Link Recovery"
+      - bullet: "Consistency Checking between formal & informal artifacts"
+      - bullet: "Retrieval-Augmented Generation & Large Language Models"
