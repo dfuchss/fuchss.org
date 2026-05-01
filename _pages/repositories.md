@@ -10,36 +10,20 @@ social: true
 
 {% if site.data.repositories.github_users %}
 
-<!-- ## GitHub users -->
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% for user in site.data.repositories.github_users %}
-    {% include repository/repo_user.liquid username=user %}
-  {% endfor %}
-</div>
-
----
-
-{% if site.repo_trophies.enabled %}
 {% for user in site.data.repositories.github_users %}
-{% if site.data.repositories.github_users.size > 1 %}
-
-  <h4>{{ user }}</h4>
-  {% endif %}
-  <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
-  {% include repository/repo_trophies.liquid username=user %}
-  </div>
+{% if site.data.repositories.github_users.size > 1 %}<h4>{{ user }}</h4>{% endif %}
+{% include repository/repo_user.liquid username=user %}
+{% endfor %}
 
 ---
 
-{% endfor %}
-{% endif %}
 {% endif %}
 
 {% if site.data.repositories.github_repos %}
 
 <!-- ## GitHub Repositories -->
 
-<div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
+<div class="repo-grid">
   {% for repo in site.data.repositories.github_repos %}
     {% include repository/repo.liquid repository=repo %}
   {% endfor %}
@@ -52,16 +36,10 @@ social: true
 
 ## Zenodo Repositories
 
-These repositories are hosted on Zenodo and have a DOI assigned. They include research data, software, and other archived artifacts.
+<div class="repo-grid">
+  {% for repo in site.data.repositories.zenodo_repos %}
+    {% include repository/repo_zenodo.liquid repo=repo %}
+  {% endfor %}
+</div>
 
-{% for repo in site.data.repositories.zenodo_repos %}
-
-### {{repo.name}}
-
-{% assign doi_filename = repo.doi | replace: "/", "_" | replace: ".", "_" %}
-[![DOI](/assets/img/badges/doi-{{ doi_filename }}.svg)](https://doi.org/{{ repo.doi }})
-
-{{repo.description}}
-
-{% endfor %}
 {% endif %}

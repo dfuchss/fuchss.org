@@ -4,44 +4,41 @@
 {% else %}
   {% assign show_owner = true %}
 {% endif %}
+{% assign repo_data = site.data.github_meta.repos[include.repository] %}
+{% assign lang_color = site.data.language_colors[repo_data.language] | default: "#888888" %}
 
-{% assign lang = site.lang | split: '-' | first %}
-
-{% case lang %}
-  {% when 'pt' %}
-    {% assign lang = site.lang %}
-
-  {% when 'zh' %}
-    {% assign lang_last = site.lang | split: '-' | last %}
-    {% case lang_last %}
-      {% when 'cn', 'sg', 'my', 'hans' %}
-        {% assign lang = 'cn' %}
-      {% when 'tw', 'hk', 'mo', 'hant' %}
-        {% assign lang = 'zh-tw' %}
-    {% endcase %}
-
-    {% comment %} Add a new language using when... if needed {% endcomment %}
-    {% comment %} If you still encounter language-display issues, check the available locale codes in github-readme-stats (different from ISO-639 standard used in your website) {% endcomment %}
-    {% comment %} https://github.com/anuraghazra/github-readme-stats?tab=readme-ov-file#available-locales {% endcomment %}
-{% endcase %}
-
-{% if site.data.repositories.repo_description_lines_max %}
-  {% assign max_lines = site.data.repositories.repo_description_lines_max %}
-{% else %}
-  {% assign max_lines = 2 %}
-{% endif %}
-
-<div class="repo p-2 text-center">
-  <a href="https://github.com/{{ include.repository }}">
-    <img
-      class="only-light w-100"
-      alt="{{ include.repository }}"
-      src="{{site.external_services.github_readme_stats_url}}/api/pin/?username={{ repo_url[0] }}&repo={{ repo_url[1] }}&theme={{ site.repo_theme_light }}&locale={{ lang }}&show_owner={{ show_owner }}&description_lines_count={{ max_lines }}"
-    >
-    <img
-      class="only-dark w-100"
-      alt="{{ include.repository }}"
-      src="{{site.external_services.github_readme_stats_url}}/api/pin/?username={{ repo_url[0] }}&repo={{ repo_url[1] }}&theme={{ site.repo_theme_dark }}&locale={{ lang }}&show_owner={{ show_owner }}&description_lines_count={{ max_lines }}"
-    >
+<div class="repo p-2">
+  <a href="https://github.com/{{ include.repository }}" class="repo-card-link">
+    <div class="repo-card">
+      <div class="repo-card-header">
+        <i class="fa-solid fa-book repo-card-icon" aria-hidden="true"></i>
+        <span class="repo-card-name">
+          {% if show_owner %}<span class="repo-card-owner">{{ repo_url[0] }}/</span>{% endif %}{{ repo_url[1] }}
+        </span>
+      </div>
+      {% if repo_data.description %}
+        <p class="repo-card-description">{{ repo_data.description }}</p>
+      {% endif %}
+      <div class="repo-card-stats">
+        {% if repo_data.language %}
+          <span class="repo-card-language">
+            <span class="repo-language-dot" style="background: {{ lang_color }}"></span>
+            {{ repo_data.language }}
+          </span>
+        {% endif %}
+        {% if repo_data.stargazers_count and repo_data.stargazers_count > 0 %}
+          <span class="repo-card-stat">
+            <i class="fa-regular fa-star" aria-hidden="true"></i>
+            {{ repo_data.stargazers_count }}
+          </span>
+        {% endif %}
+        {% if repo_data.forks_count and repo_data.forks_count > 0 %}
+          <span class="repo-card-stat">
+            <i class="fa-solid fa-code-fork" aria-hidden="true"></i>
+            {{ repo_data.forks_count }}
+          </span>
+        {% endif %}
+      </div>
+    </div>
   </a>
 </div>

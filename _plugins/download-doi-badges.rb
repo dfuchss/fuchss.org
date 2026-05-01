@@ -24,35 +24,10 @@ module Jekyll
       Jekyll.logger.info "Badges:", "Site destination: #{site.dest}"
       Jekyll.logger.info "Badges:", "Creating badges directory: #{badges_dir}"
       
-      # Download Zenodo DOI badges
-      download_zenodo_badges(site, badges_dir)
-      
       # Download Google Scholar citation badges
       download_scholar_badges(site, badges_dir)
       
       Jekyll.logger.info "Badges:", "All badges download complete!"
-    end
-
-    def self.download_zenodo_badges(site, badges_dir)
-      zenodo_repos = site.data['repositories']['zenodo_repos'] rescue nil
-      
-      unless zenodo_repos && !zenodo_repos.empty?
-        Jekyll.logger.warn "Zenodo Badges:", "No zenodo_repos found in data"
-        return
-      end
-
-      Jekyll.logger.info "Zenodo Badges:", "Downloading badges for #{zenodo_repos.length} repositories..."
-
-      zenodo_repos.each do |repo|
-        doi = repo['doi']
-        if doi
-          download_zenodo_badge(doi, badges_dir)
-        else
-          Jekyll.logger.warn "Zenodo Badges:", "Repository '#{repo['name']}' has no DOI"
-        end
-      end
-
-      Jekyll.logger.info "Zenodo Badges:", "Zenodo badges saved to: #{badges_dir}"
     end
 
     def self.download_scholar_badges(site, badges_dir)
@@ -82,17 +57,6 @@ module Jekyll
       Jekyll.logger.info "Scholar Badges:", "#{count} scholar badges saved to: #{badges_dir}"
     end
 
-    def self.download_zenodo_badge(doi, output_dir)
-      # Create the shields.io badge URL for DOI
-      encoded_doi = CGI.escape(doi)
-      badge_url = "https://img.shields.io/badge/DOI-#{encoded_doi}-blue.svg"
-      
-      # Create safe filename
-      filename = "doi-#{sanitize_filename(doi)}.svg"
-      output_path = File.join(output_dir, filename)
-
-      download_file(badge_url, output_path, "Zenodo DOI: #{doi}")
-    end
 
     def self.download_scholar_badge(citation_count, output_dir)
       # Create the shields.io URL for scholar badge

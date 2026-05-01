@@ -1,8 +1,6 @@
 github_users:
   - dfuchss
 
-repo_description_lines_max: 2
-
 github_repos:
   - dfuchss/matrix-joinlink
   - dfuchss/mensabot
@@ -14,22 +12,16 @@ github_repos:
 zenodo_repos:
   - name: ardoco/benchmark
     doi: 10.5281/zenodo.6966831
-    description: This repository contains a benchmark for traceability link recovery (TLR) between textual Software Architecture Documentation (SAD), Software Architecture Models (SAM) and source code.
-  - name: Replication Package For Recovering Trace Links Between Software Documentation And Code
+    description: Benchmark for traceability link recovery (TLR) between Software Architecture Documentation (SAD), Architecture Models (SAM), and source code.
+  - name: "TransArC @ ICSE'24"
     doi: 10.5281/zenodo.10411853
-    description: 'This replication package belongs to <a href="https://ardoco.de/c/icse24">Recovering Trace Links Between Software Documentation And Code</a>.'
-  - name: "Replication Package: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction"
+  - name: "ExArch @ ICSA'25"
     doi: 10.5281/zenodo.14506935
-    description: 'This replication package belongs to <a href="/conferences/icsa25">Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction</a>.'
-  - name: "Replication Package: LiSSA: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation"
+  - name: "LiSSA @ ICSE'25"
     doi: 10.5281/zenodo.14714706
-    description: 'This replication package belongs to <a href="/conferences/icse25">LiSSA: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation</a>.'
-  - name: 'Replication Package for "Beyond Retrieval: A Study of Using LLM Ensembles for Candidate Filtering in Requirements Traceability"'
+  - name: "LLM Ensembles @ AIRE'25"
     doi: 10.5281/zenodo.15837231
-    description: 'This replication package belongs to <a href="/conferences/aire25">Beyond Retrieval: A Study of Using LLM Ensembles for Candidate Filtering in Requirements Traceability</a>.'
-  - name: 'Replication Package for "Architecture in the Cradle: Early Warning of Architectural Decay with ArchGuard"'
+  - name: "ArchGuard @ ICSA'26"
     doi: 10.5281/zenodo.18891082
-    description: 'This replication package belongs to <a href="https://ardoco.de/c/icsa26">Architecture in the Cradle: Early Warning of Architectural Decay with ArchGuard</a>.'
-  - name: 'Replication Package for "Criminal Minds: How First-Year CS Students Plagiarize Code"'
+  - name: "Criminal Minds @ FSE'26"
     doi: 10.5281/zenodo.19115558
-    description: "This replication package belongs to Criminal Minds: How First-Year CS Students Plagiarize Code."

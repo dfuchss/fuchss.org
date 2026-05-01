@@ -1,6 +1,7 @@
 _site
 .bundle
 .DS_store
+.env
 .idea
 .jekyll-cache
 .jekyll-metadata
