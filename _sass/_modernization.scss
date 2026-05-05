@@ -120,14 +120,15 @@ table {
   }
 }
 
-// Improved focus states for accessibility
-button:focus,
-a:focus,
-input:focus,
-textarea:focus,
-select:focus {
+// Suppress the default browser focus ring for mouse/touch clicks;
+// :focus-visible below handles keyboard navigation.
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+select:focus:not(:focus-visible) {
   outline: none;
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--global-theme-color) 10%, transparent);
+  box-shadow: none;
 }
 
 // Better spacing for content sections

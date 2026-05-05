@@ -31,7 +31,7 @@
     background-color: color-mix(in srgb, var(--global-theme-color) 6%, transparent);
   }
 
-  &:focus {
+  &:focus-visible {
     outline: none;
     box-shadow: 0 0 0 2px color-mix(in srgb, var(--global-theme-color) 15%, transparent);
   }
