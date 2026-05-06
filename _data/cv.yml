@@ -249,7 +249,7 @@ cv:
         details: "[SE 2025](https://se2025.sdq.kastel.kit.edu/)"
 
     Research:
-      - bullet: "Natural Language Processing for Software Engineering"
+      - bullet: "Natural Language Processing"
       - bullet: "Traceability Link Recovery"
-      - bullet: "Consistency Checking between formal & informal artifacts"
-      - bullet: "Retrieval-Augmented Generation & Large Language Models"
+      - bullet: "Consistency between formal & informal artifacts"
+      - bullet: "Retrieval-Augmented Generation"
