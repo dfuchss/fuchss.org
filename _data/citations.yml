@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-04-28'
+  last_updated: '2026-05-17'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -10,11 +10,11 @@ papers:
     title: "Verarbeitung nat\xFCrlich-sprachlicher Beziehungsbeschreibungen zwischen Objekten"
     year: '2018'
   bVvFp4oAAAAJ:7PzlFSSx8tAC:
-    citations: 23
+    citations: 24
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
     year: '2025'
   bVvFp4oAAAAJ:8k81kl-MbHgC:
-    citations: 38
+    citations: 40
     title: 'LiSSA: Toward Generic Traceability Link Recovery Through Retrieval-Augmented Generation'
     year: '2025'
   bVvFp4oAAAAJ:9yKSN-GCB0IC:
@@ -30,7 +30,7 @@ papers:
     title: Trace Link Recovery for Software Architecture Documentation
     year: '2021'
   bVvFp4oAAAAJ:MXK_kJrjxJIC:
-    citations: 24
+    citations: 27
     title: Requirements traceability link recovery via retrieval-augmented generation
     year: '2025'
   bVvFp4oAAAAJ:R3hNpaxXUhUC:
@@ -46,11 +46,11 @@ papers:
     title: 'Linking Software System Artifacts: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation'
     year: '2026'
   bVvFp4oAAAAJ:Tyk-4Ss8FVUC:
-    citations: 28
+    citations: 29
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
-    citations: 17
+    citations: 21
     title: 'Software architecture meets llms: A systematic literature review'
     year: '2025'
   bVvFp4oAAAAJ:UeHWp8X0CEIC:
@@ -58,11 +58,11 @@ papers:
     title: Assessing Hypotheses in Multi-Agent Systems for Natural Language Processing
     year: '2020'
   bVvFp4oAAAAJ:UebtZRa9Y70C:
-    citations: 26
+    citations: 28
     title: Recovering trace links between software documentation and code
     year: '2024'
   bVvFp4oAAAAJ:WF5omc3nYNoC:
-    citations: 18
+    citations: 19
     title: Detecting inconsistencies in software architecture documentation using traceability link recovery
     year: '2023'
   bVvFp4oAAAAJ:YOwf2qJgpHMC:
@@ -74,7 +74,7 @@ papers:
     title: Replication Package of "Evaluation Methods and Replicability of Software Architecture Research Objects"
     year: '2022'
   bVvFp4oAAAAJ:ZeXyd9-uunAC:
-    citations: 4
+    citations: 5
     title: 'Beyond Retrieval: A Study of Using LLM Ensembles for Candidate Filtering in Requirements Traceability'
     year: '2025'
   bVvFp4oAAAAJ:_FxGoFyzp5QC:
