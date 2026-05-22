@@ -12,15 +12,25 @@ github_repos:
 zenodo_repos:
   - name: ardoco/benchmark
     doi: 10.5281/zenodo.6966831
+  - name: "SWATTR @ ECSA'21"
+    doi: 10.5281/zenodo.4730621
+  - name: "Inconsistencies @ ICSA'23"
+    doi: 10.5281/zenodo.7555194
   - name: "TransArC @ ICSE'24"
     doi: 10.5281/zenodo.10411853
   - name: "ExArch @ ICSA'25"
     doi: 10.5281/zenodo.14506935
   - name: "LiSSA @ ICSE'25"
     doi: 10.5281/zenodo.14714706
+  - name: "Inter-Requirements @ REFSQ'25"
+    doi: 10.5281/zenodo.14779457
   - name: "LLM Ensembles @ AIRE'25"
     doi: 10.5281/zenodo.15837231
+  - name: "ArTEMiS @ TAAS"
+    doi: 10.5281/zenodo.18957376
   - name: "ArchGuard @ ICSA'26"
     doi: 10.5281/zenodo.18891082
   - name: "Criminal Minds @ FSE'26"
     doi: 10.5281/zenodo.19115558
+  - name: "AutoPCM @ ECSA'26"
+    doi: 10.5281/zenodo.20287035
