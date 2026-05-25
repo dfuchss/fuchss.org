@@ -24,10 +24,19 @@
 @use "footer";
 @use "blog";
 @use "publications";
+@use "publications-custom"; // Custom Google Scholar citation overview
 @use "components";
 @use "utilities";
+@use "custom-socials";
+
+// Custom modern styling
+@use "modernization";
+@use "modern-buttons";
+@use "modern-components";
 
 // Other specialized styles
+@use "cv";
+@use "cv-modern";
 @use "tabs";
 @use "teachings";
 @use "typograms";

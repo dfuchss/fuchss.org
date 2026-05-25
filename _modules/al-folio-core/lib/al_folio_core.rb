@@ -110,6 +110,11 @@ module AlFolioCore
             Dir[File.join(gem_path, "gems", "*", local_target_path)]
         end
       end
+      if files.empty?
+        files = Gem.loaded_specs.values.flat_map do |spec|
+          Dir[File.join(spec.gem_dir, local_target_path)]
+        end
+      end
 
       files.map { |f| File.read(f) unless File.directory?(f) }.join
     end
@@ -187,9 +192,14 @@ module AlFolioCore
   end
 
   def bundler_gem_asset_paths(relative_asset_path)
-    Gem.path.flat_map do |gem_path|
+    paths = Gem.path.flat_map do |gem_path|
       Dir[File.join(gem_path, "bundler", "gems", "*", relative_asset_path)] +
         Dir[File.join(gem_path, "gems", "*", relative_asset_path)]
+    end
+    # Also search loaded specs to handle Gemfile `path:` entries
+    paths + Gem.loaded_specs.values.filter_map do |spec|
+      candidate = File.join(spec.gem_dir, relative_asset_path)
+      candidate if File.file?(candidate)
     end
   end
 
@@ -202,6 +212,11 @@ module AlFolioCore
     # Treat those as external runtime assets, not local source overrides.
     vendored_bundle_prefix = File.join(expanded_site_source, "vendor", "bundle") + File::SEPARATOR
     return false if expanded_asset_path.start_with?(vendored_bundle_prefix)
+
+    # Subtree-pinned gems live under `<site>/_modules/**`.
+    # Treat those as external runtime assets, not local source overrides.
+    modules_prefix = File.join(expanded_site_source, "_modules") + File::SEPARATOR
+    return false if expanded_asset_path.start_with?(modules_prefix)
 
     true
   end

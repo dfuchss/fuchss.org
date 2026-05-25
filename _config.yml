@@ -448,14 +448,20 @@ third_party_libraries:
   fontawesome:
     integrity:
       css: "sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c="
+    local:
+      fonts: "../webfonts/"
     url:
       css: "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@{{version}}/css/all.min.css"
+      fonts: "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@{{version}}/webfonts/"
     version: "7.2.0"
   academicons:
     integrity:
       css: "sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw="
+    local:
+      fonts: "../fonts/"
     url:
       css: "https://cdn.jsdelivr.net/npm/academicons@{{version}}/css/academicons.min.css"
+      fonts: "https://cdn.jsdelivr.net/npm/academicons@{{version}}/fonts/"
     version: "1.9.5"
   chartjs:
     integrity:

@@ -82,8 +82,8 @@ blockquote {
 }
 
 // Improved list styling
-ol,
-ul {
+ol:not(.navbar-nav):not(.dropdown-menu),
+ul:not(.navbar-nav):not(.dropdown-menu) {
   margin-bottom: 1.25rem;
   line-height: 1.6;
 
@@ -535,5 +535,20 @@ input.search {
     .repo-card {
       width: 100%;
     }
+  }
+}
+
+// Fix back-to-top button arrow alignment
+// The JS library calculates SVG size/margin for its default 56px diameter,
+// but the CSS overrides the button to 40px — use flex to center properly.
+#back-to-top {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  svg {
+    margin: 0 !important;
+    width: 20px !important;
+    height: 20px !important;
   }
 }

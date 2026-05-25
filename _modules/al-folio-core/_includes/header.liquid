@@ -62,11 +62,23 @@
               {% if p.dropdown %}
                 {% assign has_active_child = false %}
                 {% for child in p.children %}
-                  {% if page.title == child.title %}
+                  {% assign valid_permalink = false %}
+                  {% if page.permalink != blank %}
+                    {% if page.permalink == child.permalink %}
+                      {% assign valid_permalink = true %}
+                    {% endif %}
+                  {% endif %}
+                  {% if page.title == child.title or valid_permalink %}
                     {% assign has_active_child = true %}
                   {% endif %}
                 {% endfor %}
-                <li class="nav-item dropdown {% if page.title == p.title or has_active_child %}active{% endif %}">
+                {% assign valid_permalink = false %}
+                {% if p.permalink != blank %}
+                  {% if p.permalink == page.permalink %}
+                    {% assign valid_permalink = true %}
+                  {% endif %}
+                {% endif %}
+                <li class="nav-item dropdown {% if page.title == p.title or valid_permalink or has_active_child %}active{% endif %}">
                   <a
                     class="nav-link dropdown-toggle"
                     href="#"
@@ -77,7 +89,7 @@
                     aria-expanded="false"
                   >
                     {{- p.title }}
-                    {% if page.title == p.title or has_active_child %}
+                    {% if page.title == p.title or page.permalink == p.permalink or has_active_child %}
                       <span class="sr-only">(current)</span>
                     {% endif %}
                   </a>
@@ -87,7 +99,7 @@
                         <div class="dropdown-divider"></div>
                       {% else %}
                         <a
-                          class="dropdown-item {% if page.title == child.title %}active{% endif %}"
+                          class="dropdown-item {% if page.title == child.title or page.permalink == child.permalink %}active{% endif %}"
                           href="{% if child.permalink contains '://' %}{{ child.permalink }}{% else %}{{ child.permalink | relative_url }}{% endif %}"
                         >
                           {{- child.title -}}
