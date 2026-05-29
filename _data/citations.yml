@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-05-17'
+  last_updated: '2026-05-29'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -46,11 +46,11 @@ papers:
     title: 'Linking Software System Artifacts: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation'
     year: '2026'
   bVvFp4oAAAAJ:Tyk-4Ss8FVUC:
-    citations: 29
+    citations: 30
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
-    citations: 21
+    citations: 23
     title: 'Software architecture meets llms: A systematic literature review'
     year: '2025'
   bVvFp4oAAAAJ:UeHWp8X0CEIC:
@@ -58,7 +58,7 @@ papers:
     title: Assessing Hypotheses in Multi-Agent Systems for Natural Language Processing
     year: '2020'
   bVvFp4oAAAAJ:UebtZRa9Y70C:
-    citations: 28
+    citations: 27
     title: Recovering trace links between software documentation and code
     year: '2024'
   bVvFp4oAAAAJ:WF5omc3nYNoC:
@@ -74,11 +74,11 @@ papers:
     title: Replication Package of "Evaluation Methods and Replicability of Software Architecture Research Objects"
     year: '2022'
   bVvFp4oAAAAJ:ZeXyd9-uunAC:
-    citations: 5
+    citations: 6
     title: 'Beyond Retrieval: A Study of Using LLM Ensembles for Candidate Filtering in Requirements Traceability'
     year: '2025'
   bVvFp4oAAAAJ:_FxGoFyzp5QC:
-    citations: 37
+    citations: 38
     title: Evaluation methods and replicability of software architecture research objects
     year: '2022'
   bVvFp4oAAAAJ:_Qo2XoVZTnwC:
@@ -106,7 +106,7 @@ papers:
     title: 'Structuring Scientific Knowledge in Software Engineering Using the Open Research Knowledge Graph: A Use Case and Experience Report'
     year: '2025'
   bVvFp4oAAAAJ:mB3voiENLucC:
-    citations: 1
+    citations: 2
     title: "Who\u2019s Who? LLM-assisted Software Traceability with Architecture Entity Recognition"
     year: '2026'
   bVvFp4oAAAAJ:roLk4NBRz8UC:
