@@ -34,6 +34,7 @@ on:
       - master
       - main
     paths:
+      - "_modules/**"
       - "assets/**"
       - "**.bib"
       - "**.html"
