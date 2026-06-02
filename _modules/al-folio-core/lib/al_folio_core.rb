@@ -227,6 +227,12 @@ module AlFolioCore
     modules_prefix = File.join(expanded_site_source, "_modules") + File::SEPARATOR
     return false if expanded_asset_path.start_with?(modules_prefix)
 
+    # Third-party library files live under `<site>/assets/libs/**`.
+    # They are already production-ready bundles; re-minifying changes their hash
+    # and breaks Subresource Integrity checks.
+    libs_prefix = File.join(expanded_site_source, "assets", "libs") + File::SEPARATOR
+    return false if expanded_asset_path.start_with?(libs_prefix)
+
     true
   end
 
