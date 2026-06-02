@@ -25,7 +25,7 @@
         {% if user_data.total_commits %}
           <div class="repo-user-stat">
             <span class="repo-user-stat-value">{{ user_data.total_commits }}</span>
-            <span class="repo-user-stat-label"><i class="fa-solid fa-code-commit" aria-hidden="true"></i> Commits</span>
+            <span class="repo-user-stat-label"><i class="fa-solid fa-code-commit" aria-hidden="true"></i> Commits ({{ 'now' | date: '%Y' }})</span>
           </div>
         {% endif %}
         <div class="repo-user-stat">
