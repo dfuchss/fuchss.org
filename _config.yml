@@ -263,6 +263,7 @@ sass:
 
 jekyll-minifier:
   compress_javascript: false # set to false since we are using terser as the js minifier
+  compress_css: false
   exclude: ["robots.txt", ".htaccess", "assets/js/search/*.js", ".well-known/**"]
 
 # -----------------------------------------------------------------------------
