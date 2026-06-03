@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-05-29'
+  last_updated: '2026-06-03'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -10,7 +10,7 @@ papers:
     title: "Verarbeitung nat\xFCrlich-sprachlicher Beziehungsbeschreibungen zwischen Objekten"
     year: '2018'
   bVvFp4oAAAAJ:7PzlFSSx8tAC:
-    citations: 24
+    citations: 23
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
     year: '2025'
   bVvFp4oAAAAJ:8k81kl-MbHgC:
@@ -38,7 +38,7 @@ papers:
     title: 'ExArch: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction'
     year: '2026'
   bVvFp4oAAAAJ:RHpTSmoSYBkC:
-    citations: 0
+    citations: 1
     title: 'GARMA: Generative Architectural Resource Demand Estimation for Microservice Applications'
     year: '2026'
   bVvFp4oAAAAJ:TQgYirikUcIC:
@@ -50,7 +50,7 @@ papers:
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
-    citations: 23
+    citations: 24
     title: 'Software architecture meets llms: A systematic literature review'
     year: '2025'
   bVvFp4oAAAAJ:UeHWp8X0CEIC:
@@ -66,7 +66,7 @@ papers:
     title: Detecting inconsistencies in software architecture documentation using traceability link recovery
     year: '2023'
   bVvFp4oAAAAJ:YOwf2qJgpHMC:
-    citations: 2
+    citations: 3
     title: A formalized classification schema for model consistency
     year: '2023'
   bVvFp4oAAAAJ:YsMSGLbcyi4C:
@@ -78,7 +78,7 @@ papers:
     title: 'Beyond Retrieval: A Study of Using LLM Ensembles for Candidate Filtering in Requirements Traceability'
     year: '2025'
   bVvFp4oAAAAJ:_FxGoFyzp5QC:
-    citations: 38
+    citations: 39
     title: Evaluation methods and replicability of software architecture research objects
     year: '2022'
   bVvFp4oAAAAJ:_Qo2XoVZTnwC:
@@ -101,6 +101,10 @@ papers:
     citations: 8
     title: 'Modeling languages for automotive digital twins: A survey among the german automotive industry'
     year: '2024'
+  bVvFp4oAAAAJ:j3f4tGmQtD8C:
+    citations: 0
+    title: 'AutoPCM: Automated Generation of Architectural Performance Models from Early Design Artifacts using LLM Agents'
+    year: '2026'
   bVvFp4oAAAAJ:kNdYIx-mwKoC:
     citations: 1
     title: 'Structuring Scientific Knowledge in Software Engineering Using the Open Research Knowledge Graph: A Use Case and Experience Report'
