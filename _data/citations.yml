@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-06-24'
+  last_updated: '2026-06-28'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -104,7 +104,7 @@ papers:
   bVvFp4oAAAAJ:iH-uZ7U-co4C:
     citations: 0
     title: On Converting Natural Language Requirements into Semi-Formal Templates Using LLMs
-    year: Unknown Year
+    year: '2026'
   bVvFp4oAAAAJ:j3f4tGmQtD8C:
     citations: 0
     title: 'AutoPCM: Automated Generation of Architectural Performance Models from Early Design Artifacts using LLM Agents'
