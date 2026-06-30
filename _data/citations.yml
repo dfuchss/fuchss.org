@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-06-28'
+  last_updated: '2026-06-30'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -10,11 +10,11 @@ papers:
     title: "Verarbeitung nat\xFCrlich-sprachlicher Beziehungsbeschreibungen zwischen Objekten"
     year: '2018'
   bVvFp4oAAAAJ:7PzlFSSx8tAC:
-    citations: 23
+    citations: 24
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
     year: '2025'
   bVvFp4oAAAAJ:8k81kl-MbHgC:
-    citations: 45
+    citations: 46
     title: 'LiSSA: Toward Generic Traceability Link Recovery Through Retrieval-Augmented Generation'
     year: '2025'
   bVvFp4oAAAAJ:9yKSN-GCB0IC:
@@ -46,11 +46,11 @@ papers:
     title: 'Linking Software System Artifacts: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation'
     year: '2026'
   bVvFp4oAAAAJ:Tyk-4Ss8FVUC:
-    citations: 30
+    citations: 31
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
-    citations: 27
+    citations: 28
     title: 'Software architecture meets llms: A systematic literature review'
     year: '2025'
   bVvFp4oAAAAJ:UeHWp8X0CEIC:
@@ -84,6 +84,10 @@ papers:
   bVvFp4oAAAAJ:_Qo2XoVZTnwC:
     citations: 0
     title: 'Criminal Minds: How First-Year CS Students Plagiarize Code'
+    year: '2026'
+  bVvFp4oAAAAJ:bEWYMUwI8FkC:
+    citations: 0
+    title: The EVerest Dataset for Secure Software Engineering
     year: '2026'
   bVvFp4oAAAAJ:d1gkVwhDpl0C:
     citations: 3
