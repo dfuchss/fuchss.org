@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-06-30'
+  last_updated: '2026-07-04'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -10,11 +10,11 @@ papers:
     title: "Verarbeitung nat\xFCrlich-sprachlicher Beziehungsbeschreibungen zwischen Objekten"
     year: '2018'
   bVvFp4oAAAAJ:7PzlFSSx8tAC:
-    citations: 24
+    citations: 25
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
     year: '2025'
   bVvFp4oAAAAJ:8k81kl-MbHgC:
-    citations: 46
+    citations: 47
     title: 'LiSSA: Toward Generic Traceability Link Recovery Through Retrieval-Augmented Generation'
     year: '2025'
   bVvFp4oAAAAJ:9yKSN-GCB0IC:
@@ -26,11 +26,11 @@ papers:
     title: An Experience Report on a Pedagogically Controlled, Curriculum-Constrained AI Tutor for SE Education
     year: '2025'
   bVvFp4oAAAAJ:IWHjjKOFINEC:
-    citations: 34
+    citations: 35
     title: Trace Link Recovery for Software Architecture Documentation
     year: '2021'
   bVvFp4oAAAAJ:MXK_kJrjxJIC:
-    citations: 34
+    citations: 36
     title: Requirements traceability link recovery via retrieval-augmented generation
     year: '2025'
   bVvFp4oAAAAJ:R3hNpaxXUhUC:
@@ -40,6 +40,10 @@ papers:
   bVvFp4oAAAAJ:RHpTSmoSYBkC:
     citations: 1
     title: 'GARMA: Generative Architectural Resource Demand Estimation for Microservice Applications'
+    year: '2026'
+  bVvFp4oAAAAJ:TFP_iSt0sucC:
+    citations: 0
+    title: 'The ARDoCo Tool Landscape: REST API, TraceView, and TraceViz for Architecture Traceability'
     year: '2026'
   bVvFp4oAAAAJ:TQgYirikUcIC:
     citations: 0
@@ -58,11 +62,11 @@ papers:
     title: Assessing Hypotheses in Multi-Agent Systems for Natural Language Processing
     year: '2020'
   bVvFp4oAAAAJ:UebtZRa9Y70C:
-    citations: 28
+    citations: 29
     title: Recovering trace links between software documentation and code
     year: '2024'
   bVvFp4oAAAAJ:WF5omc3nYNoC:
-    citations: 21
+    citations: 22
     title: Detecting inconsistencies in software architecture documentation using traceability link recovery
     year: '2023'
   bVvFp4oAAAAJ:YOwf2qJgpHMC:
@@ -78,7 +82,7 @@ papers:
     title: 'Beyond Retrieval: A Study of Using LLM Ensembles for Candidate Filtering in Requirements Traceability'
     year: '2025'
   bVvFp4oAAAAJ:_FxGoFyzp5QC:
-    citations: 41
+    citations: 42
     title: Evaluation methods and replicability of software architecture research objects
     year: '2022'
   bVvFp4oAAAAJ:_Qo2XoVZTnwC:
@@ -98,7 +102,7 @@ papers:
     title: 'Architecture in the Cradle: Early Warning of Architectural Decay with ArchGuard'
     year: '2026'
   bVvFp4oAAAAJ:eQOLeE2rZwMC:
-    citations: 16
+    citations: 17
     title: Establishing a benchmark dataset for traceability link recovery between software architecture documentation and models
     year: '2022'
   bVvFp4oAAAAJ:hqOjcs7Dif8C:
@@ -118,7 +122,7 @@ papers:
     title: 'Structuring Scientific Knowledge in Software Engineering Using the Open Research Knowledge Graph: A Use Case and Experience Report'
     year: '2025'
   bVvFp4oAAAAJ:mB3voiENLucC:
-    citations: 3
+    citations: 4
     title: "Who\u2019s Who? LLM-assisted Software Traceability with Architecture Entity Recognition"
     year: '2026'
   bVvFp4oAAAAJ:r0BpntZqJG4C:
