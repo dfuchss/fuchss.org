@@ -93,6 +93,10 @@ cv:
         summary: Fluent
 
     Awards:
+      - title: Distinguished paper award FSE 2026 SEET
+        date: 2026
+        awarder: FSE 2026
+        url: https://conf.researchr.org/details/fse-2026/fse-2026-software-engineering-education/15/Criminal-Minds-How-First-Year-CS-Students-Plagiarize-Code
       - title: Open Science Challenge Award at REFSQ 2025
         date: 2025
         awarder: REFSQ 2025
