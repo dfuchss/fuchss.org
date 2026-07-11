@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-07-04'
+  last_updated: '2026-07-11'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -14,7 +14,7 @@ papers:
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
     year: '2025'
   bVvFp4oAAAAJ:8k81kl-MbHgC:
-    citations: 47
+    citations: 50
     title: 'LiSSA: Toward Generic Traceability Link Recovery Through Retrieval-Augmented Generation'
     year: '2025'
   bVvFp4oAAAAJ:9yKSN-GCB0IC:
@@ -54,7 +54,7 @@ papers:
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
-    citations: 28
+    citations: 30
     title: 'Software architecture meets llms: A systematic literature review'
     year: '2025'
   bVvFp4oAAAAJ:UeHWp8X0CEIC:
@@ -86,11 +86,11 @@ papers:
     title: Evaluation methods and replicability of software architecture research objects
     year: '2022'
   bVvFp4oAAAAJ:_Qo2XoVZTnwC:
-    citations: 0
+    citations: 1
     title: 'Criminal Minds: How First-Year CS Students Plagiarize Code'
     year: '2026'
   bVvFp4oAAAAJ:bEWYMUwI8FkC:
-    citations: 0
+    citations: 1
     title: The EVerest Dataset for Secure Software Engineering
     year: '2026'
   bVvFp4oAAAAJ:d1gkVwhDpl0C:
