@@ -72,3 +72,11 @@
 "FSE-SEET":
   url: https://conf.researchr.org/series/fse
   color: "#E67E22"
+
+"ASE":
+  url: https://conf.researchr.org/series/ase
+  color: "#D35400"
+
+"SoSyM":
+  url: https://link.springer.com/journal/10270
+  color: "#9C4D96"
