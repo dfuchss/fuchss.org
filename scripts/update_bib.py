@@ -196,7 +196,15 @@ def crossref_fields(msg, etype, has_journal):
     isbn = first("ISBN")
     if isbn:
         out["isbn"] = isbn.replace("-", "").strip()
-    issn = first("ISSN")
+    # Crossref lists both print and electronic ISSNs; prefer the electronic
+    # (online) one since the DOI resolves to the online version.
+    issn = None
+    for t in msg.get("issn-type") or []:
+        if t.get("type") == "electronic" and t.get("value"):
+            issn = t["value"]
+            break
+    if not issn:
+        issn = first("ISSN")
     if issn:
         out["issn"] = issn.strip()
 
