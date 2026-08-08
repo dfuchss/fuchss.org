@@ -2,10 +2,10 @@ github_users:
   - dfuchss
 
 github_repos:
+  - dfuchss/project-vault
   - dfuchss/matrix-joinlink
   - dfuchss/mensabot
   - dfuchss/yarb
-  - dfuchss/actions
   - dfuchss/deltabot
   - jplag/JPlag
 
