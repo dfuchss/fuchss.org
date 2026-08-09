@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-08-04'
+  last_updated: '2026-08-09'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -14,7 +14,7 @@ papers:
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
     year: '2025'
   bVvFp4oAAAAJ:8k81kl-MbHgC:
-    citations: 55
+    citations: 57
     title: 'LiSSA: Toward Generic Traceability Link Recovery Through Retrieval-Augmented Generation'
     year: '2025'
   bVvFp4oAAAAJ:9yKSN-GCB0IC:
@@ -66,7 +66,7 @@ papers:
     title: Recovering trace links between software documentation and code
     year: '2024'
   bVvFp4oAAAAJ:WF5omc3nYNoC:
-    citations: 23
+    citations: 24
     title: Detecting inconsistencies in software architecture documentation using traceability link recovery
     year: '2023'
   bVvFp4oAAAAJ:YOwf2qJgpHMC:
@@ -82,7 +82,7 @@ papers:
     title: 'Beyond Retrieval: A Study of Using LLM Ensembles for Candidate Filtering in Requirements Traceability'
     year: '2025'
   bVvFp4oAAAAJ:_FxGoFyzp5QC:
-    citations: 42
+    citations: 43
     title: Evaluation methods and replicability of software architecture research objects
     year: '2022'
   bVvFp4oAAAAJ:_Qo2XoVZTnwC:
@@ -106,7 +106,7 @@ papers:
     title: Establishing a benchmark dataset for traceability link recovery between software architecture documentation and models
     year: '2022'
   bVvFp4oAAAAJ:hqOjcs7Dif8C:
-    citations: 11
+    citations: 12
     title: 'Modeling languages for automotive digital twins: A survey among the german automotive industry'
     year: '2024'
   bVvFp4oAAAAJ:iH-uZ7U-co4C:
@@ -125,20 +125,20 @@ papers:
     citations: 1
     title: 'Structuring Scientific Knowledge in Software Engineering Using the Open Research Knowledge Graph: A Use Case and Experience Report'
     year: '2025'
-  bVvFp4oAAAAJ:k_IJM867U9cC:
-    citations: 0
-    title: "2026 IEEE 23rd International Conference on Software Architecture (ICSA)| 979-8-3315-5740-9/26/$31.00\xA9 2026 IEEE| DOI: 10.1109/ICSA66085. 2026.00042"
-    year: Unknown Year
   bVvFp4oAAAAJ:mB3voiENLucC:
     citations: 6
     title: "Who\u2019s Who? LLM-assisted Software Traceability with Architecture Entity Recognition"
+    year: '2026'
+  bVvFp4oAAAAJ:maZDTaKrznsC:
+    citations: 0
+    title: 'A survey of modeling languages for automotive digital twins: J. Pfeiffer et al.'
     year: '2026'
   bVvFp4oAAAAJ:r0BpntZqJG4C:
     citations: 0
     title: Automated Generation of SysML Activity Diagrams from Industrial Requirements Using LLMs
     year: '2026'
   bVvFp4oAAAAJ:roLk4NBRz8UC:
-    citations: 1
+    citations: 2
     title: An Expert Survey on the Use of Informal Models in the Automotive Industry
     year: '2023'
   bVvFp4oAAAAJ:u-x6o8ySG0sC:
