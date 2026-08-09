@@ -9,7 +9,7 @@ GIT
 PATH
   remote: _modules/al-folio-core
   specs:
-    al_folio_core (1.0.12)
+    al_folio_core (1.0.15)
       jekyll (>= 3.9, < 5.0)
       liquid (>= 4.0, < 6.0)
 
