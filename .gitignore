@@ -15,4 +15,7 @@ assets/rendercv/rendercv_output/*.typ
 Gemfile.lock
 node_modules/
 vendor
-__pycache__
+
+# Python bytecode from bin/ helper scripts
+__pycache__/
+*.pyc
