@@ -1,0 +1,14 @@
+# Matrix homeserver delegation for fuchss.org.
+# These bytes are served from this domain and federation depends on them.
+# Captured from the live production site on 2026-09-13.
+#
+# The .htaccess is the exception: a web server never serves it, so it cannot be
+# captured over HTTP. Its hash comes from the pre-rewrite tree (HEAD). It sets
+# `Access-Control-Allow-Origin: *`, which the Matrix spec requires on
+# /.well-known/matrix/client — without it browser-based clients cannot discover
+# this homeserver. It was dropped during the rewrite and restored afterwards;
+# this line exists so that cannot happen silently again.
+e70bbb7bedeb2bbc2df1c354724d8569cad82766298ff374f5bfb248d6a0b5c1  .well-known/matrix/server
+da3ec4f1f5238e0f000cfb30b23be7fd32e14389a8ff1e47e8d89a7a516319dc  .well-known/matrix/client
+54ae04a9dc2dab6521cafdfece365f9ca2cb995956d435310562caa1bc00bdcc  .well-known/matrix/support
+20788e20db012ca91c9d58ac0998405b56cb14270d9e066aa5cc13a7488ed7a8  .well-known/matrix/.htaccess

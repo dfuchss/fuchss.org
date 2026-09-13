@@ -1,0 +1,144 @@
+---
+import { render } from 'astro:content';
+import Base from '../../../../../layouts/Base.astro';
+import Prose from '../../../../../components/Prose.astro';
+import {
+  publishedPosts,
+  permalinkParts,
+  permalink,
+  formatPostDate,
+  slugifyTag,
+} from '../../../../../lib/blog.ts';
+
+export async function getStaticPaths() {
+  const posts = await publishedPosts();
+  return posts.map((post) => ({ params: permalinkParts(post.id), props: { post } }));
+}
+
+const { post } = Astro.props;
+const d = post.data;
+const { Content } = await render(post);
+
+const all = await publishedPosts();
+const i = all.findIndex((p) => p.id === post.id);
+const newer = i > 0 ? all[i - 1] : undefined;
+const older = i < all.length - 1 ? all[i + 1] : undefined;
+---
+
+<Base section="blog" title={d.title} description={d.description}>
+  <article class="wrap section">
+    <p class="kicker" data-sigil="none"><a href="/blog/">blog</a></p>
+
+    <header class="head">
+      <h1>{d.title}</h1>
+      <p class="meta mono">
+        <time datetime={d.date.toISOString().slice(0, 10)}>{formatPostDate(d.date)}</time>
+        {
+          d.tags.length > 0 && (
+            <>
+              <span aria-hidden="true">·</span>
+              {d.tags.map((t) => (
+                <a href={`/blog/tag/${slugifyTag(t)}/`}>{t}</a>
+              ))}
+            </>
+          )
+        }
+      </p>
+      {d.description && <p class="desc">{d.description}</p>}
+    </header>
+
+    <Prose>
+      <Content />
+    </Prose>
+
+    <nav class="pager" aria-label="More posts">
+      {
+        older ? (
+          <a class="prev" href={permalink(older.id)}>
+            <span class="mono">← older</span>
+            <span>{older.data.title}</span>
+          </a>
+        ) : (
+          <span />
+        )
+      }
+      {
+        newer && (
+          <a class="next" href={permalink(newer.id)}>
+            <span class="mono">newer →</span>
+            <span>{newer.data.title}</span>
+          </a>
+        )
+      }
+    </nav>
+  </article>
+</Base>
+
+<style>
+  .kicker a {
+    color: var(--text-faint);
+  }
+  .kicker a:hover {
+    color: var(--sec);
+  }
+  .head {
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  h1 {
+    max-width: 40ch;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6ch;
+    align-items: center;
+    color: var(--text-faint);
+    margin-bottom: 0.6rem;
+  }
+  .desc {
+    max-width: 62ch;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .pager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .pager a {
+    display: grid;
+    gap: 0.25rem;
+    padding: 0.9rem 1rem;
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    text-decoration: none;
+    font-size: var(--fs-small);
+    color: var(--text-muted);
+  }
+  .pager a:hover {
+    border-color: var(--sec-line);
+    color: var(--sec-strong);
+  }
+  .pager .next {
+    text-align: right;
+  }
+  .pager .mono {
+    color: var(--text-faint);
+    font-size: 0.6875rem;
+  }
+  @media (max-width: 34rem) {
+    .pager {
+      grid-template-columns: 1fr;
+    }
+    .pager .next {
+      text-align: left;
+    }
+  }
+</style>

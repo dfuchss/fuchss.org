@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Page not found" description="That page does not exist on fuchss.org.">
+  <section class="wrap section center">
+    <p class="kicker">cat $REQUEST_URI</p>
+    <h1>404</h1>
+    <p class="msg">
+      No such file or directory. The page you were looking for is not here — it may have moved when
+      this site was rebuilt.
+    </p>
+    <ul class="options">
+      <li><a class="chip" href="/">Home</a></li>
+      <li><a class="chip" href="/publications/">Publications</a></li>
+      <li><a class="chip" href="/projects/">Projects</a></li>
+      <li><a class="chip" href="/cv/">CV</a></li>
+      <li><a class="chip" href="/blog/">Blog</a></li>
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .center {
+    text-align: center;
+    padding-block: clamp(4rem, 14vw, 9rem);
+  }
+  .kicker {
+    justify-content: center;
+  }
+  h1 {
+    font-family: var(--font-mono);
+    font-size: clamp(4rem, 18vw, 9rem);
+    color: var(--sec);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .msg {
+    max-width: 48ch;
+    margin-inline: auto;
+    color: var(--text-muted);
+  }
+  .options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 2rem 0 0;
+    padding: 0;
+  }
+</style>

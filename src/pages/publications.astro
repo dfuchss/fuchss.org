@@ -1,0 +1,239 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PubEntry from '../components/pub/PubEntry.astro';
+import { scholarMetrics, formatCount, formatUpdated } from '../lib/citations.ts';
+import { socials } from '../lib/data.ts';
+import { byNewest } from '../lib/publications.ts';
+
+const pubs = await getCollection('publications');
+
+// Paper pages live at /conferences/<slug>/ and each one names its publication,
+// so a publication that has one links straight to it. The /conferences/ index
+// was dropped; the entries here and the homepage section are the way in.
+const conferences = await getCollection('conferences');
+const paperPageFor = new Map(conferences.map((c) => [c.data.publication.id, c.id]));
+
+// Newest first; month breaks ties within a year.
+pubs.sort(byNewest);
+
+const byYear = new Map<number, typeof pubs>();
+for (const p of pubs) {
+  const list = byYear.get(p.data.year) ?? [];
+  list.push(p);
+  byYear.set(p.data.year, list);
+}
+const years = [...byYear.keys()].sort((a, b) => b - a);
+
+const m = scholarMetrics();
+const scholarUrl = `https://scholar.google.com/citations?user=${socials.scholar_userid}`;
+
+const metrics = [
+  { label: 'Total citations', value: formatCount(m.total), sub: 'View on Scholar' },
+  { label: 'h-index', value: String(m.hIndex), sub: 'Papers with ≥ h citations' },
+  { label: 'i10-index', value: String(m.i10), sub: 'Papers with ≥ 10 citations' },
+];
+---
+
+<Base
+  section="publications"
+  title="Publications"
+  description="Peer-reviewed publications of Dominik Fuchß on traceability link recovery, consistency checking, and LLMs for software engineering."
+>
+  <section class="wrap section">
+    <p class="kicker" data-sigil="##">publications</p>
+    <h1>Publications</h1>
+    <p class="lede">
+      {pubs.length} peer-reviewed papers, theses and reports. Citation counts come from Google Scholar,
+      refreshed daily — last updated {formatUpdated(m.lastUpdated)}.
+    </p>
+
+    <ul class="metrics">
+      {
+        metrics.map((x) => (
+          <li>
+            <a class="metric" href={scholarUrl} rel="noopener">
+              <span class="metric-label mono">{x.label}</span>
+              <span class="metric-value">{x.value}</span>
+              <span class="metric-sub mono">{x.sub}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="search">
+      <label class="sr-only" for="pubsearch">Filter publications</label>
+      <input
+        id="pubsearch"
+        type="search"
+        placeholder="filter by title, author, venue or year…"
+        autocomplete="off"
+        hidden
+      />
+      <p class="no-results mono" hidden>No publications match that filter.</p>
+    </div>
+
+    {
+      years.map((year) => (
+        <section class="year" data-year={year}>
+          <h2 class="year-head mono">{year}</h2>
+          <ol class="entries">
+            {byYear.get(year)!.map((pub) => (
+              <PubEntry pub={pub} paperPage={paperPageFor.get(pub.id)} />
+            ))}
+          </ol>
+        </section>
+      ))
+    }
+  </section>
+</Base>
+
+<script>
+  // The filter input ships `hidden` in the HTML and is only revealed here, so
+  // there is never a dead control when JS is unavailable. (The copy buttons
+  // make the same bargain, from CopyButton.astro.)
+  const input = document.querySelector<HTMLInputElement>('#pubsearch');
+  const noResults = document.querySelector<HTMLElement>('.no-results');
+  const entries = Array.from(document.querySelectorAll<HTMLElement>('.entry'));
+  const yearBlocks = Array.from(document.querySelectorAll<HTMLElement>('.year'));
+
+  if (input) {
+    input.hidden = false;
+
+    const search = new Map(
+      entries.map((el) => [el, (el.textContent ?? '').toLowerCase().replace(/\s+/g, ' ')]),
+    );
+
+    const apply = (raw: string) => {
+      const q = raw.trim().toLowerCase();
+      let visible = 0;
+      for (const el of entries) {
+        const hit = q === '' || (search.get(el) ?? '').includes(q);
+        el.hidden = !hit;
+        if (hit) {
+          visible++;
+          // A match may sit far below the fold and never have been scrolled
+          // into view, so the scroll-reveal still has it at opacity 0. Filtering
+          // pulls it up to the top of the list, so reveal it now.
+          if (q !== '') el.classList.add('is-in');
+        }
+      }
+      // Hide a year heading once every entry under it is filtered out.
+      for (const block of yearBlocks) {
+        block.hidden = !block.querySelector('.entry:not([hidden])');
+      }
+      if (noResults) noResults.hidden = visible !== 0;
+    };
+
+    input.addEventListener('input', () => apply(input.value));
+
+    // Deep links like /publications/#lissa pre-fill the filter, matching the
+    // behaviour of the old bib_search widget.
+    const fromHash = () => {
+      const h = decodeURIComponent(location.hash.replace(/^#/, ''));
+      if (h && !document.getElementById(h)) {
+        input.value = h;
+        apply(h);
+      }
+    };
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
+  }
+</script>
+
+<style>
+  .lede {
+    max-width: 60ch;
+    color: var(--text-muted);
+  }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: 0.75rem;
+    list-style: none;
+    margin: 1.75rem 0;
+    padding: 0;
+  }
+
+  /* Flat, like the homepage stats: a hairline rule instead of a card. */
+  .metric {
+    display: grid;
+    gap: 0.15rem;
+    padding: 0.85rem 0 0;
+    border-top: 1px solid var(--border);
+    text-decoration: none;
+    transition: border-color var(--dur) var(--ease);
+  }
+  .metric:hover {
+    border-top-color: var(--sec-line);
+  }
+  .metric:hover .metric-label {
+    color: var(--sec);
+  }
+  .metric-label {
+    color: var(--text-faint);
+  }
+  .metric-value {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--sec);
+  }
+  .metric-sub {
+    color: var(--text-faint);
+    font-size: 0.75rem;
+  }
+
+  .search {
+    margin: 0 0 1rem;
+  }
+  .search input {
+    width: 100%;
+    max-width: 28rem;
+    padding: 0.6rem 0.85rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    color: var(--text);
+    background: var(--bg-1);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-s);
+  }
+  .search input:focus-visible {
+    border-color: var(--sec-line);
+  }
+  .no-results {
+    color: var(--text-faint);
+    margin: 0.75rem 0 0;
+  }
+
+  .year {
+    margin-top: 2.25rem;
+  }
+  /* A flat section marker rather than a sticky pill: the pill floated over the
+     entries as you scrolled and stacked up wherever two years sat close. */
+  .year-head {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin: 0;
+    font-size: var(--fs-mono);
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: var(--sec);
+  }
+  .year-head::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .entries {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+  }
+</style>

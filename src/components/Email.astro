@@ -1,0 +1,57 @@
+---
+/**
+ * An address that is not in the served bytes.
+ *
+ * The previous version emitted HTML numeric character references. That stops a
+ * naive regex scraper and nothing else: one call to an unescape function turns
+ * `&#100;&#111;...` back into the address, and the audit proved it — the built
+ * pages still yielded both addresses after decoding.
+ *
+ * So the address is split and lightly transformed into data attributes, and the
+ * raw HTML carries only a human-readable `name (at) domain` fallback. With
+ * JavaScript the script below assembles a real `mailto:` link. Without it you
+ * still see an address you can type — which is the same bargain the rest of the
+ * site makes: degrade to something usable, never to a dead control.
+ *
+ * This is obfuscation, not secrecy. A harvester running a headless browser will
+ * still get it. It raises the cost above "grep the HTML", which is where the
+ * overwhelming majority of address harvesting actually happens.
+ */
+interface Props {
+  address: string;
+  /** Visible text when JS is available. Defaults to the address itself. */
+  label?: string;
+}
+const { address, label } = Astro.props;
+
+const [user, domain] = address.split('@');
+// rot13 keeps the attribute from being greppable without being security theatre
+// dressed up as encryption — it is a speed bump, and named as one.
+const rot13 = (s: string) =>
+  s.replace(/[a-z]/gi, (c) => {
+    const base = c <= 'Z' ? 65 : 97;
+    return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
+  });
+
+const fallback = `${user} (at) ${domain.replace(/\./g, ' (dot) ')}`;
+---
+
+<span class="email" data-u={rot13(user)} data-d={rot13(domain)} data-l={label ? rot13(label) : null}
+  >{fallback}</span
+>
+
+<script>
+  const rot13 = (s: string) =>
+    s.replace(/[a-z]/gi, (c) => {
+      const base = c <= 'Z' ? 65 : 97;
+      return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
+    });
+
+  for (const el of document.querySelectorAll<HTMLElement>('.email[data-u][data-d]')) {
+    const address = `${rot13(el.dataset.u!)}@${rot13(el.dataset.d!)}`;
+    const a = document.createElement('a');
+    a.href = `mailto:${address}`;
+    a.textContent = el.dataset.l ? rot13(el.dataset.l) : address;
+    el.replaceWith(a);
+  }
+</script>

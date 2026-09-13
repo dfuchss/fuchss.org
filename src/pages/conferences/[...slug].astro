@@ -1,0 +1,348 @@
+---
+import { readFileSync } from 'node:fs';
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Prose from '../../components/Prose.astro';
+import PubEntry from '../../components/pub/PubEntry.astro';
+import ScholarMeta from '../../components/pub/ScholarMeta.astro';
+import VenueBadge from '../../components/pub/VenueBadge.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('conferences');
+  return entries.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+
+// reference() guarantees these resolve — a bad bib key or author id fails the build.
+const pub = await getEntry(d.publication);
+const authors = await Promise.all(d.authors.map((ref) => getEntry(ref)));
+
+const LINK_LABELS: Record<string, string> = {
+  ieee: 'IEEE Xplore',
+  acm: 'ACM Digital Library',
+  springer: 'SpringerLink',
+  kitopen: 'KITopen',
+  zenodo: 'Zenodo',
+  repo: 'GitHub',
+};
+
+/*
+ * Pull the diagram's intrinsic size out of its viewBox so the <img> carries
+ * width/height. Without them the page reflows when the SVG loads — the audit
+ * script flags exactly this.
+ */
+let figureSize: { width: number; height: number } | undefined;
+if (d.figure) {
+  const svg = readFileSync(`public${d.figure.src}`, 'utf8').slice(0, 2000);
+  const vb = /viewBox="([\d.\s-]+)"/.exec(svg);
+  if (vb) {
+    const [, , w, h] = vb[1].trim().split(/\s+/).map(Number);
+    if (w && h) figureSize = { width: Math.round(w), height: Math.round(h) };
+  }
+}
+
+const paperLinks = Object.entries(d.links.paper ?? {});
+const replLinks = Object.entries(d.links.replication ?? {});
+const description = d.description ?? `${d.title} — published at ${d.conferenceName}.`;
+---
+
+<Base section="conferences" title={d.title} description={description}>
+  <Fragment slot="head"><ScholarMeta pub={pub} /></Fragment>
+
+  <article class="wrap section">
+    <p class="kicker" data-sigil="none">
+      <a href="/publications/">publications</a> / {entry.id}
+    </p>
+
+    <header class="head">
+      <div class="head-top">
+        <VenueBadge abbr={pub.data.abbr.id} />
+        <span class="mono status">
+          {d.alreadyPublished ? 'published' : 'to appear'}
+        </span>
+      </div>
+
+      <h1>{d.title}</h1>
+
+      <p class="authors">
+        {
+          authors.map((a, i) => (
+            <>
+              {i > 0 && (
+                <span aria-hidden="true">{i === authors.length - 1 ? ', and ' : ', '}</span>
+              )}
+              <span class:list={['author', { self: a.id === 'dominik_fuchss' }]}>
+                {a.data.name}
+                {a.data.orcid && (
+                  <a
+                    class="orcid"
+                    href={`https://orcid.org/${a.data.orcid}`}
+                    rel="noopener"
+                    aria-label={`ORCID record for ${a.data.name}`}
+                    title={`ORCID ${a.data.orcid}`}
+                  >
+                    iD
+                  </a>
+                )}
+              </span>
+            </>
+          ))
+        }
+      </p>
+
+      <p class="conf">
+        {d.alreadyPublished ? 'Published at the' : 'To be published at the'}{' '}
+        {
+          d.conferenceUrl ? (
+            <a href={d.conferenceUrl} rel="noopener">
+              {d.conferenceName}
+            </a>
+          ) : (
+            <span>{d.conferenceName}</span>
+          )
+        }
+      </p>
+
+      <p class="actions">
+        {
+          pub.data.pdfUrl && (
+            <a class="chip primary" href={pub.data.pdfUrl}>
+              Read the PDF
+            </a>
+          )
+        }
+        {
+          pub.data.doi && (
+            <a class="chip" href={`https://doi.org/${pub.data.doi}`} rel="noopener">
+              DOI
+            </a>
+          )
+        }
+      </p>
+    </header>
+
+    {
+      d.figure && (
+        <figure class:list={['approach', { plate: d.figure.plate }]}>
+          <div class="frame">
+            <div class="frame-bar" aria-hidden="true">
+              <>
+                <span class="dot" />
+                <span class="dot" />
+                <span class="dot" />
+              </>
+              <span class="frame-label mono">approach overview</span>
+            </div>
+            <img
+              src={d.figure.src}
+              alt={d.figure.alt}
+              width={figureSize?.width}
+              height={figureSize?.height}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <figcaption class="mono">{d.figure.alt}</figcaption>
+        </figure>
+      )
+    }
+
+    <Prose>
+      <Content />
+    </Prose>
+
+    {
+      (paperLinks.length > 0 || replLinks.length > 0) && (
+        <section class="links">
+          <h2>Links</h2>
+          <div class="link-grid">
+            {paperLinks.length > 0 && (
+              <div>
+                <h3 class="mono">paper</h3>
+                <ul>
+                  {paperLinks.map(([k, url]) => (
+                    <li>
+                      <a href={url} rel="noopener">
+                        {LINK_LABELS[k] ?? k}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {replLinks.length > 0 && (
+              <div>
+                <h3 class="mono">replication package</h3>
+                <ul>
+                  {replLinks.map(([k, url]) => (
+                    <li>
+                      <a href={url} rel="noopener">
+                        {LINK_LABELS[k] ?? k}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="cite">
+      <h2>Cite this paper</h2>
+      <ol class="bare">
+        <PubEntry pub={pub} />
+      </ol>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .kicker a {
+    color: var(--text-faint);
+  }
+  .kicker a:hover {
+    color: var(--sec);
+  }
+
+  .head {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .head-top {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.9rem;
+  }
+  .status {
+    color: var(--text-faint);
+  }
+
+  h1 {
+    max-width: 40ch;
+  }
+
+  .authors {
+    max-width: 70ch;
+    margin-bottom: 0.4rem;
+    color: var(--text-muted);
+  }
+  .author.self {
+    color: var(--text);
+    font-weight: 600;
+  }
+  .orcid {
+    display: inline-block;
+    margin-left: 0.35ch;
+    padding: 0 0.3em;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    vertical-align: 0.15em;
+    text-decoration: none;
+    color: var(--sec);
+    border: 1px solid var(--sec-line);
+    border-radius: 3px;
+  }
+  .orcid:hover {
+    background: var(--sec-dim);
+  }
+
+  .conf {
+    color: var(--text-muted);
+    font-size: var(--fs-small);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.1rem 0 0;
+  }
+  .chip.primary {
+    border-color: var(--sec-line);
+    background: var(--sec-dim);
+    color: var(--sec-strong);
+  }
+
+  /* Browser-chrome frame: gives the light-background diagrams a surface to sit on. */
+  .approach {
+    margin: 2rem 0;
+  }
+  .frame {
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-m);
+    overflow: hidden;
+    background: var(--bg-2);
+    box-shadow: 0 20px 45px -30px var(--sec-glow);
+  }
+  .frame-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.7rem;
+    background: var(--bg-3);
+    border-bottom: 1px solid var(--border);
+  }
+  .dot {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: var(--border-strong);
+  }
+  .frame-label {
+    margin-left: 0.5rem;
+    color: var(--text-faint);
+    font-size: 0.6875rem;
+  }
+  .approach img {
+    display: block;
+    width: 100%;
+    margin: 0;
+  }
+  .approach.plate img {
+    background: #fff;
+    padding: 1rem;
+  }
+  figcaption {
+    margin-top: 0.6rem;
+    color: var(--text-faint);
+    font-size: 0.75rem;
+  }
+
+  .links,
+  .cite {
+    margin-top: 3rem;
+  }
+  .link-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 1.25rem;
+  }
+  .link-grid h3 {
+    margin: 0 0 0.5rem;
+    font-size: var(--fs-mono);
+    color: var(--text-faint);
+    text-transform: lowercase;
+  }
+  .link-grid ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.35rem;
+  }
+  .link-grid a {
+    font-size: var(--fs-small);
+  }
+
+  .bare {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+</style>

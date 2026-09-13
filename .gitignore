@@ -1,0 +1,18 @@
+# --- Astro ---
+dist/
+.astro/
+node_modules/
+*.tsbuildinfo
+
+# Reviewable page snapshots from `npm run preview:files`
+preview/
+
+# Python bytecode from the citation/bib helper scripts
+__pycache__/
+*.pyc
+.venv
+
+# --- local noise ---
+.DS_store
+.env
+.idea

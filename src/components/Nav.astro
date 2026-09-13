@@ -1,0 +1,127 @@
+---
+import { NAV, type Section } from '../consts.ts';
+
+interface Props {
+  section?: Section;
+}
+const { section } = Astro.props;
+---
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand mono" href="/">
+      <span class="brand-prompt">~/</span>fuchss.org
+    </a>
+    <div class="nav-right">
+      <nav aria-label="Main">
+        <ul>
+          {
+            NAV.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  data-section={item.section}
+                  aria-current={item.section === section ? 'page' : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 3.5rem;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .brand-prompt {
+    color: var(--text-faint);
+  }
+  .brand:hover {
+    color: var(--sec-strong);
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    display: block;
+    padding: 0.35rem 0;
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    color: var(--text-muted);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  nav a:hover {
+    color: var(--text);
+  }
+  /* Each nav item glows in its own section's hue on hover/current. */
+  nav a[data-section='publications']:hover,
+  nav a[data-section='publications'][aria-current] {
+    color: var(--green);
+    border-bottom-color: var(--green-line);
+  }
+  nav a[data-section='projects']:hover,
+  nav a[data-section='projects'][aria-current],
+  nav a[data-section='repositories']:hover,
+  nav a[data-section='repositories'][aria-current] {
+    color: var(--cyan);
+    border-bottom-color: var(--cyan-line);
+  }
+  nav a[data-section='conferences']:hover,
+  nav a[data-section='conferences'][aria-current],
+  nav a[data-section='blog']:hover,
+  nav a[data-section='blog'][aria-current] {
+    color: var(--violet);
+    border-bottom-color: var(--violet-line);
+  }
+  nav a[data-section='cv']:hover,
+  nav a[data-section='cv'][aria-current] {
+    color: var(--amber);
+    border-bottom-color: var(--amber-line);
+  }
+  nav a[data-section='home']:hover,
+  nav a[data-section='home'][aria-current] {
+    color: var(--text);
+    border-bottom-color: var(--border-strong);
+  }
+</style>

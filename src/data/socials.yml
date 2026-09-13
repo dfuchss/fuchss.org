@@ -1,0 +1,14 @@
+# Profile links rendered by SocialRow on the home page, in this order.
+orcid_id: 0000-0001-6410-6769
+scholar_userid: bVvFp4oAAAAJ
+dblp_url: https://dblp.org/pid/243/9362.html
+github_username: dfuchss
+codeberg:
+  title: Codeberg
+  url: https://codeberg.org/dfuchss
+linkedin_username: dfuchss
+semanticscholar_id: 2276068674
+# Fingerprint of the published PGP key. `src/lib/pgp.ts` derives the grouped
+# form, the long key id and the .asc path from it, and `public/assets/pgp-key/`
+# must contain a file named <fingerprint>.asc.
+pgp_fingerprint: DD7EE78CAC98885B734000ADF07E8A60D810A543

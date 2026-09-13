@@ -1,0 +1,60 @@
+name: Update GitHub repository metadata
+
+on:
+  schedule:
+    - cron: '0 3 * * 1'
+  push:
+    paths: [src/data/repositories.yml]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      # The whole point of the PAT is that its pushes trigger deploy.yml, which a
+      # GITHUB_TOKEN push deliberately does not. Falling back to GITHUB_TOKEN would
+      # leave this job green while the refreshed data silently stopped reaching the
+      # live site, so an absent or expired PAT is a hard failure instead.
+      - name: Require PAT
+        env:
+          PAT: ${{ secrets.PAT }}
+        run: |
+          if [ -z "$PAT" ]; then
+            echo "::error::secrets.PAT is not set. A commit pushed with GITHUB_TOKEN does not trigger deploy.yml, so this data would never reach the live site."
+            exit 1
+          fi
+
+      - uses: actions/checkout@v7
+        with:
+          token: ${{ secrets.PAT }}
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      # Replaces the old _plugins/github-metadata.rb, which hit the GitHub API on
+      # every Jekyll build. Committing the result keeps the site build hermetic:
+      # an API outage can no longer break a deploy or render zeros.
+      - name: Fetch metadata
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/fetch-github-metadata.mjs
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- src/data/github-metadata.json; then
+            echo "No metadata changes."
+            exit 0
+          fi
+          git config user.name "ci@fuchss.org"
+          git config user.email "ci@fuchss.org"
+          git add src/data/github-metadata.json
+          git commit -m "Update GitHub repository metadata"
+          git push

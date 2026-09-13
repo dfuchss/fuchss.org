@@ -1,0 +1,43 @@
+---
+// Profile links live on the home page (see SocialRow), including the rel="me"
+// identity verification — repeating them on every page added nothing.
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="wrap">
+    <p class="meta mono">
+      <span>© {year} Dominik Fuchß</span>
+      <span aria-hidden="true">·</span>
+      <a href="/impressum/">Impressum</a>
+      <span aria-hidden="true">·</span>
+      <a href="/pgp-key/">PGP</a>
+      <span aria-hidden="true">·</span>
+      <a href="/feed.xml">Feed</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-top: clamp(3rem, 8vw, 6rem);
+    border-top: 1px solid var(--border);
+    padding-block: 2rem 3rem;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5ch;
+    align-items: center;
+    color: var(--text-faint);
+    margin: 0;
+  }
+  .meta a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .meta a:hover {
+    color: var(--sec-strong);
+  }
+</style>

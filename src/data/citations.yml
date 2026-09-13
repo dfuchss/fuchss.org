@@ -1,0 +1,155 @@
+metadata:
+  last_updated: '2026-09-13'
+papers:
+  bVvFp4oAAAAJ:2osOgNQ5qMEC:
+    citations: 0
+    title: Context Classification in Dialog-Based Interaction
+    year: '2020'
+  bVvFp4oAAAAJ:3fE2CSJIrl8C:
+    citations: 0
+    title: "Verarbeitung nat\xFCrlich-sprachlicher Beziehungsbeschreibungen zwischen Objekten"
+    year: '2018'
+  bVvFp4oAAAAJ:7PzlFSSx8tAC:
+    citations: 29
+    title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
+    year: '2025'
+  bVvFp4oAAAAJ:8k81kl-MbHgC:
+    citations: 61
+    title: 'LiSSA: Toward Generic Traceability Link Recovery Through Retrieval-Augmented Generation'
+    year: '2025'
+  bVvFp4oAAAAJ:9yKSN-GCB0IC:
+    citations: 9
+    title: Approaching natural conversation chatbots by interactive dialogue modelling & microsoft LUIS
+    year: '2019'
+  bVvFp4oAAAAJ:HDshCWvjkbEC:
+    citations: 0
+    title: An Experience Report on a Pedagogically Controlled, Curriculum-Constrained AI Tutor for SE Education
+    year: '2026'
+  bVvFp4oAAAAJ:IWHjjKOFINEC:
+    citations: 37
+    title: Trace Link Recovery for Software Architecture Documentation
+    year: '2021'
+  bVvFp4oAAAAJ:MXK_kJrjxJIC:
+    citations: 39
+    title: Requirements traceability link recovery via retrieval-augmented generation
+    year: '2025'
+  bVvFp4oAAAAJ:R3hNpaxXUhUC:
+    citations: 0
+    title: 'ExArch: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction'
+    year: '2026'
+  bVvFp4oAAAAJ:RHpTSmoSYBkC:
+    citations: 1
+    title: 'GARMA: Generative Architectural Resource Demand Estimation for Microservice Applications'
+    year: '2026'
+  bVvFp4oAAAAJ:TFP_iSt0sucC:
+    citations: 0
+    title: 'The ARDoCo Tool Landscape: REST API, TraceView, and TraceViz for Architecture Traceability'
+    year: '2026'
+  bVvFp4oAAAAJ:TQgYirikUcIC:
+    citations: 0
+    title: 'Linking Software System Artifacts: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation'
+    year: '2026'
+  bVvFp4oAAAAJ:Tyk-4Ss8FVUC:
+    citations: 33
+    title: Introducing an evaluation method for taxonomies
+    year: '2022'
+  bVvFp4oAAAAJ:ULOm3_A8WrAC:
+    citations: 42
+    title: 'Software architecture meets llms: A systematic literature review'
+    year: '2025'
+  bVvFp4oAAAAJ:UeHWp8X0CEIC:
+    citations: 0
+    title: Assessing Hypotheses in Multi-Agent Systems for Natural Language Processing
+    year: '2020'
+  bVvFp4oAAAAJ:UebtZRa9Y70C:
+    citations: 33
+    title: Recovering trace links between software documentation and code
+    year: '2024'
+  bVvFp4oAAAAJ:WF5omc3nYNoC:
+    citations: 25
+    title: Detecting inconsistencies in software architecture documentation using traceability link recovery
+    year: '2023'
+  bVvFp4oAAAAJ:YOwf2qJgpHMC:
+    citations: 4
+    title: A formalized classification schema for model consistency
+    year: '2023'
+  bVvFp4oAAAAJ:YsMSGLbcyi4C:
+    citations: 7
+    title: Replication Package of "Evaluation Methods and Replicability of Software Architecture Research Objects"
+    year: '2022'
+  bVvFp4oAAAAJ:ZeXyd9-uunAC:
+    citations: 9
+    title: 'Beyond Retrieval: A Study of Using LLM Ensembles for Candidate Filtering in Requirements Traceability'
+    year: '2025'
+  bVvFp4oAAAAJ:_FxGoFyzp5QC:
+    citations: 44
+    title: Evaluation methods and replicability of software architecture research objects
+    year: '2022'
+  bVvFp4oAAAAJ:_Qo2XoVZTnwC:
+    citations: 1
+    title: 'Criminal Minds: How First-Year CS Students Plagiarize Code'
+    year: '2026'
+  bVvFp4oAAAAJ:bEWYMUwI8FkC:
+    citations: 1
+    title: The EVerest Dataset for Secure Software Engineering
+    year: '2026'
+  bVvFp4oAAAAJ:d1gkVwhDpl0C:
+    citations: 4
+    title: Assessing the quality impact of features in component-based software architectures
+    year: '2019'
+  bVvFp4oAAAAJ:e5wmG9Sq2KIC:
+    citations: 1
+    title: 'Architecture in the Cradle: Early Warning of Architectural Decay with ArchGuard'
+    year: '2026'
+  bVvFp4oAAAAJ:eQOLeE2rZwMC:
+    citations: 20
+    title: Establishing a benchmark dataset for traceability link recovery between software architecture documentation and models
+    year: '2022'
+  bVvFp4oAAAAJ:hqOjcs7Dif8C:
+    citations: 12
+    title: 'Modeling languages for automotive digital twins: A survey among the german automotive industry'
+    year: '2024'
+  bVvFp4oAAAAJ:iH-uZ7U-co4C:
+    citations: 1
+    title: On Converting Natural Language Requirements into Semi-Formal Templates Using LLMs
+    year: '2026'
+  bVvFp4oAAAAJ:isC4tDSrTZIC:
+    citations: 0
+    title: "Verbundprojekt: SofDCar-Software defined car, softwaregetrieben von Embedded Systems bis in die Cloud f\xFCr Entwicklung und Betrieb (digitale Nachhaltigkeit)"
+    year: '2025'
+  bVvFp4oAAAAJ:j3f4tGmQtD8C:
+    citations: 0
+    title: 'AutoPCM: Automated Generation of Architectural Performance Models from Early Design Artifacts using LLM Agents'
+    year: '2026'
+  bVvFp4oAAAAJ:kNdYIx-mwKoC:
+    citations: 1
+    title: 'Structuring Scientific Knowledge in Software Engineering Using the Open Research Knowledge Graph: A Use Case and Experience Report'
+    year: '2025'
+  bVvFp4oAAAAJ:mB3voiENLucC:
+    citations: 6
+    title: "Who\u2019s Who? LLM-assisted Software Traceability with Architecture Entity Recognition"
+    year: '2026'
+  bVvFp4oAAAAJ:maZDTaKrznsC:
+    citations: 0
+    title: A survey of modeling languages for automotive digital twins
+    year: '2026'
+  bVvFp4oAAAAJ:r0BpntZqJG4C:
+    citations: 0
+    title: Automated Generation of SysML Activity Diagrams from Industrial Requirements Using LLMs
+    year: '2026'
+  bVvFp4oAAAAJ:roLk4NBRz8UC:
+    citations: 2
+    title: An Expert Survey on the Use of Informal Models in the Automotive Industry
+    year: '2023'
+  bVvFp4oAAAAJ:u-x6o8ySG0sC:
+    citations: 3
+    title: Natural language data queries on multiple heterogenous data sources
+    year: '2019'
+  bVvFp4oAAAAJ:u5HHmVD_uO8C:
+    citations: 29
+    title: 'PerOpteryx: Automated Improvement of Software Architectures.'
+    year: '2019'
+  bVvFp4oAAAAJ:zYLM7Y9cAGgC:
+    citations: 2
+    title: Sketches and Natural Language in Agile Modeling
+    year: '2021'

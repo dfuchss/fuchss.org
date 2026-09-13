@@ -1,0 +1,113 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+const { project } = Astro.props;
+const d = project.data;
+
+// ardoco points at its own site; everything else has a local page.
+const href = d.redirect ?? `/projects/${project.id}/`;
+const external = Boolean(d.redirect);
+---
+
+<li class="card-li reveal">
+  <a class="pcard" href={href} rel={external ? 'noopener' : undefined}>
+    <div class="top">
+      {
+        d.logo ? (
+          <Image
+            class="logo"
+            src={d.logo}
+            alt=""
+            width={44}
+            height={44}
+            densities={[1, 2]}
+            loading="lazy"
+          />
+        ) : (
+          <span class="logo logo-fallback mono" aria-hidden="true">
+            {d.title.slice(0, 2)}
+          </span>
+        )
+      }
+      <h3>{d.title}</h3>
+      {
+        external && (
+          <span class="ext mono" aria-label="external link">
+            ↗
+          </span>
+        )
+      }
+    </div>
+    <p>{d.description}</p>
+  </a>
+</li>
+
+<style>
+  .card-li {
+    list-style: none;
+  }
+
+  /* Flat like the rest of the site: a hairline rule instead of a filled tile. */
+  .pcard {
+    display: grid;
+    gap: 0.6rem;
+    height: 100%;
+    padding: 1rem 0 0;
+    border-top: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color var(--dur) var(--ease);
+  }
+  .pcard:hover {
+    border-top-color: var(--sec-line);
+  }
+  .pcard:hover h3 {
+    color: var(--sec-strong);
+  }
+
+  .top {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .logo {
+    width: 2.75rem;
+    height: 2.75rem;
+    flex: none;
+    object-fit: contain;
+    border-radius: var(--radius-s);
+  }
+  .logo-fallback {
+    display: grid;
+    place-items: center;
+    background: var(--sec-dim);
+    border: 1px solid var(--sec-line);
+    color: var(--sec);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.0625rem;
+  }
+  .pcard:hover h3 {
+    color: var(--sec-strong);
+  }
+
+  .ext {
+    margin-left: auto;
+    color: var(--text-faint);
+  }
+
+  p {
+    margin: 0;
+    font-size: var(--fs-small);
+    color: var(--text-muted);
+  }
+</style>

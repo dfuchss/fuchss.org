@@ -1,0 +1,118 @@
+---
+// Typographic shell for rendered markdown. Global because the markup it styles
+// comes from remark, not from this component's template.
+---
+
+<div class="prose">
+  <slot />
+</div>
+
+<style is:global>
+  .prose {
+    max-width: 72ch;
+  }
+
+  .prose > :first-child {
+    margin-top: 0;
+  }
+
+  .prose h2 {
+    margin-top: 2.25rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .prose h3 {
+    margin-top: 1.75rem;
+    color: var(--sec-strong);
+  }
+  .prose h4 {
+    margin-top: 1.25rem;
+    font-size: 1rem;
+    color: var(--text-muted);
+  }
+
+  /* Side-by-side figure for a before/after comparison. Two screenshots need
+     more room than the reading measure, so the pair spans the full prose width
+     and each image links to its full-size file; they stack on narrow screens. */
+  .prose .compare {
+    margin: 1.75rem 0;
+  }
+  .prose .compare-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .prose .compare a {
+    display: block;
+    line-height: 0;
+  }
+  .prose .compare img {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-s);
+    transition: border-color var(--dur) var(--ease);
+  }
+  .prose .compare a:hover img {
+    border-color: var(--sec-line);
+  }
+  .prose .compare figcaption {
+    margin-top: 0.6rem;
+    color: var(--text-faint);
+    font-size: var(--fs-small);
+    line-height: 1.5;
+  }
+  @media (max-width: 40rem) {
+    .prose .compare-pair {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-left: 1.25rem;
+  }
+  .prose li + li {
+    margin-top: 0.3rem;
+  }
+  .prose li::marker {
+    color: var(--sec);
+  }
+
+  .prose blockquote {
+    margin: 1.5rem 0;
+    padding: 0.25rem 0 0.25rem 1.1rem;
+    border-left: 2px solid var(--sec-line);
+    color: var(--text-muted);
+  }
+
+  /*
+   * Screenshots get the reference site's "screen in a frame" treatment: a
+   * layered surface, a soft hue halo, and a subtle inset highlight so a
+   * light-UI screenshot doesn't float unanchored on a near-black page.
+   */
+  .prose :is(p, figure) > img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 1.5rem 0;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-m);
+    background: var(--bg-2);
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--sec) 10%, transparent),
+      0 18px 40px -24px var(--sec-glow),
+      0 2px 10px rgb(0 0 0 / 35%);
+  }
+
+  .prose :is(p, figure) > img[src$='.svg'] {
+    /* Approach diagrams are drawn for a light background. */
+    background: #fff;
+    padding: 1rem;
+  }
+
+  .prose table {
+    display: block;
+    overflow-x: auto;
+  }
+</style>

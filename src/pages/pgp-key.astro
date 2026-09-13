@@ -1,0 +1,81 @@
+---
+import { readFileSync } from 'node:fs';
+import Base from '../layouts/Base.astro';
+import { ascPath as asc, fingerprintGrouped as grouped } from '../lib/pgp.ts';
+
+// Inlined at build time. The old page fetched this over the network on load,
+// which meant no key without JS and nothing indexable; reading it here makes the
+// key part of the document.
+const key = readFileSync(`public${asc}`, 'utf8').trim();
+---
+
+<Base title="PGP Key" description="PGP public key of Dominik Fuchß for encrypted communication.">
+  <section class="wrap section">
+    <p class="kicker">gpg --recv-keys</p>
+    <h1>PGP key</h1>
+    <p class="lede">
+      Use this key if you want to contact me securely. The fingerprint is shown below — verify it
+      through a second channel before you trust it.
+    </p>
+
+    <div class="fp card">
+      <p class="fp-label mono">fingerprint</p>
+      <p class="fp-value mono">{grouped}</p>
+      <p class="fp-actions">
+        <a class="chip" href={asc} download>Download .asc</a>
+        <button class="chip" type="button" id="copy-key" hidden>Copy key</button>
+      </p>
+    </div>
+
+    <div class="scroll-x">
+      <pre id="pgp-key">{key}</pre>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('#copy-key');
+  const pre = document.querySelector<HTMLElement>('#pgp-key');
+  if (btn && pre?.textContent) {
+    btn.hidden = false;
+    btn.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(pre.textContent!);
+      btn.textContent = 'Copied';
+      setTimeout(() => (btn.textContent = 'Copy key'), 1200);
+    });
+  }
+</script>
+
+<style>
+  .lede {
+    max-width: 60ch;
+    color: var(--text-muted);
+  }
+
+  .fp {
+    margin: 1.75rem 0;
+    max-width: 34rem;
+  }
+  .fp-label {
+    margin: 0 0 0.25rem;
+    color: var(--text-faint);
+  }
+  .fp-value {
+    margin: 0 0 0.9rem;
+    font-size: 0.8125rem;
+    color: var(--sec);
+    word-break: break-all;
+  }
+  .fp-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0;
+  }
+
+  pre {
+    font-size: 0.6875rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+</style>

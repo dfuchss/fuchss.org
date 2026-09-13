@@ -1,0 +1,67 @@
+---
+import '@fontsource/space-grotesk/400.css';
+import '@fontsource/space-grotesk/500.css';
+import '@fontsource/space-grotesk/600.css';
+import '@fontsource/space-grotesk/700.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+import '../styles/tokens.css';
+import '../styles/base.css';
+
+import BaseHead from '../components/BaseHead.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import type { Section } from '../consts.ts';
+
+interface Props {
+  title?: string;
+  description?: string;
+  section?: Section;
+}
+const { title, description, section } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+    <slot name="head" />
+  </head>
+  <body data-section={section}>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Nav section={section} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Marks JS as available so `.reveal` can start hidden. Without this class
+      // the reveal styles are a no-op, so the page is fully readable with JS off.
+      document.documentElement.classList.add('js');
+
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const targets = document.querySelectorAll('.reveal');
+
+      if (reduce || !('IntersectionObserver' in window)) {
+        targets.forEach((el) => el.classList.add('is-in'));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              // Reveal on entering the viewport, but also when an element has
+              // been skipped over entirely — an anchor jump, the End key or a
+              // restored scroll position never makes it intersect, and it would
+              // otherwise stay at opacity 0 forever.
+              const skipped = !entry.isIntersecting && entry.boundingClientRect.bottom <= 0;
+              if (!entry.isIntersecting && !skipped) continue;
+              entry.target.classList.add('is-in');
+              io.unobserve(entry.target);
+            }
+          },
+          { rootMargin: '0px 0px -10% 0px', threshold: 0.05 },
+        );
+        targets.forEach((el) => io.observe(el));
+      }
+    </script>
+  </body>
+</html>

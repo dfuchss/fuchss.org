@@ -1,0 +1,43 @@
+---
+import { socials } from '../lib/data.ts';
+
+const links = [
+  { label: 'ORCID', href: `https://orcid.org/${socials.orcid_id}` },
+  { label: 'Scholar', href: `https://scholar.google.com/citations?user=${socials.scholar_userid}` },
+  { label: 'DBLP', href: socials.dblp_url },
+  { label: 'GitHub', href: `https://github.com/${socials.github_username}` },
+  ...(socials.codeberg ? [{ label: socials.codeberg.title, href: socials.codeberg.url }] : []),
+  { label: 'LinkedIn', href: `https://www.linkedin.com/in/${socials.linkedin_username}` },
+  ...(socials.semanticscholar_id
+    ? [
+        {
+          label: 'Semantic Scholar',
+          href: `https://www.semanticscholar.org/author/${socials.semanticscholar_id}`,
+        },
+      ]
+    : []),
+];
+---
+
+<ul class="row">
+  {
+    links.map((l) => (
+      <li>
+        <a class="chip" href={l.href} rel="me noopener">
+          {l.label}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+</style>

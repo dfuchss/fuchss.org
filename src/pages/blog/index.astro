@@ -1,0 +1,192 @@
+---
+import Base from '../../layouts/Base.astro';
+import {
+  publishedPosts,
+  permalink,
+  formatPostDate,
+  groupByTag,
+  slugifyTag,
+} from '../../lib/blog.ts';
+
+const posts = await publishedPosts();
+const tags = groupByTag(posts);
+const featured = posts.filter((p) => p.data.featured);
+---
+
+<Base
+  section="blog"
+  title="Blog"
+  description="Notes from Dominik Fuchß on research tooling, Matrix bots and the occasional side project."
+>
+  <section class="wrap section">
+    <p class="kicker" data-sigil="##">blog</p>
+    <h1>Blog</h1>
+    <p class="lede">
+      Occasional notes — mostly release announcements for my Matrix bots and research tooling.{' '}
+      {posts.length} posts, {featured.length} of them featured.
+    </p>
+
+    <ul class="tags">
+      {
+        tags.map(([tag, items]) => (
+          <li>
+            <a
+              class="chip tag-pill"
+              href={`/blog/tag/${slugifyTag(tag)}/`}
+              data-tag={slugifyTag(tag)}
+              aria-pressed="false"
+            >
+              {tag} <span>{items.length}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="no-posts mono" hidden>No posts with that tag.</p>
+
+    <ol class="posts">
+      {
+        posts.map((p) => (
+          <li class="reveal" data-tags={p.data.tags.map(slugifyTag).join(' ')}>
+            <a class="post" href={permalink(p.id)}>
+              <time class="date mono" datetime={p.data.date.toISOString().slice(0, 10)}>
+                {formatPostDate(p.data.date)}
+              </time>
+              <span class="ptext">
+                <span class="ptitle">
+                  {p.data.title}
+                  {p.data.featured && (
+                    <span class="star mono" title="Featured">
+                      ★
+                    </span>
+                  )}
+                </span>
+                {p.data.description && <span class="pdesc">{p.data.description}</span>}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</Base>
+
+<script>
+  // The pills stay real links to /blog/tag/<slug>/, so they work with JS off and
+  // stay shareable. With JS they filter in place instead — the same behaviour as
+  // the filter on /publications/, rather than a page load per tag.
+  const pills = Array.from(document.querySelectorAll<HTMLAnchorElement>('.tag-pill'));
+  const posts = Array.from(document.querySelectorAll<HTMLElement>('.posts > li'));
+  const empty = document.querySelector<HTMLElement>('.no-posts');
+
+  const apply = (tag: string | null) => {
+    let visible = 0;
+    for (const li of posts) {
+      const hit = !tag || (li.dataset.tags ?? '').split(' ').includes(tag);
+      li.hidden = !hit;
+      if (hit) {
+        visible++;
+        // A post far down the list may never have been scrolled into view, so the
+        // scroll-reveal still has it at opacity 0. Filtering pulls it up: reveal it.
+        if (tag) li.classList.add('is-in');
+      }
+    }
+    for (const pill of pills) {
+      const on = pill.dataset.tag === tag;
+      pill.classList.toggle('is-on', on);
+      pill.setAttribute('aria-pressed', String(on));
+    }
+    if (empty) empty.hidden = visible !== 0;
+    const url = tag ? `/blog/tag/${tag}/` : '/blog/';
+    history.replaceState({ tag }, '', url);
+  };
+
+  for (const pill of pills) {
+    pill.addEventListener('click', (e) => {
+      // Let modified clicks (new tab, download) fall through to the real page.
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      e.preventDefault();
+      apply(pill.classList.contains('is-on') ? null : (pill.dataset.tag ?? null));
+    });
+  }
+</script>
+
+<style>
+  .lede {
+    max-width: 62ch;
+    color: var(--text-muted);
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    list-style: none;
+    margin: 1.5rem 0 2rem;
+    padding: 0;
+  }
+  /* Selected state for the filter pills. */
+  .tag-pill.is-on {
+    border-color: var(--sec-line);
+    background: var(--sec-dim);
+    color: var(--sec-strong);
+  }
+  .no-posts {
+    margin: 0 0 2rem;
+    color: var(--text-faint);
+  }
+  .tags span {
+    color: var(--sec);
+  }
+
+  .posts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .post {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: 0 1.25rem;
+    padding: 0.95rem 0.5rem;
+    border-top: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    border-radius: var(--radius-s);
+  }
+  .post:hover {
+    background: var(--sec-dim);
+  }
+  .date {
+    color: var(--text-faint);
+    padding-top: 0.2rem;
+  }
+  .ptext {
+    display: grid;
+    gap: 0.2rem;
+  }
+  .ptitle {
+    font-family: var(--font-head);
+    font-weight: 600;
+    font-size: 1.0625rem;
+  }
+  .post:hover .ptitle {
+    color: var(--sec-strong);
+  }
+  .star {
+    margin-left: 0.5ch;
+    color: var(--amber);
+    font-size: 0.75rem;
+    vertical-align: 0.15em;
+  }
+  .pdesc {
+    font-size: var(--fs-small);
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 38rem) {
+    .post {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+  }
+</style>

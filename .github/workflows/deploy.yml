@@ -1,0 +1,60 @@
+name: Build, verify and deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  # No schedule: the citation and metadata workflows commit under secrets.PAT,
+  # and a PAT-authenticated push does trigger this workflow (a GITHUB_TOKEN one
+  # would not). Refreshed numbers therefore reach the live site within minutes
+  # of changing, instead of waiting for a nightly rebuild.
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Formatting and type-checking used to be a separate `lint` workflow, which
+      # meant a second checkout and `npm ci` on every pull request for two
+      # commands that need the same install this job already does.
+      - name: Format check
+        run: npx prettier . --check
+
+      - name: Type-check
+        run: npx astro check
+
+      - name: Build
+        run: npm run build
+
+      # Guards the two things that must never silently change — the Matrix
+      # homeserver delegation and the publication PDF bytes — then runs the
+      # site and feature audits.
+      - name: Verify invariants and audit
+        run: npm run verify
+
+      - name: Deploy to gh-pages
+        # The ref guard matters for workflow_dispatch, which can be fired on any branch.
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
+          clean: true

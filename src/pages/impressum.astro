@@ -1,0 +1,100 @@
+---
+import Base from '../layouts/Base.astro';
+import Email from '../components/Email.astro';
+
+// The legal text below is reproduced verbatim from the previous site; only its
+// presentation changed. Generated via impressum-generator.de.
+const sections = [
+  {
+    h: 'Haftung für Inhalte',
+    p: `Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.`,
+  },
+  {
+    h: 'Haftung für Links',
+    p: `Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.`,
+  },
+  {
+    h: 'Urheberrecht',
+    p: `Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.`,
+  },
+  {
+    h: 'Datenschutz',
+    p: `Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben. Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich. Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.`,
+  },
+];
+---
+
+<Base title="Impressum" description="Impressum und Datenschutzhinweise für fuchss.org.">
+  <section class="wrap section">
+    <p class="kicker" data-sigil="none">Angaben gemäß § 5 TMG</p>
+    <h1>Impressum</h1>
+
+    <div class="contact card">
+      <h2 class="mono">Kontakt</h2>
+      <p>Dominik Fuchß</p>
+      <p>
+        E-Mail: <Email address="webmaster@fuchss.org" />
+      </p>
+    </div>
+
+    <h2>Haftungsausschluss</h2>
+    {
+      sections.map((s) => (
+        <section class="legal">
+          <h3>{s.h}</h3>
+          <p>{s.p}</p>
+        </section>
+      ))
+    }
+
+    <p class="credit">
+      Website Impressum erstellt durch <a
+        href="https://www.impressum-generator.de/"
+        rel="noopener nofollow">impressum-generator.de</a
+      > von der <a
+        href="http://www.kanzlei-hasselbach.de/standorte/koeln-rodenkirchen"
+        rel="noopener nofollow">Kanzlei Hasselbach, Köln-Rodenkirchen</a
+      >
+    </p>
+  </section>
+</Base>
+
+<style>
+  .contact {
+    margin: 0 0 2.5rem;
+    max-width: 30rem;
+  }
+  .contact h2 {
+    margin: 0 0 0.6rem;
+    font-size: var(--fs-mono);
+    color: var(--text-faint);
+    text-transform: lowercase;
+  }
+  .contact p {
+    margin: 0 0 0.25rem;
+  }
+
+  .legal {
+    max-width: 72ch;
+    margin-bottom: 1.75rem;
+  }
+  .legal h3 {
+    font-size: 1rem;
+    color: var(--sec-strong);
+    margin-bottom: 0.4rem;
+  }
+  .legal p {
+    font-size: var(--fs-small);
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .credit {
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.75rem;
+    color: var(--text-faint);
+    max-width: 72ch;
+  }
+</style>

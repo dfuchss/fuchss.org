@@ -1,0 +1,67 @@
+name: Update Google Scholar citations
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      # The whole point of the PAT is that its pushes trigger deploy.yml, which a
+      # GITHUB_TOKEN push deliberately does not. Falling back to GITHUB_TOKEN would
+      # leave this job green while the refreshed data silently stopped reaching the
+      # live site, so an absent or expired PAT is a hard failure instead.
+      - name: Require PAT
+        env:
+          PAT: ${{ secrets.PAT }}
+        run: |
+          if [ -z "$PAT" ]; then
+            echo "::error::secrets.PAT is not set. A commit pushed with GITHUB_TOKEN does not trigger deploy.yml, so this data would never reach the live site."
+            exit 1
+          fi
+
+      - uses: actions/checkout@v7
+        with:
+          token: ${{ secrets.PAT }}
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch citations
+        shell: bash
+        # The script keeps its own 270s budget and exits 0 when Scholar rate-limits
+        # it. `timeout` is only a backstop for a hang the signal handler cannot
+        # reach, and its 124 is likewise not a failure. `-u` keeps the log intact
+        # if the backstop ever does have to kill the process.
+        run: |
+          set +e
+          timeout --signal=TERM --kill-after=30 300 python -u scripts/update_scholar_citations.py
+          rc=$?
+          set -e
+          case $rc in
+            0)   echo "✅ Citation fetch completed." >> "$GITHUB_STEP_SUMMARY" ;;
+            124) echo "⏱️ Google Scholar timed out; citations left unchanged." >> "$GITHUB_STEP_SUMMARY"; rc=0 ;;
+            *)   echo "❌ Citation script failed with exit code $rc." >> "$GITHUB_STEP_SUMMARY" ;;
+          esac
+          exit $rc
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- src/data/citations.yml; then
+            echo "No citation changes."
+            exit 0
+          fi
+          git config user.name "ci@fuchss.org"
+          git config user.email "ci@fuchss.org"
+          git add src/data/citations.yml
+          git commit -m "Update Google Scholar citations"
+          git push

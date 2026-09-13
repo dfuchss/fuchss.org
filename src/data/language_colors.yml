@@ -1,0 +1,8 @@
+# GitHub language → dot colour on /repositories/.
+#
+# Only the languages currently present in github-metadata.json are listed. A
+# language with no entry here falls back to var(--text-faint), so adding a repo
+# in a new language just means adding one line (GitHub's own values live in
+# github/linguist's languages.yml).
+Java: '#b07219'
+Kotlin: '#A97BFF'

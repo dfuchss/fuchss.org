@@ -1,0 +1,423 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PubEntry from '../components/pub/PubEntry.astro';
+import SocialRow from '../components/SocialRow.astro';
+import me from '../assets/me.jpg';
+import { scholarMetrics, formatCount } from '../lib/citations.ts';
+import { publishedPosts, permalink, formatPostDate } from '../lib/blog.ts';
+import { repositories } from '../lib/data.ts';
+import { cv, currentPosition } from '../lib/cv.ts';
+import { keyId } from '../lib/pgp.ts';
+import Email from '../components/Email.astro';
+
+const pubs = await getCollection('publications');
+
+const m = scholarMetrics();
+const latestYear = Math.max(...pubs.map((p) => p.data.year));
+
+const conferences = await getCollection('conferences');
+conferences.sort((a, b) => a.data.order - b.data.order);
+const confRows = await Promise.all(
+  conferences.map(async (c) => ({
+    entry: c,
+    pub: await getEntry(c.data.publication),
+  })),
+);
+
+const posts = (await publishedPosts()).slice(0, 3);
+const zenodoCount = (repositories.zenodo_repos ?? []).length;
+
+const interests = [
+  'Natural Language Processing',
+  'Traceability Link Recovery',
+  'Consistency between formal & informal artifacts',
+  'Retrieval-Augmented Generation & LLMs for SE',
+];
+
+const involvement = [
+  { text: 'Main Development Team of', link: { label: 'ardoco', href: '/projects/ardoco/' } },
+  {
+    text: 'Administrator of our',
+    link: { label: 'Artemis', href: 'https://github.com/ls1intum/Artemis' },
+    tail: 'infrastructure, used for the Programming lecture, Software Engineering I and more',
+  },
+  {
+    text: 'Product Owner of multiple projects of',
+    link: { label: 'kit-sdq', href: 'https://github.com/kit-sdq' },
+  },
+  { text: 'Maintainer Team of', link: { label: 'JPlag', href: 'https://github.com/JPlag' } },
+];
+
+const stats = [
+  { value: String(pubs.length), label: 'publications', href: '/publications/' },
+  { value: formatCount(m.total), label: 'citations', href: '/publications/' },
+  { value: String(m.hIndex), label: 'h-index', href: '/publications/' },
+  { value: String(zenodoCount), label: 'replication packages', href: '/repositories/' },
+];
+---
+
+<Base section="home">
+  <!-- hero -->
+  <section class="wrap hero">
+    <div class="hero-grid">
+      <div>
+        <p class="kicker">whoami</p>
+        <h1>Dominik&nbsp;Fuchß</h1>
+        <p class="role">
+          Researcher at the <a href="https://www.kit.edu/" rel="noopener"
+            >Karlsruhe Institute of Technology</a
+          >, Germany.
+        </p>
+        <p class="pitch">
+          I work on using informal artifacts — documentation, requirements, plain prose — for
+          automatic <strong>traceability link recovery</strong> and <strong
+            >consistency checking</strong
+          >. Lately that means putting large language models and retrieval-augmented generation to
+          work on traceability tasks.
+        </p>
+        <SocialRow />
+      </div>
+
+      <figure class="portrait">
+        <Image src={me} alt="Dominik Fuchß" width={280} height={280} loading="eager" />
+      </figure>
+    </div>
+
+    <ul class="stats">
+      {
+        stats.map((s) => (
+          <li>
+            <a href={s.href}>
+              <span class="stat-value">{s.value}</span>
+              <span class="stat-label mono">{s.label}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- research: what I work on, then the papers that have a page of their own -->
+  <section class="wrap section" id="research" data-section="publications">
+    <p class="kicker" data-sigil="##">research</p>
+    <h2>What I work on</h2>
+    <ul class="interests">
+      {interests.map((i) => <li class="chip">{i}</li>)}
+    </ul>
+
+    <h3 class="sub">Paper pages</h3>
+    <p class="blurb">
+      Some papers get a page of their own — approach diagram, structured abstract, replication
+      package.
+    </p>
+    <ol class="bare">
+      {confRows.map(({ entry, pub }) => <PubEntry pub={pub} paperPage={entry.id} compact />)}
+    </ol>
+
+    <p class="more mono">
+      <a href="/publications/">all {pubs.length} publications, up to {latestYear} →</a>
+    </p>
+  </section>
+
+  <!-- involvement -->
+  <section class="wrap section" id="building" data-section="projects">
+    <p class="kicker" data-sigil="##">building</p>
+    <h2>Also involved in</h2>
+    <ul class="involve">
+      {
+        involvement.map((i) => (
+          <li>
+            {i.text}{' '}
+            <a href={i.link.href} rel={i.link.href.startsWith('http') ? 'noopener' : undefined}>
+              {i.link.label}
+            </a>
+            {i.tail && <span class="muted"> {i.tail}</span>}
+          </li>
+        ))
+      }
+    </ul>
+    <p class="more mono"><a href="/projects/">my own projects →</a></p>
+  </section>
+
+  <!-- recent posts -->
+  {
+    posts.length > 0 && (
+      <section class="wrap section" id="writing" data-section="blog">
+        <p class="kicker" data-sigil="##">
+          writing
+        </p>
+        <h2>Recent posts</h2>
+        <ul class="postlist">
+          {posts.map((p) => (
+            <li>
+              <a href={permalink(p.id)}>
+                <time class="mono" datetime={p.data.date.toISOString().slice(0, 10)}>
+                  {formatPostDate(p.data.date)}
+                </time>
+                <span>{p.data.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="more mono">
+          <a href="/blog/">all posts →</a>
+        </p>
+      </section>
+    )
+  }
+
+  <!-- contact -->
+  <section class="wrap section" id="contact" data-section="cv">
+    <p class="kicker" data-sigil="##">contact</p>
+    <h2>Get in touch</h2>
+    <p class="blurb">
+      Happy to talk about traceability, consistency checking, or LLMs in software engineering.
+    </p>
+    <dl class="contact">
+      <div class="line">
+        <dt class="mono">email</dt>
+        <dd><Email address={cv.email} /></dd>
+      </div>
+      <div class="line">
+        <dt class="mono">matrix</dt>
+        <dd>
+          <a href={`https://matrix.to/#/${cv.matrix}`} rel="noopener">{cv.matrix}</a>
+        </dd>
+      </div>
+      <div class="line">
+        <dt class="mono">pgp</dt>
+        <dd>
+          <a href="/pgp-key/">{keyId}</a><span class="muted"> — for anything sensitive</span>
+        </dd>
+      </div>
+      {
+        currentPosition?.url && (
+          <div class="line">
+            <dt class="mono">office</dt>
+            <dd>
+              <a href={currentPosition.url} rel="noopener">
+                KIT staff page ↗
+              </a>
+              <span class="muted"> — KASTEL, Modelling for Continuous Software Engineering</span>
+            </dd>
+          </div>
+        )
+      }
+    </dl>
+    <p class="more mono"><a href="/cv/">full CV →</a></p>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding-block: clamp(2.5rem, 7vw, 5rem) 0;
+  }
+  .hero-grid {
+    display: grid;
+    /* Cap the text column at its reading measure. With `1fr` the column ate all
+       the free width and pushed the portrait to the far edge, leaving ~320px of
+       void between the two. `start` keeps the pair together, left-aligned like
+       every other section on the page. */
+    grid-template-columns: minmax(0, 64ch) auto;
+    justify-content: start;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  h1 {
+    margin-bottom: 0.35rem;
+  }
+  .role {
+    font-size: 1.0625rem;
+    color: var(--text-muted);
+    margin-bottom: 0.9rem;
+  }
+  .pitch {
+    max-width: 56ch;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+  .pitch strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .portrait {
+    margin: 0;
+    text-align: center;
+  }
+  .portrait img {
+    width: 11rem;
+    height: 11rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--sec-line);
+    box-shadow: 0 0 0 6px var(--sec-dim);
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 0.75rem;
+    list-style: none;
+    margin: 2.5rem 0 0;
+    padding: 0;
+  }
+  /* No box: a hairline rule over each figure, matching the dividers the rest of
+     the site uses. The number carries the emphasis, not a border. */
+  .stats a {
+    display: grid;
+    gap: 0.1rem;
+    padding: 0.85rem 0 0;
+    border-top: 1px solid var(--border);
+    text-decoration: none;
+    transition: border-color var(--dur) var(--ease);
+  }
+  .stats a:hover {
+    border-top-color: var(--sec-line);
+  }
+  .stats a:hover .stat-label {
+    color: var(--sec);
+  }
+  .stat-value {
+    font-family: var(--font-head);
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--sec);
+  }
+  .stat-label {
+    color: var(--text-faint);
+    font-size: 0.6875rem;
+  }
+
+  .interests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    list-style: none;
+    margin: 0 0 2.25rem;
+    padding: 0;
+  }
+
+  .sub {
+    margin: 2.5rem 0 0.5rem;
+    font-size: 1rem;
+    color: var(--text-faint);
+    font-family: var(--font-mono);
+    font-weight: 500;
+    text-transform: lowercase;
+  }
+
+  .bare {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .blurb {
+    max-width: 58ch;
+    color: var(--text-muted);
+    font-size: var(--fs-small);
+  }
+
+  .more {
+    margin: 1.25rem 0 0;
+  }
+  .more a {
+    text-decoration: none;
+  }
+
+  .involve {
+    margin: 1rem 0 0;
+    padding-left: 1.1rem;
+    max-width: 68ch;
+  }
+  .involve li {
+    margin-bottom: 0.5rem;
+    color: var(--text-muted);
+  }
+  .involve li::marker {
+    color: var(--sec);
+  }
+  .muted {
+    color: var(--text-faint);
+  }
+
+  .postlist {
+    list-style: none;
+    margin: 1.25rem 0 0;
+    padding: 0;
+  }
+  /* The post list and the contact rows are the same object: a label column on a
+     hairline rule. One declaration, so they cannot drift out of alignment. */
+  .postlist a,
+  .contact .line {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: 0 1.25rem;
+    padding: 0.6rem 0.5rem;
+    border-top: 1px solid var(--border);
+    font-size: var(--fs-small);
+  }
+  .postlist a {
+    text-decoration: none;
+    color: inherit;
+    border-radius: var(--radius-s);
+  }
+  .postlist a:hover {
+    background: var(--sec-dim);
+    color: var(--sec-strong);
+  }
+  .postlist time {
+    color: var(--text-faint);
+  }
+
+  /* The one filled card left on the page, and it read as a leftover from the
+     old theme: a rounded panel in a page built from hairlines and bare type.
+     It is now the same rule-separated list as the post list above, with the
+     details themselves on the page instead of a link away. */
+  .contact {
+    margin: 1.25rem 0 0;
+    max-width: 46rem;
+  }
+  .contact .line {
+    align-items: baseline;
+    transition: border-color var(--dur) var(--ease);
+  }
+  .contact .line:hover {
+    border-top-color: var(--sec-line);
+  }
+  .contact dt {
+    color: var(--text-faint);
+  }
+  .contact dd {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: var(--fs-small);
+    /* Addresses and fingerprints have no spaces to break at. */
+    overflow-wrap: anywhere;
+  }
+
+  @media (max-width: 44rem) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .portrait {
+      order: -1;
+      text-align: left;
+    }
+    .portrait img {
+      width: 7rem;
+      height: 7rem;
+    }
+    .postlist a,
+    .contact .line {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+  }
+</style>

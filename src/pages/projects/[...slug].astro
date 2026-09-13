@@ -1,0 +1,109 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Prose from '../../components/Prose.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  // ardoco redirects to ardoco.de and has no page of its own.
+  return projects
+    .filter((p) => !p.data.redirect)
+    .map((project) => ({ params: { slug: project.id }, props: { project } }));
+}
+
+const { project } = Astro.props;
+const d = project.data;
+const { Content } = await render(project);
+
+const CATEGORY_LABEL = { research: 'Research', matrix: 'Matrix', misc: 'Side project' } as const;
+---
+
+<Base section="projects" title={d.title} description={d.description}>
+  <article class="wrap section">
+    <p class="kicker" data-sigil="none">
+      <a href="/projects/">projects</a> / {project.id}
+    </p>
+
+    <header class="head">
+      {
+        d.logo && (
+          // Rendered at 4.5rem; the 2x variant keeps it sharp on retina screens.
+          <Image class="logo" src={d.logo} alt="" width={72} height={72} densities={[1, 2]} />
+        )
+      }
+      <div>
+        <h1>{d.title}</h1>
+        <p class="desc">{d.description}</p>
+        <p class="tags">
+          <span class="chip">{CATEGORY_LABEL[d.category]}</span>
+        </p>
+      </div>
+    </header>
+
+    <Prose>
+      <Content />
+    </Prose>
+
+    <p class="back mono"><a href="/projects/">← all projects</a></p>
+  </article>
+</Base>
+
+<style>
+  .kicker a {
+    color: var(--text-faint);
+  }
+  .kicker a:hover {
+    color: var(--sec);
+  }
+
+  .head {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    width: 4.5rem;
+    height: 4.5rem;
+    flex: none;
+    object-fit: contain;
+    border-radius: var(--radius-m);
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    padding: 0.4rem;
+  }
+  h1 {
+    margin-bottom: 0.25rem;
+  }
+  .desc {
+    max-width: 60ch;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+  }
+  .tags {
+    margin: 0;
+  }
+
+  .back {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .back a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .back a:hover {
+    color: var(--sec);
+  }
+
+  @media (max-width: 34rem) {
+    .head {
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+  }
+</style>

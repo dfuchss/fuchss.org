@@ -1,0 +1,99 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ProjectCard from '../../components/project/ProjectCard.astro';
+
+const projects = await getCollection('projects');
+
+const GROUPS = [
+  {
+    id: 'research',
+    label: 'Research',
+    blurb: 'Tooling built around my research on traceability and consistency.',
+  },
+  {
+    id: 'matrix',
+    label: 'Matrix',
+    blurb: 'Bots and clients for the Matrix protocol, most of them running in production.',
+  },
+  {
+    id: 'misc',
+    label: 'Everything else',
+    blurb: 'Side projects, teaching tools and a few things built purely for fun.',
+  },
+] as const;
+
+const grouped = GROUPS.map((g) => ({
+  ...g,
+  items: projects
+    .filter((p) => p.data.category === g.id)
+    .sort((a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title)),
+}));
+---
+
+<Base
+  section="projects"
+  title="Projects"
+  description="Software projects by Dominik Fuchß — research tooling, Matrix bots and clients, and assorted side projects."
+>
+  <section class="wrap section">
+    <p class="kicker" data-sigil="##">projects</p>
+    <h1>Projects</h1>
+    <p class="lede">
+      {projects.length} projects, grouped by what they are for. Most are open source; the Matrix ones
+      are running against my own homeserver.
+    </p>
+
+    <nav class="jump mono" aria-label="Jump to category">
+      {
+        grouped.map((g) => (
+          <a class="chip" href={`#${g.id}`}>
+            {g.label.toLowerCase()} <span>{g.items.length}</span>
+          </a>
+        ))
+      }
+    </nav>
+
+    {
+      grouped.map((g) => (
+        <section class="group" id={g.id}>
+          <h2>{g.label}</h2>
+          <p class="blurb">{g.blurb}</p>
+          <ul class="grid">
+            {g.items.map((project) => (
+              <ProjectCard project={project} />
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </section>
+</Base>
+
+<style>
+  .lede {
+    max-width: 62ch;
+    color: var(--text-muted);
+  }
+
+  .group {
+    margin-top: 3rem;
+  }
+  .group h2 {
+    margin-bottom: 0.25rem;
+  }
+  .blurb {
+    max-width: 60ch;
+    color: var(--text-faint);
+    font-size: var(--fs-small);
+    margin-bottom: 1.25rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+    gap: 0.9rem;
+    margin: 0;
+    padding: 0;
+  }
+</style>

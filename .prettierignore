@@ -1,0 +1,14 @@
+dist/
+.astro/
+node_modules/
+package-lock.json
+
+# Machine-generated: rewritten by scheduled workflows
+src/data/citations.yml
+src/data/github-metadata.json
+
+# Bibliography formatting is maintained by hand and by scripts/update_bib.py
+src/data/papers.bib
+
+# Verification baselines are generated
+verification/

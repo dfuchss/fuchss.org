@@ -1,0 +1,82 @@
+{
+  "fetched": "2026-09-13",
+  "users": {
+    "dfuchss": {
+      "login": "dfuchss",
+      "name": "Dominik Fuchß",
+      "bio": "$status$ :=💻️ | 🎮️ | 🚴 | 🏸",
+      "followers": 40,
+      "publicRepos": 57,
+      "htmlUrl": "https://github.com/dfuchss",
+      "avatarUrl": "https://avatars.githubusercontent.com/u/22198798?v=4"
+    }
+  },
+  "repos": {
+    "dfuchss/project-vault": {
+      "fullName": "dfuchss/project-vault",
+      "description": "Local-first, privacy-first personal finance analyzer for the desktop — import your own PDF/CSV bank statements, categorize on-device, forecast cash flow, and value your Depot with opt-in live prices. No bank connection.",
+      "stars": 1,
+      "forks": 0,
+      "language": "Kotlin",
+      "license": "GPL-3.0",
+      "archived": false,
+      "htmlUrl": "https://github.com/dfuchss/project-vault",
+      "pushedAt": "2026-08-30"
+    },
+    "dfuchss/matrix-joinlink": {
+      "fullName": "dfuchss/matrix-joinlink",
+      "description": "A bot that can create JoinLinks for non-public matrix rooms",
+      "stars": 19,
+      "forks": 1,
+      "language": "Kotlin",
+      "license": "GPL-3.0",
+      "archived": false,
+      "htmlUrl": "https://github.com/dfuchss/matrix-joinlink",
+      "pushedAt": "2026-09-07"
+    },
+    "dfuchss/mensabot": {
+      "fullName": "dfuchss/mensabot",
+      "description": "A matrix bot that reminds you of your food in your canteen",
+      "stars": 9,
+      "forks": 0,
+      "language": "Kotlin",
+      "license": "GPL-3.0",
+      "archived": false,
+      "htmlUrl": "https://github.com/dfuchss/mensabot",
+      "pushedAt": "2026-09-11"
+    },
+    "dfuchss/yarb": {
+      "fullName": "dfuchss/yarb",
+      "description": "Yet another Reminder Bot",
+      "stars": 2,
+      "forks": 0,
+      "language": "Kotlin",
+      "license": "GPL-3.0",
+      "archived": false,
+      "htmlUrl": "https://github.com/dfuchss/yarb",
+      "pushedAt": "2026-06-20"
+    },
+    "dfuchss/deltabot": {
+      "fullName": "dfuchss/deltabot",
+      "description": "My personal (and first) discord bot. After years of use I archive the bot as I do not need it that often anymore :)",
+      "stars": 2,
+      "forks": 0,
+      "language": "Kotlin",
+      "license": "GPL-3.0",
+      "archived": true,
+      "htmlUrl": "https://github.com/dfuchss/deltabot",
+      "pushedAt": "2026-05-12"
+    },
+    "jplag/JPlag": {
+      "fullName": "jplag/JPlag",
+      "description": "State-of-the-Art Source Code Plagiarism & Collusion Detection. Check for plagiarism in a set of programs.",
+      "stars": 1957,
+      "forks": 377,
+      "language": "Java",
+      "license": "GPL-3.0",
+      "archived": false,
+      "htmlUrl": "https://github.com/jplag/JPlag",
+      "pushedAt": "2026-09-11"
+    }
+  }
+}

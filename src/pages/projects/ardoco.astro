@@ -1,0 +1,21 @@
+---
+import { getEntry } from 'astro:content';
+
+// ardoco lives at ardoco.de. The old al-folio build published a redirect stub at
+// this URL, and it is in the sitemap, so it is preserved rather than dropped.
+const project = await getEntry('projects', 'ardoco');
+const target = project!.data.redirect!;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting to {target}</title>
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href={target} />
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <p>Redirecting to <a href={target}>{target}</a>…</p>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+---
+import Base from '../../../layouts/Base.astro';
+import {
+  publishedPosts,
+  groupByTag,
+  slugifyTag,
+  permalink,
+  formatPostDate,
+} from '../../../lib/blog.ts';
+
+export async function getStaticPaths() {
+  const posts = await publishedPosts();
+  return groupByTag(posts).map(([tag, items]) => ({
+    params: { tag: slugifyTag(tag) },
+    props: { tag, items },
+  }));
+}
+
+const { tag, items } = Astro.props;
+---
+
+<Base
+  section="blog"
+  title={`Posts tagged ${tag}`}
+  description={`Blog posts by Dominik Fuchß tagged ${tag}.`}
+>
+  <section class="wrap section">
+    <p class="kicker" data-sigil="none"><a href="/blog/">blog</a> / tag</p>
+    <h1>{tag}</h1>
+    <p class="lede">{items.length} {items.length === 1 ? 'post' : 'posts'}.</p>
+
+    <ol class="posts">
+      {
+        items.map((p) => (
+          <li>
+            <a href={permalink(p.id)}>
+              <time class="mono" datetime={p.data.date.toISOString().slice(0, 10)}>
+                {formatPostDate(p.data.date)}
+              </time>
+              <span>{p.data.title}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="back mono"><a href="/blog/">← all posts</a></p>
+  </section>
+</Base>
+
+<style>
+  .kicker a {
+    color: var(--text-faint);
+  }
+  .lede {
+    color: var(--text-muted);
+  }
+  .posts {
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+  }
+  .posts a {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: 0 1.25rem;
+    padding: 0.7rem 0.5rem;
+    border-top: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    border-radius: var(--radius-s);
+  }
+  .posts a:hover {
+    background: var(--sec-dim);
+    color: var(--sec-strong);
+  }
+  .posts time {
+    color: var(--text-faint);
+  }
+  .back {
+    margin-top: 2rem;
+  }
+  .back a {
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  @media (max-width: 38rem) {
+    .posts a {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+  }
+</style>

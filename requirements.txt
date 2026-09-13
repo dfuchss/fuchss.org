@@ -1,0 +1,5 @@
+pyyaml
+scholarly
+# scholarly 1.7.11 imports bibtexparser.bibdatabase, removed in bibtexparser 2.x,
+# and declares the dependency without an upper bound. Pin until scholarly catches up.
+bibtexparser<2

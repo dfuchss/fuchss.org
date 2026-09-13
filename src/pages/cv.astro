@@ -1,0 +1,556 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Email from '../components/Email.astro';
+import me from '../assets/me.jpg';
+import {
+  cv,
+  sections,
+  dateRange,
+  formatDate,
+  thesisOf,
+  parseDetails,
+  splitExperience,
+  semesterKey,
+} from '../lib/cv.ts';
+
+const { main, assistantships } = splitExperience(sections.Experience);
+
+const courses = [...sections.Teaching].sort(
+  (a, b) => semesterKey(b.semester) - semesterKey(a.semester),
+);
+const currentSemester = courses[0]?.semester;
+const current = courses.filter((c) => c.semester === currentSemester);
+const past = courses.filter((c) => c.semester !== currentSemester);
+---
+
+<Base
+  section="cv"
+  title="CV"
+  description="Curriculum vitae of Dominik Fuchß — researcher at KIT: experience, education, teaching, awards and community service."
+>
+  <section class="wrap section">
+    <div class="profile">
+      <div class="profile-text">
+        <p class="kicker" data-sigil="##">cv</p>
+        <h1>Curriculum vitae</h1>
+        <p class="summary">{cv.summary}</p>
+        <ul class="interests">
+          {sections.Research.map((r) => <li class="chip">{r.bullet}</li>)}
+        </ul>
+        <p class="contact mono">
+          <Email address={cv.email} />
+          <span aria-hidden="true">·</span>
+          <a href={`https://matrix.to/#/${cv.matrix}`} rel="noopener">{cv.matrix}</a>
+        </p>
+      </div>
+      <Image class="portrait" src={me} alt="Dominik Fuchß" width={280} height={280} />
+    </div>
+
+    {/* Each block carries an id so /cv/#teaching and friends are linkable. */}
+    <!-- Experience -->
+    <section class="block" id="experience">
+      <h2>Experience</h2>
+      <ol class="timeline">
+        {
+          main.map((e) => (
+            <li>
+              <span class="when mono">{dateRange(e.start_date, e.end_date)}</span>
+              <div class="what">
+                <h3>{e.position}</h3>
+                <p class="where">
+                  {e.url ? (
+                    <a href={e.url} rel="noopener">
+                      {e.company}
+                    </a>
+                  ) : (
+                    e.company
+                  )}
+                </p>
+                {e.summary && <p class="detail">{e.summary}</p>}
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+
+      {
+        assistantships.length > 0 && (
+          <details class="more">
+            <summary>{assistantships.length} teaching assistantships</summary>
+            <ol class="timeline compact">
+              {assistantships.map((e) => (
+                <li>
+                  <span class="when mono">{dateRange(e.start_date, e.end_date)}</span>
+                  <div class="what">
+                    <h3>{e.position}</h3>
+                    {e.summary && <p class="detail">{e.summary}</p>}
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </details>
+        )
+      }
+    </section>
+
+    <!-- Education -->
+    <section class="block" id="education">
+      <h2>Education</h2>
+      <ol class="timeline">
+        {
+          sections.Education.map((e) => {
+            const thesis = thesisOf(e.area);
+            return (
+              <li>
+                <span class="when mono">
+                  {e.start_date} — {e.end_date ?? 'present'}
+                </span>
+                <div class="what">
+                  <h3>{e.studyType}</h3>
+                  <p class="where">
+                    {e.url ? (
+                      <a href={e.url} rel="noopener">
+                        {e.institution}
+                      </a>
+                    ) : (
+                      e.institution
+                    )}
+                    {e.location && <span class="muted">, {e.location}</span>}
+                  </p>
+                  {thesis && (
+                    <p class="detail">
+                      <span class="label mono">thesis</span> {thesis}
+                    </p>
+                  )}
+                </div>
+              </li>
+            );
+          })
+        }
+      </ol>
+    </section>
+
+    <!-- Teaching -->
+    <section class="block" id="teaching">
+      <h2>Teaching <span class="count mono">{courses.length} courses</span></h2>
+      <ul class="courses">
+        {
+          current.map((c) => (
+            <li class="course now">
+              <span class="sem mono">{c.semester}</span>
+              <span class="cname">
+                {c.url ? (
+                  <a href={c.url} rel="noopener">
+                    {c.course}
+                  </a>
+                ) : (
+                  c.course
+                )}
+              </span>
+              <span class="ctype mono">{c.type}</span>
+            </li>
+          ))
+        }
+      </ul>
+      {
+        past.length > 0 && (
+          <details class="more">
+            <summary>{past.length} earlier courses</summary>
+            <ul class="courses">
+              {past.map((c) => (
+                <li class="course">
+                  <span class="sem mono">{c.semester}</span>
+                  <span class="cname">
+                    {c.url ? (
+                      <a href={c.url} rel="noopener">
+                        {c.course}
+                      </a>
+                    ) : (
+                      c.course
+                    )}
+                  </span>
+                  <span class="ctype mono">{c.type}</span>
+                </li>
+              ))}
+            </ul>
+          </details>
+        )
+      }
+    </section>
+
+    <!-- Projects -->
+    <section class="block" id="projects">
+      <h2>Projects</h2>
+      <ul class="cards">
+        {
+          sections.Projects.map((p) => (
+            <li>
+              <h3>
+                {p.url ? <a href={p.url}>{p.name}</a> : p.name}
+                {p.start_date && <span class="since mono">since {p.start_date}</span>}
+              </h3>
+              {p.summary && <p class="detail">{p.summary}</p>}
+              {p.highlights && (
+                <p class="hl">
+                  {p.highlights.map((h) => (
+                    <span class="chip">{h}</span>
+                  ))}
+                </p>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <!-- Awards -->
+    <section class="block" id="awards">
+      <h2>Awards &amp; recognition</h2>
+      <ul class="rows">
+        {
+          sections.Awards.map((a) => (
+            <li>
+              <span class="when mono">{formatDate(a.date)}</span>
+              <span class="rowtext">
+                {a.url ? (
+                  <a href={a.url} rel="noopener">
+                    {a.title}
+                  </a>
+                ) : (
+                  a.title
+                )}
+                {a.awarder && <span class="muted"> — {a.awarder}</span>}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <!-- Certificates -->
+    <section class="block" id="certificates">
+      <h2>Certificates</h2>
+      <ul class="rows">
+        {
+          sections.Certificates.map((c) => (
+            <li>
+              <span class="when mono">{formatDate(c.date)}</span>
+              <span class="rowtext">
+                {c.url ? (
+                  <a href={c.url} rel="noopener">
+                    {c.name}
+                  </a>
+                ) : (
+                  c.name
+                )}
+                {c.issuer && <span class="muted"> — {c.issuer}</span>}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <!-- Community -->
+    <section class="block" id="community">
+      <h2>Community service</h2>
+      <ul class="rows">
+        {
+          sections.Community.map((item) => (
+            <li>
+              <span class="when mono">{item.label}</span>
+              <span class="rowtext">
+                {parseDetails(item.details).map((part, i) => (
+                  <>
+                    {i > 0 && <span aria-hidden="true">, </span>}
+                    {part.url ? (
+                      <a href={part.url} rel="noopener">
+                        {part.text}
+                      </a>
+                    ) : (
+                      <span>{part.text}</span>
+                    )}
+                  </>
+                ))}
+              </span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <!-- Languages -->
+    <section class="block" id="languages">
+      <h2>Languages</h2>
+      <ul class="rows">
+        {
+          sections.Languages.map((l) => (
+            <li>
+              <span class="when mono">{l.name}</span>
+              <span class="rowtext">{l.summary}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </section>
+</Base>
+
+<style>
+  /* No box: the lede reads as prose, closed off by the same hairline the rest
+     of the site uses to separate sections. */
+  .profile {
+    display: grid;
+    /* Same as the home page hero: cap the text at its reading measure so the
+       portrait sits beside it rather than across a void at the far edge. */
+    grid-template-columns: minmax(0, 64ch) auto;
+    justify-content: start;
+    gap: 2.5rem;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  /* Matches the home page hero portrait exactly. */
+  .portrait {
+    width: 11rem;
+    height: 11rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--sec-line);
+    box-shadow: 0 0 0 6px var(--sec-dim);
+  }
+  @media (max-width: 44rem) {
+    .profile {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .portrait {
+      order: -1;
+      width: 7rem;
+      height: 7rem;
+    }
+  }
+  .summary {
+    color: var(--text-muted);
+  }
+  .interests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+  }
+  .contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5ch;
+    align-items: center;
+    margin: 0;
+    color: var(--text-faint);
+  }
+
+  .block {
+    margin-top: 3rem;
+  }
+  .block h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .count {
+    font-size: var(--fs-mono);
+    color: var(--text-faint);
+    font-weight: 400;
+  }
+
+  /* timeline: a date rail on the left, content on the right */
+  .timeline,
+  .rows,
+  .courses {
+    list-style: none;
+    margin: 1.25rem 0 0;
+    padding: 0;
+  }
+
+  .timeline > li {
+    /* One anchor for both the dot and the rail: they were positioned from
+       different offsets (-0.5rem vs -0.19rem) and sat ~2px apart. */
+    --rail: 10.25rem;
+    display: grid;
+    grid-template-columns: 10.5rem 1fr;
+    gap: 0 1.25rem;
+    padding-bottom: 1.5rem;
+    position: relative;
+  }
+  .timeline > li::before {
+    content: '';
+    position: absolute;
+    left: var(--rail);
+    top: 0.45rem;
+    margin-left: -3.5px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--sec);
+    box-shadow: 0 0 0 4px var(--sec-dim);
+  }
+  .timeline > li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: var(--rail);
+    top: 1.15rem;
+    bottom: 0;
+    margin-left: -0.5px;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .when {
+    color: var(--text-faint);
+    padding-top: 0.15rem;
+  }
+  .what h3 {
+    margin: 0 0 0.15rem;
+    font-size: 1.0625rem;
+  }
+  .where {
+    margin: 0 0 0.3rem;
+    font-size: var(--fs-small);
+    color: var(--text-muted);
+  }
+  .detail {
+    margin: 0;
+    font-size: var(--fs-small);
+    color: var(--text-muted);
+    max-width: 68ch;
+  }
+  .muted {
+    color: var(--text-faint);
+  }
+  .label {
+    color: var(--sec);
+    margin-right: 0.3ch;
+  }
+
+  .timeline.compact > li {
+    padding-bottom: 1rem;
+  }
+
+  .more {
+    margin-top: 0.5rem;
+  }
+  .more summary {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--fs-mono);
+    color: var(--sec);
+    cursor: pointer;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--sec-line);
+    border-radius: 999px;
+    background: var(--sec-dim);
+  }
+  .more summary:hover {
+    background: color-mix(in srgb, var(--sec-dim) 160%, transparent);
+  }
+
+  .rows > li {
+    display: grid;
+    grid-template-columns: 10.5rem 1fr;
+    gap: 0 1.25rem;
+    padding: 0.6rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .rowtext {
+    font-size: var(--fs-small);
+  }
+
+  .course {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr auto;
+    gap: 0 1rem;
+    padding: 0.55rem 0;
+    border-top: 1px solid var(--border);
+    font-size: var(--fs-small);
+    align-items: baseline;
+  }
+  .course .sem {
+    color: var(--text-faint);
+  }
+  .course.now .sem {
+    color: var(--sec);
+  }
+  .ctype {
+    color: var(--text-faint);
+    font-size: 0.6875rem;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+    gap: 1.4rem 1.6rem;
+    list-style: none;
+    margin: 1.25rem 0 0;
+    padding: 0;
+  }
+  .cards > li {
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border);
+  }
+  .cards h3 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.6rem;
+    margin: 0 0 0.4rem;
+    font-size: 1rem;
+  }
+  .since {
+    color: var(--text-faint);
+    font-weight: 400;
+    font-size: 0.6875rem;
+  }
+  .hl {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0.6rem 0 0;
+  }
+
+  @media (max-width: 42rem) {
+    .timeline > li,
+    .rows > li {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+    .timeline > li::before,
+    .timeline > li::after {
+      display: none;
+    }
+    .course {
+      grid-template-columns: 5rem 1fr;
+    }
+    .ctype {
+      grid-column: 2;
+    }
+  }
+
+  /* The CV is the one page people print. */
+  @media print {
+    .more[open] summary,
+    .more summary {
+      display: none;
+    }
+    .more {
+      display: block;
+    }
+    .more > *:not(summary) {
+      display: block !important;
+    }
+  }
+</style>
