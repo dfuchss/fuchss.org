@@ -1,12 +1,12 @@
 {
-  "fetched": "2026-09-13",
+  "fetched": "2026-09-14",
   "users": {
     "dfuchss": {
       "login": "dfuchss",
       "name": "Dominik Fuchß",
       "bio": "$status$ :=💻️ | 🎮️ | 🚴 | 🏸",
       "followers": 40,
-      "publicRepos": 57,
+      "publicRepos": 58,
       "htmlUrl": "https://github.com/dfuchss",
       "avatarUrl": "https://avatars.githubusercontent.com/u/22198798?v=4"
     }
@@ -70,7 +70,7 @@
     "jplag/JPlag": {
       "fullName": "jplag/JPlag",
       "description": "State-of-the-Art Source Code Plagiarism & Collusion Detection. Check for plagiarism in a set of programs.",
-      "stars": 1957,
+      "stars": 1959,
       "forks": 377,
       "language": "Java",
       "license": "GPL-3.0",
