@@ -39,18 +39,23 @@ jobs:
       - name: Fetch citations
         shell: bash
         # The script keeps its own 270s budget and exits 0 when Scholar rate-limits
-        # it. `timeout` is only a backstop for a hang the signal handler cannot
-        # reach, and its 124 is likewise not a failure. `-u` keeps the log intact
-        # if the backstop ever does have to kill the process.
+        # it, but `scholarly`'s retry loop catches broad exceptions and so swallows
+        # the one our SIGALRM/SIGTERM handlers raise. `timeout` is the backstop that
+        # actually ends such a run, and none of the ways it can do so is a failure:
+        # 124 (clean SIGTERM), 143 (the shell reporting that same SIGTERM) and 137
+        # (the SIGKILL from --kill-after, i.e. the process ignored SIGTERM) all just
+        # mean Scholar did not answer. A stalled run leaves citations.yml untouched,
+        # so the next scheduled run simply retries and nobody needs an email about
+        # it. `-u` keeps the log intact when the backstop does have to kill it.
         run: |
           set +e
           timeout --signal=TERM --kill-after=30 300 python -u scripts/update_scholar_citations.py
           rc=$?
           set -e
           case $rc in
-            0)   echo "✅ Citation fetch completed." >> "$GITHUB_STEP_SUMMARY" ;;
-            124) echo "⏱️ Google Scholar timed out; citations left unchanged." >> "$GITHUB_STEP_SUMMARY"; rc=0 ;;
-            *)   echo "❌ Citation script failed with exit code $rc." >> "$GITHUB_STEP_SUMMARY" ;;
+            0)             echo "✅ Citation fetch completed." >> "$GITHUB_STEP_SUMMARY" ;;
+            124|137|143)   echo "⏱️ Google Scholar did not answer in time (exit $rc); citations left unchanged." >> "$GITHUB_STEP_SUMMARY"; rc=0 ;;
+            *)             echo "❌ Citation script failed with exit code $rc." >> "$GITHUB_STEP_SUMMARY" ;;
           esac
           exit $rc
 
