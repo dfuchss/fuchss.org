@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-09-14",
+  "fetched": "2026-09-18",
   "users": {
     "dfuchss": {
       "login": "dfuchss",
@@ -32,7 +32,7 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/matrix-joinlink",
-      "pushedAt": "2026-09-07"
+      "pushedAt": "2026-09-18"
     },
     "dfuchss/mensabot": {
       "fullName": "dfuchss/mensabot",
@@ -70,13 +70,13 @@
     "jplag/JPlag": {
       "fullName": "jplag/JPlag",
       "description": "State-of-the-Art Source Code Plagiarism & Collusion Detection. Check for plagiarism in a set of programs.",
-      "stars": 1959,
+      "stars": 1962,
       "forks": 377,
       "language": "Java",
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/jplag/JPlag",
-      "pushedAt": "2026-09-11"
+      "pushedAt": "2026-09-17"
     }
   }
 }
