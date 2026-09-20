@@ -14,7 +14,7 @@ npm run dev        # http://localhost:4321, hot reload
 npm run build      # → dist/
 npm run preview    # serves dist/ the way the web server does
 npm run check      # astro check + prettier --check
-npm run verify     # byte-identity invariants + structural/feature audits
+npm run verify     # byte-identity invariants (PDFs + Matrix delegation)
 ```
 
 ## Layout
@@ -31,7 +31,7 @@ public/                 copied verbatim — the stable URL surface
   assets/pdf/           35 publication PDFs; these URLs are permanent
   .well-known/matrix/   Matrix homeserver delegation for the domain
 scripts/                data refresh + verification
-verification/           committed hash baselines and the URL manifest
+verification/           committed SHA-256 baselines for the PDFs and the Matrix delegation
 ```
 
 ## Two things that must not break
@@ -46,7 +46,8 @@ Nothing to do with the website, which is what makes breaking them easy to miss.
 
 Both are pinned by SHA-256 in `verification/` and asserted by `npm run verify`, which the deploy
 workflow runs before publishing. The URL-parity checks that guarded the migration have been
-retired now that the rewrite is done.
+retired now that the rewrite is done, as have the structural and feature audits carried over
+from the al-folio site — they pinned counts that change with ordinary content edits.
 
 ## Content tasks
 

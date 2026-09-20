@@ -13,8 +13,7 @@
     "preview": "astro preview",
     "check": "astro check && prettier . --check",
     "format": "prettier . --write",
-    "verify": "node scripts/verify-invariants.mjs && npm run audit",
-    "audit": "node scripts/audit-site.mjs && node scripts/audit-features.mjs",
+    "verify": "node scripts/verify-invariants.mjs",
     "preview:files": "node scripts/make-preview.mjs"
   },
   "dependencies": {

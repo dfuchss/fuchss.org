@@ -45,9 +45,8 @@ jobs:
         run: npm run build
 
       # Guards the two things that must never silently change — the Matrix
-      # homeserver delegation and the publication PDF bytes — then runs the
-      # site and feature audits.
-      - name: Verify invariants and audit
+      # homeserver delegation and the publication PDF bytes.
+      - name: Verify invariants
         run: npm run verify
 
       - name: Deploy to gh-pages
