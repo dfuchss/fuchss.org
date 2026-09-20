@@ -120,9 +120,18 @@ export function splitExperience(items: Experience[]) {
   return { main: items.filter((e) => !isTA(e)), assistantships: items.filter(isTA) };
 }
 
-/** A semester string like "SS 2026" / "WS 2024/25" → a sortable number. */
+/**
+ * A semester string → a sortable number, newest largest.
+ *
+ * Winter semesters are written `WS 26/27`, summer ones `SS 2026`, so a plain
+ * four-digit match finds no year in a winter one and sorts every `WS` entry
+ * below every `SS` entry. Both spellings are keyed on the year the semester
+ * *starts*, which puts `WS 26/27` (October 2026) above `SS 2026` (April 2026)
+ * and interleaves the two halves of each academic year.
+ */
 export function semesterKey(semester: string): number {
-  const y = /(\d{4})/.exec(semester);
-  const year = y ? Number(y[1]) : 0;
+  const m = /(\d{4}|\d{2})/.exec(semester);
+  if (!m) return 0;
+  const year = m[1].length === 2 ? 2000 + Number(m[1]) : Number(m[1]);
   return year * 10 + (semester.startsWith('WS') ? 1 : 0);
 }
