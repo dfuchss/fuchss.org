@@ -147,9 +147,10 @@ cv:
         url: https://github.com/dfuchss
 
     Teaching:
-      - course: 'Programming'
+      - course: 'Programming 1'
         type: 'Lecture / Practice'
         semester: 'WS 26/27'
+        url: 'https://sdq.kastel.kit.edu/wiki/Vorlesung_Programmieren_1_WS_2026/27'
 
       - course: 'Programming Exercise'
         type: 'Practice'
