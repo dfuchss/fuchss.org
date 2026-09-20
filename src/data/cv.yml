@@ -147,6 +147,10 @@ cv:
         url: https://github.com/dfuchss
 
     Teaching:
+      - course: 'Programming'
+        type: 'Lecture / Practice'
+        semester: 'WS 26/27'
+
       - course: 'Programming Exercise'
         type: 'Practice'
         semester: 'SS 2026'
