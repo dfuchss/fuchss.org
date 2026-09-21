@@ -50,3 +50,5 @@ zenodo_repos:
     doi: 10.5281/zenodo.21533985
   - name: "EVerest Dataset @ ASE'26"
     doi: 10.5281/zenodo.21157836
+  - name: "Dissertation @ KIT'26"
+    doi: 10.5281/zenodo.22872578
