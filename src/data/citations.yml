@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-09-20'
+  last_updated: '2026-09-23'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -14,7 +14,7 @@ papers:
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
     year: '2025'
   bVvFp4oAAAAJ:8k81kl-MbHgC:
-    citations: 66
+    citations: 67
     title: 'LiSSA: Toward Generic Traceability Link Recovery Through Retrieval-Augmented Generation'
     year: '2025'
   bVvFp4oAAAAJ:9yKSN-GCB0IC:
@@ -34,7 +34,7 @@ papers:
     title: 'Software architecture meets llms: A systematic literature review (2025)'
     year: Unknown Year
   bVvFp4oAAAAJ:MXK_kJrjxJIC:
-    citations: 41
+    citations: 42
     title: Requirements traceability link recovery via retrieval-augmented generation
     year: '2025'
   bVvFp4oAAAAJ:R3hNpaxXUhUC:
