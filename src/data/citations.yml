@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-09-23'
+  last_updated: '2026-09-25'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -10,7 +10,7 @@ papers:
     title: "Verarbeitung nat\xFCrlich-sprachlicher Beziehungsbeschreibungen zwischen Objekten"
     year: '2018'
   bVvFp4oAAAAJ:7PzlFSSx8tAC:
-    citations: 29
+    citations: 30
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
     year: '2025'
   bVvFp4oAAAAJ:8k81kl-MbHgC:
@@ -29,10 +29,6 @@ papers:
     citations: 38
     title: Trace Link Recovery for Software Architecture Documentation
     year: '2021'
-  bVvFp4oAAAAJ:M3NEmzRMIkIC:
-    citations: 5
-    title: 'Software architecture meets llms: A systematic literature review (2025)'
-    year: Unknown Year
   bVvFp4oAAAAJ:MXK_kJrjxJIC:
     citations: 42
     title: Requirements traceability link recovery via retrieval-augmented generation
@@ -42,7 +38,7 @@ papers:
     title: 'ExArch: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction'
     year: '2026'
   bVvFp4oAAAAJ:RHpTSmoSYBkC:
-    citations: 1
+    citations: 2
     title: 'GARMA: Generative Architectural Resource Demand Estimation for Microservice Applications'
     year: '2026'
   bVvFp4oAAAAJ:TFP_iSt0sucC:
@@ -58,7 +54,7 @@ papers:
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
-    citations: 45
+    citations: 49
     title: 'Software architecture meets llms: A systematic literature review'
     year: '2025'
   bVvFp4oAAAAJ:UeHWp8X0CEIC:
