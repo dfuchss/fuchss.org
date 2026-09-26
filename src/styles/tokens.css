@@ -64,6 +64,16 @@
   --radius-l: 22px;
   --max: 1180px;
   --gutter: clamp(1rem, 4vw, 2.5rem);
+  /* The reading column. `--max` is the page; this is how wide a line of text is
+     allowed to get inside it, and every block in an article page — figure, link
+     grid, BibTeX, pager — is held to it so the column has one right edge.
+     In rem, not ch, precisely because those blocks are not all set in the body
+     font: `ch` is the width of "0" in the element's own font, so the same 72ch
+     is 738px on a paragraph and 562px on a `.mono` line, and the edges that
+     this is meant to line up would not. 46rem ≈ the 72ch of Space Grotesk at
+     the body size (641/1000 em → 738px), which is what the prose measured
+     before it moved here. */
+  --measure: 46rem;
 
   /* ---- type ---- */
   --font-head: 'Space Grotesk', system-ui, sans-serif;

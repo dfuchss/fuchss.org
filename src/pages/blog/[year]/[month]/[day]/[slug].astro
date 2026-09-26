@@ -81,6 +81,12 @@ const older = i < all.length - 1 ? all[i + 1] : undefined;
   .kicker a:hover {
     color: var(--sec);
   }
+  /* Held to the reading column with `.prose`, so the two rules and the pager
+     share its right edge rather than running to the full wrap. */
+  .head,
+  .pager {
+    max-width: var(--measure);
+  }
   .head {
     margin-bottom: 2rem;
     padding-bottom: 1.25rem;

@@ -57,6 +57,11 @@ const CATEGORY_LABEL = { research: 'Research', matrix: 'Matrix', misc: 'Side pro
     color: var(--sec);
   }
 
+  /* Same reading column as `.prose`, so both rules line up with the text. */
+  .head,
+  .back {
+    max-width: var(--measure);
+  }
   .head {
     display: flex;
     align-items: flex-start;
