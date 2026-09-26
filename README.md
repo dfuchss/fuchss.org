@@ -30,6 +30,7 @@ src/
 public/                 copied verbatim — the stable URL surface
   assets/pdf/           35 publication PDFs; these URLs are permanent
   .well-known/matrix/   Matrix homeserver delegation for the domain
+  .htaccess             ErrorDocument 404 → the site's own /404.html, not the panel's
 scripts/                data refresh + verification
 verification/           committed SHA-256 baselines for the PDFs and the Matrix delegation
 ```
