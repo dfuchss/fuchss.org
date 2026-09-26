@@ -3,6 +3,7 @@ title: ardoco
 description: 'Automating Requirements and Documentation Comprehension'
 category: research
 order: 1
+logo: ../../assets/projects/ardoco/logo.png
 redirect: https://ardoco.de/
 ---
 

@@ -3,6 +3,7 @@ title: rekit
 description: 'a platform jumper game'
 category: misc
 order: 4
+logo: ../../assets/projects/rekit/logo.png
 ---
 
 [RεKiT](https://github.com/rekit-group/rekit-game) is a platform jumper game created by three [KIT](https://www.kit.edu/) students in the summer of 2016 with the aim of explaining different design patterns to students in the second semester on the basis of a practical example.
