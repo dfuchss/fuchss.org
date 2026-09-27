@@ -31,6 +31,12 @@ It is a fork of [Tammy](https://gitlab.com/connect2x/tammy) and is built on top 
 
 ![Emoji picker](../../assets/projects/tacit/emoji_picker.png)
 
+### Slash commands and spoilers
+
+The composer completes slash commands as you type, so `/spoiler` hides a message behind a blur until the reader taps it.
+
+![Spoiler](../../assets/projects/tacit/spoiler.png)
+
 ### Spaces / Guilds
 
 A matrix space is translated to the idea of guilds in Tacit. Guilds only contain rooms. All DMs and group chats are outside of guilds. Guilds can be used to organize rooms, e.g. by topic, project, or team.
@@ -42,6 +48,10 @@ A matrix space is translated to the idea of guilds in Tacit. Guilds only contain
 #### Guild overview
 
 ![Guild overview](../../assets/projects/tacit/guild_ui.png)
+
+#### Who is in a room
+
+![Member list](../../assets/projects/tacit/member_list.png)
 
 #### Invite to guild
 
