@@ -54,21 +54,31 @@ const description = d.description ?? `${d.title} — published at ${d.conference
   <Fragment slot="head"><ScholarMeta pub={pub} /></Fragment>
 
   <article class="wrap section">
-    <p class="kicker" data-sigil="none">
-      <a href="/publications/">publications</a> / {entry.id}
-    </p>
+    <header>
+      {
+        /* The venue abbreviation is the shortest true name this page has — the
+          collection carries no separate short label, and inventing one would
+          mean a schema field per paper that repeats the badge. */
+      }
+      {
+        /* One line doing both jobs: where you are, and what this is. A separate
+          breadcrumb above a venue kicker said the same thing twice in a row,
+          and the slug it ended on is the part a reader already knows — they
+          just clicked it. So the path's leaf is the venue label instead.
 
-    <header class="head">
-      <div class="head-top">
-        <VenueBadge abbr={pub.data.abbr.id} />
-        <span class="mono status">
-          {d.alreadyPublished ? 'published' : 'to appear'}
-        </span>
-      </div>
+          Both sides of the separator need an explicit space: Astro strips the
+          newline between an element and the next, and it renders "publications/
+          ICSE" without them. */
+      }
+      <p class="kicker" data-sigil="none">
+        <a href="/publications/">publications</a>
+        {' / '}
+        {pub.data.abbr.id}
+      </p>
 
       <h1>{d.title}</h1>
 
-      <p class="authors">
+      <p class="byline">
         {
           authors.map((a, i) => (
             <>
@@ -94,17 +104,25 @@ const description = d.description ?? `${d.title} — published at ${d.conference
         }
       </p>
 
-      <p class="conf">
-        {d.alreadyPublished ? 'Published at the' : 'To be published at the'}{' '}
-        {
-          d.conferenceUrl ? (
-            <a href={d.conferenceUrl} rel="noopener">
-              {d.conferenceName}
-            </a>
-          ) : (
-            <span>{d.conferenceName}</span>
-          )
-        }
+      {
+        /* Badge and sentence on one line: the badge names the proceedings, the
+          sentence names the event, and they are one fact, not two. The
+          published/to-appear state is in the wording, so no status chip. */
+      }
+      <p class="venue-line">
+        <VenueBadge abbr={pub.data.abbr.id} />
+        <span>
+          {d.alreadyPublished ? 'Published at the ' : 'To be published at the '}
+          {
+            d.conferenceUrl ? (
+              <a href={d.conferenceUrl} rel="noopener">
+                {d.conferenceName}
+              </a>
+            ) : (
+              d.conferenceName
+            )
+          }
+        </span>
       </p>
 
       <p class="actions">
@@ -211,43 +229,39 @@ const description = d.description ?? `${d.title} — published at ${d.conference
 </Base>
 
 <style>
-  .kicker a {
-    color: var(--text-faint);
-  }
-  .kicker a:hover {
-    color: var(--sec);
-  }
-
   /* `.prose` is already `--measure`; these are the blocks that were not, and
      each one ending somewhere different is what made the column look ragged. */
-  .head,
+  header,
   .approach,
   .links,
   .cite {
     max-width: var(--measure);
   }
 
-  .head {
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border);
+  .kicker a {
+    color: inherit;
   }
-  .head-top {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 0.9rem;
-  }
-  .status {
-    color: var(--text-faint);
+  .kicker a:hover {
+    color: var(--sec-strong);
   }
 
+  header {
+    margin-bottom: 1.75rem;
+  }
+
+  /* Its own clamp rather than the global --fs-h1: a paper title is a sentence,
+     not a page name, and at display size it becomes a wall four lines deep. */
   h1 {
-    max-width: 40ch;
+    font-size: clamp(1.6rem, 1.1rem + 2.2vw, 2.5rem);
+    margin-bottom: 0.75rem;
   }
 
-  .authors {
-    margin-bottom: 0.4rem;
+  /* 1.8 because the ORCID badges sit above the baseline: at the default
+     line-height they touch the names on the line above. */
+  .byline {
+    margin: 0 0 0.65rem;
     color: var(--text-muted);
+    line-height: 1.8;
   }
   .author.self {
     color: var(--text);
@@ -269,7 +283,12 @@ const description = d.description ?? `${d.title} — published at ${d.conference
     background: var(--sec-dim);
   }
 
-  .conf {
+  .venue-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0 0 0.5rem;
     color: var(--text-muted);
     font-size: var(--fs-small);
   }
