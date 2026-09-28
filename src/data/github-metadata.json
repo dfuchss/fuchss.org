@@ -1,12 +1,12 @@
 {
-  "fetched": "2026-09-21",
+  "fetched": "2026-09-28",
   "users": {
     "dfuchss": {
       "login": "dfuchss",
       "name": "Dominik Fuchß",
       "bio": "$status$ :=💻️ | 🎮️ | 🚴 | 🏸",
       "followers": 40,
-      "publicRepos": 59,
+      "publicRepos": 58,
       "htmlUrl": "https://github.com/dfuchss",
       "avatarUrl": "https://avatars.githubusercontent.com/u/22198798?v=4"
     }
@@ -21,7 +21,7 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/project-vault",
-      "pushedAt": "2026-08-30"
+      "pushedAt": "2026-09-26"
     },
     "dfuchss/matrix-joinlink": {
       "fullName": "dfuchss/matrix-joinlink",
@@ -43,18 +43,18 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/mensabot",
-      "pushedAt": "2026-09-11"
+      "pushedAt": "2026-09-25"
     },
     "dfuchss/yarb": {
       "fullName": "dfuchss/yarb",
       "description": "Yet another Reminder Bot",
       "stars": 2,
-      "forks": 0,
+      "forks": 1,
       "language": "Kotlin",
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/yarb",
-      "pushedAt": "2026-06-20"
+      "pushedAt": "2026-09-24"
     },
     "dfuchss/deltabot": {
       "fullName": "dfuchss/deltabot",
@@ -70,13 +70,13 @@
     "jplag/JPlag": {
       "fullName": "jplag/JPlag",
       "description": "State-of-the-Art Source Code Plagiarism & Collusion Detection. Check for plagiarism in a set of programs.",
-      "stars": 1964,
-      "forks": 377,
+      "stars": 1966,
+      "forks": 376,
       "language": "Java",
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/jplag/JPlag",
-      "pushedAt": "2026-09-17"
+      "pushedAt": "2026-09-24"
     }
   }
 }
