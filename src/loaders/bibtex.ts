@@ -14,6 +14,17 @@ const str = (v: unknown): string | undefined => {
   return t === '' ? undefined : t;
 };
 
+/**
+ * Strip the LaTeX escapes the cooked parse leaves behind.
+ *
+ * The decoder only rewrites escapes that stand for a Unicode character, so an
+ * escaped ASCII punctuation mark survives verbatim: the Springer and GI DOIs
+ * keep their `\_`, and `https://doi.org/10.1007/978-3-031-88531-0\_27`
+ * resolves to nothing. Only for the values we turn into links or plain text —
+ * the copyable BibTeX is built from the raw parse and keeps its escapes.
+ */
+const unLatex = (v: string | undefined): string | undefined => v?.replace(/\\([_&%$#{}])/g, '$1');
+
 const num = (v: unknown): number | undefined => {
   const s = str(v);
   if (s === undefined) return undefined;
@@ -144,8 +155,8 @@ export function bibtexLoader(opts: { file: string; pdfRoot: string }): Loader {
           // 6 biblatex entries carry `venue` where the rest use `location`;
           // fall back so those stop rendering without a place.
           location: str(f.location) ?? str(f.venue) ?? str(f.address),
-          doi: str(f.doi),
-          url: str(f.url),
+          doi: unLatex(str(f.doi)),
+          url: unLatex(str(f.url)),
           keywords: (str(f.keywords) ?? '')
             .split(',')
             .map((k) => k.trim())
