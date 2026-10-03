@@ -37,36 +37,34 @@ const grouped = GROUPS.map((g) => ({
   description="Software projects by Dominik Fuchß — research tooling, Matrix bots and clients, and assorted side projects."
 >
   <section class="wrap section">
-    <p class="kicker" data-sigil="##">projects</p>
+    <p class="kicker" data-sigil="##">
+      projects
+    </p>
     <h1>Projects</h1>
     <p class="lede">
-      {projects.length} projects, grouped by what they are for. Most are open source; the Matrix ones
-      are running against my own homeserver.
+      {projects.length} projects, grouped by what they are for. Most are open source; the Matrix
+      ones are running against my own homeserver.
     </p>
 
     <nav class="jump mono" aria-label="Jump to category">
-      {
-        grouped.map((g) => (
-          <a class="chip" href={`#${g.id}`}>
-            {g.label.toLowerCase()} <span>{g.items.length}</span>
-          </a>
-        ))
-      }
+      {grouped.map((g) => (
+        <a class="chip" href={`#${g.id}`}>
+          {g.label.toLowerCase()} <span>{g.items.length}</span>
+        </a>
+      ))}
     </nav>
 
-    {
-      grouped.map((g) => (
-        <section class="group" id={g.id}>
-          <h2>{g.label}</h2>
-          <p class="blurb">{g.blurb}</p>
-          <ul class="grid">
-            {g.items.map((project) => (
-              <ProjectCard project={project} />
-            ))}
-          </ul>
-        </section>
-      ))
-    }
+    {grouped.map((g) => (
+      <section class="group" id={g.id}>
+        <h2>{g.label}</h2>
+        <p class="blurb">{g.blurb}</p>
+        <ul class="grid">
+          {g.items.map((project) => (
+            <ProjectCard project={project} />
+          ))}
+        </ul>
+      </section>
+    ))}
   </section>
 </Base>
 

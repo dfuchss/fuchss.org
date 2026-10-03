@@ -27,7 +27,9 @@ const { title, description, section } = Astro.props;
     <slot name="head" />
   </head>
   <body data-section={section}>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
     <Nav section={section} />
     <main id="main">
       <slot />

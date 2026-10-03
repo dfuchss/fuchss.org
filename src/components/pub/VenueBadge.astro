@@ -13,17 +13,15 @@ const href = venue?.data.url;
 const title = longName ? `${longName} (${abbr})` : abbr;
 ---
 
-{
-  href ? (
-    <a class="venue" href={href} style={`--brand: ${color}`} title={title} rel="noopener">
-      {abbr}
-    </a>
-  ) : (
-    <span class="venue" style={`--brand: ${color}`} title={title}>
-      {abbr}
-    </span>
-  )
-}
+{href ? (
+  <a class="venue" href={href} style={`--brand: ${color}`} title={title} rel="noopener">
+    {abbr}
+  </a>
+) : (
+  <span class="venue" style={`--brand: ${color}`} title={title}>
+    {abbr}
+  </span>
+)}
 
 <style>
   /*

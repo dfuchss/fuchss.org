@@ -16,31 +16,27 @@ const external = Boolean(d.redirect);
 <li class="card-li reveal">
   <a class="pcard" href={href} rel={external ? 'noopener' : undefined}>
     <div class="top">
-      {
-        d.logo ? (
-          <Image
-            class="logo"
-            src={d.logo}
-            alt=""
-            width={44}
-            height={44}
-            densities={[1, 2]}
-            loading="lazy"
-          />
-        ) : (
-          <span class="logo logo-fallback mono" aria-hidden="true">
-            {d.title.slice(0, 2)}
-          </span>
-        )
-      }
+      {d.logo ? (
+        <Image
+          class="logo"
+          src={d.logo}
+          alt=""
+          width={44}
+          height={44}
+          densities={[1, 2]}
+          loading="lazy"
+        />
+      ) : (
+        <span class="logo logo-fallback mono" aria-hidden="true">
+          {d.title.slice(0, 2)}
+        </span>
+      )}
       <h3>{d.title}</h3>
-      {
-        external && (
-          <span class="ext mono" aria-label="external link">
-            ↗
-          </span>
-        )
-      }
+      {external && (
+        <span class="ext mono" aria-label="external link">
+          ↗
+        </span>
+      )}
     </div>
     <p>{d.description}</p>
   </a>

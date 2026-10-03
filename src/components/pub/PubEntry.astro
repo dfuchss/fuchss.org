@@ -34,83 +34,67 @@ const bibId = `bib-${pub.id}`;
 
   <div class="body">
     <h3 class="title">
-      {
-        paperPage ? (
-          <a class="title-link" href={`/conferences/${paperPage}/`}>
-            {d.title}
-          </a>
-        ) : (
-          d.title
-        )
-      }
+      {paperPage ? (
+        <a class="title-link" href={`/conferences/${paperPage}/`}>
+          {d.title}
+        </a>
+      ) : (
+        d.title
+      )}
     </h3>
 
     <p class="authors">
-      {
-        shown.map((p, i) => (
-          <>
-            {i > 0 && <span aria-hidden="true">, </span>}
-            {isSelf(p) ? <strong>{fullName(p)}</strong> : <span>{fullName(p)}</span>}
-          </>
-        ))
-      }
+      {shown.map((p, i) => (
+        <>
+          {i > 0 && <span aria-hidden="true">, </span>}
+          {isSelf(p) ? <strong>{fullName(p)}</strong> : <span>{fullName(p)}</span>}
+        </>
+      ))}
       {hidden > 0 && <span class="more"> and {hidden} more authors</span>}
     </p>
 
-    {
-      inParts.length > 0 && (
-        <p class="venue-line">
-          <em>{inParts.join(', ')}</em>
-          {d.year ? <span>, {d.year}</span> : null}
-        </p>
-      )
-    }
+    {inParts.length > 0 && (
+      <p class="venue-line">
+        <em>{inParts.join(', ')}</em>
+        {d.year ? <span>, {d.year}</span> : null}
+      </p>
+    )}
 
     <div class="links">
-      {
-        d.pdfUrl && (
-          <a class="chip" href={d.pdfUrl}>
-            PDF
-          </a>
-        )
-      }
-      {
-        d.doi && (
-          <a class="chip" href={`https://doi.org/${d.doi}`} rel="noopener">
-            DOI
-          </a>
-        )
-      }
-      {
-        cites > 0 && (
-          <span class="chip cites" title="Citations (Google Scholar)">
-            {cites} {cites === 1 ? 'citation' : 'citations'}
-          </span>
-        )
-      }
-      {
-        paperPage && !compact && (
-          <a class="chip paper-page" href={`/conferences/${paperPage}/`}>
-            Paper page →
-          </a>
-        )
-      }
-      {
-        !compact && (
-          <details class="bib">
-            <summary class="chip bib-toggle">
-              <span class="caret mono" aria-hidden="true">
-                ▸
-              </span>
-              BibTeX
-            </summary>
-            <div class="bib-body">
-              <CopyButton target={bibId} />
-              <pre id={bibId}>{d.bibtex}</pre>
-            </div>
-          </details>
-        )
-      }
+      {d.pdfUrl && (
+        <a class="chip" href={d.pdfUrl}>
+          PDF
+        </a>
+      )}
+      {d.doi && (
+        <a class="chip" href={`https://doi.org/${d.doi}`} rel="noopener">
+          DOI
+        </a>
+      )}
+      {cites > 0 && (
+        <span class="chip cites" title="Citations (Google Scholar)">
+          {cites} {cites === 1 ? 'citation' : 'citations'}
+        </span>
+      )}
+      {paperPage && !compact && (
+        <a class="chip paper-page" href={`/conferences/${paperPage}/`}>
+          Paper page →
+        </a>
+      )}
+      {!compact && (
+        <details class="bib">
+          <summary class="chip bib-toggle">
+            <span class="caret mono" aria-hidden="true">
+              ▸
+            </span>
+            BibTeX
+          </summary>
+          <div class="bib-body">
+            <CopyButton target={bibId} />
+            <pre id={bibId}>{d.bibtex}</pre>
+          </div>
+        </details>
+      )}
     </div>
   </div>
 </li>

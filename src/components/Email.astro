@@ -36,9 +36,14 @@ const rot13 = (s: string) =>
 const fallback = `${user} (at) ${domain.replace(/\./g, ' (dot) ')}`;
 ---
 
-<span class="email" data-u={rot13(user)} data-d={rot13(domain)} data-l={label ? rot13(label) : null}
-  >{fallback}</span
+<span
+  class="email"
+  data-u={rot13(user)}
+  data-d={rot13(domain)}
+  data-l={label ? rot13(label) : null}
 >
+  {fallback}
+</span>
 
 <script>
   const rot13 = (s: string) =>

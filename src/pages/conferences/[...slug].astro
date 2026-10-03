@@ -51,25 +51,23 @@ const description = d.description ?? `${d.title} — published at ${d.conference
 ---
 
 <Base section="conferences" title={d.title} description={description}>
-  <Fragment slot="head"><ScholarMeta pub={pub} /></Fragment>
+  <Fragment slot="head">
+    <ScholarMeta pub={pub} />
+  </Fragment>
 
   <article class="wrap section">
     <header>
-      {
-        /* The venue abbreviation is the shortest true name this page has — the
+      {/* The venue abbreviation is the shortest true name this page has — the
           collection carries no separate short label, and inventing one would
-          mean a schema field per paper that repeats the badge. */
-      }
-      {
-        /* One line doing both jobs: where you are, and what this is. A separate
+          mean a schema field per paper that repeats the badge. */}
+      {/* One line doing both jobs: where you are, and what this is. A separate
           breadcrumb above a venue kicker said the same thing twice in a row,
           and the slug it ended on is the part a reader already knows — they
           just clicked it. So the path's leaf is the venue label instead.
 
           Both sides of the separator need an explicit space: Astro strips the
           newline between an element and the next, and it renders "publications/
-          ICSE" without them. */
-      }
+          ICSE" without them. */}
       <p class="kicker" data-sigil="none">
         <a href="/publications/">publications</a>
         {' / '}
@@ -79,145 +77,127 @@ const description = d.description ?? `${d.title} — published at ${d.conference
       <h1>{d.title}</h1>
 
       <p class="byline">
-        {
-          authors.map((a, i) => (
-            <>
-              {i > 0 && (
-                <span aria-hidden="true">{i === authors.length - 1 ? ', and ' : ', '}</span>
+        {authors.map((a, i) => (
+          <>
+            {i > 0 && <span aria-hidden="true">{i === authors.length - 1 ? ', and ' : ', '}</span>}
+            <span class:list={['author', { self: a.id === 'dominik_fuchss' }]}>
+              {a.data.name}
+              {a.data.orcid && (
+                <a
+                  class="orcid"
+                  href={`https://orcid.org/${a.data.orcid}`}
+                  rel="noopener"
+                  aria-label={`ORCID record for ${a.data.name}`}
+                  title={`ORCID ${a.data.orcid}`}
+                >
+                  iD
+                </a>
               )}
-              <span class:list={['author', { self: a.id === 'dominik_fuchss' }]}>
-                {a.data.name}
-                {a.data.orcid && (
-                  <a
-                    class="orcid"
-                    href={`https://orcid.org/${a.data.orcid}`}
-                    rel="noopener"
-                    aria-label={`ORCID record for ${a.data.name}`}
-                    title={`ORCID ${a.data.orcid}`}
-                  >
-                    iD
-                  </a>
-                )}
-              </span>
-            </>
-          ))
-        }
+            </span>
+          </>
+        ))}
       </p>
 
-      {
-        /* Badge and sentence on one line: the badge names the proceedings, the
+      {/* Badge and sentence on one line: the badge names the proceedings, the
           sentence names the event, and they are one fact, not two. The
-          published/to-appear state is in the wording, so no status chip. */
-      }
+          published/to-appear state is in the wording, so no status chip. */}
       <p class="venue-line">
         <VenueBadge abbr={pub.data.abbr.id} />
         <span>
           {d.alreadyPublished ? 'Published at the ' : 'To be published at the '}
-          {
-            d.conferenceUrl ? (
-              <a href={d.conferenceUrl} rel="noopener">
-                {d.conferenceName}
-              </a>
-            ) : (
-              d.conferenceName
-            )
-          }
+          {d.conferenceUrl ? (
+            <a href={d.conferenceUrl} rel="noopener">
+              {d.conferenceName}
+            </a>
+          ) : (
+            d.conferenceName
+          )}
         </span>
       </p>
 
       <p class="actions">
-        {
-          pub.data.pdfUrl && (
-            <a class="chip primary" href={pub.data.pdfUrl}>
-              Read the PDF
-            </a>
-          )
-        }
-        {
-          pub.data.doi && (
-            <a class="chip" href={`https://doi.org/${pub.data.doi}`} rel="noopener">
-              DOI
-            </a>
-          )
-        }
+        {pub.data.pdfUrl && (
+          <a class="chip primary" href={pub.data.pdfUrl}>
+            Read the PDF
+          </a>
+        )}
+        {pub.data.doi && (
+          <a class="chip" href={`https://doi.org/${pub.data.doi}`} rel="noopener">
+            DOI
+          </a>
+        )}
       </p>
     </header>
 
-    {
-      d.figure && (
-        <figure class:list={['approach', { plate: d.figure.plate }]}>
-          <div class="frame">
-            <div class="frame-bar" aria-hidden="true">
-              <>
-                <span class="dot" />
-                <span class="dot" />
-                <span class="dot" />
-              </>
-              {/* The figure's only visible label. `alt` is not repeated below it:
+    {d.figure && (
+      <figure class:list={['approach', { plate: d.figure.plate }]}>
+        <div class="frame">
+          <div class="frame-bar" aria-hidden="true">
+            <>
+              <span class="dot" />
+              <span class="dot" />
+              <span class="dot" />
+            </>
+            {/* The figure's only visible label. `alt` is not repeated below it:
                 it says the same thing, and a caption that restates the frame bar is
                 noise for sighted readers and duplication for a screen reader. */}
-              <span class="frame-label mono">approach overview</span>
-            </div>
-            <img
-              src={d.figure.src}
-              alt={d.figure.alt}
-              width={figureSize?.width}
-              height={figureSize?.height}
-              loading="lazy"
-              decoding="async"
-            />
+            <span class="frame-label mono">approach overview</span>
           </div>
-        </figure>
-      )
-    }
+          <img
+            src={d.figure.src}
+            alt={d.figure.alt}
+            width={figureSize?.width}
+            height={figureSize?.height}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </figure>
+    )}
 
     <Prose>
       <Content />
     </Prose>
 
-    {
-      (paperLinks.length > 0 || replLinks.length > 0) && (
-        <section class="links">
-          <h2>Links</h2>
-          <div class="link-grid">
-            {paperLinks.length > 0 && (
-              <div>
-                <h3 class="mono">paper</h3>
-                <ul>
-                  {paperLinks.map(([k, url]) => (
-                    <li>
-                      <a href={url} rel="noopener">
-                        {LINK_LABELS[k] ?? k}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            {replLinks.length > 0 && (
-              <div>
-                <h3 class="mono">replication package</h3>
-                <ul>
-                  {replLinks.map(([k, url]) => (
-                    <li>
-                      <a href={url} rel="noopener">
-                        {LINK_LABELS[k] ?? k}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        </section>
-      )
-    }
+    {(paperLinks.length > 0 || replLinks.length > 0) && (
+      <section class="links">
+        <h2>Links</h2>
+        <div class="link-grid">
+          {paperLinks.length > 0 && (
+            <div>
+              <h3 class="mono">paper</h3>
+              <ul>
+                {paperLinks.map(([k, url]) => (
+                  <li>
+                    <a href={url} rel="noopener">
+                      {LINK_LABELS[k] ?? k}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {replLinks.length > 0 && (
+            <div>
+              <h3 class="mono">replication package</h3>
+              <ul>
+                {replLinks.map(([k, url]) => (
+                  <li>
+                    <a href={url} rel="noopener">
+                      {LINK_LABELS[k] ?? k}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
 
-    {
-      /* BibTeX alone. A full PubEntry here repeated the whole header — badge,
+    {/* BibTeX alone. A full PubEntry here repeated the whole header — badge,
         title, authors, venue, PDF and DOI — a screen further down the same page,
-        and buried the one thing this section is for behind a disclosure toggle. */
-    }
+        and buried the one thing this section is for behind a disclosure toggle. */}
     <section class="cite">
       <h2>Cite this paper</h2>
       <div class="bib-body">

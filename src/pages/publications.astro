@@ -41,29 +41,31 @@ const metrics = [
   description="Peer-reviewed publications of Dominik Fuchß on traceability link recovery, consistency checking, and LLMs for software engineering."
 >
   <section class="wrap section">
-    <p class="kicker" data-sigil="##">publications</p>
+    <p class="kicker" data-sigil="##">
+      publications
+    </p>
     <h1>Publications</h1>
     <p class="lede">
-      {pubs.length} peer-reviewed papers, theses and reports. Citation counts come from Google Scholar,
-      refreshed daily — last updated {formatUpdated(m.lastUpdated)}.
+      {pubs.length} peer-reviewed papers, theses and reports. Citation counts come from Google
+      Scholar, refreshed daily — last updated {formatUpdated(m.lastUpdated)}.
     </p>
 
     <ul class="metrics">
-      {
-        metrics.map((x) => (
-          <li>
-            <a class="metric" href={scholarUrl} rel="noopener">
-              <span class="metric-label mono">{x.label}</span>
-              <span class="metric-value">{x.value}</span>
-              <span class="metric-sub mono">{x.sub}</span>
-            </a>
-          </li>
-        ))
-      }
+      {metrics.map((x) => (
+        <li>
+          <a class="metric" href={scholarUrl} rel="noopener">
+            <span class="metric-label mono">{x.label}</span>
+            <span class="metric-value">{x.value}</span>
+            <span class="metric-sub mono">{x.sub}</span>
+          </a>
+        </li>
+      ))}
     </ul>
 
     <div class="search">
-      <label class="sr-only" for="pubsearch">Filter publications</label>
+      <label class="sr-only" for="pubsearch">
+        Filter publications
+      </label>
       <input
         id="pubsearch"
         type="search"
@@ -71,21 +73,21 @@ const metrics = [
         autocomplete="off"
         hidden
       />
-      <p class="no-results mono" hidden>No publications match that filter.</p>
+      <p class="no-results mono" hidden>
+        No publications match that filter.
+      </p>
     </div>
 
-    {
-      years.map((year) => (
-        <section class="year" data-year={year}>
-          <h2 class="year-head mono">{year}</h2>
-          <ol class="entries">
-            {byYear.get(year)!.map((pub) => (
-              <PubEntry pub={pub} paperPage={paperPageFor.get(pub.id)} />
-            ))}
-          </ol>
-        </section>
-      ))
-    }
+    {years.map((year) => (
+      <section class="year" data-year={year}>
+        <h2 class="year-head mono">{year}</h2>
+        <ol class="entries">
+          {byYear.get(year)!.map((pub) => (
+            <PubEntry pub={pub} paperPage={paperPageFor.get(pub.id)} />
+          ))}
+        </ol>
+      </section>
+    ))}
   </section>
 </Base>
 

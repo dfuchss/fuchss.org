@@ -26,7 +26,9 @@ const sections = [
 
 <Base title="Impressum" description="Impressum und Datenschutzhinweise für fuchss.org.">
   <section class="wrap section">
-    <p class="kicker" data-sigil="none">Angaben gemäß § 5 TMG</p>
+    <p class="kicker" data-sigil="none">
+      Angaben gemäß § 5 TMG
+    </p>
     <h1>Impressum</h1>
 
     <div class="contact card">
@@ -38,23 +40,25 @@ const sections = [
     </div>
 
     <h2>Haftungsausschluss</h2>
-    {
-      sections.map((s) => (
-        <section class="legal">
-          <h3>{s.h}</h3>
-          <p>{s.p}</p>
-        </section>
-      ))
-    }
+    {sections.map((s) => (
+      <section class="legal">
+        <h3>{s.h}</h3>
+        <p>{s.p}</p>
+      </section>
+    ))}
 
     <p class="credit">
-      Website Impressum erstellt durch <a
-        href="https://www.impressum-generator.de/"
-        rel="noopener nofollow">impressum-generator.de</a
-      > von der <a
+      Website Impressum erstellt durch{' '}
+      <a href="https://www.impressum-generator.de/" rel="noopener nofollow">
+        impressum-generator.de
+      </a>{' '}
+      von der{' '}
+      <a
         href="http://www.kanzlei-hasselbach.de/standorte/koeln-rodenkirchen"
-        rel="noopener nofollow">Kanzlei Hasselbach, Köln-Rodenkirchen</a
+        rel="noopener nofollow"
       >
+        Kanzlei Hasselbach, Köln-Rodenkirchen
+      </a>
     </p>
   </section>
 </Base>

@@ -22,8 +22,12 @@ const key = readFileSync(`public${asc}`, 'utf8').trim();
       <p class="fp-label mono">fingerprint</p>
       <p class="fp-value mono">{grouped}</p>
       <p class="fp-actions">
-        <a class="chip" href={asc} download>Download .asc</a>
-        <button class="chip" type="button" id="copy-key" hidden>Copy key</button>
+        <a class="chip" href={asc} download>
+          Download .asc
+        </a>
+        <button class="chip" type="button" id="copy-key" hidden>
+          Copy key
+        </button>
       </p>
     </div>
 

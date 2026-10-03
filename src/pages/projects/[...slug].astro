@@ -26,12 +26,10 @@ const CATEGORY_LABEL = { research: 'Research', matrix: 'Matrix', misc: 'Side pro
     </p>
 
     <header class="head">
-      {
-        d.logo && (
-          // Rendered at 4.5rem; the 2x variant keeps it sharp on retina screens.
-          <Image class="logo" src={d.logo} alt="" width={72} height={72} densities={[1, 2]} />
-        )
-      }
+      {d.logo && (
+        // Rendered at 4.5rem; the 2x variant keeps it sharp on retina screens.
+        <Image class="logo" src={d.logo} alt="" width={72} height={72} densities={[1, 2]} />
+      )}
       <div>
         <h1>{d.title}</h1>
         <p class="desc">{d.description}</p>
@@ -45,7 +43,9 @@ const CATEGORY_LABEL = { research: 'Research', matrix: 'Matrix', misc: 'Side pro
       <Content />
     </Prose>
 
-    <p class="back mono"><a href="/projects/">← all projects</a></p>
+    <p class="back mono">
+      <a href="/projects/">← all projects</a>
+    </p>
   </article>
 </Base>
 
