@@ -5,7 +5,7 @@ import Base from '../layouts/Base.astro';
 import PubEntry from '../components/pub/PubEntry.astro';
 import SocialRow from '../components/SocialRow.astro';
 import me from '../assets/me.jpg';
-import { scholarMetrics, formatCount } from '../lib/citations.ts';
+import { scholarMetrics, formatCount, formatUpdatedShort } from '../lib/citations.ts';
 import { publishedPosts, permalink, formatPostDate } from '../lib/blog.ts';
 import { repositories } from '../lib/data.ts';
 import { cv, currentPosition } from '../lib/cv.ts';
@@ -50,10 +50,13 @@ const involvement = [
   { text: 'Maintainer Team of', link: { label: 'JPlag', href: 'https://github.com/JPlag' } },
 ];
 
-const stats = [
+/** `note` dates a figure that came from somewhere else and goes stale. */
+const scholar = `(updated ${formatUpdatedShort(m.lastUpdated)})`;
+
+const stats: { value: string; label: string; href: string; note?: string }[] = [
   { value: String(pubs.length), label: 'publications', href: '/publications/' },
-  { value: formatCount(m.total), label: 'citations', href: '/publications/' },
-  { value: String(m.hIndex), label: 'h-index', href: '/publications/' },
+  { value: formatCount(m.total), label: 'citations', href: '/publications/', note: scholar },
+  { value: String(m.hIndex), label: 'h-index', href: '/publications/', note: scholar },
   { value: String(zenodoCount), label: 'replication packages', href: '/repositories/' },
 ];
 ---
@@ -91,7 +94,10 @@ const stats = [
           <li>
             <a href={s.href}>
               <span class="stat-value">{s.value}</span>
-              <span class="stat-label mono">{s.label}</span>
+              <span class="stat-label mono">
+                {s.label}
+                {s.note && <span class="stat-note">{s.note}</span>}
+              </span>
             </a>
           </li>
         ))
@@ -291,6 +297,12 @@ const stats = [
   .stat-label {
     color: var(--text-faint);
     font-size: 0.6875rem;
+  }
+  /* Inline after the label, not a row of its own: the margin carries the gap,
+     so the markup needs no whitespace expression between the two. */
+  .stat-note {
+    margin-left: 0.35em;
+    opacity: 0.7;
   }
 
   .interests {
