@@ -14,6 +14,13 @@ const year = new Date().getFullYear();
       <a href="/pgp-key/">PGP</a>
       <span aria-hidden="true">·</span>
       <a href="/feed.xml">Feed</a>
+      <span aria-hidden="true">·</span>
+      {/* Every {' '} here is load-bearing: Astro strips the newline before an
+          <a>, which would render "Astro andStudia Theme". */}
+      <span>
+        built with <a href="https://astro.build/">Astro</a> and{' '}
+        <a href="https://github.com/dfuchss/astro-studia">Studia Theme</a>
+      </span>
     </p>
   </div>
 </footer>
