@@ -257,4 +257,4 @@ cv:
       - bullet: 'Natural Language Processing'
       - bullet: 'Traceability Link Recovery'
       - bullet: 'Consistency between formal & informal artifacts'
-      - bullet: 'Retrieval-Augmented Generation'
+      - bullet: 'LLMs for SE'
