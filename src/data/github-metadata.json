@@ -100,17 +100,6 @@
       "htmlUrl": "https://github.com/jplag/JPlag",
       "pushedAt": "2026-10-04"
     },
-    "ardoco/ardoco": {
-      "fullName": "ardoco/ardoco",
-      "description": "Mono Repo: Contains core, tlr, and inconsistency detection",
-      "stars": 6,
-      "forks": 3,
-      "language": "Java",
-      "license": "NOASSERTION",
-      "archived": false,
-      "htmlUrl": "https://github.com/ardoco/ardoco",
-      "pushedAt": "2026-09-30"
-    },
     "ardoco/lissa": {
       "fullName": "ardoco/lissa",
       "description": "LiSSA: A Framework for Generic Traceability Link Recovery",
