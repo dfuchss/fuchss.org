@@ -1,3 +1,4 @@
 # Source ids (DBLP keys or OpenAlex ids) that find-missing-papers.mjs must not propose again.
 # One '- id  # title' per line.
 - kitopen:1000148120  # Replication Package of "Evaluation Methods and Replicability of Software Architecture Research Objects"
+- conf/icsa/KonersmannK0HKR22  # Replication Package of "Evaluation Methods and Replicability of Software Architecture Research Objects"
