@@ -1,5 +1,6 @@
 ---
 import { SITE } from '../consts.ts';
+import { getPage, fill } from '../lib/pages.ts';
 
 interface Props {
   title?: string;
@@ -8,7 +9,9 @@ interface Props {
 const { title, description } = Astro.props;
 
 const pageTitle = title ? `${title} · ${SITE.title}` : SITE.title;
-const desc = description ?? SITE.description;
+const { data: site } = await getPage('site/site');
+// Descriptions may say {name}; it is filled from cv.yml here, for every page.
+const desc = fill(description ?? site.description!, { name: SITE.title });
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
 ---
 

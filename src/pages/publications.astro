@@ -5,58 +5,62 @@ import PubEntry from '../components/pub/PubEntry.astro';
 import { scholarMetrics, formatCount, formatUpdated } from '../lib/citations.ts';
 import { socials } from '../lib/data.ts';
 import { byNewest } from '../lib/publications.ts';
+import { getPage, fill, need } from '../lib/pages.ts';
 
-const pubs = await getCollection('publications');
+const { data: page } = await getPage('publications');
+
+const publications = await getCollection('publications');
 
 // Paper pages live at /conferences/<slug>/ and each one names its publication,
 // so a publication that has one links straight to it. The /conferences/ index
 // was dropped; the entries here and the homepage section are the way in.
 const conferences = await getCollection('conferences');
-const paperPageFor = new Map(conferences.map((c) => [c.data.publication.id, c.id]));
+const paperPageFor = new Map(
+  conferences.map((conference) => [conference.data.publication.id, conference.id]),
+);
 
 // Newest first; month breaks ties within a year.
-pubs.sort(byNewest);
+publications.sort(byNewest);
 
-const byYear = new Map<number, typeof pubs>();
-for (const p of pubs) {
-  const list = byYear.get(p.data.year) ?? [];
-  list.push(p);
-  byYear.set(p.data.year, list);
+const byYear = new Map<number, typeof publications>();
+for (const publication of publications) {
+  const list = byYear.get(publication.data.year) ?? [];
+  list.push(publication);
+  byYear.set(publication.data.year, list);
 }
-const years = [...byYear.keys()].sort((a, b) => b - a);
+const years = [...byYear.keys()].sort((older, newer) => newer - older);
 
-const m = scholarMetrics();
+const scholar = scholarMetrics();
 const scholarUrl = `https://scholar.google.com/citations?user=${socials.scholar_userid}`;
 
-const metrics = [
-  { label: 'Total citations', value: formatCount(m.total), sub: 'View on Scholar' },
-  { label: 'h-index', value: String(m.hIndex), sub: 'Papers with ≥ h citations' },
-  { label: 'i10-index', value: String(m.i10), sub: 'Papers with ≥ 10 citations' },
-];
+// Labels come from publications.md, in the order total / h-index / i10-index.
+const values = [formatCount(scholar.total), String(scholar.hIndex), String(scholar.i10)];
+const metrics = need(page.metrics, 'publications.metrics').map((metric, index) => ({
+  ...metric,
+  value: values[index],
+}));
 ---
 
-<Base
-  section="publications"
-  title="Publications"
-  description="Peer-reviewed publications of Dominik Fuchß on traceability link recovery, consistency checking, and LLMs for software engineering."
->
+<Base section="publications" title={page.title} description={page.description}>
   <section class="wrap section">
     <p class="kicker" data-sigil="##">
       publications
     </p>
     <h1>Publications</h1>
     <p class="lede">
-      {pubs.length} peer-reviewed papers, theses and reports. Citation counts come from Google
-      Scholar, refreshed daily — last updated {formatUpdated(m.lastUpdated)}.
+      {fill(need(page.lede, 'publications.lede'), {
+        count: publications.length,
+        updated: formatUpdated(scholar.lastUpdated),
+      })}
     </p>
 
     <ul class="metrics">
-      {metrics.map((x) => (
+      {metrics.map((metric) => (
         <li>
           <a class="metric" href={scholarUrl} rel="noopener">
-            <span class="metric-label mono">{x.label}</span>
-            <span class="metric-value">{x.value}</span>
-            <span class="metric-sub mono">{x.sub}</span>
+            <span class="metric-label mono">{metric.label}</span>
+            <span class="metric-value">{metric.value}</span>
+            <span class="metric-sub mono">{metric.sub}</span>
           </a>
         </li>
       ))}
@@ -74,7 +78,7 @@ const metrics = [
         hidden
       />
       <p class="no-results mono" hidden>
-        No publications match that filter.
+        {page.noResults}
       </p>
     </div>
 
@@ -82,8 +86,8 @@ const metrics = [
       <section class="year" data-year={year}>
         <h2 class="year-head mono">{year}</h2>
         <ol class="entries">
-          {byYear.get(year)!.map((pub) => (
-            <PubEntry pub={pub} paperPage={paperPageFor.get(pub.id)} />
+          {byYear.get(year)!.map((publication) => (
+            <PubEntry publication={publication} paperPage={paperPageFor.get(publication.id)} />
           ))}
         </ol>
       </section>
@@ -104,21 +108,21 @@ const metrics = [
     input.hidden = false;
 
     const search = new Map(
-      entries.map((el) => [el, (el.textContent ?? '').toLowerCase().replace(/\s+/g, ' ')]),
+      entries.map((entry) => [entry, (entry.textContent ?? '').toLowerCase().replace(/\s+/g, ' ')]),
     );
 
-    const apply = (raw: string) => {
-      const q = raw.trim().toLowerCase();
+    const apply = (rawQuery: string) => {
+      const query = rawQuery.trim().toLowerCase();
       let visible = 0;
-      for (const el of entries) {
-        const hit = q === '' || (search.get(el) ?? '').includes(q);
-        el.hidden = !hit;
+      for (const entry of entries) {
+        const hit = query === '' || (search.get(entry) ?? '').includes(query);
+        entry.hidden = !hit;
         if (hit) {
           visible++;
           // A match may sit far below the fold and never have been scrolled
           // into view, so the scroll-reveal still has it at opacity 0. Filtering
           // pulls it up to the top of the list, so reveal it now.
-          if (q !== '') el.classList.add('is-in');
+          if (query !== '') entry.classList.add('is-in');
         }
       }
       // Hide a year heading once every entry under it is filtered out.
@@ -133,10 +137,10 @@ const metrics = [
     // Deep links like /publications/#lissa pre-fill the filter, matching the
     // behaviour of the old bib_search widget.
     const fromHash = () => {
-      const h = decodeURIComponent(location.hash.replace(/^#/, ''));
-      if (h && !document.getElementById(h)) {
-        input.value = h;
-        apply(h);
+      const hash = decodeURIComponent(location.hash.replace(/^#/, ''));
+      if (hash && !document.getElementById(hash)) {
+        input.value = hash;
+        apply(hash);
       }
     };
     fromHash();

@@ -8,56 +8,51 @@ import me from '../assets/me.jpg';
 import { scholarMetrics, formatCount, formatUpdatedShort } from '../lib/citations.ts';
 import { publishedPosts, permalink, formatPostDate } from '../lib/blog.ts';
 import { repositories } from '../lib/data.ts';
-import { cv, currentPosition } from '../lib/cv.ts';
+import { getPage, fill, need } from '../lib/pages.ts';
+import { cv, currentPosition, sections } from '../lib/cv.ts';
 import { keyId } from '../lib/pgp.ts';
 import Email from '../components/Email.astro';
 
-const pubs = await getCollection('publications');
+const { data: page, Content } = await getPage('home');
+const { Content: Role } = await getPage('home/role');
+const { Content: Involvement } = await getPage('home/involvement');
+const publications = await getCollection('publications');
 
-const m = scholarMetrics();
-const latestYear = Math.max(...pubs.map((p) => p.data.year));
+const metrics = scholarMetrics();
+const latestYear = Math.max(...publications.map((publication) => publication.data.year));
 
 const conferences = await getCollection('conferences');
-conferences.sort((a, b) => a.data.order - b.data.order);
+conferences.sort((first, second) => first.data.order - second.data.order);
 const confRows = await Promise.all(
-  conferences.map(async (c) => ({
-    entry: c,
-    pub: await getEntry(c.data.publication),
+  conferences.map(async (conference) => ({
+    entry: conference,
+    publication: await getEntry(conference.data.publication),
   })),
 );
 
 const posts = (await publishedPosts()).slice(0, 3);
 const zenodoCount = (repositories.zenodo_repos ?? []).length;
 
-const interests = [
-  'Natural Language Processing',
-  'Traceability Link Recovery',
-  'Consistency between formal & informal artifacts',
-  'Retrieval-Augmented Generation & LLMs for SE',
-];
-
-const involvement = [
-  { text: 'Main Development Team of', link: { label: 'ardoco', href: '/projects/ardoco/' } },
-  {
-    text: 'Administrator of our',
-    link: { label: 'Artemis', href: 'https://github.com/ls1intum/Artemis' },
-    tail: 'infrastructure, used for the Programming lecture, Software Engineering I and more',
-  },
-  {
-    text: 'Product Owner of multiple projects of',
-    link: { label: 'kit-sdq', href: 'https://github.com/kit-sdq' },
-  },
-  { text: 'Maintainer Team of', link: { label: 'JPlag', href: 'https://github.com/JPlag' } },
-];
+const interests = sections.Research.map((research) => research.bullet);
+const { papersIntro, contact } = page;
+const labels = need(page.statLabels, 'home.statLabels');
+const more = need(page.moreLinks, 'home.moreLinks');
 
 /** `note` dates a figure that came from somewhere else and goes stale. */
-const scholar = `(updated ${formatUpdatedShort(m.lastUpdated)})`;
+const scholar = fill(need(page.statNote, 'home.statNote'), {
+  date: formatUpdatedShort(metrics.lastUpdated),
+});
 
 const stats: { value: string; label: string; href: string; note?: string }[] = [
-  { value: String(pubs.length), label: 'publications', href: '/publications/' },
-  { value: formatCount(m.total), label: 'citations', href: '/publications/', note: scholar },
-  { value: String(m.hIndex), label: 'h-index', href: '/publications/', note: scholar },
-  { value: String(zenodoCount), label: 'replication packages', href: '/repositories/' },
+  { value: String(publications.length), label: labels.publications, href: '/publications/' },
+  {
+    value: formatCount(metrics.total),
+    label: labels.citations,
+    href: '/publications/',
+    note: scholar,
+  },
+  { value: String(metrics.hIndex), label: labels.hIndex, href: '/publications/', note: scholar },
+  { value: String(zenodoCount), label: labels.replicationPackages, href: '/repositories/' },
 ];
 ---
 
@@ -67,36 +62,29 @@ const stats: { value: string; label: string; href: string; note?: string }[] = [
     <div class="hero-grid">
       <div>
         <p class="kicker">whoami</p>
-        <h1>Dominik&nbsp;Fuchß</h1>
-        <p class="role">
-          Researcher at the{' '}
-          <a href="https://www.kit.edu/" rel="noopener">
-            Karlsruhe Institute of Technology
-          </a>
-          , Germany.
-        </p>
-        <p class="pitch">
-          I work on using informal artifacts — documentation, requirements, plain prose — for
-          automatic <strong>traceability link recovery</strong> and{' '}
-          <strong>consistency checking</strong>. Lately that means putting large language models and
-          retrieval-augmented generation to work on traceability tasks.
-        </p>
+        <h1>{cv.name.replaceAll(' ', '\u00a0')}</h1>
+        <div class="role">
+          <Role />
+        </div>
+        <div class="pitch">
+          <Content />
+        </div>
         <SocialRow />
       </div>
 
       <figure class="portrait">
-        <Image src={me} alt="Dominik Fuchß" width={280} height={280} loading="eager" />
+        <Image src={me} alt={cv.name} width={280} height={280} loading="eager" />
       </figure>
     </div>
 
     <ul class="stats">
-      {stats.map((s) => (
+      {stats.map((stat) => (
         <li>
-          <a href={s.href}>
-            <span class="stat-value">{s.value}</span>
+          <a href={stat.href}>
+            <span class="stat-value">{stat.value}</span>
             <span class="stat-label mono">
-              {s.label}
-              {s.note && <span class="stat-note">{s.note}</span>}
+              {stat.label}
+              {stat.note && <span class="stat-note">{stat.note}</span>}
             </span>
           </a>
         </li>
@@ -111,25 +99,22 @@ const stats: { value: string; label: string; href: string; note?: string }[] = [
     </p>
     <h2>What I work on</h2>
     <ul class="interests">
-      {interests.map((i) => (
-        <li class="chip">{i}</li>
+      {interests.map((interest) => (
+        <li class="chip">{interest}</li>
       ))}
     </ul>
 
     <h3 class="sub">Paper pages</h3>
-    <p class="blurb">
-      Some papers get a page of their own — approach diagram, structured abstract, replication
-      package.
-    </p>
+    <p class="blurb">{papersIntro}</p>
     <ol class="bare">
-      {confRows.map(({ entry, pub }) => (
-        <PubEntry pub={pub} paperPage={entry.id} compact />
+      {confRows.map(({ entry, publication }) => (
+        <PubEntry publication={publication} paperPage={entry.id} compact />
       ))}
     </ol>
 
     <p class="more mono">
       <a href="/publications/">
-        all {pubs.length} publications, up to {latestYear} →
+        {fill(more.publications, { count: publications.length, year: latestYear })}
       </a>
     </p>
   </section>
@@ -140,19 +125,11 @@ const stats: { value: string; label: string; href: string; note?: string }[] = [
       building
     </p>
     <h2>Also involved in</h2>
-    <ul class="involve">
-      {involvement.map((i) => (
-        <li>
-          {i.text}{' '}
-          <a href={i.link.href} rel={i.link.href.startsWith('http') ? 'noopener' : undefined}>
-            {i.link.label}
-          </a>
-          {i.tail && <span class="muted"> {i.tail}</span>}
-        </li>
-      ))}
-    </ul>
+    <div class="involve">
+      <Involvement />
+    </div>
     <p class="more mono">
-      <a href="/projects/">my own projects →</a>
+      <a href="/projects/">{more.projects}</a>
     </p>
   </section>
 
@@ -164,19 +141,19 @@ const stats: { value: string; label: string; href: string; note?: string }[] = [
       </p>
       <h2>Recent posts</h2>
       <ul class="postlist">
-        {posts.map((p) => (
+        {posts.map((post) => (
           <li>
-            <a href={permalink(p.id)}>
-              <time class="mono" datetime={p.data.date.toISOString().slice(0, 10)}>
-                {formatPostDate(p.data.date)}
+            <a href={permalink(post.id)}>
+              <time class="mono" datetime={post.data.date.toISOString().slice(0, 10)}>
+                {formatPostDate(post.data.date)}
               </time>
-              <span>{p.data.title}</span>
+              <span>{post.data.title}</span>
             </a>
           </li>
         ))}
       </ul>
       <p class="more mono">
-        <a href="/blog/">all posts →</a>
+        <a href="/blog/">{more.posts}</a>
       </p>
     </section>
   )}
@@ -187,9 +164,7 @@ const stats: { value: string; label: string; href: string; note?: string }[] = [
       contact
     </p>
     <h2>Get in touch</h2>
-    <p class="blurb">
-      Happy to talk about traceability, consistency checking, or LLMs in software engineering.
-    </p>
+    <p class="blurb">{contact?.intro}</p>
     <dl class="contact">
       <div class="line">
         <dt class="mono">email</dt>
@@ -209,7 +184,7 @@ const stats: { value: string; label: string; href: string; note?: string }[] = [
         <dt class="mono">pgp</dt>
         <dd>
           <a href="/pgp-key/">{keyId}</a>
-          <span class="muted"> — for anything sensitive</span>
+          <span class="muted"> — {contact?.pgpNote}</span>
         </dd>
       </div>
       {currentPosition?.url && (
@@ -217,15 +192,15 @@ const stats: { value: string; label: string; href: string; note?: string }[] = [
           <dt class="mono">office</dt>
           <dd>
             <a href={currentPosition.url} rel="noopener">
-              KIT staff page ↗
+              {page.staffLink}
             </a>
-            <span class="muted"> — KASTEL, Modelling for Continuous Software Engineering</span>
+            <span class="muted"> — {contact?.officeNote}</span>
           </dd>
         </div>
       )}
     </dl>
     <p class="more mono">
-      <a href="/cv/">full CV →</a>
+      <a href="/cv/">{more.cv}</a>
     </p>
   </section>
 </Base>
@@ -254,12 +229,18 @@ const stats: { value: string; label: string; href: string; note?: string }[] = [
     color: var(--text-muted);
     margin-bottom: 0.9rem;
   }
+  .role :global(p) {
+    margin: 0;
+  }
   .pitch {
     max-width: 56ch;
     color: var(--text-muted);
     margin-bottom: 1.5rem;
   }
-  .pitch strong {
+  .pitch :global(p:last-child) {
+    margin-bottom: 0;
+  }
+  .pitch :global(strong) {
     color: var(--text);
     font-weight: 600;
   }
@@ -356,17 +337,21 @@ const stats: { value: string; label: string; href: string; note?: string }[] = [
     text-decoration: none;
   }
 
-  .involve {
+  .involve :global(ul) {
     margin: 1rem 0 0;
     padding-left: 1.1rem;
     max-width: 68ch;
   }
-  .involve li {
+  .involve :global(li) {
     margin-bottom: 0.5rem;
     color: var(--text-muted);
   }
-  .involve li::marker {
+  .involve :global(li::marker) {
     color: var(--sec);
+  }
+  .involve :global(em) {
+    font-style: normal;
+    color: var(--text-faint);
   }
   .muted {
     color: var(--text-faint);

@@ -6,6 +6,7 @@ import Prose from '../../components/Prose.astro';
 import CopyButton from '../../components/pub/CopyButton.astro';
 import ScholarMeta from '../../components/pub/ScholarMeta.astro';
 import VenueBadge from '../../components/pub/VenueBadge.astro';
+import { getPage, fill, need } from '../../lib/pages.ts';
 
 export async function getStaticPaths() {
   const entries = await getCollection('conferences');
@@ -13,21 +14,16 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const d = entry.data;
+const paper = entry.data;
 const { Content } = await render(entry);
 
 // reference() guarantees these resolve — a bad bib key or author id fails the build.
-const pub = await getEntry(d.publication);
-const authors = await Promise.all(d.authors.map((ref) => getEntry(ref)));
+const publication = await getEntry(paper.publication);
+const authors = await Promise.all(paper.authors.map((authorRef) => getEntry(authorRef)));
 
-const LINK_LABELS: Record<string, string> = {
-  ieee: 'IEEE Xplore',
-  acm: 'ACM Digital Library',
-  springer: 'SpringerLink',
-  kitopen: 'KITopen',
-  zenodo: 'Zenodo',
-  repo: 'GitHub',
-};
+// Labels and fixed phrases live in src/content/pages/site/publication.md.
+const { data: copy } = await getPage('site/publication');
+const LINK_LABELS = copy.linkLabels ?? {};
 
 /*
  * Pull the diagram's intrinsic size out of its viewBox so the <img> carries
@@ -35,24 +31,29 @@ const LINK_LABELS: Record<string, string> = {
  * script flags exactly this.
  */
 let figureSize: { width: number; height: number } | undefined;
-if (d.figure) {
-  const svg = readFileSync(`public${d.figure.src}`, 'utf8').slice(0, 2000);
-  const vb = /viewBox="([\d.\s-]+)"/.exec(svg);
-  if (vb) {
-    const [, , w, h] = vb[1].trim().split(/\s+/).map(Number);
-    if (w && h) figureSize = { width: Math.round(w), height: Math.round(h) };
+if (paper.figure) {
+  const svg = readFileSync(`public${paper.figure.src}`, 'utf8').slice(0, 2000);
+  const viewBox = /viewBox="([\d.\s-]+)"/.exec(svg);
+  if (viewBox) {
+    const [, , width, height] = viewBox[1].trim().split(/\s+/).map(Number);
+    if (width && height) figureSize = { width: Math.round(width), height: Math.round(height) };
   }
 }
 
-const bibId = `bib-${pub.id}`;
-const paperLinks = Object.entries(d.links.paper ?? {});
-const replLinks = Object.entries(d.links.replication ?? {});
-const description = d.description ?? `${d.title} — published at ${d.conferenceName}.`;
+const bibId = `bib-${publication.id}`;
+const paperLinks = Object.entries(paper.links.paper ?? {});
+const replicationLinks = Object.entries(paper.links.replication ?? {});
+const description =
+  paper.description ??
+  fill(need(copy.fallbackDescription, 'publication.fallbackDescription'), {
+    title: paper.title,
+    venue: paper.conferenceName,
+  });
 ---
 
-<Base section="conferences" title={d.title} description={description}>
+<Base section="conferences" title={paper.title} description={description}>
   <Fragment slot="head">
-    <ScholarMeta pub={pub} />
+    <ScholarMeta publication={publication} />
   </Fragment>
 
   <article class="wrap section">
@@ -71,24 +72,26 @@ const description = d.description ?? `${d.title} — published at ${d.conference
       <p class="kicker" data-sigil="none">
         <a href="/publications/">publications</a>
         {' / '}
-        {pub.data.abbr.id}
+        {publication.data.abbr.id}
       </p>
 
-      <h1>{d.title}</h1>
+      <h1>{paper.title}</h1>
 
       <p class="byline">
-        {authors.map((a, i) => (
+        {authors.map((author, index) => (
           <>
-            {i > 0 && <span aria-hidden="true">{i === authors.length - 1 ? ', and ' : ', '}</span>}
-            <span class:list={['author', { self: a.id === 'dominik_fuchss' }]}>
-              {a.data.name}
-              {a.data.orcid && (
+            {index > 0 && (
+              <span aria-hidden="true">{index === authors.length - 1 ? ', and ' : ', '}</span>
+            )}
+            <span class:list={['author', { self: author.id === 'dominik_fuchss' }]}>
+              {author.data.name}
+              {author.data.orcid && (
                 <a
                   class="orcid"
-                  href={`https://orcid.org/${a.data.orcid}`}
+                  href={`https://orcid.org/${author.data.orcid}`}
                   rel="noopener"
-                  aria-label={`ORCID record for ${a.data.name}`}
-                  title={`ORCID ${a.data.orcid}`}
+                  aria-label={`ORCID record for ${author.data.name}`}
+                  title={`ORCID ${author.data.orcid}`}
                 >
                   iD
                 </a>
@@ -102,35 +105,35 @@ const description = d.description ?? `${d.title} — published at ${d.conference
           sentence names the event, and they are one fact, not two. The
           published/to-appear state is in the wording, so no status chip. */}
       <p class="venue-line">
-        <VenueBadge abbr={pub.data.abbr.id} />
+        <VenueBadge abbr={publication.data.abbr.id} />
         <span>
-          {d.alreadyPublished ? 'Published at the ' : 'To be published at the '}
-          {d.conferenceUrl ? (
-            <a href={d.conferenceUrl} rel="noopener">
-              {d.conferenceName}
+          {paper.alreadyPublished ? copy.publishedAt : copy.toBePublishedAt}{' '}
+          {paper.conferenceUrl ? (
+            <a href={paper.conferenceUrl} rel="noopener">
+              {paper.conferenceName}
             </a>
           ) : (
-            d.conferenceName
+            paper.conferenceName
           )}
         </span>
       </p>
 
       <p class="actions">
-        {pub.data.pdfUrl && (
-          <a class="chip primary" href={pub.data.pdfUrl}>
-            Read the PDF
+        {publication.data.pdfUrl && (
+          <a class="chip primary" href={publication.data.pdfUrl}>
+            {copy.readPdf}
           </a>
         )}
-        {pub.data.doi && (
-          <a class="chip" href={`https://doi.org/${pub.data.doi}`} rel="noopener">
-            DOI
+        {publication.data.doi && (
+          <a class="chip" href={`https://doi.org/${publication.data.doi}`} rel="noopener">
+            {copy.doi}
           </a>
         )}
       </p>
     </header>
 
-    {d.figure && (
-      <figure class:list={['approach', { plate: d.figure.plate }]}>
+    {paper.figure && (
+      <figure class:list={['approach', { plate: paper.figure.plate }]}>
         <div class="frame">
           <div class="frame-bar" aria-hidden="true">
             <>
@@ -141,11 +144,11 @@ const description = d.description ?? `${d.title} — published at ${d.conference
             {/* The figure's only visible label. `alt` is not repeated below it:
                 it says the same thing, and a caption that restates the frame bar is
                 noise for sighted readers and duplication for a screen reader. */}
-            <span class="frame-label mono">approach overview</span>
+            <span class="frame-label mono">{copy.figureLabel}</span>
           </div>
           <img
-            src={d.figure.src}
-            alt={d.figure.alt}
+            src={paper.figure.src}
+            alt={paper.figure.alt}
             width={figureSize?.width}
             height={figureSize?.height}
             loading="lazy"
@@ -159,7 +162,7 @@ const description = d.description ?? `${d.title} — published at ${d.conference
       <Content />
     </Prose>
 
-    {(paperLinks.length > 0 || replLinks.length > 0) && (
+    {(paperLinks.length > 0 || replicationLinks.length > 0) && (
       <section class="links">
         <h2>Links</h2>
         <div class="link-grid">
@@ -167,24 +170,24 @@ const description = d.description ?? `${d.title} — published at ${d.conference
             <div>
               <h3 class="mono">paper</h3>
               <ul>
-                {paperLinks.map(([k, url]) => (
+                {paperLinks.map(([key, url]) => (
                   <li>
                     <a href={url} rel="noopener">
-                      {LINK_LABELS[k] ?? k}
+                      {LINK_LABELS[key] ?? key}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
           )}
-          {replLinks.length > 0 && (
+          {replicationLinks.length > 0 && (
             <div>
               <h3 class="mono">replication package</h3>
               <ul>
-                {replLinks.map(([k, url]) => (
+                {replicationLinks.map(([key, url]) => (
                   <li>
                     <a href={url} rel="noopener">
-                      {LINK_LABELS[k] ?? k}
+                      {LINK_LABELS[key] ?? key}
                     </a>
                   </li>
                 ))}
@@ -202,7 +205,7 @@ const description = d.description ?? `${d.title} — published at ${d.conference
       <h2>Cite this paper</h2>
       <div class="bib-body">
         <CopyButton target={bibId} />
-        <pre id={bibId}>{pub.data.bibtex}</pre>
+        <pre id={bibId}>{publication.data.bibtex}</pre>
       </div>
     </section>
   </article>

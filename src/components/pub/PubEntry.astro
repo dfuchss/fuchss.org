@@ -4,9 +4,10 @@ import VenueBadge from './VenueBadge.astro';
 import CopyButton from './CopyButton.astro';
 import { citationsFor } from '../../lib/citations.ts';
 import { truncateAuthors, fullName, isSelf } from '../../lib/authors.ts';
+import { getPage, fill, pluralize, need } from '../../lib/pages.ts';
 
 interface Props {
-  pub: CollectionEntry<'publications'>;
+  publication: CollectionEntry<'publications'>;
   /** Slug of the conference paper page for this publication, when one exists. */
   paperPage?: string;
   /**
@@ -16,69 +17,78 @@ interface Props {
    */
   compact?: boolean;
 }
-const { pub, paperPage, compact = false } = Astro.props;
-const d = pub.data;
+const { publication, paperPage, compact = false } = Astro.props;
+const paper = publication.data;
+const { data: copy } = await getPage('site/publication');
 
-const { shown, hidden } = truncateAuthors(d.authors);
-const cites = citationsFor(d.googleScholarId);
+const { shown, hidden } = truncateAuthors(paper.authors);
+const citationCount = citationsFor(paper.googleScholarId);
 
 // Where it appeared: proceedings, journal, or the awarding institution.
-const inParts = [d.booktitle ?? d.journal ?? d.school ?? d.institution, d.location].filter(Boolean);
-const bibId = `bib-${pub.id}`;
+const inParts = [
+  paper.booktitle ?? paper.journal ?? paper.school ?? paper.institution,
+  paper.location,
+].filter(Boolean);
+const bibId = `bib-${publication.id}`;
 ---
 
-<li class="entry reveal" id={pub.id}>
+<li class="entry reveal" id={publication.id}>
   <div class="badge">
-    <VenueBadge abbr={d.abbr.id} />
+    <VenueBadge abbr={paper.abbr.id} />
   </div>
 
   <div class="body">
     <h3 class="title">
       {paperPage ? (
         <a class="title-link" href={`/conferences/${paperPage}/`}>
-          {d.title}
+          {paper.title}
         </a>
       ) : (
-        d.title
+        paper.title
       )}
     </h3>
 
     <p class="authors">
-      {shown.map((p, i) => (
+      {shown.map((author, index) => (
         <>
-          {i > 0 && <span aria-hidden="true">, </span>}
-          {isSelf(p) ? <strong>{fullName(p)}</strong> : <span>{fullName(p)}</span>}
+          {index > 0 && <span aria-hidden="true">, </span>}
+          {isSelf(author) ? <strong>{fullName(author)}</strong> : <span>{fullName(author)}</span>}
         </>
       ))}
-      {hidden > 0 && <span class="more"> and {hidden} more authors</span>}
+      {hidden > 0 && (
+        <span class="more">
+          {' '}
+          {fill(need(copy.moreAuthors, 'publication.moreAuthors'), { count: hidden })}
+        </span>
+      )}
     </p>
 
     {inParts.length > 0 && (
       <p class="venue-line">
         <em>{inParts.join(', ')}</em>
-        {d.year ? <span>, {d.year}</span> : null}
+        {paper.year ? <span>, {paper.year}</span> : null}
       </p>
     )}
 
     <div class="links">
-      {d.pdfUrl && (
-        <a class="chip" href={d.pdfUrl}>
-          PDF
+      {paper.pdfUrl && (
+        <a class="chip" href={paper.pdfUrl}>
+          {copy.pdf}
         </a>
       )}
-      {d.doi && (
-        <a class="chip" href={`https://doi.org/${d.doi}`} rel="noopener">
-          DOI
+      {paper.doi && (
+        <a class="chip" href={`https://doi.org/${paper.doi}`} rel="noopener">
+          {copy.doi}
         </a>
       )}
-      {cites > 0 && (
+      {citationCount > 0 && (
         <span class="chip cites" title="Citations (Google Scholar)">
-          {cites} {cites === 1 ? 'citation' : 'citations'}
+          {pluralize(need(copy.citations, 'publication.citations'), citationCount)}
         </span>
       )}
       {paperPage && !compact && (
         <a class="chip paper-page" href={`/conferences/${paperPage}/`}>
-          Paper page →
+          {copy.paperPage}
         </a>
       )}
       {!compact && (
@@ -87,11 +97,11 @@ const bibId = `bib-${pub.id}`;
             <span class="caret mono" aria-hidden="true">
               ▸
             </span>
-            BibTeX
+            {copy.bibtex}
           </summary>
           <div class="bib-body">
             <CopyButton target={bibId} />
-            <pre id={bibId}>{d.bibtex}</pre>
+            <pre id={bibId}>{paper.bibtex}</pre>
           </div>
         </details>
       )}

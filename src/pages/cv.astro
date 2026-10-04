@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Email from '../components/Email.astro';
+import { getPage, fill, need } from '../lib/pages.ts';
 import me from '../assets/me.jpg';
 import {
   cv,
@@ -14,21 +15,19 @@ import {
   semesterKey,
 } from '../lib/cv.ts';
 
+const { data } = await getPage('cv');
+const present = need(data.present, 'cv.present');
 const { main, assistantships } = splitExperience(sections.Experience);
 
 const courses = [...sections.Teaching].sort(
-  (a, b) => semesterKey(b.semester) - semesterKey(a.semester),
+  (older, newer) => semesterKey(newer.semester) - semesterKey(older.semester),
 );
 const currentSemester = courses[0]?.semester;
-const current = courses.filter((c) => c.semester === currentSemester);
-const past = courses.filter((c) => c.semester !== currentSemester);
+const current = courses.filter((offering) => offering.semester === currentSemester);
+const past = courses.filter((offering) => offering.semester !== currentSemester);
 ---
 
-<Base
-  section="cv"
-  title="CV"
-  description="Curriculum vitae of Dominik Fuchß — researcher at KIT: experience, education, teaching, awards and community service."
->
+<Base section="cv" title={data.title} description={data.description}>
   <section class="wrap section">
     <div class="profile">
       <div class="profile-text">
@@ -38,8 +37,8 @@ const past = courses.filter((c) => c.semester !== currentSemester);
         <h1>Curriculum vitae</h1>
         <p class="summary">{cv.summary}</p>
         <ul class="interests">
-          {sections.Research.map((r) => (
-            <li class="chip">{r.bullet}</li>
+          {sections.Research.map((research) => (
+            <li class="chip">{research.bullet}</li>
           ))}
         </ul>
         <p class="contact mono">
@@ -50,7 +49,7 @@ const past = courses.filter((c) => c.semester !== currentSemester);
           </a>
         </p>
       </div>
-      <Image class="portrait" src={me} alt="Dominik Fuchß" width={280} height={280} />
+      <Image class="portrait" src={me} alt={cv.name} width={280} height={280} />
     </div>
 
     {/* Each block carries an id so /cv/#teaching and friends are linkable. */}
@@ -58,21 +57,21 @@ const past = courses.filter((c) => c.semester !== currentSemester);
     <section class="block" id="experience">
       <h2>Experience</h2>
       <ol class="timeline">
-        {main.map((e) => (
+        {main.map((job) => (
           <li>
-            <span class="when mono">{dateRange(e.start_date, e.end_date)}</span>
+            <span class="when mono">{dateRange(job.start_date, job.end_date)}</span>
             <div class="what">
-              <h3>{e.position}</h3>
+              <h3>{job.position}</h3>
               <p class="where">
-                {e.url ? (
-                  <a href={e.url} rel="noopener">
-                    {e.company}
+                {job.url ? (
+                  <a href={job.url} rel="noopener">
+                    {job.company}
                   </a>
                 ) : (
-                  e.company
+                  job.company
                 )}
               </p>
-              {e.summary && <p class="detail">{e.summary}</p>}
+              {job.summary && <p class="detail">{job.summary}</p>}
             </div>
           </li>
         ))}
@@ -80,14 +79,16 @@ const past = courses.filter((c) => c.semester !== currentSemester);
 
       {assistantships.length > 0 && (
         <details class="more">
-          <summary>{assistantships.length} teaching assistantships</summary>
+          <summary>
+            {fill(need(data.assistantships, 'cv.assistantships'), { count: assistantships.length })}
+          </summary>
           <ol class="timeline compact">
-            {assistantships.map((e) => (
+            {assistantships.map((job) => (
               <li>
-                <span class="when mono">{dateRange(e.start_date, e.end_date)}</span>
+                <span class="when mono">{dateRange(job.start_date, job.end_date)}</span>
                 <div class="what">
-                  <h3>{e.position}</h3>
-                  {e.summary && <p class="detail">{e.summary}</p>}
+                  <h3>{job.position}</h3>
+                  {job.summary && <p class="detail">{job.summary}</p>}
                 </div>
               </li>
             ))}
@@ -100,24 +101,24 @@ const past = courses.filter((c) => c.semester !== currentSemester);
     <section class="block" id="education">
       <h2>Education</h2>
       <ol class="timeline">
-        {sections.Education.map((e) => {
-          const thesis = thesisOf(e.area);
+        {sections.Education.map((education) => {
+          const thesis = thesisOf(education.area);
           return (
             <li>
               <span class="when mono">
-                {e.start_date} — {e.end_date ?? 'present'}
+                {education.start_date} — {education.end_date ?? present}
               </span>
               <div class="what">
-                <h3>{e.studyType}</h3>
+                <h3>{education.studyType}</h3>
                 <p class="where">
-                  {e.url ? (
-                    <a href={e.url} rel="noopener">
-                      {e.institution}
+                  {education.url ? (
+                    <a href={education.url} rel="noopener">
+                      {education.institution}
                     </a>
                   ) : (
-                    e.institution
+                    education.institution
                   )}
-                  {e.location && <span class="muted">, {e.location}</span>}
+                  {education.location && <span class="muted">, {education.location}</span>}
                 </p>
                 {thesis && (
                   <p class="detail">
@@ -134,42 +135,47 @@ const past = courses.filter((c) => c.semester !== currentSemester);
     <!-- Teaching -->
     <section class="block" id="teaching">
       <h2>
-        Teaching <span class="count mono">{courses.length} courses</span>
+        Teaching{' '}
+        <span class="count mono">
+          {fill(need(data.teachingCount, 'cv.teachingCount'), { count: courses.length })}
+        </span>
       </h2>
       <ul class="courses">
-        {current.map((c) => (
+        {current.map((offering) => (
           <li class="course now">
-            <span class="sem mono">{c.semester}</span>
+            <span class="sem mono">{offering.semester}</span>
             <span class="cname">
-              {c.url ? (
-                <a href={c.url} rel="noopener">
-                  {c.course}
+              {offering.url ? (
+                <a href={offering.url} rel="noopener">
+                  {offering.course}
                 </a>
               ) : (
-                c.course
+                offering.course
               )}
             </span>
-            <span class="ctype mono">{c.type}</span>
+            <span class="ctype mono">{offering.type}</span>
           </li>
         ))}
       </ul>
       {past.length > 0 && (
         <details class="more">
-          <summary>{past.length} earlier courses</summary>
+          <summary>
+            {fill(need(data.earlierCourses, 'cv.earlierCourses'), { count: past.length })}
+          </summary>
           <ul class="courses">
-            {past.map((c) => (
+            {past.map((offering) => (
               <li class="course">
-                <span class="sem mono">{c.semester}</span>
+                <span class="sem mono">{offering.semester}</span>
                 <span class="cname">
-                  {c.url ? (
-                    <a href={c.url} rel="noopener">
-                      {c.course}
+                  {offering.url ? (
+                    <a href={offering.url} rel="noopener">
+                      {offering.course}
                     </a>
                   ) : (
-                    c.course
+                    offering.course
                   )}
                 </span>
-                <span class="ctype mono">{c.type}</span>
+                <span class="ctype mono">{offering.type}</span>
               </li>
             ))}
           </ul>
@@ -181,17 +187,21 @@ const past = courses.filter((c) => c.semester !== currentSemester);
     <section class="block" id="projects">
       <h2>Projects</h2>
       <ul class="cards">
-        {sections.Projects.map((p) => (
+        {sections.Projects.map((project) => (
           <li>
             <h3>
-              {p.url ? <a href={p.url}>{p.name}</a> : p.name}
-              {p.start_date && <span class="since mono">since {p.start_date}</span>}
+              {project.url ? <a href={project.url}>{project.name}</a> : project.name}
+              {project.start_date && (
+                <span class="since mono">
+                  {fill(need(data.since, 'cv.since'), { date: project.start_date })}
+                </span>
+              )}
             </h3>
-            {p.summary && <p class="detail">{p.summary}</p>}
-            {p.highlights && (
+            {project.summary && <p class="detail">{project.summary}</p>}
+            {project.highlights && (
               <p class="hl">
-                {p.highlights.map((h) => (
-                  <span class="chip">{h}</span>
+                {project.highlights.map((highlight) => (
+                  <span class="chip">{highlight}</span>
                 ))}
               </p>
             )}
@@ -204,18 +214,18 @@ const past = courses.filter((c) => c.semester !== currentSemester);
     <section class="block" id="awards">
       <h2>Awards &amp; recognition</h2>
       <ul class="rows">
-        {sections.Awards.map((a) => (
+        {sections.Awards.map((award) => (
           <li>
-            <span class="when mono">{formatDate(a.date)}</span>
+            <span class="when mono">{formatDate(award.date)}</span>
             <span class="rowtext">
-              {a.url ? (
-                <a href={a.url} rel="noopener">
-                  {a.title}
+              {award.url ? (
+                <a href={award.url} rel="noopener">
+                  {award.title}
                 </a>
               ) : (
-                a.title
+                award.title
               )}
-              {a.awarder && <span class="muted"> — {a.awarder}</span>}
+              {award.awarder && <span class="muted"> — {award.awarder}</span>}
             </span>
           </li>
         ))}
@@ -226,18 +236,18 @@ const past = courses.filter((c) => c.semester !== currentSemester);
     <section class="block" id="certificates">
       <h2>Certificates</h2>
       <ul class="rows">
-        {sections.Certificates.map((c) => (
+        {sections.Certificates.map((certificate) => (
           <li>
-            <span class="when mono">{formatDate(c.date)}</span>
+            <span class="when mono">{formatDate(certificate.date)}</span>
             <span class="rowtext">
-              {c.url ? (
-                <a href={c.url} rel="noopener">
-                  {c.name}
+              {certificate.url ? (
+                <a href={certificate.url} rel="noopener">
+                  {certificate.name}
                 </a>
               ) : (
-                c.name
+                certificate.name
               )}
-              {c.issuer && <span class="muted"> — {c.issuer}</span>}
+              {certificate.issuer && <span class="muted"> — {certificate.issuer}</span>}
             </span>
           </li>
         ))}
@@ -274,10 +284,10 @@ const past = courses.filter((c) => c.semester !== currentSemester);
     <section class="block" id="languages">
       <h2>Languages</h2>
       <ul class="rows">
-        {sections.Languages.map((l) => (
+        {sections.Languages.map((language) => (
           <li>
-            <span class="when mono">{l.name}</span>
-            <span class="rowtext">{l.summary}</span>
+            <span class="when mono">{language.name}</span>
+            <span class="rowtext">{language.summary}</span>
           </li>
         ))}
       </ul>

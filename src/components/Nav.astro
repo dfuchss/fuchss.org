@@ -1,16 +1,24 @@
 ---
-import { NAV, type Section } from '../consts.ts';
+import type { Section } from '../consts.ts';
+import { getPage, need } from '../lib/pages.ts';
 
 interface Props {
   section?: Section;
 }
 const { section } = Astro.props;
+
+// Entries live in src/content/pages/site/nav.md.
+const { data } = await getPage('site/nav');
+const NAV = data.links ?? [];
+const { data: site } = await getPage('site/site');
+const brand = need(site.brand, 'site.brand');
 ---
 
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="brand mono" href="/">
-      <span class="brand-prompt">~/</span>fuchss.org
+      {site.brandPrompt && <span class="brand-prompt">{site.brandPrompt}</span>}
+      {brand}
     </a>
     <div class="nav-right">
       <nav aria-label="Main">

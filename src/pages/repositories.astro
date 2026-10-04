@@ -1,34 +1,30 @@
 ---
 import Base from '../layouts/Base.astro';
+import { getPage, fill, need } from '../lib/pages.ts';
+
+const { data } = await getPage('repositories');
 import { repositories, languageColors, github, socials } from '../lib/data.ts';
 
 const repos = (repositories.github_repos ?? [])
   .map((full) => ({ full, meta: github.repos[full] }))
-  .sort((a, b) => (b.meta?.stars ?? 0) - (a.meta?.stars ?? 0));
+  .sort((fewer, more) => (more.meta?.stars ?? 0) - (fewer.meta?.stars ?? 0));
 
 const zenodo = repositories.zenodo_repos ?? [];
 const user = github.users[socials.github_username];
-const fmt = new Intl.NumberFormat('en-US');
+const numberFormat = new Intl.NumberFormat('en-US');
 
 // Three stats, each saying something different: reach (followers), breadth
 // (public repos) and research output (Zenodo replication packages). No total
 // star count — the per-repo figures already carry that.
 ---
 
-<Base
-  section="repositories"
-  title="Repositories"
-  description="Open-source repositories and archived replication packages by Dominik Fuchß."
->
+<Base section="repositories" title={data.title} description={data.description}>
   <section class="wrap section">
     <p class="kicker" data-sigil="##">
       repositories
     </p>
     <h1>Repositories</h1>
-    <p class="lede">
-      Code I maintain, plus every replication package archived on Zenodo. Each paper's artefacts are
-      deposited with a DOI so the results stay reproducible after the fact.
-    </p>
+    <p class="lede">{need(data.lede, 'repositories.lede')}</p>
 
     {user && (
       <div class="ghuser card">
@@ -43,15 +39,15 @@ const fmt = new Intl.NumberFormat('en-US');
         <dl class="stats">
           <div>
             <dt class="mono">repos</dt>
-            <dd>{fmt.format(user.publicRepos)}</dd>
+            <dd>{numberFormat.format(user.publicRepos)}</dd>
           </div>
           <div>
             <dt class="mono">followers</dt>
-            <dd>{fmt.format(user.followers)}</dd>
+            <dd>{numberFormat.format(user.followers)}</dd>
           </div>
           <div>
             <dt class="mono">replication packages</dt>
-            <dd>{fmt.format(zenodo.length)}</dd>
+            <dd>{numberFormat.format(zenodo.length)}</dd>
           </div>
         </dl>
       </div>
@@ -85,8 +81,8 @@ const fmt = new Intl.NumberFormat('en-US');
                     {meta.language}
                   </span>
                 )}
-                {meta && <span>★ {fmt.format(meta.stars)}</span>}
-                {meta && meta.forks > 0 && <span>⑂ {fmt.format(meta.forks)}</span>}
+                {meta && <span>★ {numberFormat.format(meta.stars)}</span>}
+                {meta && meta.forks > 0 && <span>⑂ {numberFormat.format(meta.forks)}</span>}
                 {meta?.license && <span>{meta.license}</span>}
                 {meta?.archived && <span class="archived">archived</span>}
               </p>
@@ -94,22 +90,22 @@ const fmt = new Intl.NumberFormat('en-US');
           </li>
         ))}
       </ul>
-      <p class="fresh mono">GitHub data captured {github.fetched}</p>
+      <p class="fresh mono">
+        {fill(need(data.capturedNote, 'repositories.capturedNote'), { date: github.fetched })}
+      </p>
     </section>
 
     <section class="block">
       <h2>
         Replication packages <span class="count mono">{zenodo.length}</span>
       </h2>
-      <p class="blurb">
-        Archived on Zenodo with a permanent DOI — cite these rather than a git revision.
-      </p>
+      <p class="blurb">{data.replicationIntro}</p>
       <ul class="doi-list">
-        {zenodo.map((z) => (
+        {zenodo.map((replication) => (
           <li>
-            <a class="doi" href={`https://doi.org/${z.doi}`} rel="noopener">
-              <span class="doi-name">{z.name}</span>
-              <span class="doi-id mono">{z.doi}</span>
+            <a class="doi" href={`https://doi.org/${replication.doi}`} rel="noopener">
+              <span class="doi-name">{replication.name}</span>
+              <span class="doi-id mono">{replication.doi}</span>
             </a>
           </li>
         ))}

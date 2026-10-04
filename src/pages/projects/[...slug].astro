@@ -1,40 +1,49 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Prose from '../../components/Prose.astro';
+import { getPage, need } from '../../lib/pages.ts';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
   // ardoco redirects to ardoco.de and has no page of its own.
   return projects
-    .filter((p) => !p.data.redirect)
+    .filter((project) => !project.data.redirect)
     .map((project) => ({ params: { slug: project.id }, props: { project } }));
 }
 
 const { project } = Astro.props;
-const d = project.data;
+const projectData = project.data;
 const { Content } = await render(project);
+const { data: page } = await getPage('projects');
 
-const CATEGORY_LABEL = { research: 'Research', matrix: 'Matrix', misc: 'Side project' } as const;
+const category = await getEntry(projectData.category);
 ---
 
-<Base section="projects" title={d.title} description={d.description}>
+<Base section="projects" title={projectData.title} description={projectData.description}>
   <article class="wrap section">
     <p class="kicker" data-sigil="none">
       <a href="/projects/">projects</a> / {project.id}
     </p>
 
     <header class="head">
-      {d.logo && (
+      {projectData.logo && (
         // Rendered at 4.5rem; the 2x variant keeps it sharp on retina screens.
-        <Image class="logo" src={d.logo} alt="" width={72} height={72} densities={[1, 2]} />
+        <Image
+          class="logo"
+          src={projectData.logo}
+          alt=""
+          width={72}
+          height={72}
+          densities={[1, 2]}
+        />
       )}
       <div>
-        <h1>{d.title}</h1>
-        <p class="desc">{d.description}</p>
+        <h1>{projectData.title}</h1>
+        <p class="desc">{projectData.description}</p>
         <p class="tags">
-          <span class="chip">{CATEGORY_LABEL[d.category]}</span>
+          <span class="chip">{category.data.short}</span>
         </p>
       </div>
     </header>
@@ -44,7 +53,7 @@ const CATEGORY_LABEL = { research: 'Research', matrix: 'Matrix', misc: 'Side pro
     </Prose>
 
     <p class="back mono">
-      <a href="/projects/">← all projects</a>
+      <a href="/projects/">{need(page.backLink, 'projects.backLink')}</a>
     </p>
   </article>
 </Base>

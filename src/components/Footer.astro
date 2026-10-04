@@ -1,22 +1,27 @@
 ---
+import { getPage } from '../lib/pages.ts';
+import { cv } from '../lib/cv.ts';
+
 // Profile links live on the home page (see SocialRow), including the rel="me"
 // identity verification — repeating them on every page added nothing.
+// Text lives in src/content/pages/site/footer.md.
+const { data } = await getPage('site/footer');
 const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
   <div class="wrap">
     <p class="meta mono">
-      <span>© {year} Dominik Fuchß</span>
+      <span>
+        © {year} {cv.name}
+      </span>
+      {(data.links ?? []).map((link) => (
+        <>
+          <span aria-hidden="true">·</span>
+          <a href={link.href}>{link.label}</a>
+        </>
+      ))}
       <span aria-hidden="true">·</span>
-      <a href="/impressum/">Impressum</a>
-      <span aria-hidden="true">·</span>
-      <a href="/pgp-key/">PGP</a>
-      <span aria-hidden="true">·</span>
-      <a href="/feed.xml">Feed</a>
-      <span aria-hidden="true">·</span>
-      {/* Every {' '} here is load-bearing: Astro strips the newline before an
-          <a>, which would render "Astro andStudia Theme". */}
       <span>
         built with <a href="https://astro.build/">Astro</a> and{' '}
         <a href="https://github.com/dfuchss/astro-studia">Studia Theme</a>

@@ -4,10 +4,10 @@ import { SITE } from '../../consts.ts';
 import { fullName } from '../../lib/authors.ts';
 
 interface Props {
-  pub: CollectionEntry<'publications'>;
+  publication: CollectionEntry<'publications'>;
 }
-const { pub } = Astro.props;
-const d = pub.data;
+const { publication } = Astro.props;
+const paper = publication.data;
 
 /*
  * Highwire Press citation_* tags. The old site emitted none of these
@@ -15,28 +15,30 @@ const d = pub.data;
  * Scholar discovers and indexes a self-hosted PDF, so on an academic site they
  * are free and worth real citations.
  */
-const pdfAbs = d.pdfUrl ? new URL(d.pdfUrl, SITE.url).href : undefined;
-const container = d.booktitle ?? d.journal;
-const date = d.month ? `${d.year}/${String(d.month).padStart(2, '0')}` : String(d.year);
+const pdfAbs = paper.pdfUrl ? new URL(paper.pdfUrl, SITE.url).href : undefined;
+const container = paper.booktitle ?? paper.journal;
+const date = paper.month
+  ? `${paper.year}/${String(paper.month).padStart(2, '0')}`
+  : String(paper.year);
 /*
  * Page ranges reach us as "44–55": the parser has already turned the BibTeX
  * `--` into an en dash. Split on any of the three dashes it might use so a
  * single-page entry (`pages = {24}`) simply yields no last page.
  */
 const DASHES = /\s*[–—-]\s*/;
-const [firstPage, lastPage] = (d.pages ?? '').split(DASHES);
+const [firstPage, lastPage] = (paper.pages ?? '').split(DASHES);
 ---
 
-<meta name="citation_title" content={d.title} />
-{d.authors.map((a) => (
-  <meta name="citation_author" content={`${a.last}, ${a.first}`} />
+<meta name="citation_title" content={paper.title} />
+{paper.authors.map((author) => (
+  <meta name="citation_author" content={`${author.last}, ${author.first}`} />
 ))}
 <meta name="citation_publication_date" content={date} />
 {container && <meta name="citation_conference_title" content={container} />}
-{d.journal && <meta name="citation_journal_title" content={d.journal} />}
-{d.publisher && <meta name="citation_publisher" content={d.publisher} />}
-{d.doi && <meta name="citation_doi" content={d.doi} />}
-{d.volume && <meta name="citation_volume" content={d.volume} />}
+{paper.journal && <meta name="citation_journal_title" content={paper.journal} />}
+{paper.publisher && <meta name="citation_publisher" content={paper.publisher} />}
+{paper.doi && <meta name="citation_doi" content={paper.doi} />}
+{paper.volume && <meta name="citation_volume" content={paper.volume} />}
 {firstPage && <meta name="citation_firstpage" content={firstPage} />}
 {lastPage && <meta name="citation_lastpage" content={lastPage} />}
 {pdfAbs && <meta name="citation_pdf_url" content={pdfAbs} />}
@@ -47,13 +49,13 @@ const [firstPage, lastPage] = (d.pages ?? '').split(DASHES);
   set:html={JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'ScholarlyArticle',
-    headline: d.title,
-    name: d.title,
-    author: d.authors.map((a) => ({ '@type': 'Person', name: fullName(a) })),
-    datePublished: String(d.year),
+    headline: paper.title,
+    name: paper.title,
+    author: paper.authors.map((author) => ({ '@type': 'Person', name: fullName(author) })),
+    datePublished: String(paper.year),
     isPartOf: container ? { '@type': 'PublicationEvent', name: container } : undefined,
-    publisher: d.publisher ? { '@type': 'Organization', name: d.publisher } : undefined,
-    identifier: d.doi ? `https://doi.org/${d.doi}` : undefined,
+    publisher: paper.publisher ? { '@type': 'Organization', name: paper.publisher } : undefined,
+    identifier: paper.doi ? `https://doi.org/${paper.doi}` : undefined,
     url: pdfAbs,
   })}
 />

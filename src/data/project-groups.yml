@@ -1,0 +1,19 @@
+# Project categories, rendered by src/pages/projects/index.astro by `order`.
+# A project's `category` names one of these ids, so adding a group here is all
+# it takes. `label` and `blurb` head each group on the index; `short` is the
+# chip on a project page.
+- id: research
+  order: 1
+  label: Research
+  short: Research
+  blurb: Tooling built around my research on traceability and consistency.
+- id: matrix
+  order: 2
+  label: Matrix
+  short: Matrix
+  blurb: Bots and clients for the Matrix protocol, most of them running in production.
+- id: misc
+  order: 3
+  label: Everything else
+  short: Side project
+  blurb: Side projects, teaching tools and a few things built purely for fun.

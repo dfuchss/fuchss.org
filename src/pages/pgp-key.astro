@@ -2,6 +2,9 @@
 import { readFileSync } from 'node:fs';
 import Base from '../layouts/Base.astro';
 import { ascPath as asc, fingerprintGrouped as grouped } from '../lib/pgp.ts';
+import { getPage, need } from '../lib/pages.ts';
+
+const { data } = await getPage('pgp-key');
 
 // Inlined at build time. The old page fetched this over the network on load,
 // which meant no key without JS and nothing indexable; reading it here makes the
@@ -9,14 +12,11 @@ import { ascPath as asc, fingerprintGrouped as grouped } from '../lib/pgp.ts';
 const key = readFileSync(`public${asc}`, 'utf8').trim();
 ---
 
-<Base title="PGP Key" description="PGP public key of Dominik Fuchß for encrypted communication.">
+<Base title={data.title} description={data.description}>
   <section class="wrap section">
     <p class="kicker">gpg --recv-keys</p>
     <h1>PGP key</h1>
-    <p class="lede">
-      Use this key if you want to contact me securely. The fingerprint is shown below — verify it
-      through a second channel before you trust it.
-    </p>
+    <p class="lede">{need(data.lede, 'pgp-key.lede')}</p>
 
     <div class="fp card">
       <p class="fp-label mono">fingerprint</p>
@@ -38,14 +38,14 @@ const key = readFileSync(`public${asc}`, 'utf8').trim();
 </Base>
 
 <script>
-  const btn = document.querySelector<HTMLButtonElement>('#copy-key');
-  const pre = document.querySelector<HTMLElement>('#pgp-key');
-  if (btn && pre?.textContent) {
-    btn.hidden = false;
-    btn.addEventListener('click', async () => {
-      await navigator.clipboard.writeText(pre.textContent!);
-      btn.textContent = 'Copied';
-      setTimeout(() => (btn.textContent = 'Copy key'), 1200);
+  const copyButton = document.querySelector<HTMLButtonElement>('#copy-key');
+  const keyBlock = document.querySelector<HTMLElement>('#pgp-key');
+  if (copyButton && keyBlock?.textContent) {
+    copyButton.hidden = false;
+    copyButton.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(keyBlock.textContent!);
+      copyButton.textContent = 'Copied';
+      setTimeout(() => (copyButton.textContent = 'Copy key'), 1200);
     });
   }
 </script>

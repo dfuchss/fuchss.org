@@ -1,8 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
+import { SITE } from '../consts.ts';
+import { getPage } from '../lib/pages.ts';
+
+const { data } = await getPage('404');
+const host = new URL(SITE.url).host;
 ---
 
-<Base title="Page not found" description="That page does not exist on fuchss.org.">
+<Base title="Page not found" description={`That page does not exist on ${host}.`}>
   <section class="wrap section center">
     <p class="kicker">cat $REQUEST_URI</p>
     <h1>404</h1>
@@ -11,31 +16,13 @@ import Base from '../layouts/Base.astro';
       this site was rebuilt.
     </p>
     <ul class="options">
-      <li>
-        <a class="chip" href="/">
-          Home
-        </a>
-      </li>
-      <li>
-        <a class="chip" href="/publications/">
-          Publications
-        </a>
-      </li>
-      <li>
-        <a class="chip" href="/projects/">
-          Projects
-        </a>
-      </li>
-      <li>
-        <a class="chip" href="/cv/">
-          CV
-        </a>
-      </li>
-      <li>
-        <a class="chip" href="/blog/">
-          Blog
-        </a>
-      </li>
+      {(data.links ?? []).map((link) => (
+        <li>
+          <a class="chip" href={link.href}>
+            {link.label}
+          </a>
+        </li>
+      ))}
     </ul>
   </section>
 </Base>
