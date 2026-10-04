@@ -3,9 +3,7 @@ orcid_id: 0000-0001-6410-6769
 scholar_userid: bVvFp4oAAAAJ
 dblp_url: https://dblp.org/pid/243/9362.html
 github_username: dfuchss
-codeberg:
-  title: Codeberg
-  url: https://codeberg.org/dfuchss
+codeberg_username: dfuchss
 linkedin_username: dfuchss
 semanticscholar_id: 2276068674
 # Fingerprint of the published PGP key. `src/lib/pgp.ts` derives the grouped

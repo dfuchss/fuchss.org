@@ -25,10 +25,10 @@ export type Socials = {
   orcid_id: string;
   scholar_userid: string;
   dblp_url: string;
-  semanticscholar_id?: string;
+  semanticscholar_id: string;
   github_username: string;
   linkedin_username: string;
-  codeberg?: { title: string; url: string };
+  codeberg_username: string;
   pgp_fingerprint: string;
 };
 

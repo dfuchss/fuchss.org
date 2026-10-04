@@ -36,32 +36,36 @@ const links: { label: string; href: string; icon: keyof typeof ICONS }[] = [
   },
   { label: 'DBLP', href: socials.dblp_url, icon: 'dblp' },
   { label: 'GitHub', href: `https://github.com/${socials.github_username}`, icon: 'github' },
-  ...(socials.codeberg
-    ? [{ label: socials.codeberg.title, href: socials.codeberg.url, icon: 'codeberg' as const }]
-    : []),
+  {
+    label: 'Codeberg',
+    href: `https://codeberg.org/${socials.codeberg_username}`,
+    icon: 'codeberg',
+  },
   {
     label: 'LinkedIn',
     href: `https://www.linkedin.com/in/${socials.linkedin_username}`,
     icon: 'linkedin',
   },
-  ...(socials.semanticscholar_id
-    ? [
-        {
-          label: 'Semantic Scholar',
-          href: `https://www.semanticscholar.org/author/${socials.semanticscholar_id}`,
-          icon: 'semanticscholar' as const,
-        },
-      ]
-    : []),
+  {
+    label: 'Semantic Scholar',
+    href: `https://www.semanticscholar.org/author/${socials.semanticscholar_id}`,
+    icon: 'semanticscholar',
+  },
 ];
 ---
 
 <ul class="row">
-  {links.map((l) => (
+  {links.map((link) => (
     <li>
-      <a class="chip social" href={l.href} rel="me noopener" aria-label={l.label} title={l.label}>
+      <a
+        class="chip social"
+        href={link.href}
+        rel="me noopener"
+        aria-label={link.label}
+        title={link.label}
+      >
         <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false">
-          <path d={ICONS[l.icon]} />
+          <path d={ICONS[link.icon]} />
         </svg>
       </a>
     </li>
