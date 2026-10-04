@@ -11,9 +11,9 @@ export type Post = CollectionEntry<'posts'>;
  * The filename already carries the canonical zero-padded values.
  */
 export function permalinkParts(id: string) {
-  const m = /^(\d{4})-(\d{2})-(\d{2})-(.+)$/.exec(id);
-  if (!m) throw new Error(`post id "${id}" is not YYYY-MM-DD-slug`);
-  const [, year, month, day, slug] = m;
+  const match = /^(\d{4})-(\d{2})-(\d{2})-(.+)$/.exec(id);
+  if (!match) throw new Error(`post id "${id}" is not YYYY-MM-DD-slug`);
+  const [, year, month, day, slug] = match;
   return { year, month, day, slug };
 }
 
@@ -24,34 +24,37 @@ export function permalink(id: string): string {
 
 /** Published posts, newest first. Also asserts front matter matches the filename. */
 export async function publishedPosts(): Promise<Post[]> {
-  const posts = (await getCollection('posts')).filter((p) => !p.data.draft);
-  for (const p of posts) {
-    const { year, month, day } = permalinkParts(p.id);
-    const iso = p.data.date.toISOString().slice(0, 10);
+  const posts = (await getCollection('posts')).filter((post) => !post.data.draft);
+  for (const post of posts) {
+    const { year, month, day } = permalinkParts(post.id);
+    const iso = post.data.date.toISOString().slice(0, 10);
     if (iso !== `${year}-${month}-${day}`) {
-      throw new Error(`${p.id}: front-matter date ${iso} disagrees with the filename`);
+      throw new Error(`${post.id}: front-matter date ${iso} disagrees with the filename`);
     }
   }
-  return posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+  return posts.sort((older, newer) => newer.data.date.getTime() - older.data.date.getTime());
 }
 
-export const formatPostDate = (d: Date) =>
+export const formatPostDate = (date: Date) =>
   new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
     timeZone: 'UTC',
-  }).format(d);
+  }).format(date);
 
 /** tag → posts, sorted by frequency then name. */
 export function groupByTag(posts: Post[]) {
   const map = new Map<string, Post[]>();
-  for (const p of posts) {
-    for (const t of p.data.tags) {
-      map.set(t, [...(map.get(t) ?? []), p]);
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      map.set(tag, [...(map.get(tag) ?? []), post]);
     }
   }
-  return [...map.entries()].sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]));
+  return [...map.entries()].sort(
+    ([nameA, postsA], [nameB, postsB]) =>
+      postsB.length - postsA.length || nameA.localeCompare(nameB),
+  );
 }
 
-export const slugifyTag = (t: string) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+export const slugifyTag = (tag: string) => tag.toLowerCase().replace(/[^a-z0-9]+/g, '-');

@@ -6,20 +6,19 @@ interface Props {
   project: CollectionEntry<'projects'>;
 }
 const { project } = Astro.props;
-const d = project.data;
 
 // ardoco points at its own site; everything else has a local page.
-const href = d.redirect ?? `/projects/${project.id}/`;
-const external = Boolean(d.redirect);
+const href = project.data.redirect ?? `/projects/${project.id}/`;
+const external = Boolean(project.data.redirect);
 ---
 
 <li class="card-li reveal">
   <a class="pcard" href={href} rel={external ? 'noopener' : undefined}>
     <div class="top">
-      {d.logo ? (
+      {project.data.logo ? (
         <Image
           class="logo"
-          src={d.logo}
+          src={project.data.logo}
           alt=""
           width={44}
           height={44}
@@ -28,17 +27,17 @@ const external = Boolean(d.redirect);
         />
       ) : (
         <span class="logo logo-fallback mono" aria-hidden="true">
-          {d.title.slice(0, 2)}
+          {project.data.title.slice(0, 2)}
         </span>
       )}
-      <h3>{d.title}</h3>
+      <h3>{project.data.title}</h3>
       {external && (
         <span class="ext mono" aria-label="external link">
           ↗
         </span>
       )}
     </div>
-    <p>{d.description}</p>
+    <p>{project.data.description}</p>
   </a>
 </li>
 

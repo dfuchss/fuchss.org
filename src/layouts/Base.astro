@@ -41,13 +41,13 @@ const { title, description, section } = Astro.props;
       // the reveal styles are a no-op, so the page is fully readable with JS off.
       document.documentElement.classList.add('js');
 
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const targets = document.querySelectorAll('.reveal');
 
-      if (reduce || !('IntersectionObserver' in window)) {
-        targets.forEach((el) => el.classList.add('is-in'));
+      if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+        targets.forEach((target) => target.classList.add('is-in'));
       } else {
-        const io = new IntersectionObserver(
+        const revealObserver = new IntersectionObserver(
           (entries) => {
             for (const entry of entries) {
               // Reveal on entering the viewport, but also when an element has
@@ -57,12 +57,12 @@ const { title, description, section } = Astro.props;
               const skipped = !entry.isIntersecting && entry.boundingClientRect.bottom <= 0;
               if (!entry.isIntersecting && !skipped) continue;
               entry.target.classList.add('is-in');
-              io.unobserve(entry.target);
+              revealObserver.unobserve(entry.target);
             }
           },
           { rootMargin: '0px 0px -10% 0px', threshold: 0.05 },
         );
-        targets.forEach((el) => io.observe(el));
+        targets.forEach((target) => revealObserver.observe(target));
       }
     </script>
   </body>

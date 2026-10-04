@@ -3,17 +3,17 @@ import { SITE } from '../consts.ts';
 export type Person = { first: string; last: string };
 
 /** Is this the site owner? Compared on the last name, accent-insensitively. */
-const fold = (s: string) =>
-  s
+const fold = (text: string) =>
+  text
     .normalize('NFD')
     .replace(/\p{Diacritic}/gu, '')
     .replace(/ß/g, 'ss')
     .toLowerCase();
 
-export const isSelf = (p: Person) => fold(p.last) === fold(SITE.author.last);
+export const isSelf = (person: Person) => fold(person.last) === fold(SITE.author.last);
 
 /** "Dominik Fuchß" */
-export const fullName = (p: Person) => [p.first, p.last].filter(Boolean).join(' ');
+export const fullName = (person: Person) => [person.first, person.last].filter(Boolean).join(' ');
 
 /**
  * Author list with truncation.

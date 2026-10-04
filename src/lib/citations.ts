@@ -27,13 +27,13 @@ export function citationsFor(googleScholarId?: string): number {
  */
 export function scholarMetrics() {
   const counts = Object.values(citations.papers)
-    .map((p) => p.citations ?? 0)
-    .sort((a, b) => b - a);
+    .map((paper) => paper.citations ?? 0)
+    .sort((fewer, more) => more - fewer);
 
   return {
-    total: counts.reduce((sum, n) => sum + n, 0),
-    hIndex: counts.reduce((h, n, i) => (n >= i + 1 ? i + 1 : h), 0),
-    i10: counts.filter((n) => n >= 10).length,
+    total: counts.reduce((sum, count) => sum + count, 0),
+    hIndex: counts.reduce((hIndex, count, index) => (count >= index + 1 ? index + 1 : hIndex), 0),
+    i10: counts.filter((count) => count >= 10).length,
     lastUpdated: citations.metadata.last_updated,
   };
 }
@@ -62,4 +62,4 @@ export function formatUpdatedShort(iso: string): string {
   }).format(new Date(`${iso}T00:00:00Z`));
 }
 
-export const formatCount = (n: number) => new Intl.NumberFormat('en-US').format(n);
+export const formatCount = (count: number) => new Intl.NumberFormat('en-US').format(count);

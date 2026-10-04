@@ -24,7 +24,7 @@ function walk(dir: string, out: string[] = []): string[] {
 export const GET: APIRoute = async () => {
   const paths = new Set<string>(['/']);
 
-  for (const p of [
+  for (const staticPath of [
     '/publications/',
     '/projects/',
     '/repositories/',
@@ -33,16 +33,18 @@ export const GET: APIRoute = async () => {
     '/impressum/',
     '/pgp-key/',
   ]) {
-    paths.add(p);
+    paths.add(staticPath);
   }
 
-  for (const p of await getCollection('projects')) {
-    if (!p.data.redirect) paths.add(`/projects/${p.id}/`);
+  for (const project of await getCollection('projects')) {
+    if (!project.data.redirect) paths.add(`/projects/${project.id}/`);
   }
-  for (const c of await getCollection('conferences')) paths.add(`/conferences/${c.id}/`);
+  for (const conference of await getCollection('conferences')) {
+    paths.add(`/conferences/${conference.id}/`);
+  }
 
   const posts = await publishedPosts();
-  for (const p of posts) paths.add(permalink(p.id));
+  for (const post of posts) paths.add(permalink(post.id));
   for (const [tag] of groupByTag(posts)) paths.add(`/blog/tag/${slugifyTag(tag)}/`);
 
   // The PDFs: list every file actually present under public/assets/pdf.
@@ -56,7 +58,7 @@ export const GET: APIRoute = async () => {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${[...paths]
   .sort()
-  .map((p) => `  <url><loc>${new URL(p, SITE.url).href}</loc></url>`)
+  .map((path) => `  <url><loc>${new URL(path, SITE.url).href}</loc></url>`)
   .join('\n')}
 </urlset>
 `;

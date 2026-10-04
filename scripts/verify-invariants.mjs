@@ -25,7 +25,7 @@ import { createHash } from 'node:crypto';
 
 const DIST = 'dist';
 const failures = [];
-const sha = (p) => createHash('sha256').update(readFileSync(p)).digest('hex');
+const sha = (path) => createHash('sha256').update(readFileSync(path)).digest('hex');
 
 /**
  * Compare `dist/` against committed sha256 baselines rather than against another
@@ -35,7 +35,7 @@ const sha = (p) => createHash('sha256').update(readFileSync(p)).digest('hex');
 function checkBaseline(file, label) {
   const lines = readFileSync(file, 'utf8')
     .split('\n')
-    .filter((l) => l && !l.startsWith('#'));
+    .filter((line) => line && !line.startsWith('#'));
   let checked = 0;
   for (const line of lines) {
     const [want, rel] = line.split(/\s+/);
@@ -56,7 +56,7 @@ if (!existsSync(`${DIST}/.nojekyll`)) failures.push('dist/.nojekyll missing');
 
 if (failures.length) {
   console.error(`\nFAILED invariants (${failures.length}):`);
-  for (const f of failures) console.error(`  ✗ ${f}`);
+  for (const failure of failures) console.error(`  ✗ ${failure}`);
   process.exit(1);
 }
 console.log('\nAll hard invariants OK (matrix delegation + PDF byte-identity + .nojekyll).');

@@ -9,11 +9,14 @@ import type { CollectionEntry } from 'astro:content';
  * then title break the tie, so same-venue papers from the same month stay
  * together and the list does not shuffle between builds.
  */
-export function byNewest(a: CollectionEntry<'publications'>, b: CollectionEntry<'publications'>) {
+export function byNewest(
+  first: CollectionEntry<'publications'>,
+  second: CollectionEntry<'publications'>,
+) {
   return (
-    b.data.year - a.data.year ||
-    (b.data.month ?? 0) - (a.data.month ?? 0) ||
-    a.data.abbr.id.localeCompare(b.data.abbr.id) ||
-    a.data.title.localeCompare(b.data.title)
+    second.data.year - first.data.year ||
+    (second.data.month ?? 0) - (first.data.month ?? 0) ||
+    first.data.abbr.id.localeCompare(second.data.abbr.id) ||
+    first.data.title.localeCompare(second.data.title)
   );
 }

@@ -33,33 +33,33 @@ async function gh(path) {
 const out = { fetched: new Date().toISOString().slice(0, 10), users: {}, repos: {} };
 
 for (const login of cfg.github_users ?? []) {
-  const u = await gh(`/users/${login}`);
+  const user = await gh(`/users/${login}`);
   out.users[login] = {
-    login: u.login,
-    name: u.name,
-    bio: u.bio,
-    followers: u.followers,
-    publicRepos: u.public_repos,
-    htmlUrl: u.html_url,
-    avatarUrl: u.avatar_url,
+    login: user.login,
+    name: user.name,
+    bio: user.bio,
+    followers: user.followers,
+    publicRepos: user.public_repos,
+    htmlUrl: user.html_url,
+    avatarUrl: user.avatar_url,
   };
   console.log(`  user  ${login}`);
 }
 
 for (const full of cfg.github_repos ?? []) {
-  const r = await gh(`/repos/${full}`);
+  const repo = await gh(`/repos/${full}`);
   out.repos[full] = {
-    fullName: r.full_name,
-    description: r.description,
-    stars: r.stargazers_count,
-    forks: r.forks_count,
-    language: r.language,
-    license: r.license?.spdx_id ?? null,
-    archived: r.archived,
-    htmlUrl: r.html_url,
-    pushedAt: r.pushed_at?.slice(0, 10) ?? null,
+    fullName: repo.full_name,
+    description: repo.description,
+    stars: repo.stargazers_count,
+    forks: repo.forks_count,
+    language: repo.language,
+    license: repo.license?.spdx_id ?? null,
+    archived: repo.archived,
+    htmlUrl: repo.html_url,
+    pushedAt: repo.pushed_at?.slice(0, 10) ?? null,
   };
-  console.log(`  repo  ${full.padEnd(26)} ★${r.stargazers_count}  ${r.language ?? '—'}`);
+  console.log(`  repo  ${full.padEnd(26)} ★${repo.stargazers_count}  ${repo.language ?? '—'}`);
 }
 
 writeFileSync('src/data/github-metadata.json', JSON.stringify(out, null, 2) + '\n');

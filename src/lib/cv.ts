@@ -63,19 +63,19 @@ export const sections = raw.cv.sections;
  * page links its `url` as the office page rather than repeating the address,
  * which is already in `cv.yml`.
  */
-export const currentPosition = raw.cv.sections.Experience.find((e) => !e.end_date);
+export const currentPosition = raw.cv.sections.Experience.find((job) => !job.end_date);
 
 /** "2020-12-01" → "Dec 2020"; a bare "2020" stays "2020". */
 export function formatDate(value?: string | number): string {
   if (value == null) return '';
-  const s = String(value);
-  if (/^\d{4}$/.test(s)) return s;
-  const m = /^(\d{4})-(\d{2})/.exec(s);
-  if (!m) return s;
+  const text = String(value);
+  if (/^\d{4}$/.test(text)) return text;
+  const match = /^(\d{4})-(\d{2})/.exec(text);
+  if (!match) return text;
   const month = new Intl.DateTimeFormat('en-US', { month: 'short', timeZone: 'UTC' }).format(
-    new Date(`${m[1]}-${m[2]}-01T00:00:00Z`),
+    new Date(`${match[1]}-${match[2]}-01T00:00:00Z`),
   );
-  return `${month} ${m[1]}`;
+  return `${month} ${match[1]}`;
 }
 
 export const dateRange = (start?: string | number, end?: string | number) =>
@@ -87,9 +87,9 @@ export const dateRange = (start?: string | number, end?: string | number) =>
  */
 export function thesisOf(area?: string): string | undefined {
   if (!area) return undefined;
-  const m = /['‘’"“](.+)['‘’"“]/.exec(area);
-  return m
-    ? m[1]
+  const match = /['‘’"“](.+)['‘’"“]/.exec(area);
+  return match
+    ? match[1]
     : area
         .replace(/<[^>]+>/g, '')
         .replace(/^\s*Thesis:\s*/, '')
@@ -109,15 +109,15 @@ export function parseDetails(details?: string): DetailPart[] {
     .map((chunk) => chunk.trim())
     .filter(Boolean)
     .map((chunk) => {
-      const m = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(chunk);
-      return m ? { text: m[1], url: m[2] } : { text: chunk };
+      const link = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(chunk);
+      return link ? { text: link[1], url: link[2] } : { text: chunk };
     });
 }
 
 /** Teaching assistantships are numerous and secondary; group them separately. */
 export function splitExperience(items: Experience[]) {
-  const isTA = (e: Experience) => e.position === 'Teaching Assistant';
-  return { main: items.filter((e) => !isTA(e)), assistantships: items.filter(isTA) };
+  const isTA = (job: Experience) => job.position === 'Teaching Assistant';
+  return { main: items.filter((job) => !isTA(job)), assistantships: items.filter(isTA) };
 }
 
 /**
@@ -130,8 +130,8 @@ export function splitExperience(items: Experience[]) {
  * and interleaves the two halves of each academic year.
  */
 export function semesterKey(semester: string): number {
-  const m = /(\d{4}|\d{2})/.exec(semester);
-  if (!m) return 0;
-  const year = m[1].length === 2 ? 2000 + Number(m[1]) : Number(m[1]);
+  const match = /(\d{4}|\d{2})/.exec(semester);
+  if (!match) return 0;
+  const year = match[1].length === 2 ? 2000 + Number(match[1]) : Number(match[1]);
   return year * 10 + (semester.startsWith('WS') ? 1 : 0);
 }

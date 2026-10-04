@@ -7,11 +7,11 @@ import { fileURLToPath } from 'node:url';
 /** Fields stripped from the copyable BibTeX: al-folio bookkeeping, not bibliography. */
 const PRIVATE_FIELDS = new Set(['abbr', 'google_scholar_id', 'pdf']);
 
-const str = (v: unknown): string | undefined => {
-  if (v == null) return undefined;
-  const s = Array.isArray(v) ? v.join(', ') : String(v);
-  const t = s.trim();
-  return t === '' ? undefined : t;
+const str = (value: unknown): string | undefined => {
+  if (value == null) return undefined;
+  const joined = Array.isArray(value) ? value.join(', ') : String(value);
+  const trimmed = joined.trim();
+  return trimmed === '' ? undefined : trimmed;
 };
 
 /**
@@ -23,13 +23,14 @@ const str = (v: unknown): string | undefined => {
  * resolves to nothing. Only for the values we turn into links or plain text —
  * the copyable BibTeX is built from the raw parse and keeps its escapes.
  */
-const unLatex = (v: string | undefined): string | undefined => v?.replace(/\\([_&%$#{}])/g, '$1');
+const unLatex = (value: string | undefined): string | undefined =>
+  value?.replace(/\\([_&%$#{}])/g, '$1');
 
-const num = (v: unknown): number | undefined => {
-  const s = str(v);
-  if (s === undefined) return undefined;
-  const n = Number.parseInt(s, 10);
-  return Number.isNaN(n) ? undefined : n;
+const num = (value: unknown): number | undefined => {
+  const text = str(value);
+  if (text === undefined) return undefined;
+  const parsed = Number.parseInt(text, 10);
+  return Number.isNaN(parsed) ? undefined : parsed;
 };
 
 /**
@@ -42,8 +43,8 @@ const num = (v: unknown): number | undefined => {
 /** A parsed BibTeX name. The parser hands these back even in `raw` mode. */
 type BibName = { lastName?: string; firstName?: string; prefix?: string; suffix?: string };
 
-const isNameList = (v: unknown): v is BibName[] =>
-  Array.isArray(v) && v.length > 0 && typeof v[0] === 'object' && v[0] !== null;
+const isNameList = (value: unknown): value is BibName[] =>
+  Array.isArray(value) && value.length > 0 && typeof value[0] === 'object' && value[0] !== null;
 
 /**
  * `author` and `editor` come back as name objects, never as a string — so
@@ -52,9 +53,9 @@ const isNameList = (v: unknown): v is BibName[] =>
  */
 const names = (list: BibName[]): string =>
   list
-    .map((n) => {
-      const last = (n.lastName ?? '').trim();
-      const first = (n.firstName ?? '').trim();
+    .map((name) => {
+      const last = (name.lastName ?? '').trim();
+      const first = (name.firstName ?? '').trim();
       if (last && first) return `${last}, ${first}`;
       return last || first;
     })
@@ -63,8 +64,11 @@ const names = (list: BibName[]): string =>
 
 function serialize(type: string, key: string, fields: Record<string, unknown>): string {
   const rows = Object.entries(fields)
-    .filter(([k]) => !PRIVATE_FIELDS.has(k.toLowerCase()))
-    .map(([k, v]) => `  ${k.padEnd(12)} = {${(isNameList(v) ? names(v) : str(v)) ?? ''}}`);
+    .filter(([field]) => !PRIVATE_FIELDS.has(field.toLowerCase()))
+    .map(
+      ([field, value]) =>
+        `  ${field.padEnd(12)} = {${(isNameList(value) ? names(value) : str(value)) ?? ''}}`,
+    );
   return `@${type}{${key},\n${rows.join(',\n')}\n}`;
 }
 
@@ -89,22 +93,24 @@ export function bibtexLoader(opts: { file: string; pdfRoot: string }): Loader {
       const raw = parse(source, { sentenceCase: false, raw: true });
 
       if (cooked.errors.length > 0) {
-        for (const e of cooked.errors) logger.error(`${opts.file}: ${JSON.stringify(e)}`);
+        for (const parseError of cooked.errors) {
+          logger.error(`${opts.file}: ${JSON.stringify(parseError)}`);
+        }
         throw new Error(`${cooked.errors.length} BibTeX parse error(s) in ${opts.file}`);
       }
 
-      const rawByKey = new Map(raw.entries.map((e) => [e.key, e]));
+      const rawByKey = new Map(raw.entries.map((rawBibEntry) => [rawBibEntry.key, rawBibEntry]));
       store.clear();
 
       for (const entry of cooked.entries) {
-        const f = entry.fields as Record<string, unknown>;
+        const fields = entry.fields as Record<string, unknown>;
 
-        const authors = (f.author as BibName[] | undefined) ?? [];
+        const authors = (fields.author as BibName[] | undefined) ?? [];
         if (authors.length === 0) throw new Error(`${entry.key}: no authors parsed`);
 
         // `pdf` is the only PDF field. The 9 entries that used to carry the PDF
         // in `preprint` were migrated to `pdf`, and the field is gone.
-        const pdfRel = str(f.pdf);
+        const pdfRel = str(fields.pdf);
         let pdfUrl: string | undefined;
         if (pdfRel) {
           if (/^https?:\/\//.test(pdfRel)) {
@@ -124,53 +130,55 @@ export function bibtexLoader(opts: { file: string; pdfRoot: string }): Loader {
         const bibtex = serialize(
           entry.type,
           entry.key,
-          (rawEntry?.fields as Record<string, unknown>) ?? f,
+          (rawEntry?.fields as Record<string, unknown>) ?? fields,
         );
 
         // The normalizing parse splits a nobiliary particle off into `prefix`
         // and a "Jr."-style tail into `suffix`. Reading `lastName` alone turns
         // "von Geisau, Johannes" into "Johannes Geisau".
-        const people = authors.map((a) => ({
-          first: str(a.firstName) ?? '',
-          last: [str(a.prefix), str(a.lastName), str(a.suffix)].filter(Boolean).join(' '),
+        const people = authors.map((author) => ({
+          first: str(author.firstName) ?? '',
+          last: [str(author.prefix), str(author.lastName), str(author.suffix)]
+            .filter(Boolean)
+            .join(' '),
         }));
 
         const data = {
           key: entry.key,
           type: entry.type,
-          title: str(f.title) ?? entry.key,
+          title: str(fields.title) ?? entry.key,
           authors: people,
-          year: num(f.year) ?? 0,
-          month: num(f.month),
-          abbr: str(f.abbr) ?? 'misc',
-          booktitle: str(f.booktitle),
-          journal: str(f.journal),
-          school: str(f.school),
-          institution: str(f.institution),
-          publisher: str(f.publisher),
-          series: str(f.series),
-          volume: str(f.volume),
-          number: str(f.number),
-          pages: str(f.pages),
+          year: num(fields.year) ?? 0,
+          month: num(fields.month),
+          abbr: str(fields.abbr) ?? 'misc',
+          booktitle: str(fields.booktitle),
+          journal: str(fields.journal),
+          school: str(fields.school),
+          institution: str(fields.institution),
+          publisher: str(fields.publisher),
+          series: str(fields.series),
+          volume: str(fields.volume),
+          number: str(fields.number),
+          pages: str(fields.pages),
           // 6 biblatex entries carry `venue` where the rest use `location`;
           // fall back so those stop rendering without a place.
-          location: str(f.location) ?? str(f.venue) ?? str(f.address),
-          doi: unLatex(str(f.doi)),
-          url: unLatex(str(f.url)),
-          keywords: (str(f.keywords) ?? '')
+          location: str(fields.location) ?? str(fields.venue) ?? str(fields.address),
+          doi: unLatex(str(fields.doi)),
+          url: unLatex(str(fields.url)),
+          keywords: (str(fields.keywords) ?? '')
             .split(',')
-            .map((k) => k.trim())
+            .map((keyword) => keyword.trim())
             .filter(Boolean),
-          googleScholarId: str(f.google_scholar_id),
+          googleScholarId: str(fields.google_scholar_id),
           pdfUrl,
           bibtex,
           searchText: [
-            str(f.title),
-            people.map((p) => `${p.first} ${p.last}`).join(' '),
-            str(f.booktitle),
-            str(f.journal),
-            str(f.abbr),
-            str(f.year),
+            str(fields.title),
+            people.map((person) => `${person.first} ${person.last}`).join(' '),
+            str(fields.booktitle),
+            str(fields.journal),
+            str(fields.abbr),
+            str(fields.year),
           ]
             .filter(Boolean)
             .join(' ')

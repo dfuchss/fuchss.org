@@ -27,10 +27,10 @@ const { address, label } = Astro.props;
 const [user, domain] = address.split('@');
 // rot13 keeps the attribute from being greppable without being security theatre
 // dressed up as encryption — it is a speed bump, and named as one.
-const rot13 = (s: string) =>
-  s.replace(/[a-z]/gi, (c) => {
-    const base = c <= 'Z' ? 65 : 97;
-    return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
+const rot13 = (text: string) =>
+  text.replace(/[a-z]/gi, (letter) => {
+    const base = letter <= 'Z' ? 65 : 97;
+    return String.fromCharCode(((letter.charCodeAt(0) - base + 13) % 26) + base);
   });
 
 const fallback = `${user} (at) ${domain.replace(/\./g, ' (dot) ')}`;
@@ -46,17 +46,17 @@ const fallback = `${user} (at) ${domain.replace(/\./g, ' (dot) ')}`;
 </span>
 
 <script>
-  const rot13 = (s: string) =>
-    s.replace(/[a-z]/gi, (c) => {
-      const base = c <= 'Z' ? 65 : 97;
-      return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
+  const rot13 = (text: string) =>
+    text.replace(/[a-z]/gi, (letter) => {
+      const base = letter <= 'Z' ? 65 : 97;
+      return String.fromCharCode(((letter.charCodeAt(0) - base + 13) % 26) + base);
     });
 
-  for (const el of document.querySelectorAll<HTMLElement>('.email[data-u][data-d]')) {
-    const address = `${rot13(el.dataset.u!)}@${rot13(el.dataset.d!)}`;
-    const a = document.createElement('a');
-    a.href = `mailto:${address}`;
-    a.textContent = el.dataset.l ? rot13(el.dataset.l) : address;
-    el.replaceWith(a);
+  for (const placeholder of document.querySelectorAll<HTMLElement>('.email[data-u][data-d]')) {
+    const address = `${rot13(placeholder.dataset.u!)}@${rot13(placeholder.dataset.d!)}`;
+    const link = document.createElement('a');
+    link.href = `mailto:${address}`;
+    link.textContent = placeholder.dataset.l ? rot13(placeholder.dataset.l) : address;
+    placeholder.replaceWith(link);
   }
 </script>

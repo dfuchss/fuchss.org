@@ -57,19 +57,19 @@ function inline(route, outName) {
   );
 
   // 3. images → data URIs (src and srcset)
-  html = html.replace(/srcset="([^"]+)"/g, (_m, val) => {
-    const parts = val.split(',').map((p) => p.trim().split(/\s+/));
+  html = html.replace(/srcset="([^"]+)"/g, (_match, value) => {
+    const parts = value.split(',').map((candidate) => candidate.trim().split(/\s+/));
     const rewritten = parts
-      .map(([u, d]) => {
-        const uri = u.startsWith('/') ? dataUri(u) : null;
-        return uri ? `${uri}${d ? ' ' + d : ''}` : null;
+      .map(([url, descriptor]) => {
+        const uri = url.startsWith('/') ? dataUri(url) : null;
+        return uri ? `${uri}${descriptor ? ' ' + descriptor : ''}` : null;
       })
       .filter(Boolean);
     return rewritten.length ? `srcset="${rewritten.join(', ')}"` : '';
   });
-  html = html.replace(/src="(\/[^"]+)"/g, (m, u) => {
-    const uri = dataUri(u);
-    return uri ? `src="${uri}"` : m;
+  html = html.replace(/src="(\/[^"]+)"/g, (match, url) => {
+    const uri = dataUri(url);
+    return uri ? `src="${uri}"` : match;
   });
 
   writeFileSync(join(OUT, outName), html);
