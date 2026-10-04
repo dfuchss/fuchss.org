@@ -6,8 +6,12 @@ github_repos:
   - dfuchss/matrix-joinlink
   - dfuchss/mensabot
   - dfuchss/yarb
-  - dfuchss/deltabot
+  - dfuchss/matrix-bot-base
+  - dfuchss/astro-studia
+  - dfuchss/tacit
   - jplag/JPlag
+  - ardoco/ardoco
+  - ardoco/lissa
 
 zenodo_repos:
   - name: ardoco/benchmark
