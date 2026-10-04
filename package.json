@@ -14,7 +14,9 @@
     "check": "astro check && prettier . --check",
     "format": "prettier . --write",
     "verify": "node scripts/verify-invariants.mjs",
-    "preview:files": "node scripts/make-preview.mjs"
+    "preview:files": "node scripts/make-preview.mjs",
+    "papers:missing": "node scripts/find-missing-papers.mjs",
+    "papers:missing:kitopen": "node scripts/find-missing-papers-kitopen.mjs"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
@@ -29,6 +31,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@types/node": "^26.6.4",
+    "fast-xml-parser": "^5.11.2",
     "prettier": "^3.9.9",
     "prettier-plugin-astro": "^1.1.0",
     "typescript": "^6.0.3"

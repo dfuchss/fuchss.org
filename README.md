@@ -52,17 +52,19 @@ from the al-folio site — they pinned counts that change with ordinary content 
 
 ## Content tasks
 
-| Task                       | How                                                                               |
-| -------------------------- | --------------------------------------------------------------------------------- |
-| Add a publication          | append to `src/data/papers.bib` (needs `abbr`; `pdf` for the PDF link)            |
-| Add a venue badge          | add the abbreviation to `src/data/venues.yml` — an unknown `abbr` fails the build |
-| Add a project              | new `.md` in `src/content/projects/`, images under `src/assets/projects/<slug>/`  |
-| Add a post                 | new `src/content/posts/YYYY-MM-DD-slug.md`; the filename sets the permalink       |
-| Update the CV              | edit `src/data/cv.yml`                                                            |
-| Refresh citations          | daily workflow, or `python scripts/update_scholar_citations.py`                   |
-| Check bib against Crossref | `python scripts/update_bib.py` (add `--write` to apply)                           |
-| Refresh GitHub stars       | `node scripts/fetch-github-metadata.mjs` (weekly workflow)                        |
-| Reviewable page snapshots  | `npm run preview:files` → `preview/*.html`, self-contained                        |
+| Task                         | How                                                                               |
+| ---------------------------- | --------------------------------------------------------------------------------- |
+| Add a publication            | append to `src/data/papers.bib` (needs `abbr`; `pdf` for the PDF link)            |
+| Add a venue badge            | add the abbreviation to `src/data/venues.yml` — an unknown `abbr` fails the build |
+| Add a project                | new `.md` in `src/content/projects/`, images under `src/assets/projects/<slug>/`  |
+| Add a post                   | new `src/content/posts/YYYY-MM-DD-slug.md`; the filename sets the permalink       |
+| Update the CV                | edit `src/data/cv.yml`                                                            |
+| Refresh citations            | daily workflow, or `python scripts/update_scholar_citations.py`                   |
+| Check bib against Crossref   | `python scripts/update_bib.py` (add `--write` to apply)                           |
+| Find papers missing from bib | `npm run papers:missing` (`-- -i` asks per paper, `-- --yes` adds all)            |
+| Same, from KITopen only      | `npm run papers:missing:kitopen` (same flags; exit 2 if KITopen is unreachable)   |
+| Refresh GitHub stars         | `node scripts/fetch-github-metadata.mjs` (weekly workflow)                        |
+| Reviewable page snapshots    | `npm run preview:files` → `preview/*.html`, self-contained                        |
 
 ## Deployment
 
