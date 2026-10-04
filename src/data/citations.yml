@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-10-01'
+  last_updated: '2026-10-04'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -38,7 +38,7 @@ papers:
     title: 'ExArch: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction'
     year: '2026'
   bVvFp4oAAAAJ:RHpTSmoSYBkC:
-    citations: 2
+    citations: 3
     title: 'GARMA: Generative Architectural Resource Demand Estimation for Microservice Applications'
     year: '2026'
   bVvFp4oAAAAJ:TFP_iSt0sucC:
