@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-10-04",
+  "fetched": "2026-10-05",
   "users": {
     "dfuchss": {
       "login": "dfuchss",
@@ -92,7 +92,7 @@
     "jplag/JPlag": {
       "fullName": "jplag/JPlag",
       "description": "State-of-the-Art Source Code Plagiarism & Collusion Detection. Check for plagiarism in a set of programs.",
-      "stars": 1970,
+      "stars": 1969,
       "forks": 374,
       "language": "Java",
       "license": "GPL-3.0",
