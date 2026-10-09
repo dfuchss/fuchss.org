@@ -8,8 +8,13 @@ import { socials } from '../lib/data.ts';
  * BibTeX copy button carries its label (see pub/CopyButton.astro). The marks
  * are Simple Icons paths (CC0, https://simpleicons.org) inlined rather than
  * pulled from a package — one path each, and no icon dependency for eight
- * glyphs, plus Material Icons' `work` briefcase for the work page (Apache-2.0, https://fonts.google.com/icons). Every one is a single 24×24 path drawn in `currentColor`, so the row
- * picks up the chip colour and the section accent on hover for free.
+ * glyphs, plus Material Icons' `work` briefcase for the work page (Apache-2.0,
+ * https://fonts.google.com/icons). Every one is a single 24×24 path drawn in
+ * `currentColor`, so the row picks up the chip colour and the section accent on
+ * hover for free.
+ *
+ * Every profile is optional: a null (or missing) value in socials.yml drops its
+ * chip, and with none set the row does not render at all.
  */
 const ICONS = {
   orcid:
@@ -30,57 +35,84 @@ const ICONS = {
   work: 'M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z',
 } as const;
 
-const links: { label: string; href: string; icon: keyof typeof ICONS }[] = [
-  { label: 'ORCID', href: `https://orcid.org/${socials.orcid_id}`, icon: 'orcid' },
+const profiles: {
+  label: string;
+  value: string | null;
+  url: (value: string) => string;
+  icon: keyof typeof ICONS;
+}[] = [
+  {
+    label: 'ORCID',
+    value: socials.orcid_id,
+    url: (id) => `https://orcid.org/${id}`,
+    icon: 'orcid',
+  },
   {
     label: 'Google Scholar',
-    href: `https://scholar.google.com/citations?user=${socials.scholar_userid}`,
+    value: socials.scholar_userid,
+    url: (id) => `https://scholar.google.com/citations?user=${id}`,
     icon: 'scholar',
   },
-  { label: 'DBLP', href: socials.dblp_url, icon: 'dblp' },
-  { label: 'GitHub', href: `https://github.com/${socials.github_username}`, icon: 'github' },
+  { label: 'DBLP', value: socials.dblp_url, url: (address) => address, icon: 'dblp' },
+  {
+    label: 'GitHub',
+    value: socials.github_username,
+    url: (username) => `https://github.com/${username}`,
+    icon: 'github',
+  },
   {
     label: 'Codeberg',
-    href: `https://codeberg.org/${socials.codeberg_username}`,
+    value: socials.codeberg_username,
+    url: (username) => `https://codeberg.org/${username}`,
     icon: 'codeberg',
   },
   {
     label: 'LinkedIn',
-    href: `https://www.linkedin.com/in/${socials.linkedin_username}`,
+    value: socials.linkedin_username,
+    url: (username) => `https://www.linkedin.com/in/${username}`,
     icon: 'linkedin',
   },
   {
     label: 'Semantic Scholar',
-    href: `https://www.semanticscholar.org/author/${socials.semanticscholar_id}`,
+    value: socials.semanticscholar_id,
+    url: (id) => `https://www.semanticscholar.org/author/${id}`,
     icon: 'semanticscholar',
   },
   {
     label: 'ResearchGate',
-    href: `https://www.researchgate.net/profile/${socials.researchgate_username}`,
+    value: socials.researchgate_username,
+    url: (username) => `https://www.researchgate.net/profile/${username}`,
     icon: 'researchgate',
   },
-  { label: 'Work', href: socials.work_url, icon: 'work' },
+  { label: 'Work', value: socials.work_url, url: (address) => address, icon: 'work' },
 ];
+
+const links = profiles.flatMap((profile) =>
+  profile.value
+    ? [{ label: profile.label, href: profile.url(profile.value), icon: profile.icon }]
+    : [],
+);
 ---
 
-<ul class="row">
-  {links.map((link) => (
-    <li>
-      <a
-        class="chip social"
-        href={link.href}
-        rel="me noopener"
-        aria-label={link.label}
-        title={link.label}
-      >
-        <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false">
-          <path d={ICONS[link.icon]} />
-        </svg>
-      </a>
-    </li>
-  ))}
-</ul>
-
+{links.length > 0 && (
+  <ul class="row">
+    {links.map((link) => (
+      <li>
+        <a
+          class="chip social"
+          href={link.href}
+          rel="me noopener"
+          aria-label={link.label}
+          title={link.label}
+        >
+          <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false">
+            <path d={ICONS[link.icon]} />
+          </svg>
+        </a>
+      </li>
+    ))}
+  </ul>
+)}
 <style>
   .row {
     display: flex;

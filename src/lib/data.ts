@@ -22,15 +22,16 @@ export type CitationsFile = {
 };
 
 export type Socials = {
-  orcid_id: string;
-  scholar_userid: string;
-  dblp_url: string;
-  semanticscholar_id: string;
-  github_username: string;
-  linkedin_username: string;
-  codeberg_username: string;
-  researchgate_username: string;
-  work_url: string;
+  /* Profiles: null hides the chip in SocialRow.astro. */
+  orcid_id: string | null;
+  scholar_userid: string | null;
+  dblp_url: string | null;
+  semanticscholar_id: string | null;
+  github_username: string | null;
+  linkedin_username: string | null;
+  codeberg_username: string | null;
+  researchgate_username: string | null;
+  work_url: string | null;
   pgp_fingerprint: string;
 };
 

@@ -31,7 +31,9 @@ for (const publication of publications) {
 const years = [...byYear.keys()].sort((older, newer) => newer - older);
 
 const scholar = scholarMetrics();
-const scholarUrl = `https://scholar.google.com/citations?user=${socials.scholar_userid}`;
+const scholarUrl = socials.scholar_userid
+  ? `https://scholar.google.com/citations?user=${socials.scholar_userid}`
+  : undefined;
 
 // Labels come from publications.md, in the order total / h-index / i10-index.
 const values = [formatCount(scholar.total), String(scholar.hIndex), String(scholar.i10)];

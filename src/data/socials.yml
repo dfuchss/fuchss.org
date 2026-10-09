@@ -1,4 +1,5 @@
-# Profile links rendered by SocialRow on the home page, in this order.
+# Profile links rendered by SocialRow on the home page, in this order. Each is
+# optional: null (or a deleted line) hides its chip.
 orcid_id: 0000-0001-6410-6769
 scholar_userid: bVvFp4oAAAAJ
 dblp_url: https://dblp.org/pid/243/9362.html

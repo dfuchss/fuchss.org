@@ -10,7 +10,7 @@ const repos = (repositories.github_repos ?? [])
   .sort((fewer, more) => (more.meta?.stars ?? 0) - (fewer.meta?.stars ?? 0));
 
 const zenodo = repositories.zenodo_repos ?? [];
-const user = github.users[socials.github_username];
+const user = socials.github_username ? github.users[socials.github_username] : undefined;
 const numberFormat = new Intl.NumberFormat('en-US');
 
 // Three stats, each saying something different: reach (followers), breadth
