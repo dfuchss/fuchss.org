@@ -6,6 +6,8 @@ github_username: dfuchss
 codeberg_username: dfuchss
 linkedin_username: dfuchss
 semanticscholar_id: 2276068674
+researchgate_username: Dominik-Fuchss
+work_url: https://mcse.kastel.kit.edu/staff_dominik_fuchss.php
 # Fingerprint of the published PGP key. `src/lib/pgp.ts` derives the grouped
 # form, the long key id and the .asc path from it, and `public/assets/pgp-key/`
 # must contain a file named <fingerprint>.asc.

@@ -29,6 +29,8 @@ export type Socials = {
   github_username: string;
   linkedin_username: string;
   codeberg_username: string;
+  researchgate_username: string;
+  work_url: string;
   pgp_fingerprint: string;
 };
 
