@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-10-05",
+  "fetched": "2026-10-12",
   "users": {
     "dfuchss": {
       "login": "dfuchss",
@@ -21,7 +21,7 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/project-vault",
-      "pushedAt": "2026-09-26"
+      "pushedAt": "2026-10-11"
     },
     "dfuchss/matrix-joinlink": {
       "fullName": "dfuchss/matrix-joinlink",
@@ -32,7 +32,7 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/matrix-joinlink",
-      "pushedAt": "2026-09-18"
+      "pushedAt": "2026-10-10"
     },
     "dfuchss/mensabot": {
       "fullName": "dfuchss/mensabot",
@@ -43,7 +43,7 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/mensabot",
-      "pushedAt": "2026-10-02"
+      "pushedAt": "2026-10-10"
     },
     "dfuchss/yarb": {
       "fullName": "dfuchss/yarb",
@@ -54,7 +54,7 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/yarb",
-      "pushedAt": "2026-09-24"
+      "pushedAt": "2026-10-10"
     },
     "dfuchss/matrix-bot-base": {
       "fullName": "dfuchss/matrix-bot-base",
@@ -65,7 +65,7 @@
       "license": "MIT",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/matrix-bot-base",
-      "pushedAt": "2026-09-26"
+      "pushedAt": "2026-10-11"
     },
     "dfuchss/astro-studia": {
       "fullName": "dfuchss/astro-studia",
@@ -76,7 +76,7 @@
       "license": "MIT",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/astro-studia",
-      "pushedAt": "2026-10-04"
+      "pushedAt": "2026-10-11"
     },
     "dfuchss/tacit": {
       "fullName": "dfuchss/tacit",
@@ -92,13 +92,13 @@
     "jplag/JPlag": {
       "fullName": "jplag/JPlag",
       "description": "State-of-the-Art Source Code Plagiarism & Collusion Detection. Check for plagiarism in a set of programs.",
-      "stars": 1969,
-      "forks": 374,
+      "stars": 1975,
+      "forks": 376,
       "language": "Java",
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/jplag/JPlag",
-      "pushedAt": "2026-10-04"
+      "pushedAt": "2026-10-08"
     },
     "ardoco/lissa": {
       "fullName": "ardoco/lissa",
@@ -109,7 +109,7 @@
       "license": "MIT",
       "archived": false,
       "htmlUrl": "https://github.com/ardoco/lissa",
-      "pushedAt": "2026-09-30"
+      "pushedAt": "2026-10-09"
     }
   }
 }
