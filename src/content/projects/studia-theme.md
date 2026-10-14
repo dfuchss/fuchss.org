@@ -4,6 +4,9 @@ description: 'An Astro template for academic websites: publications from BibTeX,
 category: misc
 order: 6
 logo: ../../assets/projects/studia-theme/logo.png
+readme:
+  repo: dfuchss/astro-studia
+  include: []
 ---
 
 [Studia Theme](https://github.com/dfuchss/astro-studia) is an academic website template built with [Astro](https://astro.build/). It is extracted from two production sites, [fuchss.org](https://fuchss.org) and [ardoco.de](https://ardoco.de), which are hand-written in the same style. It is MIT licensed, and there is a [live demo](https://dfuchss.github.io/astro-studia/) and [documentation](https://github.com/dfuchss/astro-studia/wiki).
@@ -20,11 +23,11 @@ There is no UI framework, no CSS framework and no theme layer, and the design is
 - **Page text in content files.** Every word the site prints lives in `src/content/pages`, not in the templates.
 - **Icons from one image.** `npm run icons -- path/to/logo.png` writes the favicon, the Apple touch icon and the 512px app icon.
 
-![The entry page](../../assets/projects/studia-theme/home.webp)
+![The entry page](.github/media/home.webp)
 
-![The project-site variant](../../assets/projects/studia-theme/project.webp)
+![The project-site variant](.github/media/project.webp)
 
-![The publication list](../../assets/projects/studia-theme/publications.webp)
+![The publication list](.github/media/publications.webp)
 
 ## Using it
 

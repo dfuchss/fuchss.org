@@ -2,6 +2,7 @@ import { defineCollection, reference } from 'astro:content';
 import { z } from 'zod';
 import { glob, file } from 'astro/loaders';
 import { bibtexLoader } from './loaders/bibtex.ts';
+import { readmeLoader, readmeSource } from './loaders/readme.ts';
 
 /** Venue badge definitions: abbr → brand colour + optional series URL. */
 const venues = defineCollection({
@@ -64,8 +65,12 @@ const projectGroups = defineCollection({
   }),
 });
 
+/**
+ * One Markdown file per project. A `readme:` block appends the upstream
+ * README, fetched and transformed at build time, to the local intro.
+ */
 const projects = defineCollection({
-  loader: glob({ base: 'src/content/projects', pattern: '**/*.md' }),
+  loader: readmeLoader({ base: 'src/content/projects' }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -74,6 +79,17 @@ const projects = defineCollection({
       order: z.number().int().default(100),
       redirect: z.url().optional(),
       logo: image().optional(),
+      readme: readmeSource.optional(),
+      // Set by the loader from the GitHub API, never by hand.
+      archived: z.boolean().default(false),
+      // Set by the loader from the forge API, never by hand.
+      source: z
+        .object({
+          host: z.enum(['GitHub', 'GitLab']),
+          url: z.url(),
+          license: z.string().nullable(),
+        })
+        .optional(),
     }),
 });
 
@@ -117,6 +133,10 @@ const pages = defineCollection({
     // projects, blog, publications (ledes may hold {placeholders})
     lede: z.string().optional(),
     backLink: z.string().optional(),
+    // projects: chip on the page of a project whose repository is archived
+    archivedLabel: z.string().optional(),
+    // projects: label of the repository link under the description; {host}
+    sourceLabel: z.string().optional(),
     counts: z.string().optional(),
     noPosts: z.string().optional(),
     tagTitle: z.string().optional(),

@@ -4,6 +4,9 @@ description: 'A local-first, privacy-first personal finance analyzer for the des
 category: misc
 order: 1
 logo: ../../assets/projects/project-vault/logo.png
+readme:
+  repo: dfuchss/project-vault
+  include: []
 ---
 
 [Project Vault](https://github.com/dfuchss/project-vault) helps you understand your money — **without
@@ -30,7 +33,7 @@ where you'll stand in a few months. Think _Finanzguru_, but your data stays on y
 The dashboard gives you net worth, income and expenses for any month, spending broken down by category,
 and how your cash flow developed over time.
 
-![Dashboard](../../assets/projects/project-vault/dashboard.png)
+![Dashboard](docs/screenshots/dashboard.png)
 
 ## Import your statements
 
@@ -47,7 +50,7 @@ what was read before anything is saved.
   first and the bank's PDF later.
 - **Nothing is permanent**: every import can be undone again, removing exactly the entries it added.
 
-![Transactions](../../assets/projects/project-vault/transactions.png)
+![Transactions](docs/screenshots/transactions.png)
 
 Every transaction remembers where it came from — which file, which statement period, when it was
 imported.
@@ -65,7 +68,7 @@ but only after asking. Anything you set by hand stays exactly as you set it.
 Securities accounts are tracked as dated snapshots of your holdings, with market values — so you can see
 how your portfolio developed.
 
-![Depot](../../assets/projects/project-vault/depot.png)
+![Depot](docs/screenshots/depot.png)
 
 If you want to know what your portfolio is worth **today** rather than on the date of your last
 statement, you can switch on live prices. Project Vault then looks up the current price of each share
@@ -88,7 +91,7 @@ From there it projects your balance six months ahead: fixed bills plus what you 
 with a shaded range showing how much it could realistically vary — and a warning if you might run into
 the red.
 
-![Forecast](../../assets/projects/project-vault/forecast.png)
+![Forecast](docs/screenshots/forecast.png)
 
 ## Privacy
 

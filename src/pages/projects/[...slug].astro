@@ -3,7 +3,8 @@ import { getCollection, getEntry, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Prose from '../../components/Prose.astro';
-import { getPage, need } from '../../lib/pages.ts';
+import { fill, getPage, need } from '../../lib/pages.ts';
+import { FORGE_ICONS } from '../../lib/icons.ts';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -18,13 +19,16 @@ const projectData = project.data;
 const { Content } = await render(project);
 const { data: page } = await getPage('projects');
 
+const source = projectData.source;
+
 const category = await getEntry(projectData.category);
 ---
 
 <Base section="projects" title={projectData.title} description={projectData.description}>
   <article class="wrap section">
     <p class="kicker" data-sigil="none">
-      <a href="/projects/">projects</a> / {project.id}
+      <a href="/projects/">projects</a> /{' '}
+      <a href={`/projects/#${category.id}`}>{category.data.short.toLowerCase()}</a> / {project.id}
     </p>
 
     <header class="head">
@@ -42,9 +46,29 @@ const category = await getEntry(projectData.category);
       <div>
         <h1>{projectData.title}</h1>
         <p class="desc">{projectData.description}</p>
-        <p class="tags">
-          <span class="chip">{category.data.short}</span>
-        </p>
+        {/* Same action row as a paper page: the way to the code first, then facts. */}
+        {(source || projectData.archived) && (
+          <p class="actions">
+            {source && (
+              <a class="chip primary" href={source.url} rel="noopener">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="14"
+                  height="14"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path d={FORGE_ICONS[source.host]} />
+                </svg>
+                {fill(need(page.sourceLabel, 'projects.sourceLabel'), { host: source.host })}
+              </a>
+            )}
+            {source?.license && <span class="chip">{source.license}</span>}
+            {projectData.archived && (
+              <span class="chip">{need(page.archivedLabel, 'projects.archivedLabel')}</span>
+            )}
+          </p>
+        )}
       </div>
     </header>
 
@@ -95,10 +119,22 @@ const category = await getEntry(projectData.category);
   .desc {
     max-width: 60ch;
     color: var(--text-muted);
-    margin-bottom: 0.75rem;
-  }
-  .tags {
     margin: 0;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.1rem 0 0;
+  }
+  .chip.primary {
+    gap: 0.6ch;
+    border-color: var(--sec-line);
+    background: var(--sec-dim);
+    color: var(--sec-strong);
+  }
+  .chip svg {
+    fill: currentColor;
   }
 
   .back {

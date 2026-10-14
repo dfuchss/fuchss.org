@@ -9,7 +9,7 @@ The template behind [the rewrite of this site](/blog/2026/09/13/new-website/) is
 
 The repository is [dfuchss/astro-studia](https://github.com/dfuchss/astro-studia) and it is MIT licensed. There is a [live demo](https://dfuchss.github.io/astro-studia/), and the [documentation](https://github.com/dfuchss/astro-studia/wiki) is the `docs/` folder, one page per file.
 
-![The entry page of the Studia Theme demo](../../assets/projects/studia-theme/home.webp)
+![The entry page of the Studia Theme demo](../../assets/posts/studia-theme/home.webp)
 
 ## What is in it
 

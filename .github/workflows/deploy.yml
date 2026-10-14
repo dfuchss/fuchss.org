@@ -38,11 +38,18 @@ jobs:
       - name: Format check
         run: npx prettier . --check
 
+      # Both sync the content layer, which fetches the project READMEs and asks
+      # the GitHub API which repositories are archived. The token lifts the
+      # 60-requests-an-hour anonymous limit.
       - name: Type-check
         run: npx astro check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
         run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Guards the two things that must never silently change — the Matrix
       # homeserver delegation and the publication PDF bytes.
