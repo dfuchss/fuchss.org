@@ -3,10 +3,14 @@ import { readFileSync } from 'node:fs';
 import { getCollection, getEntry, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import Prose from '../../components/Prose.astro';
+import DoiMark from '../../components/DoiMark.astro';
+import PdfMark from '../../components/PdfMark.astro';
+import ScholarMark from '../../components/ScholarMark.astro';
 import CopyButton from '../../components/pub/CopyButton.astro';
 import ScholarMeta from '../../components/pub/ScholarMeta.astro';
 import VenueBadge from '../../components/pub/VenueBadge.astro';
-import { getPage, fill, need } from '../../lib/pages.ts';
+import { citationsFor, scholarPaperUrl } from '../../lib/citations.ts';
+import { getPage, fill, pluralize, need } from '../../lib/pages.ts';
 
 export async function getStaticPaths() {
   const entries = await getCollection('conferences');
@@ -41,6 +45,10 @@ if (paper.figure) {
 }
 
 const bibId = `bib-${publication.id}`;
+const citationCount = citationsFor(publication.data.googleScholarId);
+const scholarUrl = scholarPaperUrl(publication.data.googleScholarId);
+const Cites = scholarUrl ? 'a' : 'span';
+const { pdfUrl, doi } = publication.data;
 const paperLinks = Object.entries(paper.links.paper ?? {});
 const replicationLinks = Object.entries(paper.links.replication ?? {});
 const description =
@@ -75,7 +83,50 @@ const description =
         {publication.data.abbr.id}
       </p>
 
-      <h1>{paper.title}</h1>
+      <h1>
+        {paper.title}
+        {(pdfUrl || doi || citationCount > 0) && (
+          <span class="title-icons">
+            {pdfUrl && (
+              <a
+                class="title-icon"
+                href={pdfUrl}
+                title={copy.pdf}
+                aria-label={`${copy.pdf}: ${paper.title}`}
+              >
+                <PdfMark />
+              </a>
+            )}
+            {doi && (
+              <a
+                class="title-icon"
+                href={`https://doi.org/${doi}`}
+                rel="noopener"
+                title={copy.doi}
+                aria-label={`${copy.doi}: ${paper.title}`}
+              >
+                <DoiMark />
+              </a>
+            )}
+            {citationCount > 0 && (
+              <Cites
+                class="title-icon cites"
+                title="Citations according to Google Scholar"
+                {...(scholarUrl ? { href: scholarUrl, rel: 'noopener' } : {})}
+              >
+                <ScholarMark />
+                <span class="count mono" aria-hidden="true">
+                  {citationCount}
+                </span>
+                <span class="sr-only">
+                  {pluralize(need(copy.citations, 'publication.citations'), citationCount)} on
+                  Google Scholar
+                </span>
+              </Cites>
+            )}
+          </span>
+        )}
+      </h1>
 
       <p class="byline">
         {authors.map((author, index) => (
@@ -116,19 +167,6 @@ const description =
             paper.conferenceName
           )}
         </span>
-      </p>
-
-      <p class="actions">
-        {publication.data.pdfUrl && (
-          <a class="chip primary" href={publication.data.pdfUrl}>
-            {copy.readPdf}
-          </a>
-        )}
-        {publication.data.doi && (
-          <a class="chip" href={`https://doi.org/${publication.data.doi}`} rel="noopener">
-            {copy.doi}
-          </a>
-        )}
       </p>
     </header>
 
@@ -276,16 +314,35 @@ const description =
     font-size: var(--fs-small);
   }
 
-  .actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin: 1.1rem 0 0;
+  /* Beside the title, scaled to the heading; the group does not break. */
+  .title-icons {
+    font-size: 0.8em;
+    white-space: nowrap;
   }
-  .chip.primary {
-    border-color: var(--sec-line);
-    background: var(--sec-dim);
-    color: var(--sec-strong);
+  .title-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25em;
+    margin-inline-start: 0.4em;
+    vertical-align: -0.1em;
+    transition:
+      translate var(--dur) var(--ease),
+      filter var(--dur) var(--ease);
+  }
+  a.title-icon:hover,
+  a.title-icon:focus-visible {
+    translate: 0 -1px;
+    filter: brightness(1.12);
+  }
+  /* Scholar blue, lifted for the dark theme; the mark itself is currentColor. */
+  .cites {
+    color: #5b9bff;
+    text-decoration: none;
+  }
+  .count {
+    font-size: 0.5em;
+    line-height: 1;
+    color: #a9c7ff;
   }
 
   /* Browser-chrome frame: gives the light-background diagrams a surface to sit on. */

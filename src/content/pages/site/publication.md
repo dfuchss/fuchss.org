@@ -5,7 +5,6 @@ pdf: 'PDF'
 doi: 'DOI'
 hasPage: 'has a paper page'
 bibtex: 'BibTeX'
-readPdf: 'Read the PDF'
 moreAuthors: 'and {count} more authors'
 citations:
   one: '{count} citation'
