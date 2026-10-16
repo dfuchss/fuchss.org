@@ -12,6 +12,7 @@ import { getPage, fill, need } from '../lib/pages.ts';
 import { cv, currentPosition, sections } from '../lib/cv.ts';
 import { keyId } from '../lib/pgp.ts';
 import Email from '../components/Email.astro';
+import ScholarMark from '../components/ScholarMark.astro';
 
 const { data: page, Content } = await getPage('home');
 const { Content: Role } = await getPage('home/role');
@@ -43,15 +44,28 @@ const scholar = fill(need(page.statNote, 'home.statNote'), {
   date: formatUpdatedShort(metrics.lastUpdated),
 });
 
-const stats: { value: string; label: string; href: string; note?: string }[] = [
+const stats: {
+  value: string;
+  label: string;
+  href: string;
+  note?: string;
+  scholar?: boolean;
+}[] = [
   { value: String(publications.length), label: labels.publications, href: '/publications/' },
   {
     value: formatCount(metrics.total),
     label: labels.citations,
     href: '/publications/',
     note: scholar,
+    scholar: true,
   },
-  { value: String(metrics.hIndex), label: labels.hIndex, href: '/publications/', note: scholar },
+  {
+    value: String(metrics.hIndex),
+    label: labels.hIndex,
+    href: '/publications/',
+    note: scholar,
+    scholar: true,
+  },
   { value: String(zenodoCount), label: labels.replicationPackages, href: '/repositories/' },
 ];
 ---
@@ -83,7 +97,9 @@ const stats: { value: string; label: string; href: string; note?: string }[] = [
           <a href={stat.href}>
             <span class="stat-value">{stat.value}</span>
             <span class="stat-label mono">
+              {stat.scholar && <ScholarMark />}
               {stat.label}
+              {stat.scholar && <span class="sr-only"> (Google Scholar)</span>}
               {stat.note && <span class="stat-note">{stat.note}</span>}
             </span>
           </a>
@@ -292,6 +308,10 @@ const stats: { value: string; label: string; href: string; note?: string }[] = [
   .stat-label {
     color: var(--text-faint);
     font-size: 0.6875rem;
+  }
+  .stat-label :global(svg) {
+    margin-right: 0.3em;
+    vertical-align: -0.15em;
   }
   /* Inline after the label, not a row of its own: the margin carries the gap,
      so the markup needs no whitespace expression between the two. */

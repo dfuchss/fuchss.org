@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import PubEntry from '../components/pub/PubEntry.astro';
+import ScholarMark from '../components/ScholarMark.astro';
 import { scholarMetrics, formatCount, formatUpdated } from '../lib/citations.ts';
 import { socials } from '../lib/data.ts';
 import { byNewest } from '../lib/publications.ts';
@@ -60,7 +61,11 @@ const metrics = need(page.metrics, 'publications.metrics').map((metric, index) =
       {metrics.map((metric) => (
         <li>
           <a class="metric" href={scholarUrl} rel="noopener">
-            <span class="metric-label mono">{metric.label}</span>
+            <span class="metric-label mono">
+              <ScholarMark />
+              {metric.label}
+              <span class="sr-only"> (Google Scholar)</span>
+            </span>
             <span class="metric-value">{metric.value}</span>
             <span class="metric-sub mono">{metric.sub}</span>
           </a>
@@ -182,6 +187,10 @@ const metrics = need(page.metrics, 'publications.metrics').map((metric, index) =
   }
   .metric-label {
     color: var(--text-faint);
+  }
+  .metric-label :global(svg) {
+    margin-right: 0.3em;
+    vertical-align: -0.15em;
   }
   .metric-value {
     font-family: var(--font-head);

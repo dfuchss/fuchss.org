@@ -1,4 +1,4 @@
-import { citations } from './data.ts';
+import { citations, socials } from './data.ts';
 
 /**
  * Google Scholar cluster id → citation count.
@@ -16,6 +16,14 @@ const byCluster = new Map<string, number>(
 export function citationsFor(googleScholarId?: string): number {
   if (!googleScholarId) return 0;
   return byCluster.get(googleScholarId.split(':').at(-1)!) ?? 0;
+}
+
+/** The paper's page on the owner's Scholar profile; undefined without a profile id. */
+export function scholarPaperUrl(googleScholarId?: string): string | undefined {
+  const user = socials.scholar_userid;
+  if (!user || !googleScholarId) return undefined;
+  const id = googleScholarId.split(':').at(-1)!;
+  return `https://scholar.google.com/citations?view_op=view_citation&user=${user}&citation_for_view=${user}:${id}`;
 }
 
 /**
