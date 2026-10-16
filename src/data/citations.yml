@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-10-12'
+  last_updated: '2026-10-16'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -10,11 +10,11 @@ papers:
     title: "Verarbeitung nat\xFCrlich-sprachlicher Beziehungsbeschreibungen zwischen Objekten"
     year: '2018'
   bVvFp4oAAAAJ:7PzlFSSx8tAC:
-    citations: 30
+    citations: 31
     title: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction
     year: '2025'
   bVvFp4oAAAAJ:8k81kl-MbHgC:
-    citations: 68
+    citations: 70
     title: 'LiSSA: Toward Generic Traceability Link Recovery Through Retrieval-Augmented Generation'
     year: '2025'
   bVvFp4oAAAAJ:9yKSN-GCB0IC:
@@ -22,7 +22,7 @@ papers:
     title: Approaching natural conversation chatbots by interactive dialogue modelling & microsoft LUIS
     year: '2019'
   bVvFp4oAAAAJ:HDshCWvjkbEC:
-    citations: 0
+    citations: 1
     title: An Experience Report on a Pedagogically Controlled, Curriculum-Constrained AI Tutor for SE Education
     year: '2026'
   bVvFp4oAAAAJ:IWHjjKOFINEC:
@@ -30,7 +30,7 @@ papers:
     title: Trace Link Recovery for Software Architecture Documentation
     year: '2021'
   bVvFp4oAAAAJ:MXK_kJrjxJIC:
-    citations: 42
+    citations: 43
     title: Requirements traceability link recovery via retrieval-augmented generation
     year: '2025'
   bVvFp4oAAAAJ:R3hNpaxXUhUC:
@@ -38,7 +38,7 @@ papers:
     title: 'ExArch: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction'
     year: '2026'
   bVvFp4oAAAAJ:RHpTSmoSYBkC:
-    citations: 3
+    citations: 4
     title: 'GARMA: Generative Architectural Resource Demand Estimation for Microservice Applications'
     year: '2026'
   bVvFp4oAAAAJ:TFP_iSt0sucC:
@@ -50,11 +50,11 @@ papers:
     title: 'Linking Software System Artifacts: Toward Generic Traceability Link Recovery through Retrieval-Augmented Generation'
     year: '2026'
   bVvFp4oAAAAJ:Tyk-4Ss8FVUC:
-    citations: 34
+    citations: 35
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
-    citations: 50
+    citations: 52
     title: 'Software architecture meets llms: A systematic literature review'
     year: '2025'
   bVvFp4oAAAAJ:UeHWp8X0CEIC:
@@ -86,7 +86,7 @@ papers:
     title: Evaluation methods and replicability of software architecture research objects
     year: '2022'
   bVvFp4oAAAAJ:_Qo2XoVZTnwC:
-    citations: 1
+    citations: 2
     title: 'Criminal Minds: How First-Year CS Students Plagiarize Code'
     year: '2026'
   bVvFp4oAAAAJ:bEWYMUwI8FkC:
@@ -126,7 +126,7 @@ papers:
     title: 'Structuring Scientific Knowledge in Software Engineering Using the Open Research Knowledge Graph: A Use Case and Experience Report'
     year: '2025'
   bVvFp4oAAAAJ:mB3voiENLucC:
-    citations: 7
+    citations: 8
     title: "Who\u2019s Who? LLM-assisted Software Traceability with Architecture Entity Recognition"
     year: '2026'
   bVvFp4oAAAAJ:maZDTaKrznsC:
