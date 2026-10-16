@@ -160,7 +160,7 @@ const pages = defineCollection({
     // site/publication.md
     pdf: z.string().optional(),
     doi: z.string().optional(),
-    paperPage: z.string().optional(),
+    hasPage: z.string().optional(),
     bibtex: z.string().optional(),
     readPdf: z.string().optional(),
     moreAuthors: z.string().optional(),

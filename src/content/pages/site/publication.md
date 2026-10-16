@@ -3,7 +3,7 @@
 # pages under /conferences/. {count}, {hidden} are filled in by the templates.
 pdf: 'PDF'
 doi: 'DOI'
-paperPage: 'Paper page →'
+hasPage: 'has a paper page'
 bibtex: 'BibTeX'
 readPdf: 'Read the PDF'
 moreAuthors: 'and {count} more authors'

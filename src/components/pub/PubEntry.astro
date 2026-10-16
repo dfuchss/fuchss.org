@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import VenueBadge from './VenueBadge.astro';
 import CopyButton from './CopyButton.astro';
+import PdfMark from '../PdfMark.astro';
 import ScholarMark from '../ScholarMark.astro';
 import { citationsFor, scholarPaperUrl } from '../../lib/citations.ts';
 import { truncateAuthors, fullName, isSelf } from '../../lib/authors.ts';
@@ -12,9 +13,8 @@ interface Props {
   /** Slug of the conference paper page for this publication, when one exists. */
   paperPage?: string;
   /**
-   * Trim the entry to its citation. The home page links the paper page from the
-   * title, so the "Paper page" chip would be a second copy of that link, and
-   * BibTeX belongs on /publications/ where people go to collect citations.
+   * Trim the entry to its citation. BibTeX belongs on /publications/, where
+   * people go to collect citations.
    */
   compact?: boolean;
 }
@@ -45,9 +45,20 @@ const bibId = `bib-${publication.id}`;
       {paperPage ? (
         <a class="title-link" href={`/conferences/${paperPage}/`}>
           {paper.title}
+          <span class="sr-only"> ({need(copy.hasPage, 'publication.hasPage')})</span>
         </a>
       ) : (
         paper.title
+      )}
+      {paper.pdfUrl && (
+        <a
+          class="title-icon"
+          href={paper.pdfUrl}
+          title={copy.pdf}
+          aria-label={`${copy.pdf}: ${paper.title}`}
+        >
+          <PdfMark />
+        </a>
       )}
     </h3>
 
@@ -74,11 +85,6 @@ const bibId = `bib-${publication.id}`;
     )}
 
     <div class="links">
-      {paper.pdfUrl && (
-        <a class="chip" href={paper.pdfUrl}>
-          {copy.pdf}
-        </a>
-      )}
       {paper.doi && (
         <a class="chip" href={`https://doi.org/${paper.doi}`} rel="noopener">
           {copy.doi}
@@ -94,11 +100,6 @@ const bibId = `bib-${publication.id}`;
           {pluralize(need(copy.citations, 'publication.citations'), citationCount)}
           <span class="sr-only"> (Google Scholar)</span>
         </Cites>
-      )}
-      {paperPage && !compact && (
-        <a class="chip paper-page" href={`/conferences/${paperPage}/`}>
-          {copy.paperPage}
-        </a>
       )}
       {!compact && (
         <details class="bib">
@@ -179,19 +180,33 @@ const bibId = `bib-${publication.id}`;
     color: var(--sec);
     background: var(--sec-dim);
   }
-  /* The one link here that leads to a page of ours rather than off-site. */
+  /* Underlined at rest: the one cue that a title leads to a page of ours. */
   .title-link {
     color: inherit;
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--sec-line);
+    text-underline-offset: 0.2em;
   }
   .title-link:hover {
     color: var(--sec-strong);
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    text-decoration-color: var(--sec-strong);
+    text-decoration-thickness: 2px;
   }
-  .paper-page {
-    border-color: var(--sec-line);
-    color: var(--sec-strong);
+
+  /* Beside the title, not inside its link, so the underline stops at the text. */
+  .title-icon {
+    display: inline-flex;
+    margin-inline-start: 0.4em;
+    vertical-align: -0.1em;
+    transition:
+      translate var(--dur) var(--ease),
+      filter var(--dur) var(--ease);
+  }
+  .title-icon:hover,
+  .title-icon:focus-visible {
+    translate: 0 -1px;
+    filter: brightness(1.12);
   }
 
   /* `display: contents` promotes the summary and the body to flex items of the
