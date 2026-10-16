@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import VenueBadge from './VenueBadge.astro';
 import CopyButton from './CopyButton.astro';
+import DoiMark from '../DoiMark.astro';
 import PdfMark from '../PdfMark.astro';
 import ScholarMark from '../ScholarMark.astro';
 import { citationsFor, scholarPaperUrl } from '../../lib/citations.ts';
@@ -60,6 +61,17 @@ const bibId = `bib-${publication.id}`;
           <PdfMark />
         </a>
       )}
+      {paper.doi && (
+        <a
+          class="title-icon"
+          href={`https://doi.org/${paper.doi}`}
+          rel="noopener"
+          title={copy.doi}
+          aria-label={`${copy.doi}: ${paper.title}`}
+        >
+          <DoiMark />
+        </a>
+      )}
     </h3>
 
     <p class="authors">
@@ -85,11 +97,6 @@ const bibId = `bib-${publication.id}`;
     )}
 
     <div class="links">
-      {paper.doi && (
-        <a class="chip" href={`https://doi.org/${paper.doi}`} rel="noopener">
-          {copy.doi}
-        </a>
-      )}
       {citationCount > 0 && (
         <Cites
           class="chip cites"
