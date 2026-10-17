@@ -13,8 +13,46 @@ It is a fork of <a href="https://gitlab.com/connect2x/tammy">Tammy</a> and is bu
 <ul>
 <li><strong>Target platform:</strong> Desktop / Web</li>
 <li><strong>Other platforms:</strong> Android/iOS are currently not actively tested in Tacit.</li>
+<li><strong>Releases:</strong> Unsigned desktop builds for macOS (Apple Silicon), Linux and Windows, see <a href="#download--install">Download / Install</a>. Changes are listed in <a href="https://gitlab.com/dfuchss/tacit/-/blob/HEAD/CHANGELOG.tacit.md">CHANGELOG.tacit.md</a>.</li>
 <li><strong>Maturity:</strong> Alpha — expect rough edges, breaking changes, and frequent iteration.</li>
 </ul>
+<h2 id="download--install">Download / Install</h2>
+<p>Download the latest release for your system:</p>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Download</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>macOS (Apple Silicon)</td>
+<td><a href="https://gitlab.com/dfuchss/tacit/-/releases/permalink/latest/downloads/tacit-macos-arm64.dmg">tacit-macos-arm64.dmg</a></td>
+</tr>
+<tr>
+<td>Windows (x64)</td>
+<td><a href="https://gitlab.com/dfuchss/tacit/-/releases/permalink/latest/downloads/tacit-windows-x64.zip">tacit-windows-x64.zip</a></td>
+</tr>
+<tr>
+<td>Linux (x64)</td>
+<td><a href="https://gitlab.com/dfuchss/tacit/-/releases/permalink/latest/downloads/tacit-linux-x64.zip">tacit-linux-x64.zip</a></td>
+</tr>
+</tbody>
+</table>
+<p>All releases and their notes are on <a href="https://gitlab.com/dfuchss/tacit/-/releases">GitLab</a>; the files themselves are
+hosted on GitHub Releases.</p>
+<p>The builds are <strong>not signed</strong>, so macOS and Windows warn you on the first start:</p>
+<ul>
+<li><strong>macOS:</strong> drag Tacit to Applications and open it. When macOS blocks it, click <strong>Done</strong>, then open
+<strong>System Settings</strong> &gt; <strong>Privacy &amp; Security</strong>, scroll to <strong>Security</strong> and click <strong>Open Anyway</strong> (the button only shows for
+about an hour after the attempt). Right-click &gt; <strong>Open</strong> no longer works. If macOS says the app is “damaged”, run
+<code>xattr -cr /Applications/Tacit.app</code>.</li>
+<li><strong>Windows:</strong> unzip and run <code>Tacit.exe</code>. If SmartScreen warns you, click <strong>More info</strong> &gt; <strong>Run anyway</strong>.</li>
+<li><strong>Linux:</strong> unzip and run <code>./Tacit/bin/Tacit</code>.</li>
+</ul>
+<p>The web version is available as a Docker image: <code>ghcr.io/dfuchss/tacit</code> (tags: <code>dev</code> for the latest development state,
+<code>&lt;version&gt;</code> for releases such as <code>26.9.2-tacit.1</code>).</p>
 <h2 id="screenshots">Screenshots</h2>
 <h3 id="dms--group-chats">DMs / Group Chats</h3>
 <p><img alt="DM view" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/e11ad516-overview.C-sOpqpa_ZWVCky.webp"></p>
