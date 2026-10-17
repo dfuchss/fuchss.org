@@ -7,7 +7,7 @@ logo: ../../assets/projects/tacit/logo.png
 readme:
   repo: dfuchss/tacit
   host: gitlab
-  include: [Why Tacit?, Status, Screenshots]
+  include: [Why Tacit?, Status, Download / Install, Screenshots]
 ---
 
 [Tacit](https://gitlab.com/dfuchss/tacit) is a Matrix messenger with a strong focus on modern interaction patterns and a clean workflow for spaces, channels, DMs, and groups.
