@@ -28,15 +28,15 @@ It is a fork of <a href="https://gitlab.com/connect2x/tammy">Tammy</a> and is bu
 <tbody>
 <tr>
 <td>macOS (Apple Silicon)</td>
-<td><a href="https://gitlab.com/dfuchss/tacit/-/releases/permalink/latest/downloads/tacit-macos-arm64.dmg">tacit-macos-arm64.dmg</a></td>
+<td><a href="https://github.com/dfuchss/tacit/releases/latest/download/tacit-macos-arm64.dmg">tacit-macos-arm64.dmg</a></td>
 </tr>
 <tr>
 <td>Windows (x64)</td>
-<td><a href="https://gitlab.com/dfuchss/tacit/-/releases/permalink/latest/downloads/tacit-windows-x64.zip">tacit-windows-x64.zip</a></td>
+<td><a href="https://github.com/dfuchss/tacit/releases/latest/download/tacit-windows-x64.zip">tacit-windows-x64.zip</a></td>
 </tr>
 <tr>
 <td>Linux (x64)</td>
-<td><a href="https://gitlab.com/dfuchss/tacit/-/releases/permalink/latest/downloads/tacit-linux-x64.zip">tacit-linux-x64.zip</a></td>
+<td><a href="https://github.com/dfuchss/tacit/releases/latest/download/tacit-linux-x64.zip">tacit-linux-x64.zip</a></td>
 </tr>
 </tbody>
 </table>
@@ -44,32 +44,42 @@ It is a fork of <a href="https://gitlab.com/connect2x/tammy">Tammy</a> and is bu
 hosted on GitHub Releases.</p>
 <p>The builds are <strong>not signed</strong>, so macOS and Windows warn you on the first start:</p>
 <ul>
-<li><strong>macOS:</strong> drag Tacit to Applications and open it. When macOS blocks it, click <strong>Done</strong>, then open
+<li>
+<p><strong>macOS:</strong> drag Tacit to Applications and open it. When macOS blocks it, click <strong>Done</strong>, then open
 <strong>System Settings</strong> &gt; <strong>Privacy &amp; Security</strong>, scroll to <strong>Security</strong> and click <strong>Open Anyway</strong> (the button only shows for
 about an hour after the attempt). Right-click &gt; <strong>Open</strong> no longer works. If macOS says the app is “damaged”, run
-<code>xattr -cr /Applications/Tacit.app</code>.</li>
-<li><strong>Windows:</strong> unzip and run <code>Tacit.exe</code>. If SmartScreen warns you, click <strong>More info</strong> &gt; <strong>Run anyway</strong>.</li>
-<li><strong>Linux:</strong> unzip and run <code>./Tacit/bin/Tacit</code>.</li>
+<code>xattr -cr /Applications/Tacit.app</code>.</p>
+<p>macOS asks again for every new version you download in a browser. Downloads made with <code>curl</code> are not flagged, so
+they open without the prompt:</p>
+<pre class="astro-code github-dark-default" style="background-color:#0d1117;color:#e6edf3; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#FFA657">curl</span><span style="color:#79C0FF"> -LO</span><span style="color:#A5D6FF"> https://github.com/dfuchss/tacit/releases/latest/download/tacit-macos-arm64.dmg</span></span>
+<span class="line"><span style="color:#FFA657">open</span><span style="color:#A5D6FF"> tacit-macos-arm64.dmg</span></span></code></pre>
+</li>
+<li>
+<p><strong>Windows:</strong> unzip and run <code>Tacit.exe</code>. If SmartScreen warns you, click <strong>More info</strong> &gt; <strong>Run anyway</strong>.</p>
+</li>
+<li>
+<p><strong>Linux:</strong> unzip and run <code>./Tacit/bin/Tacit</code>.</p>
+</li>
 </ul>
 <p>The web version is available as a Docker image: <code>ghcr.io/dfuchss/tacit</code> (tags: <code>dev</code> for the latest development state,
 <code>&lt;version&gt;</code> for releases such as <code>26.9.2-tacit.1</code>).</p>
 <h2 id="screenshots">Screenshots</h2>
 <h3 id="dms--group-chats">DMs / Group Chats</h3>
-<p><img alt="DM view" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/e11ad516-overview.C-sOpqpa_ZWVCky.webp"></p>
+<p><img alt="DM view" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/e11ad516-overview.C_DbH5Kh_Z2kvcgW.webp"></p>
 <h3 id="invites">Invites</h3>
-<p><img alt="Invite view" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/100d7893-invite.BeqSaW3b_29NAMj.webp"></p>
+<p><img alt="Invite view" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/100d7893-invite.KcUKlomY_Z19PzqO.webp"></p>
 <h3 id="chatting">Chatting</h3>
-<p><img alt="Chat view" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/1cf94f3b-chatting.D7r_oRd9_Zq3yYj.webp"></p>
+<p><img alt="Chat view" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/1cf94f3b-chatting.CWXx8SI7_12txpz.webp"></p>
 <h3 id="emoji-picker-while-typing-">Emoji picker while typing :)</h3>
-<p><img alt="Emoji picker" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/ee0dd376-emoji_picker.CT7o5DgH_1YBJah.webp"></p>
+<p><img alt="Emoji picker" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/ee0dd376-emoji_picker.xUJB7l8v_Z1Inzc2.webp"></p>
 <h3 id="spaces--guilds">Spaces / Guilds</h3>
 <p>A matrix space is translated to the idea of guilds in Tacit. Guilds only contain rooms. All DMs and group chats are outside of guilds. Guilds can be used to organize rooms, e.g. by topic, project, or team.</p>
 <h4 id="create-your-guilds">Create your guilds</h4>
-<p><img alt="Create guild" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/012ea0e8-guild_create.DzqVEM_-_Z1XH8LT.webp"></p>
+<p><img alt="Create guild" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/012ea0e8-guild_create.CJBiGq7h_ReNKd.webp"></p>
 <h4 id="guild-overview">Guild overview</h4>
-<p><img alt="Guild overview" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/374e846c-guild_ui.DhpvWQHD_Z1ACf8y.webp"></p>
+<p><img alt="Guild overview" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/374e846c-guild_ui.BTkRbPRj_2jPvEC.webp"></p>
 <h4 id="invite-to-guild">Invite to guild</h4>
-<p><img alt="Guild invite" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/cecf7ca3-guild_invite.CPtlUeIC_ZR2jUJ.webp"></p>
+<p><img alt="Guild invite" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/cecf7ca3-guild_invite.Cw6BXAQt_Z1sbhgj.webp"></p>
 <h3 id="about">About</h3>
-<p><img alt="About" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/8e148523-about.D27b3HHw_Z1is4hO.webp"></p>
+<p><img alt="About" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/8e148523-about.Dm8GJfr-_Z1JXVvH.webp"></p>
 </div><p class="back mono" data-astro-cid-uovcksa3><a href="/projects/" data-astro-cid-uovcksa3>← all projects</a></p></article></main><footer class="footer" data-astro-cid-jo6i4kqk><div class="wrap" data-astro-cid-jo6i4kqk><p class="meta mono" data-astro-cid-jo6i4kqk><span data-astro-cid-jo6i4kqk>© 2026 Dominik Fuchß</span><span aria-hidden="true" data-astro-cid-jo6i4kqk>·</span><a href="/impressum/" data-astro-cid-jo6i4kqk>Impressum</a><span aria-hidden="true" data-astro-cid-jo6i4kqk>·</span><a href="/pgp-key/" data-astro-cid-jo6i4kqk>PGP</a><span aria-hidden="true" data-astro-cid-jo6i4kqk>·</span><a href="/feed.xml" data-astro-cid-jo6i4kqk>Feed</a><span aria-hidden="true" data-astro-cid-jo6i4kqk>·</span><span data-astro-cid-jo6i4kqk>built with <a href="https://astro.build/" data-astro-cid-jo6i4kqk>Astro</a> and <a href="https://github.com/dfuchss/astro-studia" data-astro-cid-jo6i4kqk>Studia Theme</a></span></p></div></footer><script type="module">document.documentElement.classList.add(`js`);var e=window.matchMedia(`(prefers-reduced-motion: reduce)`).matches,t=document.querySelectorAll(`.reveal`);if(e||!(`IntersectionObserver`in window))t.forEach(e=>e.classList.add(`is-in`));else{let e=new IntersectionObserver(t=>{for(let n of t){let t=!n.isIntersecting&&n.boundingClientRect.bottom<=0;(n.isIntersecting||t)&&(n.target.classList.add(`is-in`),e.unobserve(n.target))}},{rootMargin:`0px 0px -10% 0px`,threshold:.05});t.forEach(t=>e.observe(t))}</script></body></html>
