@@ -61,25 +61,37 @@ they open without the prompt:</p>
 <p><strong>Linux:</strong> unzip and run <code>./Tacit/bin/Tacit</code>.</p>
 </li>
 </ul>
+<h3 id="in-app-updates">In-app updates</h3>
+<p>The desktop app checks GitHub for a new release about once a day (turn this off under <strong>Settings</strong> &gt;
+<strong>About the app</strong>, which also has <strong>Check now</strong>). A new version is downloaded, checked against the release’s
+<code>SHA256SUMS</code> and prepared in Tacit’s data folder; your installed copy is not touched yet. <strong>Restart to update</strong> (in the
+banner, the settings or the tray menu) quits Tacit completely, swaps in the new version, keeps your sessions and
+settings, and starts it again; nothing is installed before you choose it. If the swap fails, the previous version is restored.</p>
+<p>Tacit offers <strong>Open release page</strong> instead of updating itself when it runs from the mounted disk image
+(<code>/Volumes/...</code>), when macOS runs it from a temporary translocated copy (open it once from Applications), or when
+the install folder or its parent folder is not writable (e.g. <code>C:\Program Files</code>); update by hand in those cases.</p>
+<p>For testing, <code>TACIT_UPDATE_API_URL</code> points the check at another release JSON, <code>TACIT_UPDATE_CURRENT_VERSION</code>
+pretends to be an older version, and <code>TACIT_UPDATE_FORCE=1</code> checks right after start and accepts the latest release even
+when it is not newer.</p>
 <p>The web version is available as a Docker image: <code>ghcr.io/dfuchss/tacit</code> (tags: <code>dev</code> for the latest development state,
 <code>&lt;version&gt;</code> for releases such as <code>26.9.2-tacit.1</code>).</p>
 <h2 id="screenshots">Screenshots</h2>
 <h3 id="dms--group-chats">DMs / Group Chats</h3>
-<p><img alt="DM view" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/e11ad516-overview.C_DbH5Kh_Z2kvcgW.webp"></p>
+<p><img alt="DM view" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/e11ad516-overview.Irr6t9vD_Z1xNeFB.webp"></p>
 <h3 id="invites">Invites</h3>
-<p><img alt="Invite view" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/100d7893-invite.KcUKlomY_Z19PzqO.webp"></p>
+<p><img alt="Invite view" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/100d7893-invite.DqPNS5Si_ZW0uqg.webp"></p>
 <h3 id="chatting">Chatting</h3>
-<p><img alt="Chat view" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/1cf94f3b-chatting.CWXx8SI7_12txpz.webp"></p>
+<p><img alt="Chat view" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/1cf94f3b-chatting.DhkLbGR8_1Ei69A.webp"></p>
 <h3 id="emoji-picker-while-typing-">Emoji picker while typing :)</h3>
-<p><img alt="Emoji picker" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/ee0dd376-emoji_picker.xUJB7l8v_Z1Inzc2.webp"></p>
+<p><img alt="Emoji picker" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/ee0dd376-emoji_picker.CoyumRnt_Z1AcTgA.webp"></p>
 <h3 id="spaces--guilds">Spaces / Guilds</h3>
 <p>A matrix space is translated to the idea of guilds in Tacit. Guilds only contain rooms. All DMs and group chats are outside of guilds. Guilds can be used to organize rooms, e.g. by topic, project, or team.</p>
 <h4 id="create-your-guilds">Create your guilds</h4>
-<p><img alt="Create guild" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/012ea0e8-guild_create.CJBiGq7h_ReNKd.webp"></p>
+<p><img alt="Create guild" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/012ea0e8-guild_create.MBtmBmv3_Z29umJu.webp"></p>
 <h4 id="guild-overview">Guild overview</h4>
-<p><img alt="Guild overview" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/374e846c-guild_ui.BTkRbPRj_2jPvEC.webp"></p>
+<p><img alt="Guild overview" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/374e846c-guild_ui.pkDd6Ct6_Z19saCg.webp"></p>
 <h4 id="invite-to-guild">Invite to guild</h4>
-<p><img alt="Guild invite" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/cecf7ca3-guild_invite.Cw6BXAQt_Z1sbhgj.webp"></p>
+<p><img alt="Guild invite" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/cecf7ca3-guild_invite.B3ROPvxM_Z1na4Mv.webp"></p>
 <h3 id="about">About</h3>
-<p><img alt="About" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/8e148523-about.Dm8GJfr-_Z1JXVvH.webp"></p>
+<p><img alt="About" loading="lazy" decoding="async" width="2960" height="1720" src="/_astro/8e148523-about.CTGbf8JA_2hEwxW.webp"></p>
 </div><p class="back mono" data-astro-cid-uovcksa3><a href="/projects/" data-astro-cid-uovcksa3>← all projects</a></p></article></main><footer class="footer" data-astro-cid-jo6i4kqk><div class="wrap" data-astro-cid-jo6i4kqk><p class="meta mono" data-astro-cid-jo6i4kqk><span data-astro-cid-jo6i4kqk>© 2026 Dominik Fuchß</span><span aria-hidden="true" data-astro-cid-jo6i4kqk>·</span><a href="/impressum/" data-astro-cid-jo6i4kqk>Impressum</a><span aria-hidden="true" data-astro-cid-jo6i4kqk>·</span><a href="/pgp-key/" data-astro-cid-jo6i4kqk>PGP</a><span aria-hidden="true" data-astro-cid-jo6i4kqk>·</span><a href="/feed.xml" data-astro-cid-jo6i4kqk>Feed</a><span aria-hidden="true" data-astro-cid-jo6i4kqk>·</span><span data-astro-cid-jo6i4kqk>built with <a href="https://astro.build/" data-astro-cid-jo6i4kqk>Astro</a> and <a href="https://github.com/dfuchss/astro-studia" data-astro-cid-jo6i4kqk>Studia Theme</a></span></p></div></footer><script type="module">document.documentElement.classList.add(`js`);var e=window.matchMedia(`(prefers-reduced-motion: reduce)`).matches,t=document.querySelectorAll(`.reveal`);if(e||!(`IntersectionObserver`in window))t.forEach(e=>e.classList.add(`is-in`));else{let e=new IntersectionObserver(t=>{for(let n of t){let t=!n.isIntersecting&&n.boundingClientRect.bottom<=0;(n.isIntersecting||t)&&(n.target.classList.add(`is-in`),e.unobserve(n.target))}},{rootMargin:`0px 0px -10% 0px`,threshold:.05});t.forEach(t=>e.observe(t))}</script></body></html>
