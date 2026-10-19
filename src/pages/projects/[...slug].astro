@@ -3,6 +3,7 @@ import { getCollection, getEntry, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Prose from '../../components/Prose.astro';
+import Lightbox from '../../components/Lightbox.astro';
 import { fill, getPage, need } from '../../lib/pages.ts';
 import { FORGE_ICONS } from '../../lib/icons.ts';
 
@@ -75,50 +76,13 @@ const category = await getEntry(projectData.category);
     <Prose>
       <Content />
     </Prose>
-
-    {/* Screenshots in the prose open enlarged here; wired up by the script below. */}
-    <dialog class="lightbox" aria-label={need(page.imageDialogLabel, 'projects.imageDialogLabel')}>
-      <img alt="" />
-    </dialog>
+    <Lightbox label={need(page.imageDialogLabel, 'projects.imageDialogLabel')} />
 
     <p class="back mono">
       <a href="/projects/">{need(page.backLink, 'projects.backLink')}</a>
     </p>
   </article>
 </Base>
-
-<script>
-  const lightbox = document.querySelector<HTMLDialogElement>('.lightbox');
-  const enlarged = lightbox?.querySelector('img');
-  // Images that already link somewhere (the before/after pairs) keep their link.
-  const screenshots = document.querySelectorAll<HTMLImageElement>('.prose img:not(a img)');
-
-  if (lightbox && enlarged) {
-    screenshots.forEach((screenshot) => {
-      // The alt text becomes the button's accessible name.
-      screenshot.setAttribute('role', 'button');
-      screenshot.tabIndex = 0;
-      screenshot.classList.add('zoomable');
-
-      const open = () => {
-        enlarged.src = screenshot.currentSrc || screenshot.src;
-        enlarged.alt = screenshot.alt;
-        lightbox.showModal();
-      };
-      screenshot.addEventListener('click', open);
-      screenshot.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          open();
-        }
-      });
-    });
-
-    // The image and the backdrop both sit inside the dialog box, so any click
-    // closes it. Escape and focus return to the screenshot come from showModal().
-    lightbox.addEventListener('click', () => lightbox.close());
-  }
-</script>
 
 <style>
   .kicker a {
@@ -173,41 +137,6 @@ const category = await getEntry(projectData.category);
   }
   .chip svg {
     fill: currentColor;
-  }
-
-  /* Screenshots live in the prose, which remark renders outside this component. */
-  :global(.prose img.zoomable) {
-    cursor: zoom-in;
-  }
-  :global(.prose img.zoomable:focus-visible) {
-    outline: 2px solid var(--sec);
-    outline-offset: 3px;
-  }
-
-  .lightbox {
-    max-width: none;
-    max-height: none;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 1.5rem;
-    border: 0;
-    background: transparent;
-    cursor: zoom-out;
-  }
-  .lightbox[open] {
-    display: grid;
-    place-items: center;
-  }
-  .lightbox::backdrop {
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
-  }
-  .lightbox img {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: var(--radius-m);
-    background: var(--bg-2);
-    box-shadow: 0 18px 60px rgb(0 0 0 / 60%);
   }
 
   .back {

@@ -137,7 +137,7 @@ const pages = defineCollection({
     archivedLabel: z.string().optional(),
     // projects: label of the repository link under the description; {host}
     sourceLabel: z.string().optional(),
-    // projects: accessible name of the dialog that enlarges a screenshot
+    // projects, blog: accessible name of the dialog that enlarges an image
     imageDialogLabel: z.string().optional(),
     counts: z.string().optional(),
     noPosts: z.string().optional(),

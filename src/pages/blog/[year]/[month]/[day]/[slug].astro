@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import Base from '../../../../../layouts/Base.astro';
 import Prose from '../../../../../components/Prose.astro';
+import Lightbox from '../../../../../components/Lightbox.astro';
 import {
   publishedPosts,
   permalinkParts,
@@ -9,7 +10,7 @@ import {
   formatPostDate,
   slugifyTag,
 } from '../../../../../lib/blog.ts';
-import { getPage } from '../../../../../lib/pages.ts';
+import { getPage, need } from '../../../../../lib/pages.ts';
 
 export async function getStaticPaths() {
   const posts = await publishedPosts();
@@ -54,6 +55,7 @@ const older = index < allPosts.length - 1 ? allPosts[index + 1] : undefined;
     <Prose>
       <Content />
     </Prose>
+    <Lightbox label={need(blog.imageDialogLabel, 'blog.imageDialogLabel')} />
 
     <nav class="pager" aria-label="More posts">
       {older ? (

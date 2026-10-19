@@ -15,6 +15,8 @@ tagCount:
   one: '{count} post.'
   other: '{count} posts.'
 backLink: '← all posts'
+# Accessible name of the dialog that enlarges an image in a post.
+imageDialogLabel: 'Enlarged image'
 # Pager at the bottom of a post.
 older: '← older'
 newer: 'newer →'
