@@ -9,4 +9,6 @@ backLink: '← all projects'
 archivedLabel: 'Former project'
 # Repository link under the project description.
 sourceLabel: 'Source on {host}'
+# Accessible name of the dialog that enlarges a screenshot; click or Escape closes it.
+imageDialogLabel: 'Enlarged image'
 ---
