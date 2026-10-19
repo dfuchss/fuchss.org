@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-10-12",
+  "fetched": "2026-10-19",
   "users": {
     "dfuchss": {
       "login": "dfuchss",
@@ -21,7 +21,7 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/project-vault",
-      "pushedAt": "2026-10-11"
+      "pushedAt": "2026-10-16"
     },
     "dfuchss/matrix-joinlink": {
       "fullName": "dfuchss/matrix-joinlink",
@@ -32,7 +32,7 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/matrix-joinlink",
-      "pushedAt": "2026-10-10"
+      "pushedAt": "2026-10-16"
     },
     "dfuchss/mensabot": {
       "fullName": "dfuchss/mensabot",
@@ -43,7 +43,7 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/mensabot",
-      "pushedAt": "2026-10-10"
+      "pushedAt": "2026-10-16"
     },
     "dfuchss/yarb": {
       "fullName": "dfuchss/yarb",
@@ -54,7 +54,7 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/yarb",
-      "pushedAt": "2026-10-10"
+      "pushedAt": "2026-10-16"
     },
     "dfuchss/matrix-bot-base": {
       "fullName": "dfuchss/matrix-bot-base",
@@ -65,7 +65,7 @@
       "license": "MIT",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/matrix-bot-base",
-      "pushedAt": "2026-10-11"
+      "pushedAt": "2026-10-16"
     },
     "dfuchss/astro-studia": {
       "fullName": "dfuchss/astro-studia",
@@ -76,29 +76,29 @@
       "license": "MIT",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/astro-studia",
-      "pushedAt": "2026-10-11"
+      "pushedAt": "2026-10-17"
     },
     "dfuchss/tacit": {
       "fullName": "dfuchss/tacit",
-      "description": "Tacit is a fork of Tammy Messenger with one clear goal: a modern, appealing Matrix experience. Development is on GitLab: https://gitlab.com/dfuchss/tacit Please open PRs & Issues at GitLab.",
+      "description": "Tacit is a fork of Tammy Messenger with one clear goal: a modern, appealing Matrix experience. Development is on GitLab.",
       "stars": 2,
       "forks": 0,
       "language": "Kotlin",
       "license": "AGPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/tacit",
-      "pushedAt": "2026-09-27"
+      "pushedAt": "2026-10-18"
     },
     "jplag/JPlag": {
       "fullName": "jplag/JPlag",
       "description": "State-of-the-Art Source Code Plagiarism & Collusion Detection. Check for plagiarism in a set of programs.",
-      "stars": 1975,
+      "stars": 1977,
       "forks": 376,
       "language": "Java",
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/jplag/JPlag",
-      "pushedAt": "2026-10-08"
+      "pushedAt": "2026-10-19"
     },
     "ardoco/lissa": {
       "fullName": "ardoco/lissa",
@@ -109,7 +109,7 @@
       "license": "MIT",
       "archived": false,
       "htmlUrl": "https://github.com/ardoco/lissa",
-      "pushedAt": "2026-10-09"
+      "pushedAt": "2026-10-16"
     }
   }
 }
