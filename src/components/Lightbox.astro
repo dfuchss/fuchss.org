@@ -15,11 +15,29 @@ const { label } = Astro.props;
 <script>
   const lightbox = document.querySelector<HTMLDialogElement>('.lightbox');
   const enlarged = lightbox?.querySelector('img');
-  // Images that already link somewhere (the before/after pairs) keep their link.
-  const screenshots = document.querySelectorAll<HTMLImageElement>('.prose img:not(a img)');
+  const screenshots = document.querySelectorAll<HTMLImageElement>('.prose img');
 
   if (lightbox && enlarged) {
     screenshots.forEach((screenshot) => {
+      const link = screenshot.closest('a');
+
+      // A link to the image's own file (the before/after pairs) opens here
+      // instead; without JavaScript it still leads to the file. Links anywhere
+      // else keep their target.
+      if (link) {
+        if (link.href !== screenshot.src) return;
+        screenshot.classList.add('zoomable');
+        link.addEventListener('click', (event) => {
+          // Modified clicks still open the file in a new tab or window.
+          if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          enlarged.src = link.href;
+          enlarged.alt = screenshot.alt;
+          lightbox.showModal();
+        });
+        return;
+      }
+
       // The alt text becomes the button's accessible name.
       screenshot.setAttribute('role', 'button');
       screenshot.tabIndex = 0;
