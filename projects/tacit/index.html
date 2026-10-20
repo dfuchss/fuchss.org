@@ -65,9 +65,10 @@ they open without the prompt:</p>
 <h3 id="in-app-updates">In-app updates</h3>
 <p>The desktop app checks GitHub for a new release about once a day (turn this off under <strong>Settings</strong> &gt;
 <strong>About the app</strong>, which also has <strong>Check now</strong>). A new version is downloaded, checked against the release’s
-<code>SHA256SUMS</code> and prepared in Tacit’s data folder; your installed copy is not touched yet. <strong>Restart to update</strong> (in the
-banner, the settings or the tray menu) quits Tacit completely, swaps in the new version, keeps your sessions and
-settings, and starts it again; nothing is installed before you choose it. If the swap fails, the previous version is restored.</p>
+<code>SHA256SUMS</code> and prepared in Tacit’s data folder; your installed copy is not touched yet. <strong>Quit and update</strong> (in the
+banner, the settings or the tray menu) quits Tacit completely and swaps in the new version while keeping your sessions
+and settings; open Tacit again yourself afterwards. Nothing is installed before you choose it. If the swap fails, the
+previous version is restored.</p>
 <p>Tacit offers <strong>Open release page</strong> instead of updating itself when it runs from the mounted disk image
 (<code>/Volumes/...</code>), when macOS runs it from a temporary translocated copy (open it once from Applications), or when
 the install folder or its parent folder is not writable (e.g. <code>C:\Program Files</code>); update by hand in those cases.</p>
