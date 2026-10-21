@@ -40,10 +40,11 @@ verification/           committed SHA-256 baselines for the PDFs and the Matrix 
 **`public/assets/pdf/**`** — cited in published papers and indexed by Google Scholar, DBLP and
 KITopen. Never rename, move, or run these through any tool.
 
-**`public/.well-known/matrix/{server,client,support}` and the `.htaccess` beside them** —
+**`public/.well-known/matrix/{client,support}` and the `.htaccess` beside them** —
 federation for the `fuchss.org` Matrix homeserver depends on these bytes, and the `.htaccess`
 carries the `Access-Control-Allow-Origin: *` that the Matrix spec requires on the `client` file.
-Nothing to do with the website, which is what makes breaking them easy to miss.
+Server-to-server discovery uses the `_matrix-fed._tcp.fuchss.org` SRV record instead of a
+`server` file. Nothing to do with the website, which is what makes breaking them easy to miss.
 
 Both are pinned by SHA-256 in `verification/` and asserted by `npm run verify`, which the deploy
 workflow runs before publishing. The URL-parity checks that guarded the migration have been
