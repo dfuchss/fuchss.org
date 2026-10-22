@@ -29,27 +29,22 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
 
-      - uses: actions/setup-python@v7
+      - uses: actions/setup-node@v7
         with:
-          python-version: '3.15'
+          node-version-file: .nvmrc
+          cache: npm
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      - run: npm ci
 
       - name: Fetch citations
         shell: bash
         # The script keeps its own 270s budget and exits 0 when Scholar rate-limits
-        # it, but `scholarly`'s retry loop catches broad exceptions and so swallows
-        # the one our SIGALRM/SIGTERM handlers raise. `timeout` is the backstop that
-        # actually ends such a run, and none of the ways it can do so is a failure:
-        # 124 (clean SIGTERM), 143 (the shell reporting that same SIGTERM) and 137
-        # (the SIGKILL from --kill-after, i.e. the process ignored SIGTERM) all just
-        # mean Scholar did not answer. A stalled run leaves citations.yml untouched,
-        # so the next scheduled run simply retries and nobody needs an email about
-        # it. `-u` keeps the log intact when the backstop does have to kill it.
+        # it; `timeout` is only the backstop. 124 (clean SIGTERM), 143 (the shell
+        # reporting that SIGTERM) and 137 (SIGKILL from --kill-after) all just mean
+        # Scholar did not answer: citations.yml is untouched and the next run retries.
         run: |
           set +e
-          timeout --signal=TERM --kill-after=30 300 python -u scripts/update_scholar_citations.py
+          timeout --signal=TERM --kill-after=30 300 node scripts/update-scholar-citations.mjs
           rc=$?
           set -e
           case $rc in

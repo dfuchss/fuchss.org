@@ -15,6 +15,8 @@
     "format": "prettier . --write",
     "verify": "node scripts/verify-invariants.mjs",
     "preview:files": "node scripts/make-preview.mjs",
+    "data:citations": "node scripts/update-scholar-citations.mjs",
+    "papers:check": "node scripts/update-bib.mjs",
     "papers:missing": "node scripts/find-missing-papers.mjs",
     "papers:missing:kitopen": "node scripts/find-missing-papers-kitopen.mjs"
   },

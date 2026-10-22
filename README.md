@@ -60,8 +60,8 @@ from the al-folio site — they pinned counts that change with ordinary content 
 | Add a project                | new `.md` in `src/content/projects/`, images under `src/assets/projects/<slug>/`  |
 | Add a post                   | new `src/content/posts/YYYY-MM-DD-slug.md`; the filename sets the permalink       |
 | Update the CV                | edit `src/data/cv.yml`                                                            |
-| Refresh citations            | daily workflow, or `python scripts/update_scholar_citations.py`                   |
-| Check bib against Crossref   | `python scripts/update_bib.py` (add `--write` to apply)                           |
+| Refresh citations            | daily workflow, or `npm run data:citations`                                       |
+| Check bib against Crossref   | `npm run papers:check` (add `-- --write` to apply)                                |
 | Find papers missing from bib | `npm run papers:missing` (`-- -i` asks per paper, `-- --yes` adds all)            |
 | Same, from KITopen only      | `npm run papers:missing:kitopen` (same flags; exit 2 if KITopen is unreachable)   |
 | Refresh GitHub stars         | `node scripts/fetch-github-metadata.mjs` (weekly workflow)                        |

@@ -7,7 +7,7 @@ package-lock.json
 src/data/citations.yml
 src/data/github-metadata.json
 
-# Bibliography formatting is maintained by hand and by scripts/update_bib.py
+# Bibliography formatting is maintained by hand and by scripts/update-bib.mjs
 src/data/papers.bib
 
 # Verification baselines are generated

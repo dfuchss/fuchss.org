@@ -276,12 +276,12 @@ export function findMissing(publications, bibEntries, ignoredIds) {
 }
 
 // --------------------------------------------------------------------------- //
-// Crossref (mapping ported from scripts/update_bib.py)
+// Crossref (shared with scripts/update-bib.mjs)
 // --------------------------------------------------------------------------- //
 export const unescapeDoi = (doi) =>
   doi.replaceAll('\\_', '_').replaceAll('\\&', '&').replaceAll('\\%', '%');
 
-async function crossrefRequest(url, retries = 3) {
+export async function crossrefRequest(url, retries = 3) {
   for (let attempt = 1; attempt <= retries; attempt += 1) {
     try {
       const response = await fetch(url, {
@@ -299,9 +299,17 @@ async function crossrefRequest(url, retries = 3) {
   return null;
 }
 
-function crossrefFields(message, entryType, hasJournal) {
+export function crossrefFields(message, entryType, hasJournal) {
   const fields = {};
   const first = (name) => (Array.isArray(message[name]) ? message[name][0] : message[name]);
+  const title = first('title');
+  if (title) fields.title = title.trim();
+  const names = (message.author ?? []).flatMap((author) => {
+    const family = (author.family ?? '').trim();
+    const given = (author.given ?? '').trim();
+    return family ? [given ? `${family}, ${given}` : family] : [];
+  });
+  if (names.length) fields.author = names.join(' and ');
   const container = first('container-title');
   if (container)
     fields[entryType === 'article' || hasJournal ? 'journal' : 'booktitle'] = container.trim();
@@ -323,13 +331,14 @@ function crossrefFields(message, entryType, hasJournal) {
   return fields;
 }
 
+export const crossrefByDoi = (doi) =>
+  crossrefRequest(`https://api.crossref.org/works/${encodeURIComponent(doi)}`);
+
 export async function crossrefMessageFor(publication, delaySeconds) {
   if (publication.arxivId) return null; // preprints are described by the source alone
   try {
     const message = publication.doi
-      ? await crossrefRequest(
-          `https://api.crossref.org/works/${encodeURIComponent(publication.doi)}`,
-        )
+      ? await crossrefByDoi(publication.doi)
       : await searchCrossref(publication.title);
     return message;
   } catch (error) {

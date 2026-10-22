@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-10-16'
+  last_updated: '2026-10-22'
 papers:
   bVvFp4oAAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -7,7 +7,7 @@ papers:
     year: '2020'
   bVvFp4oAAAAJ:3fE2CSJIrl8C:
     citations: 0
-    title: "Verarbeitung nat\xFCrlich-sprachlicher Beziehungsbeschreibungen zwischen Objekten"
+    title: Verarbeitung natürlich-sprachlicher Beziehungsbeschreibungen zwischen Objekten
     year: '2018'
   bVvFp4oAAAAJ:7PzlFSSx8tAC:
     citations: 31
@@ -22,11 +22,11 @@ papers:
     title: Approaching natural conversation chatbots by interactive dialogue modelling & microsoft LUIS
     year: '2019'
   bVvFp4oAAAAJ:HDshCWvjkbEC:
-    citations: 1
+    citations: 2
     title: An Experience Report on a Pedagogically Controlled, Curriculum-Constrained AI Tutor for SE Education
     year: '2026'
   bVvFp4oAAAAJ:IWHjjKOFINEC:
-    citations: 38
+    citations: 37
     title: Trace Link Recovery for Software Architecture Documentation
     year: '2021'
   bVvFp4oAAAAJ:MXK_kJrjxJIC:
@@ -34,7 +34,7 @@ papers:
     title: Requirements traceability link recovery via retrieval-augmented generation
     year: '2025'
   bVvFp4oAAAAJ:R3hNpaxXUhUC:
-    citations: 0
+    citations: 1
     title: 'ExArch: Enabling Architecture Traceability by LLM-based Architecture Component Name Extraction'
     year: '2026'
   bVvFp4oAAAAJ:RHpTSmoSYBkC:
@@ -54,7 +54,7 @@ papers:
     title: Introducing an evaluation method for taxonomies
     year: '2022'
   bVvFp4oAAAAJ:ULOm3_A8WrAC:
-    citations: 52
+    citations: 53
     title: 'Software architecture meets llms: A systematic literature review'
     year: '2025'
   bVvFp4oAAAAJ:UeHWp8X0CEIC:
@@ -62,11 +62,11 @@ papers:
     title: Assessing Hypotheses in Multi-Agent Systems for Natural Language Processing
     year: '2020'
   bVvFp4oAAAAJ:UebtZRa9Y70C:
-    citations: 35
+    citations: 36
     title: Recovering trace links between software documentation and code
     year: '2024'
   bVvFp4oAAAAJ:WF5omc3nYNoC:
-    citations: 25
+    citations: 26
     title: Detecting inconsistencies in software architecture documentation using traceability link recovery
     year: '2023'
   bVvFp4oAAAAJ:YOwf2qJgpHMC:
@@ -115,7 +115,7 @@ papers:
     year: '2026'
   bVvFp4oAAAAJ:isC4tDSrTZIC:
     citations: 0
-    title: "Verbundprojekt: SofDCar-Software defined car, softwaregetrieben von Embedded Systems bis in die Cloud f\xFCr Entwicklung und Betrieb (digitale Nachhaltigkeit)"
+    title: 'Verbundprojekt: SofDCar-Software defined car, softwaregetrieben von Embedded Systems bis in die Cloud für Entwicklung und Betrieb (digitale Nachhaltigkeit)'
     year: '2025'
   bVvFp4oAAAAJ:j3f4tGmQtD8C:
     citations: 1
@@ -127,7 +127,7 @@ papers:
     year: '2025'
   bVvFp4oAAAAJ:mB3voiENLucC:
     citations: 8
-    title: "Who\u2019s Who? LLM-assisted Software Traceability with Architecture Entity Recognition"
+    title: Who’s Who? LLM-assisted Software Traceability with Architecture Entity Recognition
     year: '2026'
   bVvFp4oAAAAJ:maZDTaKrznsC:
     citations: 0
