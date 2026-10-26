@@ -1,12 +1,12 @@
 {
-  "fetched": "2026-10-19",
+  "fetched": "2026-10-26",
   "users": {
     "dfuchss": {
       "login": "dfuchss",
       "name": "Dominik Fuchß",
       "bio": "$status$ :=💻️ | 🎮️ | 🚴 | 🏸",
       "followers": 40,
-      "publicRepos": 59,
+      "publicRepos": 61,
       "htmlUrl": "https://github.com/dfuchss",
       "avatarUrl": "https://avatars.githubusercontent.com/u/22198798?v=4"
     }
@@ -15,7 +15,7 @@
     "dfuchss/project-vault": {
       "fullName": "dfuchss/project-vault",
       "description": "Local-first, privacy-first personal finance analyzer for the desktop — import your own PDF/CSV bank statements, categorize on-device, forecast cash flow, and value your Depot with opt-in live prices. No bank connection.",
-      "stars": 1,
+      "stars": 2,
       "forks": 0,
       "language": "Kotlin",
       "license": "GPL-3.0",
@@ -32,7 +32,7 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/matrix-joinlink",
-      "pushedAt": "2026-10-16"
+      "pushedAt": "2026-10-24"
     },
     "dfuchss/mensabot": {
       "fullName": "dfuchss/mensabot",
@@ -43,7 +43,7 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/mensabot",
-      "pushedAt": "2026-10-16"
+      "pushedAt": "2026-10-24"
     },
     "dfuchss/yarb": {
       "fullName": "dfuchss/yarb",
@@ -54,7 +54,7 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/yarb",
-      "pushedAt": "2026-10-16"
+      "pushedAt": "2026-10-24"
     },
     "dfuchss/matrix-bot-base": {
       "fullName": "dfuchss/matrix-bot-base",
@@ -65,7 +65,7 @@
       "license": "MIT",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/matrix-bot-base",
-      "pushedAt": "2026-10-16"
+      "pushedAt": "2026-10-25"
     },
     "dfuchss/astro-studia": {
       "fullName": "dfuchss/astro-studia",
@@ -76,7 +76,7 @@
       "license": "MIT",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/astro-studia",
-      "pushedAt": "2026-10-17"
+      "pushedAt": "2026-10-24"
     },
     "dfuchss/tacit": {
       "fullName": "dfuchss/tacit",
@@ -87,18 +87,18 @@
       "license": "AGPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/tacit",
-      "pushedAt": "2026-10-18"
+      "pushedAt": "2026-10-21"
     },
     "jplag/JPlag": {
       "fullName": "jplag/JPlag",
       "description": "State-of-the-Art Source Code Plagiarism & Collusion Detection. Check for plagiarism in a set of programs.",
-      "stars": 1977,
+      "stars": 1987,
       "forks": 376,
       "language": "Java",
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/jplag/JPlag",
-      "pushedAt": "2026-10-19"
+      "pushedAt": "2026-10-26"
     },
     "ardoco/lissa": {
       "fullName": "ardoco/lissa",
@@ -109,7 +109,7 @@
       "license": "MIT",
       "archived": false,
       "htmlUrl": "https://github.com/ardoco/lissa",
-      "pushedAt": "2026-10-16"
+      "pushedAt": "2026-10-21"
     }
   }
 }
