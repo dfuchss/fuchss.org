@@ -9,7 +9,7 @@
  *   1. The publication PDFs. Their URLs are printed in published papers and
  *      indexed by Google Scholar, DBLP and KITopen. They cannot move and their
  *      bytes cannot change.
- *   2. The Matrix homeserver delegation, including the `.htaccess` beside it
+ *   2. The Matrix client discovery files, including the `.htaccess` beside it
  *      that carries the `Access-Control-Allow-Origin: *` the Matrix spec
  *      requires on the `client` file. The rewrite dropped that `.htaccess` once
  *      precisely because it was not pinned here.
@@ -47,7 +47,7 @@ function checkBaseline(file, label) {
   console.log(`${label} verified: ${checked}/${lines.length}`);
 }
 
-checkBaseline('verification/wellknown-sha256.txt', 'Matrix delegation');
+checkBaseline('verification/wellknown-sha256.txt', 'Matrix client discovery');
 checkBaseline('verification/pdf-sha256.txt', 'publication PDFs');
 
 // Harmless here since Apache2 serves the site, but free insurance if it ever
@@ -59,4 +59,4 @@ if (failures.length) {
   for (const failure of failures) console.error(`  ✗ ${failure}`);
   process.exit(1);
 }
-console.log('\nAll hard invariants OK (matrix delegation + PDF byte-identity + .nojekyll).');
+console.log('\nAll hard invariants OK (matrix client discovery + PDF byte-identity + .nojekyll).');

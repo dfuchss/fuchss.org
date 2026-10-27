@@ -52,7 +52,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Guards the two things that must never silently change — the Matrix
-      # homeserver delegation and the publication PDF bytes.
+      # client discovery files and the publication PDF bytes.
       - name: Verify invariants
         run: npm run verify
 

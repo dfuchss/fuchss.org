@@ -1,5 +1,5 @@
-# Matrix homeserver delegation for fuchss.org.
-# These bytes are served from this domain and federation depends on them.
+# Matrix client discovery for fuchss.org (federation uses SRV records instead).
+# These bytes are served from this domain and Matrix clients depend on them.
 # Captured from the live production site on 2026-09-13.
 #
 # The .htaccess is the exception: a web server never serves it, so it cannot be

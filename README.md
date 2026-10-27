@@ -14,7 +14,7 @@ npm run dev        # http://localhost:4321, hot reload
 npm run build      # → dist/
 npm run preview    # serves dist/ the way the web server does
 npm run check      # astro check + prettier --check
-npm run verify     # byte-identity invariants (PDFs + Matrix delegation)
+npm run verify     # byte-identity invariants (PDFs + Matrix client discovery)
 ```
 
 ## Layout
@@ -29,10 +29,10 @@ src/
   components/ layouts/ pages/ styles/
 public/                 copied verbatim — the stable URL surface
   assets/pdf/           35 publication PDFs; these URLs are permanent
-  .well-known/matrix/   Matrix homeserver delegation for the domain
+  .well-known/matrix/   Matrix client discovery for the domain
   .htaccess             ErrorDocument 404 → the site's own /404.html, not the panel's
 scripts/                data refresh + verification
-verification/           committed SHA-256 baselines for the PDFs and the Matrix delegation
+verification/           committed SHA-256 baselines for the PDFs and the Matrix client discovery files
 ```
 
 ## Two things that must not break
