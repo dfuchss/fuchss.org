@@ -66,3 +66,5 @@ jobs:
           clean: true
           # The server only pulls the latest build, so the branch keeps no history.
           single-commit: true
+          git-config-name: ci@fuchss.org
+          git-config-email: ci@fuchss.org
