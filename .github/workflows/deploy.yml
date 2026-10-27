@@ -5,10 +5,10 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-  # No schedule: the citation and metadata workflows commit under secrets.PAT,
-  # and a PAT-authenticated push does trigger this workflow (a GITHUB_TOKEN one
-  # would not). Refreshed numbers therefore reach the live site within minutes
-  # of changing, instead of waiting for a nightly rebuild.
+  # No schedule: the citation and metadata workflows push with GITHUB_TOKEN,
+  # which triggers no other workflow, so they dispatch this one themselves.
+  # Refreshed numbers therefore reach the live site within minutes of changing,
+  # instead of waiting for a nightly rebuild.
   workflow_dispatch:
 
 permissions:
