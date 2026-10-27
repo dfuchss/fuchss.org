@@ -64,3 +64,5 @@ jobs:
           folder: dist
           branch: gh-pages
           clean: true
+          # The server only pulls the latest build, so the branch keeps no history.
+          single-commit: true
