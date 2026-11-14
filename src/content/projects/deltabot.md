@@ -1,7 +1,7 @@
 ---
 title: deltabot
 description: 'deltabot is my first bot for Discord.'
-category: misc
+category: archive
 order: 5
 readme:
   repo: dfuchss/deltabot

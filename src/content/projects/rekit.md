@@ -1,7 +1,7 @@
 ---
 title: rekit
 description: 'a platform jumper game'
-category: misc
+category: archive
 order: 4
 logo: ../../assets/projects/rekit/logo.png
 readme:

@@ -17,3 +17,8 @@
   label: Everything else
   short: Side project
   blurb: Side projects, teaching tools and a few things built purely for fun.
+- id: archive
+  order: 4
+  label: Archive
+  short: Archived
+  blurb: Older projects I no longer work on, kept here for reference.
