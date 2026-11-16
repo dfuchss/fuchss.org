@@ -1,12 +1,12 @@
 {
-  "fetched": "2026-11-09",
+  "fetched": "2026-11-16",
   "users": {
     "dfuchss": {
       "login": "dfuchss",
       "name": "Dominik Fuchß",
       "bio": "$status$ :=💻️ | 🎮️ | 🚴 | 🏸",
       "followers": 39,
-      "publicRepos": 61,
+      "publicRepos": 62,
       "htmlUrl": "https://github.com/dfuchss",
       "avatarUrl": "https://avatars.githubusercontent.com/u/22198798?v=4"
     }
@@ -32,7 +32,7 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/matrix-joinlink",
-      "pushedAt": "2026-11-01"
+      "pushedAt": "2026-11-10"
     },
     "dfuchss/mensabot": {
       "fullName": "dfuchss/mensabot",
@@ -43,7 +43,7 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/mensabot",
-      "pushedAt": "2026-11-03"
+      "pushedAt": "2026-11-10"
     },
     "dfuchss/yarb": {
       "fullName": "dfuchss/yarb",
@@ -54,7 +54,7 @@
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/yarb",
-      "pushedAt": "2026-10-24"
+      "pushedAt": "2026-11-10"
     },
     "dfuchss/matrix-bot-base": {
       "fullName": "dfuchss/matrix-bot-base",
@@ -65,18 +65,18 @@
       "license": "MIT",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/matrix-bot-base",
-      "pushedAt": "2026-11-06"
+      "pushedAt": "2026-11-12"
     },
     "dfuchss/astro-studia": {
       "fullName": "dfuchss/astro-studia",
       "description": "Astro starter for academic sites: publications from BibTeX, paper pages, projects, a CV and a blog",
       "stars": 1,
-      "forks": 0,
+      "forks": 1,
       "language": "Astro",
       "license": "MIT",
       "archived": false,
       "htmlUrl": "https://github.com/dfuchss/astro-studia",
-      "pushedAt": "2026-11-09"
+      "pushedAt": "2026-11-14"
     },
     "dfuchss/tacit": {
       "fullName": "dfuchss/tacit",
@@ -92,13 +92,13 @@
     "jplag/JPlag": {
       "fullName": "jplag/JPlag",
       "description": "State-of-the-Art Source Code Plagiarism & Collusion Detection. Check for plagiarism in a set of programs.",
-      "stars": 2002,
+      "stars": 2012,
       "forks": 375,
       "language": "Java",
       "license": "GPL-3.0",
       "archived": false,
       "htmlUrl": "https://github.com/jplag/JPlag",
-      "pushedAt": "2026-11-05"
+      "pushedAt": "2026-11-16"
     },
     "ardoco/lissa": {
       "fullName": "ardoco/lissa",
@@ -109,7 +109,7 @@
       "license": "MIT",
       "archived": false,
       "htmlUrl": "https://github.com/ardoco/lissa",
-      "pushedAt": "2026-11-07"
+      "pushedAt": "2026-11-12"
     }
   }
 }
