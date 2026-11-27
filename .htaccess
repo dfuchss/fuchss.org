@@ -1,0 +1,9 @@
+# Apache2 serves fuchss.org (README → Deployment); nginx sits in front and hands
+# it anything it cannot serve from the tree, misses included. Without this line
+# a miss lands on the hosting panel's generic /error_docs/ page instead of the
+# site's own 404 — which is src/pages/404.astro, built to /404.html.
+#
+# ErrorDocument needs `AllowOverride FileInfo`, the same override the
+# Access-Control-Allow-Origin header in .well-known/matrix/.htaccess relies on;
+# that header is live, so the override is in place.
+ErrorDocument 404 /404.html
